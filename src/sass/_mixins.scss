@@ -1,0 +1,76 @@
+// Media Queries
+@mixin mq-large() {
+  @media (max-width: $mq-large-max) {
+    @content;
+  }
+}
+
+@mixin mq-medium() {
+  @media (max-width: $mq-medium-max) {
+    @content;
+  }
+}
+
+@mixin mq-small() {
+  @media (max-width: $mq-small-max) {
+    @content;
+  }
+}
+
+
+// BEM Helper mixins.
+// Supports multiple arguments.
+// for Sass v3.3 ~
+
+// Elements
+@mixin e($names...) {
+  @each $name in $names {
+    &__#{$name} {
+      @content;
+    }
+  }
+}
+
+// Modifiers
+@mixin m($names...) {
+  @each $name in $names {
+    &--#{$name} {
+      @content;
+    }
+  }
+}
+
+
+// Positions
+@mixin position($type, $top: auto, $right: auto, $bottom: auto, $left: auto, $z-index: auto) {
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
+}
+
+@mixin relative($top: auto, $right: auto, $bottom: auto, $left: auto, $z-index: auto) {
+  @include position(relative, $top, $right, $bottom, $left, $z-index);
+}
+
+@mixin absolute($top: auto, $right: auto, $bottom: auto, $left: auto, $z-index: auto) {
+  @include position(absolute, $top, $right, $bottom, $left, $z-index);
+}
+
+@mixin fixed($top: auto, $right: auto, $bottom: auto, $left: auto, $z-index: auto) {
+  @include position(fixed, $top, $right, $bottom, $left, $z-index);
+}
+
+
+// Typography
+@mixin font-smoothing($on: true) {
+  @if $on == true {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}

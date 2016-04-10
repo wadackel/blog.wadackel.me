@@ -1,0 +1,96 @@
+.post-share {
+  $_colors: (
+    twitter: #55acee,
+    facebook: #315096,
+    hatena: #008fde,
+    pocket: #ef4456,
+    feedly: #6cc655
+  );
+  clear: both;
+  margin: 8rem auto;
+  padding: 0;
+  font-size: 0;
+  text-align: center;
+
+  @include e(item) {
+    display: inline-block;
+    margin: 0 0 0 10px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  @include e(btn) {
+    $_size: 40px;
+    position: relative;
+    display: block;
+    width: $_size;
+    height: $_size;
+    background: #fff;
+    border-radius: 50%;
+    &::before,
+    &::after {
+      @include absolute(50%, auto, auto, 50%, 0);
+      content: "";
+      width: $_size;
+      height: $_size;
+      margin-top: -$_size / 2;
+      margin-left: -$_size / 2;
+      border-radius: 50%;
+      transition-property: all;
+      transition-timing-function: $ease-out-quint;
+    }
+    &::before {
+      border-width: 2px;
+      border-style: solid;
+      transition-duration: .5s;
+    }
+    &::after {
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(.2, .2);
+      transition-duration: .25s;
+    }
+    &:hover {
+      &::before {
+        opacity: 0;
+        transform: scale(1.2, 1.2);
+      }
+      &::after {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1, 1);
+      }
+      svg {
+        transform: scale(.85, .85);
+      }
+      path {
+        fill: #fff;
+      }
+    }
+    svg {
+      @include absolute(0, 0, 0, 0, 1);
+      width: auto;
+      height: 14px;
+      margin: auto;
+      transition: all .5s $ease-out-quint;
+    }
+    path {
+      transition: all .5s $ease-out-quint;
+    }
+    @each $_brand, $_color in $_colors {
+      @include m($_brand) {
+        @extend .post-share__btn;
+        &::before {
+          border-color: $_color;
+        }
+        &::after {
+          background-color: $_color;
+        }
+        path {
+          fill: $_color;
+        }
+      }
+    }
+  }
+}

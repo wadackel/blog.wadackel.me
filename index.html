@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<div class="container">
+  <div class="post-list" itemscope itemtype="http://schema.org/Blog">
+    {% for post in paginator.posts %}
+      <article class="post-list__item post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        <h2 class="post__title" itemprop="name"><a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">{{ post.title }}</a></h2>
+        <p class="post__meta"><time class="post__date" datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">Published {{ post.date | date: "%b %-d, %Y" }}</time><span class="post__category">{{ post.categories }}</span></p>
+        <div class="post__excerpt" itemprop="headline">
+          {{ post.excerpt | strip_html | truncatewords: 40 }}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</div>
+
+{% include pagination.html %}

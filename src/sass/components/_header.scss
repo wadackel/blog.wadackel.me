@@ -1,0 +1,61 @@
+.header {
+  @include font-smoothing(true);
+  position: relative;
+  z-index: 10000;
+  padding: 8rem 0;
+  font-size: 0;
+  text-align: center;
+
+  @include e(logo) {
+    display: inline-block;
+    height: 60px;
+    margin: 0;
+    line-height: 0;
+    font-size: 0;
+    vertical-align: bottom;
+    svg,
+    a {
+      transition: all .75s $ease-out-quint;
+    }
+    svg {
+      width: 90px;
+      height: 63px;
+      fill: $color-primary;
+    }
+    a {
+      display: block;
+      color: $color-primary;
+      &:focus {
+        outline: none;
+      }
+    }
+    span {
+      position: relative;
+      top: -.2em;
+      margin: 0 0 0 .2em;
+      font-size: 2rem;
+      font-family: $font-family-accent;
+      line-height: 1;
+    }
+    &:hover {
+      svg {
+        fill: $color-link;
+      }
+      a {
+        color: $color-link;
+      }
+    }
+  }
+
+  @include mq-small {
+    @include e(logo) {
+      svg {
+        width: 60px;
+        height: 44px;
+      }
+      span {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}

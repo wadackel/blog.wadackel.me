@@ -1,0 +1,80 @@
+.post-pager {
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+
+  @include e(item) {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    padding: 30px;
+    border-top: 1px solid lighten($color-gray, 15%);
+    color: $color-secondary;
+    line-height: 1;
+    transition: all .5s $ease-out-quint;
+    &:hover {
+      color: #fff;
+      background: $color-secondary;
+      .post-pager__item__label {
+        color: $color-primary;
+      }
+      .post-pager__item__image {
+        opacity: .4;
+        transform: scale(1.2, 1.2);
+      }
+    }
+    @include e(label, title) {
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+    @include e(label) {
+      margin: 0 0 .5em;
+      color: lighten($color-secondary, 15%);
+      font-size: 1rem;
+      font-family: $font-family-accent;
+    }
+    @include e(title) {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      font-size: 1.33rem;
+      line-height: 1.4;
+    }
+    @include e(image) {
+      @include absolute(0, 0, 0, 0, 0);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: .45;
+      transition: all .5s $ease-out-quint;
+    }
+    @include m(next) {
+      @extend .post-pager__item;
+      text-align: right;
+    }
+    @include m(prev) {
+      @extend .post-pager__item;
+      text-align: left;
+      border-left: 1px solid lighten($color-gray, 15%);
+    }
+    @include m(disabled) {
+      background-color: #fff !important;
+    }
+  }
+
+  @include mq-small {
+    @include e(item) {
+      padding: 15px;
+      @include e(label) {
+        font-size: .75rem;
+      }
+      @include e(title) {
+        font-size: .87rem;
+      }
+    }
+  }
+}

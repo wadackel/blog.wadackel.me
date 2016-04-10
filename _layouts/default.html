@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body>
+  <div class="wrapper">
+    {% include header.html %}
+    <main class="contents" role="main">
+      {{ content }}
+    </main>
+    <p class="pagetop"><a href="#" data-scroll>{% include svg/arrow_top.html %}</a></p>
+  </div>
+  {% include footer.html %}
+
+  <script src="{{ site.baseurl }}/assets/js/app.bundle.js"></script>
+</body>
+</html>

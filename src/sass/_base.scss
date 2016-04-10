@@ -1,0 +1,63 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(0, 0, 0, .1);
+}
+
+::-moz-selection {
+  background: rgba(0, 0, 0, .1);
+}
+
+html {
+  color: $color-base;
+  font-size: $font-size;
+  font-family: $font-family;
+  line-height: $line-height;
+}
+
+body {
+  position: relative;
+  min-width: 320px;
+  background: $color-bg;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+  transition: all .25s $ease-out-quint;
+  &:hover {
+    color: $color-link-hover;
+  }
+}
+
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+code, kbd, pre, samp {
+  font-family: $font-family-code;
+}
+
+
+@include mq-small {
+  html {
+    font-size: $font-size-sm;
+  }
+}

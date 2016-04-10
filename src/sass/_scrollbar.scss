@@ -1,0 +1,22 @@
+::-webkit-scrollbar {
+  width: $scrollbar-width;
+  background: $scrollbar-bg;
+  z-index: 10;
+
+  &:horizontal {
+    height: $scrollbar-height;
+  }
+
+  @include mq-small {
+    width: $scrollbar-width / 2;
+  }
+}
+
+::-webkit-scrollbar-track {
+  border-radius: $scrollbar-radius;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: $scrollbar-radius;
+  background: $scrollbar-color;
+}

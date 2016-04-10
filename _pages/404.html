@@ -1,0 +1,24 @@
+---
+layout: error
+title: 404 - Page not found
+sub_title: Sorry this page does not exist
+excerpt: 指定されたページは、削除されたか他の場所へ移動された可能性があります。
+permalink: /404.html
+---
+
+<div class="text-center">
+  <p>お探しのページは一時的にアクセスができない状況にあるか、削除・変更された可能性があります。</p>
+  <p><a href="{{ '/' | prepend: site.baseurl }}">トップページへ戻る</a></p>
+</div>
+
+<section class="archives">
+  <h2>最近の投稿</h2>
+  <ul class="archives__list">
+    {% for post in site.posts limit:5 %}
+      <li class="archives__item">
+        <h3 class="archives__item__title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+        <p class="archives__item__meta"><time class="archives__item__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time><span class="archives__item__category">{{ post.categories }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

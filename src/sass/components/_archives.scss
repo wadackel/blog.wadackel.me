@@ -1,0 +1,48 @@
+.archives {
+  margin: 5rem auto 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include e(year) {
+    margin: 0 0 3rem !important;
+  }
+
+  @include e(list) {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none;
+  }
+
+  @include e(item) {
+    position: relative;
+    margin: 0 0 3rem !important;
+    @include e(title) {
+      margin: 0 !important;
+      padding: 0 0 0 8rem !important;
+    }
+    @include e(meta) {
+      @include absolute(0, auto, auto, 0);
+      margin: 0 !important;
+      line-height: 1;
+    }
+    @include e(date) {
+      display: block;
+      margin: 0 0 .5em;
+      font-size: .77rem;
+    }
+    @include e(category) {
+      display: block;
+      font-size: .66rem;
+    }
+  }
+
+  @include mq-small {
+    @include e(item) {
+      @include e(title) {
+        padding-left: 6rem !important;
+      }
+    }
+  }
+}
