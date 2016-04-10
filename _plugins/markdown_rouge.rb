@@ -2,7 +2,7 @@ require "rouge"
 require "cgi"
 
 module Jekyll
-  class MarkdownCodeConverter < Converter
+  class MarkdownRougeConverter < Converter
     safe false
     priority :low
 
