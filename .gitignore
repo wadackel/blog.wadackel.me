@@ -4,4 +4,13 @@ _site
 .DS_Store
 *.log
 node_modules
-/tmp
+
+# site build
+*.gem
+*.rbc
+.bundle
+pkg
+rdoc
+spec/reports
+tmp
+vendor
