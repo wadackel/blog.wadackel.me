@@ -1,0 +1,23 @@
+---
+title: "wadackel.me"
+baseurl: "http://blog.wadackel.me/"
+permalinks:
+  post: /:year/:title/
+canonifyurls: true
+googleAnalytics: ""
+paginate: 10
+paginatePath: "page"
+hasCJKLanguage: true
+
+# More options
+params:
+  # Basic
+  description: "wadackel.meは、わだ つよし(@wadackel)の技術xプライベートなブログです。ダックスフンド is かわいい。"
+  author:
+    jp: "和田 剛"
+    en: "tsuyoshi wada"
+    description: "ダックスフンド is かわいい。"
+
+  # Social
+  twitter: "wadackel"
+  github:  "tsuyoshiwada"
