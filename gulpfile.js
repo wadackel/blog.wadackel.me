@@ -53,13 +53,11 @@ gulp.task("uglify", () => {
 
 
 gulp.task("hugo:build", (cb) => {
-  return cp.spawn("hugo", [], {stdio: "inherit"})
-    .on("close", cb);
+  return cp.spawn("hugo", [], {stdio: "inherit"}).on("close", cb);
 });
 
 gulp.task("hugo:watch", (cb) => {
-  return cp.spawn("hugo", ["server", "--renderToDisk", "--port=8080"], {stdio: "inherit"})
-    .on("close", cb);
+  return cp.spawn("hugo", ["server", "--renderToDisk", "--port=8080"], {stdio: "inherit"}).on("close", cb);
 });
 
 

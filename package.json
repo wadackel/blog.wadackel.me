@@ -1,9 +1,7 @@
 {
-  "name": "wadackle.com",
+  "name": "blog.wadackle.com",
   "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "gulp start",
     "build": "gulp build"
