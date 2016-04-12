@@ -1,17 +1,6 @@
-_site
-.sass-cache
-.jekyll-metadata
 .DS_Store
 .htaccess
 *.log
 node_modules
-
-# site build
-*.gem
-*.rbc
-.bundle
-pkg
-rdoc
-spec/reports
 tmp
-vendor
+public

@@ -1,7 +1,7 @@
 "use strict";
 
 const cp = require("child_process");
-const server = require("browser-sync").create();
+const del = require("del");
 const browserify = require("browserify");
 const watchify = require("watchify");
 const source = require("vinyl-source-stream");
@@ -11,13 +11,17 @@ const $ = require("gulp-load-plugins")();
 let isBuild = false;
 
 
+gulp.task("clean", (cb) => {
+  return del(["./public/"], cb);
+});
+
+
 gulp.task("sass", () => {
   return gulp.src("./src/sass/**/*.scss")
     .pipe($.plumber())
     .pipe($.sass().on("error", $.sass.logError))
     .pipe($.autoprefixer())
-    .pipe(gulp.dest("./_site/assets/css"))
-    .pipe(server.stream());
+    .pipe(gulp.dest("./public/css"));
 });
 
 
@@ -37,67 +41,44 @@ gulp.task("browserify", () => {
       this.emit("end");
     })
     .pipe(source("app.bundle.js"))
-    .pipe(gulp.dest("./assets/js/"))
-    .pipe(server.stream());
+    .pipe(gulp.dest("./public/js/"));
 });
 
 
 gulp.task("uglify", () => {
-  return gulp.src("./assets/js/app.bundle.js")
+  return gulp.src("./public/js/app.bundle.js")
     .pipe($.uglify({preserveComments: "some"}))
-    .pipe(gulp.dest("./assets/js/"));
+    .pipe(gulp.dest("./public/js/"));
 });
 
 
-gulp.task("jekyll:build", (cb) => {
-  return cp.spawn("jekyll", ["build"], {stdio: "inherit"})
+gulp.task("hugo:build", (cb) => {
+  return cp.spawn("hugo", [], {stdio: "inherit"})
+    .on("close", cb);
+});
+
+gulp.task("hugo:watch", (cb) => {
+  return cp.spawn("hugo", ["server", "--renderToDisk", "--port=8080"], {stdio: "inherit"})
     .on("close", cb);
 });
 
 
-gulp.task("jekyll:rebuild", ["build"], () => {
-  server.reload();
-});
-
-
-gulp.task("server", () => {
-  server.init({
-    server: {
-      baseDir: "_site"
-    },
-    ghostMode: false,
-    open: false,
-    notify: false
-  });
-});
-
-
-gulp.task("watch", () => {
+gulp.task("watch", ["hugo:watch"], () => {
   gulp.watch("./src/sass/**/*.scss", ["sass"]);
   gulp.watch("./src/js/**/*.js", ["browserify"]);
-  gulp.watch([
-    "./index.html",
-    "./*.md",
-    "./_config.yml",
-    "./_includes/*.html",
-    "./_layouts/*.html",
-    "./_posts/**/*",
-    "./_pages/**/*",
-    "./_plugins/**/*",
-    "./assets/**/*"
-  ], ["jekyll:rebuild"]);
 });
 
 
 gulp.task("build", (cb) => {
   isBuild = true;
   return runSequence(
-    "jekyll:build",
-    ["sass"],
+    "clean",
+    "hugo:build",
+    ["sass", "browserify"],
     cb
   );
 });
 
 
-gulp.task("start", ["server", "watch"]);
+gulp.task("start", ["watch"]);
 gulp.task("default", ["start"]);
