@@ -1,15 +1,22 @@
-      <footer role="contentinfo">
-        <div class="footer-link">
-          {{ with .Site.Params.email }}<a href="mailto:{{ . }}" target="_blank">Email</a>{{ end }}
-          {{ with .Site.Params.twitter }}<a href="{{ . }}" target="_blank">Twitter</a>{{ end }}
-          {{ with .Site.Params.facebook }}<a href="{{ . }}" target="_blank">Facebook</a>{{ end }}
-          {{ with .Site.Params.github }}<a href="{{ . }}" target="_blank">GitHub</a>{{ end }}
-        </div>
-        <div class="copyright">Copyright &copy; {{ .Site.Title | safeHTML }}</div>
-      </footer>
-    </div>
+    </main>
+  </div>
 
-    <!-- <script src="/highlight/highlight.pack.js"></script> -->
-    <script>// hljs.initHighlightingOnLoad();</script>
-  </body>
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__icon">{{ partial "svg/logo.html" }}</div>
+      <p class="footer__author--jp">{{ .Site.Params.author.jp }}</p>
+      <p class="footer__author--en">{{ .Site.Params.author.en }}</p>
+      <p class="footer__description">{{ .Site.Params.author.description }}</p>
+      <ul class="footer__social">
+        <li class="footer__social__item"><a href="https://twitter.com/{{ .Site.Params.twitter }}">{{ partial "svg/twitter.html" }}</a></li>
+        <li class="footer__social__item"><a href="https://github.com/{{ .Site.Params.github }}">{{ partial "svg/github.html" }}</a></li>
+        <li class="footer__social__item"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2F{{ .Site.BaseURL }}">{{ partial "svg/feedly.html" }}</a></li>
+        <li class="footer__social__item"><a href="/feed.xml">{{ partial "svg/feed.html" }}</a></li>
+      </ul>
+      <p class="footer__copyright">&copy; {{ .Site.LastChange.Format "2006" }} {{ .Site.Title }}</p>
+    </div>
+  </footer>
+
+  <script src="/js/app.bundle.js"></script>
+</body>
 </html>
