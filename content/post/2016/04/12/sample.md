@@ -1,5 +1,6 @@
 ---
 title: Sample
+slug: sample
 category: unknown
 date: 2016-04-12
 ---

@@ -1,5 +1,6 @@
 ---
 title: blog.wadackel.meのスタイルガイド
+slug: styleguide
 category: document
 date: 2016-04-13
 image: /post/2016/04/13/styleguide/IMG_3293.jpg
@@ -131,9 +132,9 @@ Markdownで引用を表現するときにはEメールと同じ方法で>を用�
 
 ## 画像の挿入
 
-![画像のみ](/post/2016/04/13/styleguide/IMG_3370.jpg)
+![画像のみ]({{< image >}}/IMG_3370.jpg)
 
-[![リンクあり](/post/2016/04/13/styleguide/IMG_3293.jpg)](/post/2016/04/13/styleguide/IMG_3293.jpg)
+[![リンクあり]({{< image >}}/IMG_3293.jpg)]({{< image >}}/IMG_3293.jpg)
 
 
 
