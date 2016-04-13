@@ -19,6 +19,7 @@ mkdir -p $imagepath
 mkdir -p $postpath
 echo "---
 title: $name
+slug: $name
 date: $date
 category: unknown
 image: ""
