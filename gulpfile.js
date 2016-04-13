@@ -21,7 +21,7 @@ gulp.task("sass", () => {
     .pipe($.plumber())
     .pipe($.sass().on("error", $.sass.logError))
     .pipe($.autoprefixer())
-    .pipe(gulp.dest("./public/css"));
+    .pipe(gulp.dest("./static/css"));
 });
 
 
@@ -41,14 +41,14 @@ gulp.task("browserify", () => {
       this.emit("end");
     })
     .pipe(source("app.bundle.js"))
-    .pipe(gulp.dest("./public/js/"));
+    .pipe(gulp.dest("./static/js/"));
 });
 
 
 gulp.task("uglify", () => {
-  return gulp.src("./public/js/app.bundle.js")
+  return gulp.src("./static/js/app.bundle.js")
     .pipe($.uglify({preserveComments: "some"}))
-    .pipe(gulp.dest("./public/js/"));
+    .pipe(gulp.dest("./static/js/"));
 });
 
 
@@ -61,10 +61,13 @@ gulp.task("hugo:watch", (cb) => {
 });
 
 
-gulp.task("watch", ["hugo:watch"], () => {
+gulp.task("src:watch", () => {
   gulp.watch("./src/sass/**/*.scss", ["sass"]);
   gulp.watch("./src/js/**/*.js", ["browserify"]);
 });
+
+
+gulp.task("watch", ["src:watch", "hugo:watch"]);
 
 
 gulp.task("build", (cb) => {
