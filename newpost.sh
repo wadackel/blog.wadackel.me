@@ -19,8 +19,9 @@ mkdir -p $imagepath
 mkdir -p $postpath
 echo "---
 title: $name
-category: unknown
 date: $date
+category: unknown
+image: ""
 ---" >> $postpath/$name.md
 
 echo "$postpath/$name.md created"

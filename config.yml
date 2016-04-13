@@ -25,6 +25,7 @@ blackfriday:
 params:
   # Basic
   description: "wadackel.meは、わだ つよし(@wadackel)の技術xプライベートなブログです。ダックスフンド is かわいい。"
+  image: "/images/wadackelme.png"
   author:
     jp: "和田 剛"
     en: "tsuyoshi wada"
