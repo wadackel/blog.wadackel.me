@@ -8,12 +8,19 @@ else
 fi;
 
 date=$(date +%Y-%m-%d)
-path=content/post/$date-$name.md
+basepath=post/$(date +%Y)/$(date +%m)/$(date +%d)
+postpath=content/$basepath
+imagepath=static/$basepath/$name
 
+# images
+mkdir -p $imagepath
+
+# post
+mkdir -p $postpath
 echo "---
-title: \"$name\"
-categories: [\"unknown\"]
-date: "$date"
----" >> $path
+title: $name
+category: unknown
+date: $date
+---" >> $postpath/$name.md
 
-echo "$path created"
+echo "$postpath/$name.md created"
