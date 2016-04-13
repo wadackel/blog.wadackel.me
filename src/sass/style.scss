@@ -7,7 +7,7 @@
 @import "variables";
 @import "mixins";
 @import "normalize";
-@import "syntax";
+@import "highlight";
 @import "utilities";
 
 @import "base";
@@ -18,7 +18,6 @@
 @import "components/footer";
 @import "components/gnav";
 @import "components/header";
-@import "components/highlight";
 @import "components/pager";
 @import "components/pagetop.scss";
 @import "components/post-list";

@@ -185,16 +185,7 @@
       text-align: center;
     }
 
-    code {
-      display: inline-block;
-      margin: 0 .15em;
-      padding: .08em .3em;
-      background-color: #f0f0f0;
-      border-radius: 2px;
-      font-size: .77em;
-    }
-
-    .highlight {
+    pre {
       margin-top: 1.5rem;
       margin-bottom: 1.5rem;
       > code {

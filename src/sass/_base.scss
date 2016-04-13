@@ -55,6 +55,145 @@ code, kbd, pre, samp {
   font-family: $font-family-code;
 }
 
+code {
+  display: inline-block;
+  margin: 0 .15em;
+  padding: .08em .3em;
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  font-size: .77em;
+}
+
+pre {
+  position: relative;
+  display: block;
+  background: $color-secondary;
+  border-radius: 3px;
+
+  * {
+    &::selection {
+      background-color: rgba(255, 255, 255, .4) !important;
+    }
+    &::-moz-selection {
+      background-color: rgba(255, 255, 255, .4) !important;
+    }
+  }
+
+  > code {
+    clear: both;
+    display: block;
+    padding: 1em !important;
+    overflow: auto;
+    font-size: 1em;
+    line-height: 1.4;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .highlight-filename {
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0 .8em;
+    background: lighten($color-secondary, 8%);
+    border-radius: 2px 0;
+    font-size: .8em;
+    line-height: 25px;
+    vertical-align: top;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .5), 0 1px 0 rgba(#fff, .1);
+    & + code {
+      padding-top: .6em !important;
+    }
+  }
+
+  .highlight-copy {
+    $_size: 34px;
+    $_arrow-size: floor($_size / 5);
+    @include absolute(0, 0);
+    display: block;
+    width: $_size;
+    height: $_size;
+    border-radius: 0 3px;
+    cursor: pointer;
+    transition: all .3s $ease-out-quint;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: $_arrow-size;
+      height: $_arrow-size;
+      margin-top: floor(-$_arrow-size / 2);
+      border-style: solid;
+      border-color: #fff;
+      transform: rotate(45deg);
+      transition: all .3s $ease-out-quint;
+    }
+    &::before {
+      margin-left: -$_arrow-size + 1px;
+      border-width: 0 0 1px 1px;
+    }
+    &::after {
+      margin-left: -1px;
+      border-width: 1px 1px 0 0;
+    }
+    &:hover:not(.is-active) {
+      background: darken($color-secondary, 5%);
+      &::before {
+        transform: translateX($_arrow-size - 1px) rotate(225deg);
+      }
+      &::after {
+        transform: translateX(-$_arrow-size + 1px) rotate(-135deg);
+      }
+    }
+    &.is-active {
+      cursor: default;
+      pointer-events: none;
+      background: darken($color-secondary, 5%);
+      &::before {
+        transform: translateX($_arrow-size - 3px) rotate(225deg);
+      }
+      &::after {
+        transform: translateX(-$_arrow-size + 3px) rotate(-135deg);
+      }
+    }
+    @include e(msg) {
+      @include absolute(auto, auto, 100%, 50%);
+      display: block;
+      margin: 0 0 10px 0;
+      padding: .4em 1.2em;
+      background: rgba($color-secondary, .95);
+      border-radius: 3px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+      color: #fff;
+      font-size: .8em;
+      line-height: 1;
+      cursor: default;
+      user-select: none;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(.8, .8) translate(-50%, 20px);
+      transform-origin: 0 0;
+      transition: all .3s $ease-out-quint;
+      &::after {
+        @include absolute(100%, auto, auto, 50%);
+        content: "";
+        display: block;
+        margin-left: -5px;
+        border-width: 5px 5px 0 5px;
+        border-style: solid;
+        border-color: $color-secondary transparent transparent transparent;
+      }
+      &.is-active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1, 1) translate(-50%, 0);
+      }
+    }
+  }
+}
+
 
 @include mq-small {
   html {

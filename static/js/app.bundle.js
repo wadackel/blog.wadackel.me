@@ -1511,7 +1511,7 @@ module.exports = select;
  * @author tsuyoshiwada
  * @homepage https://github.com/tsuyoshiwada/sweet-scroll
  * @license MIT
- * @version 0.6.0
+ * @version 0.6.2
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -1717,25 +1717,61 @@ module.exports = select;
     return el != null && el === el.window ? el : el.nodeType === 9 && el.defaultView;
   }
 
+  function getHeight(el) {
+    return Math.max(el.scrollHeight, el.clientHeight, el.offsetHeight);
+  }
+
+  function getWidth(el) {
+    return Math.max(el.scrollWidth, el.clientWidth, el.offsetWidth);
+  }
+
+  function getSize(el) {
+    return {
+      width: getWidth(el),
+      height: getHeight(el)
+    };
+  }
+
+  function getDocumentSize() {
+    return {
+      width: Math.max(getWidth(document.body), getWidth(document.documentElement)),
+      height: Math.max(getHeight(document.body), getHeight(document.documentElement))
+    };
+  }
+
+  function getViewportAndElementSizes(el) {
+    if (isRootContainer(el)) {
+      return {
+        viewport: {
+          width: Math.min(window.innerWidth, document.documentElement.clientWidth),
+          height: window.innerHeight
+        },
+        size: getDocumentSize()
+      };
+    }
+
+    return {
+      viewport: { width: el.clientWidth, height: el.clientHeight },
+      size: getSize(el)
+    };
+  }
+
   function getScroll(el) {
     var direction = arguments.length <= 1 || arguments[1] === undefined ? "y" : arguments[1];
 
-    var method = directionMethodMap[direction];
-    var prop = directionPropMap[direction];
     var win = getWindow(el);
-    return win ? win[prop] : el[method];
+    return win ? win[directionPropMap[direction]] : el[directionMethodMap[direction]];
   }
 
   function setScroll(el, offset) {
     var direction = arguments.length <= 2 || arguments[2] === undefined ? "y" : arguments[2];
 
-    var method = directionMethodMap[direction];
     var win = getWindow(el);
     var top = direction === "y";
     if (win) {
-      win.scrollTo(!top ? offset : win.pageXOffset, top ? offset : win.pageYOffset);
+      win.scrollTo(!top ? offset : win[directionPropMap.x], top ? offset : win[directionPropMap.y]);
     } else {
-      el[method] = offset;
+      el[directionMethodMap[direction]] = offset;
     }
   }
 
@@ -1766,6 +1802,15 @@ module.exports = select;
     }
     return rect;
   }
+
+  // @link https://github.com/Modernizr/Modernizr
+  var pushState = function () {
+    var ua = navigator.userAgent;
+    if ((ua.indexOf("Android 2.") !== -1 || ua.indexOf("Android 4.0") !== -1) && ua.indexOf("Mobile Safari") !== -1 && ua.indexOf("Chrome") === -1 && ua.indexOf("Windows Phone") === -1) {
+      return false;
+    }
+    return window.history && "pushState" in window.history && window.location.protocol !== "file:";
+  }();
 
   function addEvent(el, event, listener) {
     var events = event.split(",");
@@ -2147,15 +2192,6 @@ var Easing = Object.freeze({
     isDomContentLoaded = true;
   });
 
-  // @link https://github.com/Modernizr/Modernizr
-  var enablePushState = function () {
-    var ua = navigator.userAgent;
-    if ((ua.indexOf("Android 2.") !== -1 || ua.indexOf("Android 4.0") !== -1) && ua.indexOf("Mobile Safari") !== -1 && ua.indexOf("Chrome") === -1 && ua.indexOf("Windows Phone") === -1) {
-      return false;
-    }
-    return window.history && "pushState" in window.history && window.location.protocol !== "file:";
-  }();
-
   var SweetScroll = function () {
 
     /**
@@ -2180,8 +2216,7 @@ var Easing = Object.freeze({
         _this._trigger = null;
         _this._shouldCallCancelScroll = false;
         _this.bindContainerClick();
-        _this.initialized();
-        _this.hook(params.initialized);
+        _this.hook(params, "initialized");
       });
     }
 
@@ -2206,6 +2241,10 @@ var Easing = Object.freeze({
         var header = this.header;
 
         var params = merge({}, this.options, options);
+
+        // Temporary options
+        this._options = params;
+
         var offset = this.parseCoodinate(params.offset);
         var trigger = this._trigger;
         var scroll = this.parseCoodinate(distance);
@@ -2247,40 +2286,26 @@ var Easing = Object.freeze({
 
         // If the header is present apply the height
         if (header) {
-          scroll.top = Math.max(0, scroll.top - this.header.clientHeight);
+          scroll.top = Math.max(0, scroll.top - getSize(header).height);
         }
 
         // Determine the final scroll coordinates
-        var frameSize = void 0;
-        var size = void 0;
-        if (isRootContainer(container)) {
-          frameSize = { width: win.innerWidth, height: win.innerHeight };
-          size = { width: doc.body.scrollWidth, height: doc.body.scrollHeight };
-        } else {
-          frameSize = { width: container.clientWidth, height: container.clientHeight };
-          size = { width: container.scrollWidth, height: container.scrollHeight };
-        }
+
+        var _Dom$getViewportAndEl = getViewportAndElementSizes(container);
+
+        var viewport = _Dom$getViewportAndEl.viewport;
+        var size = _Dom$getViewportAndEl.size;
 
         // Call `beforeScroll`
         // Stop scrolling when it returns false
-        if (this.hook(params.beforeScroll, scroll, trigger) === false || this.beforeScroll(scroll, trigger) === false) {
+
+        if (this.hook(params, "beforeScroll", scroll, trigger) === false) {
           return;
         }
 
         // Adjustment of the maximum value
-        // vertical
-        if (params.verticalScroll) {
-          scroll.top = Math.max(0, Math.min(size.height - frameSize.height, scroll.top));
-        } else {
-          scroll.top = getScroll(container, "y");
-        }
-
-        // horizontal
-        if (params.horizontalScroll) {
-          scroll.left = Math.max(0, Math.min(size.width - frameSize.width, scroll.left));
-        } else {
-          scroll.left = getScroll(container, "x");
-        }
+        scroll.top = params.verticalScroll ? Math.max(0, Math.min(size.height - viewport.height, scroll.top)) : getScroll(container, "y");
+        scroll.left = params.horizontalScroll ? Math.max(0, Math.min(size.width - viewport.width, scroll.left)) : getScroll(container, "x");
 
         // Run the animation!!
         this.tween.run(scroll.left, scroll.top, params.duration, params.delay, params.easing, function () {
@@ -2292,17 +2317,18 @@ var Easing = Object.freeze({
           // Unbind the scroll stop events, And call `afterScroll` or `cancelScroll`
           _this2.unbindContainerStop();
 
+          // Remove the temporary options
+          _this2._options = null;
+
+          // Call `cancelScroll` or `afterScroll`
           if (_this2._shouldCallCancelScroll) {
-            _this2.hook(params.cancelScroll);
-            _this2.cancelScroll();
+            _this2.hook(params, "cancelScroll");
           } else {
-            _this2.hook(params.afterScroll, scroll, trigger);
-            _this2.afterScroll(scroll, trigger);
+            _this2.hook(params, "afterScroll", scroll, trigger);
           }
 
           // Call `completeScroll`
-          _this2.hook(params.completeScroll, _this2._shouldCallCancelScroll);
-          _this2.completeScroll(_this2._shouldCallCancelScroll);
+          _this2.hook(params, "completeScroll", _this2._shouldCallCancelScroll);
         });
 
         // Bind the scroll stop events
@@ -2477,7 +2503,7 @@ var Easing = Object.freeze({
     }, {
       key: "parseCoodinate",
       value: function parseCoodinate(coodinate) {
-        var enableTop = this.options.verticalScroll;
+        var enableTop = this._options ? this._options.verticalScroll : this.options.verticalScroll;
         var scroll = { top: 0, left: 0 };
 
         // Object
@@ -2551,7 +2577,7 @@ var Easing = Object.freeze({
     }, {
       key: "updateURLHash",
       value: function updateURLHash(hash) {
-        if (enablePushState) {
+        if (pushState) {
           window.history.pushState(null, null, hash);
         }
       }
@@ -2584,9 +2610,21 @@ var Easing = Object.freeze({
         }
 
         if (!container && !isDomContentLoaded) {
-          addEvent(doc, DOM_CONTENT_LOADED, function () {
-            _this3.getContainer(selector, callback);
-          });
+          (function () {
+            var isCompleted = false;
+
+            addEvent(doc, DOM_CONTENT_LOADED, function () {
+              isCompleted = true;
+              _this3.getContainer(selector, callback);
+            });
+
+            // Fallback for DOMContentLoaded
+            addEvent(win, "load", function () {
+              if (!isCompleted) {
+                _this3.getContainer(selector, callback);
+              }
+            });
+          })();
         } else {
           callback.call(this, container);
         }
@@ -2658,7 +2696,8 @@ var Easing = Object.freeze({
 
       /**
        * Call the specified callback
-       * @param {Function}
+       * @param {Object}
+       * @param {String}
        * @param {...Any}
        * @return {Void}
        * @private
@@ -2666,14 +2705,22 @@ var Easing = Object.freeze({
 
     }, {
       key: "hook",
-      value: function hook(callback) {
-        if (isFunction(callback)) {
-          for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-            args[_key - 1] = arguments[_key];
-          }
+      value: function hook(options, type) {
+        var callback = options[type];
 
-          return callback.apply(this, args);
+        // callback
+
+        for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+          args[_key - 2] = arguments[_key];
         }
+
+        if (isFunction(callback)) {
+          var result = callback.apply(this, args);
+          if (result !== undefined) return result;
+        }
+
+        // method
+        return this[type].apply(this, args);
       }
 
       /**
@@ -2686,7 +2733,8 @@ var Easing = Object.freeze({
     }, {
       key: "handleStopScroll",
       value: function handleStopScroll(e) {
-        if (this.options.stopScroll) {
+        var stopScroll = this._options ? this._options.stopScroll : this.options.stopScroll;
+        if (stopScroll) {
           this.stop();
         } else {
           e.preventDefault();
@@ -2875,11 +2923,42 @@ new _sweetScroll2.default({
 (0, _events.addEvent)(document, "DOMContentLoaded", function () {
   var $html = (0, _selectors.$)("html");
 
+  // Code block
+  var $codeBlocks = (0, _selectors.$$)("pre code");
+
+  function initializeCodeBlock($el, i) {
+    var id = "highlight-" + i;
+    var $pre = $el.parentNode;
+    var $copy = document.createElement("span");
+    var $filename = document.createElement("span");
+    var filename = $el.className.match(/language-.+:(.+)/);
+
+    $copy.setAttribute("class", "highlight-copy");
+    $copy.setAttribute("data-clipboard-target", "#highlight-" + i);
+    $copy.innerHTML = "<span class=\"highlight-copy__msg\">Copied</span>";
+
+    if (filename) {
+      console.log(filename[1]);
+    }
+
+    // $filename.setAttribute();
+
+    $pre.id = id;
+    $pre.insertBefore($copy, $pre.firstChild);
+
+    hljs.highlightBlock($el);
+  }
+
+  if ($codeBlocks) {
+    Array.prototype.slice.call($codeBlocks).forEach(initializeCodeBlock);
+  }
+
   // Copy code
-  var clipboard = new _clipboard2.default(".highlight__copy", {
+  var clipboard = new _clipboard2.default(".highlight-copy", {
     target: function target(trigger) {
       var $pre = (0, _selectors.$)(trigger.getAttribute("data-clipboard-target"));
       var $code = (0, _selectors.$)("code", $pre);
+      console.log($code);
       return $code;
     }
   });
@@ -2887,7 +2966,7 @@ new _sweetScroll2.default({
   function clipboardMsg(trigger, msg) {
     var timeout = arguments.length <= 2 || arguments[2] === undefined ? 1200 : arguments[2];
 
-    var $msg = (0, _selectors.$)(".highlight__copy__msg", trigger);
+    var $msg = (0, _selectors.$)(".highlight-copy__msg", trigger);
     $msg.textContent = msg;
     $msg.classList.add("is-active");
     trigger.classList.add("is-active");
