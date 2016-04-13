@@ -2,7 +2,7 @@
 title: "wadackel.me"
 baseurl: "http://blog.wadackel.me/"
 permalinks:
-  post: /:year/:filename/
+  post: /:year/:slug/
 canonifyurls: true
 googleAnalytics: ""
 paginate: 20
