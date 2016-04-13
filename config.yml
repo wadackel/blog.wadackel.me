@@ -12,12 +12,14 @@ hasCJKLanguage: true
 
 # Markdown
 blackfriday:
+  plainIDAnchors: true
   extensions:
-    - autoHeaderIds
     - autoLinking
     - fencedCodeBlocks
     - definitionLists
     - strikethrough
+  extensionsmask:
+    - autoHeaderIds
 
 # More options
 params:
