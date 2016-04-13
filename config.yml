@@ -7,7 +7,17 @@ canonifyurls: true
 googleAnalytics: ""
 paginate: 20
 paginatePath: "page"
+metaDataFormat: "yaml"
 hasCJKLanguage: true
+
+# Markdown
+blackfriday:
+  extensions:
+    - autoHeaderIds
+    - autoLinking
+    - fencedCodeBlocks
+    - definitionLists
+    - strikethrough
 
 # More options
 params:
