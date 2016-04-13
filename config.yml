@@ -2,10 +2,10 @@
 title: "wadackel.me"
 baseurl: "http://blog.wadackel.me/"
 permalinks:
-  post: /:year/:title/
+  post: /:year/:filename/
 canonifyurls: true
 googleAnalytics: ""
-paginate: 10
+paginate: 20
 paginatePath: "page"
 hasCJKLanguage: true
 
