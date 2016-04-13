@@ -1,12 +1,10 @@
 ---
 title: Sample
-subtitle: pygments sample
+category: unknown
 date: 2016-04-12
 ---
 
 コードブロックの使用及び、ハイライトのサンプルです。
-
-<!--more-->
 
 ```js
 class Human {
