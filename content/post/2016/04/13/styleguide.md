@@ -2,6 +2,7 @@
 title: blog.wadackel.meのスタイルガイド
 category: document
 date: 2016-04-13
+image: /post/2016/04/13/styleguide/IMG_3293.jpg
 ---
 
 wadakel.meでは以下の様なスタイルを提供します。必要に応じてスタイルを調整する必要があります。基本的にはローカル(vim)で編集後、`$ git push`でサーバへ反映させる流れを想定しています。
@@ -79,16 +80,6 @@ console.log(wada.say());
 
 ファイル名を指定したパターンでは、以下の構文を使用します。
 
-<div class="highlighter-rouge"><pre class="highlight"><code class="language-md">```js:filename.js
-var str = "Hello World!!";
-console.log(str);
-```</code></pre></div>
-
-```js:filename.js
-var str = "Hello World!!";
-console.log(str);
-```
-
 
 ## 引用
 
@@ -97,7 +88,7 @@ Markdownで引用を表現するときにはEメールと同じ方法で>を用�
 
 > これは引用です
 > これは引用ですこれは引用です
-> これは引用ですこれは引用です、これは引用ですこれは引用です  
+> これは引用ですこれは引用です、これは引用ですこれは引用です
 
 
 ## テーブル記法
@@ -140,9 +131,9 @@ Markdownで引用を表現するときにはEメールと同じ方法で>を用�
 
 ## 画像の挿入
 
-![画像のみ]({% asset_path IMG_3370.jpg %})
+![画像のみ](/post/2016/04/13/styleguide/IMG_3370.jpg)
 
-[![リンクあり]({% asset_path IMG_3293.jpg %})]({% asset_path IMG_3293.jpg %})
+[![リンクあり](/post/2016/04/13/styleguide/IMG_3293.jpg)](/post/2016/04/13/styleguide/IMG_3293.jpg)
 
 
 
@@ -159,11 +150,6 @@ Markdownで引用を表現するときにはEメールと同じ方法で>を用�
 
 ## ツイートの埋め込み
 
-次の様な構文を使うことで簡単にツイートの埋め込みを行うことが出来ます。
+Hugoに標準で入っている書式を使い、簡単にツイートの埋め込みを行うことが出来ます。
 
-```
-[tweet: ツイートのURL]
-```
-
-[tweet: https://twitter.com/wadackel/status/717735042827493376]
-
+{{< tweet 717735042827493376 >}}
