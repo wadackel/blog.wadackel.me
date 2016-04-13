@@ -1,0 +1,27 @@
+{{ if or .Prev .Next }}
+<div class="post-pager">
+  {{ if .Prev }}
+    <a class="post-pager__item--next" href="{{ .Prev.Permalink }}">
+      <span class="post-pager__item__label">Newer Post</span>
+      <span class="post-pager__item__title">{{ .Prev.Title }}</span>
+      {{ if .Prev.Params.image }}
+        <span class="post-pager__item__image" style="background-image: url({{ .Prev.Params.image }})"></span>
+      {{ end }}
+    </a>
+  {{ else }}
+    <span class="post-pager__item--next post-pager__item--disabled"></span>
+  {{ end }}
+
+  {{ if .Next }}
+    <a class="post-pager__item--prev" href="{{ .Next.Permalink }}">
+      <span class="post-pager__item__label">Older Post</span>
+      <span class="post-pager__item__title">{{ .Next.Title }}</span>
+      {{ if .Next.Params.image }}
+        <span class="post-pager__item__image" style="background-image: url({{ .Next.Params.image }})"></span>
+      {{ end }}
+    </a>
+  {{ else }}
+    <span class="post-pager__item--prev post-pager__item--disabled"></span>
+  {{ end }}
+</div>
+{{ end }}
