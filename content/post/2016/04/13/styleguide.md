@@ -65,18 +65,52 @@ Markdown + GFM(GitHub Flavored Markdown)を採用しています。GitHubで解�
 ソースコードのコードブロックとして表現出来ます。
 
 ```js:lib/Human.js
-class Human {
-  constructor(name) {
-    this.name = name;
-  }
+// list matching
+var [a, ,b] = [1,2,3];
+a === 1;
+b === 3;
 
-  say() {
-    return `Hello my name is ${this.name}`;
-  }
+// object matching
+var { op: a, lhs: { op: b }, rhs: c }
+       = getASTNode()
+
+// object matching shorthand
+// binds `op`, `lhs` and `rhs` in scope
+var {op, lhs, rhs} = getASTNode()
+
+// Can be used in parameter position
+function g({name: x}) {
+  console.log(x);
 }
+g({name: 5})
 
-const wada = new Human("tsuyoshi wada");
-console.log(wada.say());
+// Fail-soft destructuring
+var [a] = [];
+a === undefined;
+
+// Fail-soft destructuring with defaults
+var [a = 1] = [];
+a === 1;
+
+// Destructuring + defaults arguments
+function r({x, y, w = 10, h = 10}) {
+  return x + y + w + h;
+}
+r({x:1, y:2}) === 23
+
+
+
+// lib/math.js
+export function sum(x, y) {
+  return x + y;
+}
+export var pi = 3.141593;
+// app.js
+import * as math from "lib/math";
+console.log("2π = " + math.sum(math.pi, math.pi));
+// otherApp.js
+import {sum, pi} from "lib/math";
+console.log("2π = " + sum(pi, pi));
 ```
 
 ファイル名を指定したパターンでは、以下の構文を使用します。
