@@ -1,7 +1,7 @@
 ---
 title: blog.wadackel.meのスタイルガイド
 slug: styleguide
-category: document
+categories: ["document"]
 date: 2016-04-13
 image: /post/2016/04/13/styleguide/IMG_3293.jpg
 ---

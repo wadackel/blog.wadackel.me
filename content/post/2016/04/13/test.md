@@ -1,6 +1,6 @@
 ---
 title: test
 slug: test
-category: unknown
+categories: ["unknown"]
 date: 2016-04-13
 ---

@@ -1,7 +1,7 @@
 ---
 title: Sample
 slug: sample
-category: unknown
+categories: ["unknown"]
 date: 2016-04-12
 ---
 

@@ -4,7 +4,7 @@
   <article itemscope itemtype="http://schema.org/BlogPosting">
     <header class="post__header">
       <h1 class="post__title" itemprop="name headline">{{ .Title }}</h1>
-      <p class="post__meta"><time class="post__date" datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">Published {{ .Date.Format "January 02, 2006" }}</time><span class="post__category">{{ .Params.category }}</span></p>
+      <p class="post__meta"><time class="post__date" datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">Published {{ .Date.Format "January 02, 2006" }}</time><span class="post__category">{{ range .Params.categories }}<a href="/categories/{{ . }}">{{ . }}</a>{{ end }}</span></p>
     </header>
     <div class="post__content" itemprop="articleBody">
       {{ .Content }}
