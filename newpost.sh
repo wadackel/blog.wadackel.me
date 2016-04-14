@@ -21,7 +21,7 @@ echo "---
 title: $name
 slug: $name
 date: $date
-category: unknown
+categories: ["unkown"]
 image: ""
 ---" >> $postpath/$name.md
 
