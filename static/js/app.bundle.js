@@ -2926,25 +2926,20 @@ new _sweetScroll2.default({
   // Code block
   var $codeBlocks = (0, _selectors.$$)("pre code");
 
-  function initializeCodeBlock($el, i) {
-    var id = "highlight-" + i;
+  function initializeCodeBlock($el, index) {
+    var id = "highlight-" + index;
     var $pre = $el.parentNode;
-    var $copy = document.createElement("span");
-    var $filename = document.createElement("span");
     var filename = $el.className.match(/language-.+:(.+)/);
 
-    $copy.setAttribute("class", "highlight-copy");
-    $copy.setAttribute("data-clipboard-target", "#highlight-" + i);
-    $copy.innerHTML = "<span class=\"highlight-copy__msg\">Copied</span>";
+    $pre.id = id;
 
+    // filename
     if (filename) {
-      console.log(filename[1]);
+      $pre.insertAdjacentHTML("afterbegin", "<span class=\"highlight-filename\">" + filename[1] + "</span>");
     }
 
-    // $filename.setAttribute();
-
-    $pre.id = id;
-    $pre.insertBefore($copy, $pre.firstChild);
+    // btn copy
+    $pre.insertAdjacentHTML("afterbegin", "<span class=\"highlight-copy\" data-clipboard-target=\"#" + id + "\"><span class=\"highlight-copy__msg\"></span></span>");
 
     hljs.highlightBlock($el);
   }
@@ -2958,7 +2953,6 @@ new _sweetScroll2.default({
     target: function target(trigger) {
       var $pre = (0, _selectors.$)(trigger.getAttribute("data-clipboard-target"));
       var $code = (0, _selectors.$)("code", $pre);
-      console.log($code);
       return $code;
     }
   });

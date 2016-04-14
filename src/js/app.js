@@ -19,25 +19,20 @@ addEvent(document, "DOMContentLoaded", () => {
   // Code block
   const $codeBlocks = $$("pre code");
 
-  function initializeCodeBlock($el, i) {
-    const id = `highlight-${i}`;
+  function initializeCodeBlock($el, index) {
+    const id = `highlight-${index}`;
     const $pre = $el.parentNode;
-    const $copy = document.createElement("span");
-    const $filename = document.createElement("span");
     const filename = $el.className.match(/language-.+:(.+)/);
 
-    $copy.setAttribute("class", "highlight-copy");
-    $copy.setAttribute("data-clipboard-target", `#highlight-${i}`);
-    $copy.innerHTML = `<span class="highlight-copy__msg">Copied</span>`;
+    $pre.id = id;
 
+    // filename
     if (filename) {
-      console.log(filename[1]);
+      $pre.insertAdjacentHTML("afterbegin", `<span class="highlight-filename">${filename[1]}</span>`);
     }
 
-    // $filename.setAttribute();
-
-    $pre.id = id;
-    $pre.insertBefore($copy, $pre.firstChild);
+    // btn copy
+    $pre.insertAdjacentHTML("afterbegin", `<span class="highlight-copy" data-clipboard-target="#${id}"><span class="highlight-copy__msg"></span></span>`);
 
     hljs.highlightBlock($el);
   }
@@ -52,7 +47,6 @@ addEvent(document, "DOMContentLoaded", () => {
     target(trigger) {
       const $pre = $(trigger.getAttribute("data-clipboard-target"));
       const $code = $("code", $pre);
-      console.log($code);
       return $code;
     }
   });
