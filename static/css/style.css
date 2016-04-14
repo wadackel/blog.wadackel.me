@@ -364,7 +364,7 @@ textarea {
 
 .hljs-comment,
 .hljs-quote {
-  color: #999988; }
+  color: #5c636c; }
 
 .hljs-variable,
 .hljs-template-variable,
@@ -374,7 +374,7 @@ textarea {
 .hljs-selector-class,
 .hljs-regexp,
 .hljs-deletion {
-  color: #cc6666; }
+  color: #e06d70; }
 
 .hljs-number,
 .hljs-built_in,
@@ -393,7 +393,7 @@ textarea {
 .hljs-symbol,
 .hljs-bullet,
 .hljs-addition {
-  color: #51b097; }
+  color: #00ae82; }
 
 .hljs-title,
 .hljs-section {
