@@ -7,8 +7,8 @@ else
     name=$1
 fi;
 
-date=$(date +%Y-%m-%d)
-basepath=post/$(date +%Y)/$(date +%m)/$(date +%d)
+date=$(date '+%F')
+basepath=post/$(date +%Y)/$(date +%m)
 postpath=content/$basepath
 imagepath=static/$basepath/$name
 
@@ -18,11 +18,11 @@ mkdir -p $imagepath
 # post
 mkdir -p $postpath
 echo "---
-title: $name
-slug: $name
-date: $date
-categories: ["unkown"]
-image: ""
+title: \"$name\"
+slug: \"$name\"
+date: \"$date\"
+categories: [\"unkown\"]
+image: \"\"
 ---" >> $postpath/$name.md
 
 echo "$postpath/$name.md created"
