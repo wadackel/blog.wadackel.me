@@ -28,6 +28,7 @@ addEvent(document, "DOMContentLoaded", () => {
 
     // filename
     if (filename) {
+      $el.className = $el.className.replace(/(language-.+)(:.+)/, "$1");
       $pre.insertAdjacentHTML("afterbegin", `<span class="highlight-filename">${filename[1]}</span>`);
     }
 
