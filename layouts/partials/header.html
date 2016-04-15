@@ -13,6 +13,9 @@
   <meta name="format-detection" content="telephone=no,address=no,email=no">
   <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <meta name="author" content="{{ .Site.Params.author.en }}">
+  {{ if eq .URL "404.html" }}
+  <meta name="robots" content="noindex,nofollow">
+  {{ end }}
   <meta property="og:locale" content="ja_JP">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ $.Scratch.Get "pageTitle" }}">
