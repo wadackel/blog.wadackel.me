@@ -19,7 +19,7 @@
 
           <div class="archives__item">
             <h3 class="archives__item__title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <p class="archives__item__meta"><time class="archives__item__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02" }}</time><span class="archives__item__category">{{ range .Params.categories }}<a href="/categories/{{ . }}">{{ . }}</a>{{ end }}</span></p>
+            <p class="archives__item__meta"><time class="archives__item__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time><span class="archives__item__category">{{ range .Params.categories }}<a href="/categories/{{ . }}">{{ . }}</a>{{ end }}</span></p>
           </div>
         {{ end }}
       </section>
