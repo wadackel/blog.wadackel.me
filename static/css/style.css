@@ -408,7 +408,7 @@ textarea {
   color: #abb2c0; }
 
 .hljs-emphasis {
-  font-style: italic; }
+  color: #fff; }
 
 .hljs-strong {
   color: #fff; }
@@ -433,7 +433,8 @@ textarea {
 html {
   color: #1b2937;
   font-size: 18px;
-  font-family: Avenir, "Lucida Grande", "Helvetica Neue", "游ゴシック", "Hiragino Kaku Gothic ProN", "メイリオ", meiryo, sans-serif;
+  font-family: Avenir, "Lucida Grande", "Helvetica Neue", "游ゴシック", "YuGothic", "Hiragino Kaku Gothic ProN", "メイリオ", meiryo, sans-serif;
+  font-weight: 500;
   line-height: 1.8; }
 
 body {
