@@ -1,6 +1,6 @@
 ---
 title: "wadackel.me"
-baseurl: "http://blog.wadackel.me/"
+baseurl: "https://blog.wadackel.me/"
 permalinks:
   post: /:year/:slug/
 canonifyurls: true
