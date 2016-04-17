@@ -1,23 +1,23 @@
-{{ if or .Prev .Next }}
+{{ if or .PrevInSection .NextInSection }}
 <div class="post-pager">
-  {{ if .Prev }}
-    <a class="post-pager__item--next" href="{{ .Prev.Permalink }}">
+  {{ if .PrevInSection }}
+    <a class="post-pager__item--next" href="{{ .PrevInSection.Permalink }}">
       <span class="post-pager__item__label">Newer Post</span>
-      <span class="post-pager__item__title">{{ .Prev.Title }}</span>
-      {{ if .Prev.Params.image }}
-        <span class="post-pager__item__image" style="background-image: url({{ .Prev.Params.image }})"></span>
+      <span class="post-pager__item__title">{{ .PrevInSection.Title }}</span>
+      {{ if .PrevInSection.Params.image }}
+        <span class="post-pager__item__image" style="background-image: url({{ .PrevInSection.Params.image }})"></span>
       {{ end }}
     </a>
   {{ else }}
     <span class="post-pager__item--next post-pager__item--disabled"></span>
   {{ end }}
 
-  {{ if .Next }}
-    <a class="post-pager__item--prev" href="{{ .Next.Permalink }}">
+  {{ if .NextInSection }}
+    <a class="post-pager__item--prev" href="{{ .NextInSection.Permalink }}">
       <span class="post-pager__item__label">Older Post</span>
-      <span class="post-pager__item__title">{{ .Next.Title }}</span>
-      {{ if .Next.Params.image }}
-        <span class="post-pager__item__image" style="background-image: url({{ .Next.Params.image }})"></span>
+      <span class="post-pager__item__title">{{ .NextInSection.Title }}</span>
+      {{ if .NextInSection.Params.image }}
+        <span class="post-pager__item__image" style="background-image: url({{ .NextInSection.Params.image }})"></span>
       {{ end }}
     </a>
   {{ else }}
