@@ -7,11 +7,17 @@
     {{ $.Scratch.Add "pageTitle" .Title }}{{ $.Scratch.Add "pageTitle" " - " }}{{ $.Scratch.Add "pageTitle" .Site.Title }}
   {{ end }}
 
+  {{ if .IsPage }}
+    {{ $.Scratch.Set "description" .Summary }}
+  {{ else }}
+    {{ $.Scratch.Set "description" .Site.Params.description }}
+  {{ end }}
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta name="format-detection" content="telephone=no,address=no,email=no">
-  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta name="description" content="{{ $.Scratch.Get "description" }}">
   <meta name="author" content="{{ .Site.Params.author.en }}">
   {{ if eq .URL "404.html" }}
   <meta name="robots" content="noindex,nofollow">
@@ -19,12 +25,12 @@
   <meta property="og:locale" content="ja_JP">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ $.Scratch.Get "pageTitle" }}">
-  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta property="og:description" content="{{ $.Scratch.Get "description" }}">
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:image" content="{{ if .Params.image }}{{ .Params.image }}{{ else }}{{ .Site.Params.image }}{{ end }}">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta name="twitter:description" content="{{ $.Scratch.Get "description" }}">
   <meta name="twitter:title" content="{{ $.Scratch.Get "pageTitle" }}">
   <meta name="twitter:site" content="@{{ .Site.Params.twitter }}">
   <meta name="twitter:image" content="{{ if .Params.image }}{{ .Params.image }}{{ else }}{{ .Site.Params.image }}{{ end }}">
