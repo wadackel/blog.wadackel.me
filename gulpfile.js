@@ -19,8 +19,10 @@ gulp.task("clean", (cb) => {
 gulp.task("sass", () => {
   return gulp.src("./src/sass/**/*.scss")
     .pipe($.plumber())
-    .pipe($.sass().on("error", $.sass.logError))
+    .pipe($.sass({outputStyle: "expanded"}).on("error", $.sass.logError))
     .pipe($.autoprefixer())
+    .pipe($.combineMq())
+    .pipe($.cssnano())
     .pipe(gulp.dest("./static/css"));
 });
 
@@ -76,6 +78,7 @@ gulp.task("build", (cb) => {
     "clean",
     "hugo:build",
     ["sass", "browserify"],
+    ["uglify"],
     cb
   );
 });
