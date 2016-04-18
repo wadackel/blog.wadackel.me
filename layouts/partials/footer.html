@@ -12,7 +12,7 @@
         <li class="footer__social__item"><a href="https://twitter.com/{{ .Site.Params.twitter }}">{{ partial "svg/twitter.html" }}</a></li>
         <li class="footer__social__item"><a href="https://github.com/{{ .Site.Params.github }}">{{ partial "svg/github.html" }}</a></li>
         <li class="footer__social__item"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2F{{ .Site.BaseURL }}">{{ partial "svg/feedly.html" }}</a></li>
-        <li class="footer__social__item"><a href="{{ .RSSLink }}">{{ partial "svg/feed.html" }}</a></li>
+        <li class="footer__social__item"><a href="{{ .Site.RSSLink }}">{{ partial "svg/feed.html" }}</a></li>
       </ul>
       <p class="footer__copyright">&copy; {{ .Site.LastChange.Format "2006" }} {{ .Site.Title }}</p>
     </div>
