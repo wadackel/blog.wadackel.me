@@ -2908,6 +2908,10 @@ var _sweetScroll = require("sweet-scroll");
 
 var _sweetScroll2 = _interopRequireDefault(_sweetScroll);
 
+var _gnav = require("./gnav");
+
+var _gnav2 = _interopRequireDefault(_gnav);
+
 var _selectors = require("./utils/selectors");
 
 var _events = require("./utils/events");
@@ -2981,16 +2985,145 @@ new _sweetScroll2.default({
   });
 
   // Gnav
-  var $gnav = (0, _selectors.$)("[data-gnav]");
-  var $gnavTrigger = (0, _selectors.$)("[data-gnav-trigger]");
+  new _gnav2.default();
+});
 
-  (0, _events.addEvent)($gnavTrigger, "click", function (e) {
-    e.preventDefault();
-    $html.classList.toggle("is-gnav-open");
-  });
-}, false);
+},{"./gnav":13,"./utils/events":14,"./utils/selectors":15,"clipboard":2,"fastclick":5,"sweet-scroll":10}],13:[function(require,module,exports){
+"use strict";
 
-},{"./utils/events":13,"./utils/selectors":14,"clipboard":2,"fastclick":5,"sweet-scroll":10}],13:[function(require,module,exports){
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _selectors = require("./utils/selectors");
+
+var _events = require("./utils/events");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var WHEEL_EVENT = "onwheel" in document ? "wheel" : "onmousewheel" in document ? "mousewheel" : "DOMMouseScroll";
+
+var Gnav = function () {
+  function Gnav() {
+    _classCallCheck(this, Gnav);
+
+    this.status = Gnav.Status.CLOSE;
+    this.$el = (0, _selectors.$)("[data-gnav]");
+    this.$trigger = (0, _selectors.$)("[data-gnav-trigger]");
+    this.$bg = (0, _selectors.$)("[data-gnav-bg]");
+    this.$html = (0, _selectors.$)("html");
+    this.bindEvents();
+  }
+
+  _createClass(Gnav, [{
+    key: "toggle",
+    value: function toggle() {
+      if (this.status == Gnav.Status.CLOSE) {
+        this.open();
+      } else {
+        this.close();
+      }
+    }
+  }, {
+    key: "open",
+    value: function open() {
+      this.status = Gnav.Status.OPEN;
+      this.$html.classList.add("is-gnav-open");
+      this.bindCloseEvents();
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      this.status = Gnav.Status.CLOSE;
+      this.$html.classList.remove("is-gnav-open");
+      this.unbindCloseEvents();
+    }
+  }, {
+    key: "bindEvents",
+    value: function bindEvents() {
+      var _this = this;
+
+      var handlers = ["handleClick", "handleBgClick", "handleWheel", "handleTriggerClick", "handleDocWheel", "handleDocClick"];
+
+      handlers.forEach(function (handler) {
+        _this[handler] = _this[handler].bind(_this);
+      });
+
+      (0, _events.addEvent)(this.$el, "click", this.handleClick);
+      (0, _events.addEvent)(this.$bg, "click", this.handleBgClick);
+      (0, _events.addEvent)(this.$trigger, "click", this.handleTriggerClick);
+    }
+  }, {
+    key: "bindCloseEvents",
+    value: function bindCloseEvents() {
+      (0, _events.addEvent)(this.$el, WHEEL_EVENT, this.handleWheel);
+      (0, _events.addEvent)(document, WHEEL_EVENT + ", touchmove", this.handleDocWheel);
+      (0, _events.addEvent)(document, "click", this.handleDocClick);
+    }
+  }, {
+    key: "unbindCloseEvents",
+    value: function unbindCloseEvents() {
+      (0, _events.removeEvent)(document, WHEEL_EVENT + ", touchmove", this.handleDocWheel);
+      (0, _events.removeEvent)(document, "click", this.handleDocClick);
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.stopPropagation();
+    }
+  }, {
+    key: "handleBgClick",
+    value: function handleBgClick(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, {
+    key: "handleWheel",
+    value: function handleWheel(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, {
+    key: "handleTriggerClick",
+    value: function handleTriggerClick(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.toggle();
+    }
+  }, {
+    key: "handleDocWheel",
+    value: function handleDocWheel() {
+      this.close();
+    }
+  }, {
+    key: "handleDocClick",
+    value: function handleDocClick(e) {
+      e.preventDefault();
+      this.close();
+    }
+  }]);
+
+  return Gnav;
+}();
+
+exports.default = Gnav;
+
+
+Gnav.Status = {
+  OPEN: 1,
+  CLOSE: 2
+};
+// const $gnav = $("[data-gnav]");
+// const $gnavTrigger = $("[data-gnav-trigger]");
+//
+// addEvent($gnavTrigger, "click", (e) => {
+//   e.preventDefault();
+//   $html.classList.toggle("is-gnav-open");
+// });
+
+},{"./utils/events":14,"./utils/selectors":15}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3012,7 +3145,7 @@ function removeEvent(el, event, listener) {
   });
 }
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

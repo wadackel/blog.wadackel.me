@@ -1,6 +1,7 @@
 import attachFastClick from "fastclick"
 import Clipboard from "clipboard"
 import SweetScroll from "sweet-scroll"
+import Gnav from "./gnav"
 import {$, $$, matches} from "./utils/selectors"
 import {addEvent, removeEvent} from "./utils/events"
 
@@ -74,11 +75,5 @@ addEvent(document, "DOMContentLoaded", () => {
 
 
   // Gnav
-  const $gnav = $("[data-gnav]");
-  const $gnavTrigger = $("[data-gnav-trigger]");
-
-  addEvent($gnavTrigger, "click", (e) => {
-    e.preventDefault();
-    $html.classList.toggle("is-gnav-open");
-  });
-}, false);
+  new Gnav();
+});
