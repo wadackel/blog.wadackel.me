@@ -2,6 +2,7 @@ import {$, $$, matches} from "./utils/selectors"
 import {addEvent, removeEvent} from "./utils/events"
 
 const WHEEL_EVENT = "onwheel" in document ? "wheel" : "onmousewheel" in document ? "mousewheel" : "DOMMouseScroll";
+const CLOSE_EVENTS = [WHEEL_EVENT, "touchmove"].join(",");
 
 export default class Gnav {
   constructor() {
@@ -53,13 +54,14 @@ export default class Gnav {
   }
 
   bindCloseEvents() {
-    addEvent(this.$el, WHEEL_EVENT, this.handleWheel);
-    addEvent(document, `${WHEEL_EVENT}, touchmove`, this.handleDocWheel);
+    addEvent(this.$el, CLOSE_EVENTS, this.handleWheel);
+    addEvent(document, CLOSE_EVENTS, this.handleDocWheel);
     addEvent(document, "click", this.handleDocClick);
   }
 
   unbindCloseEvents() {
-    removeEvent(document, `${WHEEL_EVENT}, touchmove`, this.handleDocWheel);
+    removeEvent(this.$el, CLOSE_EVENTS, this.handleWheel);
+    removeEvent(document, CLOSE_EVENTS, this.handleDocWheel);
     removeEvent(document, "click", this.handleDocClick);
   }
 
@@ -97,10 +99,3 @@ Gnav.Status = {
   OPEN: 1,
   CLOSE: 2
 };
-  // const $gnav = $("[data-gnav]");
-  // const $gnavTrigger = $("[data-gnav-trigger]");
-  //
-  // addEvent($gnavTrigger, "click", (e) => {
-  //   e.preventDefault();
-  //   $html.classList.toggle("is-gnav-open");
-  // });

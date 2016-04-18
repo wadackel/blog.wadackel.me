@@ -3004,6 +3004,7 @@ var _events = require("./utils/events");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var WHEEL_EVENT = "onwheel" in document ? "wheel" : "onmousewheel" in document ? "mousewheel" : "DOMMouseScroll";
+var CLOSE_EVENTS = [WHEEL_EVENT, "touchmove"].join(",");
 
 var Gnav = function () {
   function Gnav() {
@@ -3058,14 +3059,15 @@ var Gnav = function () {
   }, {
     key: "bindCloseEvents",
     value: function bindCloseEvents() {
-      (0, _events.addEvent)(this.$el, WHEEL_EVENT, this.handleWheel);
-      (0, _events.addEvent)(document, WHEEL_EVENT + ", touchmove", this.handleDocWheel);
+      (0, _events.addEvent)(this.$el, CLOSE_EVENTS, this.handleWheel);
+      (0, _events.addEvent)(document, CLOSE_EVENTS, this.handleDocWheel);
       (0, _events.addEvent)(document, "click", this.handleDocClick);
     }
   }, {
     key: "unbindCloseEvents",
     value: function unbindCloseEvents() {
-      (0, _events.removeEvent)(document, WHEEL_EVENT + ", touchmove", this.handleDocWheel);
+      (0, _events.removeEvent)(this.$el, CLOSE_EVENTS, this.handleWheel);
+      (0, _events.removeEvent)(document, CLOSE_EVENTS, this.handleDocWheel);
       (0, _events.removeEvent)(document, "click", this.handleDocClick);
     }
   }, {
@@ -3115,13 +3117,6 @@ Gnav.Status = {
   OPEN: 1,
   CLOSE: 2
 };
-// const $gnav = $("[data-gnav]");
-// const $gnavTrigger = $("[data-gnav-trigger]");
-//
-// addEvent($gnavTrigger, "click", (e) => {
-//   e.preventDefault();
-//   $html.classList.toggle("is-gnav-open");
-// });
 
 },{"./utils/events":14,"./utils/selectors":15}],14:[function(require,module,exports){
 "use strict";
