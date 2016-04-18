@@ -4,7 +4,7 @@ baseurl: "https://blog.wadackel.me/"
 permalinks:
   post: /:year/:slug/
 canonifyurls: true
-googleAnalytics: ""
+googleAnalytics: "UA-76551157-1"
 paginate: 20
 paginatePath: "page"
 metaDataFormat: "yaml"
