@@ -49,9 +49,9 @@ Secretには推測し辛い文字列を指定しておきます。その他の�
 
 ## Webhookの受け取り実装例
 
-まず大前提として先ほど設定したPayload URLをNode.jsで捌けるように、サーバ側で設定しておく必要があります。この記事では扱いませんがググればすぐに出てくるので問題無いかなと思います。
+まず大前提として先ほど設定したPayload URLをNode.jsで捌けるように、サーバ側で設定しておく必要があります。この記事では扱いませんので各自おググりください。
 
-GitHub Webhookでは、Payload URLに対してPOST送信で様々な情報が送られてきます。  
+GitHub Webhookでは、Payload URLに対して様々な情報がPOSTで送信されます。  
 それらを一から処理していくのでも良いのですが、[github-webhook-handler](https://github.com/rvagg/github-webhook-handler)を使うと簡単なコードで実装可能です。  
 本体が90行程度のシンプルなコードの為、何かあった際にもデバッグしやすそうで安心です。
 
