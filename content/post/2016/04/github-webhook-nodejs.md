@@ -106,10 +106,6 @@ handler.on("push", (event) => {
 
 上記が揃った場合の任意処理を実装して完成です。一通り実装を終えたら、[forever](https://github.com/foreverjs/forever)や[node-supervisor](https://github.com/petruisfan/node-supervisor)といったツールを使いデーモン化しておきます。
 
----
-
-一点注意点があり、`github-webhook-handler`では何らかのエラー(Signatureの検証失敗など)が発生した際に、`error`イベントを監視していないと例外を投げる為、イベントは捕捉しておきコンソールでの出力を行う方が良さそうです。
-
 
 
 ## おわりに
