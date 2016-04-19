@@ -108,7 +108,7 @@ handler.on("push", (event) => {
 
 ---
 
-一点注意点があり、`github-webhook-handler`ではSignatureの`error`イベントを監視していないと例外を投げるので必ず設定しておきましょう。
+一点注意点があり、`github-webhook-handler`では何らかのエラー(Signatureの検証失敗など)が発生した際に、`error`イベントを監視していないと例外を投げる為、イベントは捕捉しておきコンソールでの出力を行う方が良さそうです。
 
 
 
