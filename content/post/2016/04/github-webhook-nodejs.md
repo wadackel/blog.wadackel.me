@@ -104,7 +104,7 @@ handler.on("push", (event) => {
 * 受け取ったリポジトリ名の一致
 * `master`ブランチの`push`
 
-上記が揃った場合の任意処理を実装して完成です。これらは[forever](https://github.com/foreverjs/forever)や[node-supervisor](https://github.com/petruisfan/node-supervisor)といったツールを使いデーモン化しておきます。
+上記が揃った場合の任意処理を実装して完成です。一通り実装を終えたら、[forever](https://github.com/foreverjs/forever)や[node-supervisor](https://github.com/petruisfan/node-supervisor)といったツールを使いデーモン化しておきます。
 
 ---
 
