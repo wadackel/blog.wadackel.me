@@ -164,10 +164,12 @@ pre {
       display: block;
       margin: 0 0 10px 0;
       padding: .4em 1.2em;
-      background: rgba($color-secondary, .95);
+      background: $color-secondary;
       border-radius: 3px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .07), 0 2px 4px rgba(0, 0, 0, .16);
       color: #fff;
+      font-family: $font-family;
+      font-weight: normal;
       font-size: .8em;
       line-height: 1;
       cursor: default;
