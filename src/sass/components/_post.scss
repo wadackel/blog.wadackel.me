@@ -96,6 +96,12 @@
       margin-bottom: 1.5rem;
     }
 
+    img {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
     a img {
       transition: all .4s $ease-out-quint;
       &:hover {
