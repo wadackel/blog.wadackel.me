@@ -42,7 +42,7 @@ draft: true
 
 ### SVGのコードを最適化
 
-Sketchで書きだしたSVGをそのまま使っても良いのですが、レイヤの状態を持っていたり、必要以上に複雑な構造になってしまっています。少し手間ですが、コード上で操作しやすいように最適化を行います。
+Sketchで書きだしたSVGをそのまま使っても良いのですが、レイヤの状態を持っていたり、必要以上に複雑な構造になっています。少し手間ですが、ここではコード上で操作しやすいように最適化を行います。
 
 SVGの最適化には色々な方法があると思いますが、今回GUI操作でさくっと使えるものが良かったため[SVGOMG](https://jakearchibald.github.io/svgomg/)を使っていきます。
 
@@ -52,10 +52,10 @@ SVGOMGへアクセス後、右側メニューの「Open SVG」に先ほど作っ
 
 ![SVGOMGでの書き出し設定例]({{% image "svgomg.png" %}})
 
-* Off - Show original
-* On - Compare gzipped
-* On - Prettify code
-* On - Multipass
+* **Off** - Show original
+* **On** - Compare gzipped
+* **On** - Prettify code
+* **On** - Multipass
 
 それ以外は全てデフォルトの設定にしました。
 
@@ -95,6 +95,102 @@ SVGOMGへアクセス後、右側メニューの「Open SVG」に先ほど作っ
 
 ## 1. SMIL
 
+まずは、SMIL(Synchronized Multimedia Integration Language)を使った方法からです。ロゴを動かすために調べて初めて知った位の知識なのであまり詳しくはありませんが、XMLベースでアニメーションを宣言的に表現することが可能な手法な様です。
+
+2枚のイラストを単純に動かすだけなら、後述するCSSを使う方法よりも比較的簡単に実装できます。  
+しかし、既にChromeでは以下の様な**非推奨**の警告が出てしまっているため、今後使う機会は減っていくと思います。
+
+```
+SVG's SMIL animations are deprecated and will be removed. Please use CSS animations or Web animations instead.
+```
+
+上記記載の通り、これからは
+
+* CSSアニメーション
+* [Web Animations](https://w3c.github.io/web-animations/)
+
+をSMILの代わりに使ってね、とのことです。
+
+
+---
+
+SMILを使ってしっぽを振る場合、以下の様にSVGを作成します。
+
+```xml:dog.svg
+<svg width="400" height="274" viewBox="0 0 400 274" xmlns="http://www.w3.org/2000/svg">
+  <title>Dog</title>
+  <path>
+    <animate
+      attributeName="d"
+      repeatCount="indefinite"
+      dur="420ms"
+      calcMode="spline"
+      keySplines=".2,0 .8,.4; .2,.6 .8,1"
+      values="
+        しっぽを振る前;
+        しっぽを振った後;
+        しっぽを振る前
+      "></animate>
+  </path>
+</svg>
+```
+
+`しっぽを振る前`、`しっぽを振った後`にそれぞれ書きだしたSVGの`d`要素の値を割り当てます。  
+実際にこれをHTMLで表示してみると、以下の様になります。(画像はCSSで色身の調整など加えています)
+
+![SMILのループアニメーション]({{% image "smil_loop.gif" %}})
+
+
+### animate要素の属性指定
+
+上記のサンプルでは、`<animate>`に以下の様に属性を指定して、アニメーションを実現しています。
+
+| 属性名            | 値                                                                                    |
+| ----------------- | ----                                                                                  |
+| `attributeName`   | アニメーション対象の属性名                                                            |
+| `repeatCount`     | アニメーションの繰り返し回数。整数または`indefinite`(ループ)。                        |
+| `dur`             | アニメーションの時間                                                                  |
+| `calcMode`        | 値が変化する際の関数(イージング)。`discrete`、`linear`、`paced`、`spline`などで指定。 |
+| `keySplines`      | 各時区間に対する歩調を制御する３次ベジェ関数のリスト。(~~なんか難しい...~~)           |
+| `values`          | 変化する値。それぞれの値を`;`で区切り指定。                                           |
+
+
+### マウスに応じてアニメーションを実行
+
+ループでは無く、何らかのアクションに応じてアニメーションを実行する場合でもJavaScriptなど使用せずに実現出来ます。
+
+![マウスに応じて動作するSMIL]({{% image "smil_hover.gif" %}})
+
+変更点と参考コードを記載しますが、詳細は別途調べてみてください。
+
+```xml:dog_hover.svg
+<svg id="dog" width="400" height="274" viewBox="0 0 400 274" xmlns="http://www.w3.org/2000/svg">
+  <title>Dog</title>
+  <path d="しっぽを振る前">
+    <animate
+      attributeName="d"
+      repeatCount="2"
+      dur="420ms"
+      calcMode="spline"
+      keySplines=".2,0 .8,.4; .2,.6 .8,1"
+      begin="dog.mouseover"
+      restart="whenNotActive"
+      values="
+        しっぽを振る前;
+        しっぽを振った後;
+        しっぽを振る前
+      "></animate>
+  </path>
+</svg>
+```
+
+変更点は以下。
+
+* `svg`要素に対し、任意のIDを指定
+* `path`要素にしっぽを振る前の`d`属性を指定
+* `animate`要素
+    - `begin`属性に`指定ID.イベント`という書式でアニメーションの開始イベントを設定
+    - `repeatCount`を`indefinite`に変更 (お好みで)
 
 
 
