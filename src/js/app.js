@@ -74,6 +74,25 @@ addEvent(document, "DOMContentLoaded", () => {
   });
 
 
+  // Logo
+  const HEADER_LOGO_DURATION = 830;
+  const $headerLogo = $(".header__logo");
+  let headerLogoTimer = false;
+
+  addEvent($headerLogo, "mouseenter, touchstart", (e) => {
+    if (headerLogoTimer !== false) return;
+
+    $headerLogo.classList.add("is-hover");
+
+    clearInterval(headerLogoTimer);
+
+    headerLogoTimer = setTimeout(() => {
+      $headerLogo.classList.remove("is-hover");
+      headerLogoTimer = false;
+    }, HEADER_LOGO_DURATION);
+  });
+
+
   // Gnav
   new Gnav();
 });
