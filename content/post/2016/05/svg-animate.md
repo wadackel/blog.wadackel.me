@@ -4,7 +4,6 @@ slug: "svg-animate"
 date: "2016-05-07"
 categories: ["animation"]
 image: ""
-draft: true
 ---
 
 
