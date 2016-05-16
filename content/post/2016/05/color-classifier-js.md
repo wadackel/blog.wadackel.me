@@ -1,12 +1,12 @@
 ---
-title: "指定した色をある基準色に分類する"
+title: "JavaScriptで指定した色をある基準色に分類する"
 slug: "color-classifier-js"
 date: "2016-05-16"
 categories: ["JavaScript"]
 image: ""
 ---
 
-Node.jsとReactを使って作成しているWebアプリ内で、画像の色を自動的に取得後、用意しておいた幾つかの基準色(カラーパレット)にその色を分類したくなりました。  
+Reactを使って作成しているWebアプリ内で、画像の色を自動的に取得後、用意しておいた幾つかの基準色(カラーパレット)に分類する必要がありました。  
 この機能を実現するために実装した内容を[color-classifier.js](https://github.com/tsuyoshiwada/color-classifier)というライブラリに切り出したので、処理内容や使い方について書いてみます。
 
 
@@ -15,6 +15,10 @@ Node.jsとReactを使って作成しているWebアプリ内で、画像の色�
 ライブラリへ切り出して、殆ど書き終わったなという段階で[color-diff](https://github.com/markusn/color-diff)というライブラリを知りました。`diff.closest()`というメソッドを使うことで、同様の機能を実現できたみたいです。
 
 全力で車輪の再発明をしてしまった感に押しつぶされそうだったので、ブログに書いて消化していきたいと思います。
+
+対象のリポジトリは以下です。
+
+> [tsuyoshiwada/color-classifier](https://github.com/tsuyoshiwada/color-classifier)
 
 
 ### 色の分類を実現するステップ
@@ -43,18 +47,85 @@ JavaScriptに書き直して、[The CIEDE2000 Color-Difference Formula](http://w
 > [color-classifier/src/utils/color-diff.js](https://github.com/tsuyoshiwada/color-classifier/blob/master/src/utils/color-diff.js)
 
 
+
+## デモページ
+
+以下のページで指定色が、どの基準色へ分類されるか確認できます。
+
+![デモページ]({{% image "playground.png" %}})
+
+> http://tsuyoshiwada.github.io/color-classifier/
+
+ちょっと分かりづらいかもしれないので簡単に補足です。
+
+* 画面左側が指定色
+* 画面右側が基準色(カラーパレット)の一覧
+* 分類された基準色がアクティブな表示になる (透明度が1)
+
+
 ## インストール
 
-__TODO__
+Browserify,webpack,Node.js上で使う場合は、npmからインストールします。
+
+```bash
+$ npm install color-classifier --save
+```
+
+`<script>`で直接読み込む場合は、[color-classifier.min.js](https://raw.githubusercontent.com/tsuyoshiwada/color-classifier/master/color-classifier.min.js)をダウンロードしてもOKです。
 
 
 
 ## 使い方
 
-__TODO__
+基本的な使い方についてです。
+
+まず基準色となるカラーパレットを配列で用意して、`ColorClassifier`のコンストラクタに指定します。  
+あとは生成したインスタンスの`classify`メソッドに分類したい色を与えると、基準色の中から最も近い色を取得できます。
+
+```javascript
+import ColorClassifier from "color-classifier"
+
+const palette = ["#fff", "#000"];
+const colorClassifier = new ColorClassifier(palette);
+const color = colorClassifier.classify("#fefefe");
+
+console.log(color); // {r: 255, g: 255, b: 255}
+```
+
+`classify`メソッドの戻り値は、第2引数にフォーマットを指定することで変更することが出来ます。
+
+
+```javascript
+const color = colorClassifier.classify("#fefefe", "hex");
+
+console.log(color); // #fff
+```
+
+
+
+### 色差の計算アルゴリズムを変更
+
+デフォルトでは、`CIEDE2000`を使い色差を求めますが、`HSV`,`RGB`,`CIEDE2000`の3つの中から選ぶことが可能な為、組み込むアプリなりサービスなりで、最も良い結果が出るものを使用できます。
+
+```javascript
+import ColorClassifier, { AlgorithmTypes } from "color-classifier"
+
+const palette = ["#fff", "#000"];
+const colorClassifier = new ColorClassifier(palette, AlgorithmTypes.HSV);
+const color = colorClassifier.classify("#fefefe", "hex");
+
+console.log(color); // #fff
+```
+
+それぞれのアルゴリズムによって、分類される結果の差異は[デモページ](http://tsuyoshiwada.github.io/color-classifier/)で確認してみるのが良いかなと思います。
+
+---
+
+他に指定色を配列で一気に指定する`classifyFromArray`というメソッドがあったり、デフォルトで幾つかの基準色を用意していたりしますが、詳細は[README](https://github.com/tsuyoshiwada/color-classifier)を確認いただけたらと思います。
 
 
 
 ## まとめ
 
-__TODO__
+* 色差の計算は`CIEDE2000`が優秀
+* ライブラリを作る前に、既に同じものが無いかちゃんと調べる (~~車輪の再発明つらい...~~)
