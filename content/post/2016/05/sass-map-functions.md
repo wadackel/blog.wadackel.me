@@ -3,7 +3,6 @@ title: "Sassのmap操作をおさらいする+便利な関数をいくつか"
 slug: "sass-map-functions"
 date: "2016-05-17"
 categories: ["Sass"]
-draft: true
 image: ""
 ---
 
@@ -34,7 +33,7 @@ $btn-sizes: (
 }
 ```
 
-`@each`を使った繰り返し処理が直感的にかけて良い感じです。
+関連する値をまとめられて、`@each`を使った繰り返し処理も直感的に書けて良い感じです。
 
 最近見たコードだと、Bootstrap v4で幾つか使っているのを見かけました。
 
@@ -42,33 +41,161 @@ $btn-sizes: (
 
 
 
-## まずは基本的な関数
+## 基本的なmap操作関数
 
-http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions
+以降全ての動作確認には`node-sass@3.7.0`を使いました。
 
-### map-get()
 
-### map-merge()
+### map-get($map, $key)
 
-### map-remove()
+`$map`の中から`$key`に対応した値を取得します。
 
-### map-keys()
+```scss
+$breakpoints: (
+  sm: 768px,
+  md: 992px,
+  lg: 1200px
+);
 
-### map-values()
+@debug map-get($breakpoints, lg); //1200px
+```
 
-### map-has-key()
+
+### map-merge($map1, $map2)
+
+`$map1`と`$map2`の2つのmapをマージします。
+
+```scss
+$btn-default: (
+  padding: 10px,
+  background: #000
+);
+
+$btn-primary: (
+  color: #000,
+  background: #fff
+);
+
+@debug map-merge($btn-default, $btn-primary);
+// (
+//   padding: 10px,
+//   background: #fff,
+//   color: #000
+// )
+```
+
+
+### map-remove($map, $keys...)
+
+`$map`の中にある`$keys`に対応した値を削除して、新しいmapを返します。
+
+```scss
+$breakpoints: (
+  xs: 0,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px
+);
+
+@debug map-remove($breakpoints, xs, lg);
+// (
+//   sm: 768px,
+//   md: 992px
+// )
+```
+
+
+### map-keys($map)
+
+`$map`のキーをリストにして返します。結果を見てもらえるとわかりますが、ネストしたキーは得られません。
+
+```scss
+$user-configure: (
+  columns: 12,
+  breakpoints: (
+    xs: 0,
+    sm: 768px,
+    md: 992px,
+    lg: 1200px
+  )
+);
+
+@debug map-keys($user-configure); // columns, breakpoints
+```
+
+
+### map-values($map)
+
+`$map`の値をリストにして返します。
+
+```scss
+$user-configure: (
+  columns: 12,
+  breakpoints: (
+    xs: 0,
+    sm: 768px,
+    md: 992px,
+    lg: 1200px
+  )
+);
+
+@debug map-values($user-configure);
+// 12,
+// (
+//   xs: 0,
+//   sm: 768px,
+//   md: 992px,
+//   lg: 1200px
+// )
+```
+
+
+### map-has-key($map, $key)
+
+`$map`の中に`$key`というキーが存在するかチェックして真偽値を返します。
+
+```scss
+$btn-states: (
+  default: #000,
+  hover: #333,
+  active: #666
+);
+
+@debug map-has-key($btn-states, hover); //true
+@debug map-has-key($btn-states, hoge); //false
+```
+
+
+### keywords($args)
+
+これは少し使い方に癖があるように思います。`$args`に`$key: value`の様に可変長引数を渡して、それを元にして新しいmapを返します。
+
+```scss
+@function create-map($args...) {
+  @return keywords($args);
+}
+
+@debug create-map($sm: 768px, $md: 992px);
+// (
+//   sm: 768px,
+//   md: 992px
+// )
+```
 
 
 ## もっと便利に使いたい
+
+`map-get()`はあるのに`map-set()`が無かったり、標準の関数だけだとmapを扱う上で少し物足りない感が出てきます。
 
 以下のブログ記事で紹介されていた関数群から、個人的に便利だと思った関数をいくつか抜粋します。これらの関数を`_map.scss`みたいに切り出しておいて、読み込ませておくと便利ですね。
 
 > [Extra Map Functions in Sass](http://www.sitepoint.com/extra-map-functions-sass/)
 
 
-### map-deep-get()
+### map-deep-get($map, $keys...)
 
-* 紹介されていたコードに`@if`を追加
+`$map`の中から、可変長引数を使って指定したキーを使い、ネストした値を取得します。  
+記事で紹介されていたコードから、`map-has-key()`による判定処理を追加しています。
 
 ```scss:_map.scss
 @function map-deep-get($map, $keys...) {
@@ -83,8 +210,29 @@ http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions
 }
 ```
 
+以下、サンプルコードです。
 
-### map-deep-set()
+```scss:sample.scss
+$configure: (
+  breakpoints: (
+    md: 992px
+  ),
+  z-index: (
+    header: 1000,
+    modal: 2000
+  )
+);
+
+@debug map-deep-get($configure, z-index, modal); //2000
+```
+
+かゆいところに手が届く感じです。
+
+
+### map-deep-set($map, $keys...)
+
+`$map`に対してネストしたキーを指定して、一気に値を設定できます。  
+可変長引数の最後の1つは設定する値になります。
 
 ```scss:_map.scss
 @function map-deep-set($map, $keys...) {
@@ -107,8 +255,35 @@ http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions
 }
 ```
 
+```scss:sample.scss
+$configure: (
+  breakpoints: (
+    md: 992px
+  ),
+  z-index: (
+    header: 1000,
+    modal: 2000
+  )
+);
 
-### map-has-keys()
+@debug map-deep-set($configure, breakpoints, lg, 1200px);
+// (
+//   breakpoints: (
+//     md: 992px,
+//     lg: 1200px
+//   ),
+//   z-index: (
+//     header: 1000,
+//     modal: 2000
+//   )
+// )
+```
+
+
+### map-has-keys($map, $keys...)
+
+`map-has-key()`では一つのキーを確認するのみでしたが、以下の関数では確認したいキーを複数指定できます。  
+指定したキーの内、一つでも存在しないキーが存在する場合は`false`を返します。
 
 ```scss:_map.scss
 @function map-has-keys($map, $keys...) {
@@ -122,9 +297,22 @@ http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions
 }
 ```
 
+```scss:sample.scss
+$breakpoints: (
+  sm: 768px,
+  md: 992px,
+  lg: 1200px
+);
+
+@debug map-has-keys($breakpoints, sm, lg); //true
+@debug map-has-keys($breakpoints, sm, xl); //false
+@debug map-has-keys($breakpoints, hoge, fuga); //false
+```
 
 
-### map-zip()
+### map-zip($keys, $values)
+
+キーのリスト、値のリストの2つから新しいmapを生成して返します。
 
 ```scss:_map.scss
 @function map-zip($keys, $values) {
@@ -150,11 +338,25 @@ http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions
 }
 ```
 
+```scss:sample.scss
+$sizes: sm, md, lg;
+$widths: 768px, 992px, 1200px;
 
-### map-extend()
+@debug map-zip($sizes, $widths);
+// (
+//   sm: 768px,
+//   md: 992px,
+//   lg: 1200px
+// )
+```
+
+
+### map-extend($map, $maps...)
+
+複数のmapをマージしていきます。可変長引数の最後の値に`true`を与えることで、ネストしたmapに対しても実行していきます。
 
 ```scss:_map.scss
-@function map-extend($map, $maps.../*, $deep */) {
+@function map-extend($map, $maps...) {
   $last: nth($maps, -1);
   $deep: $last == true;
   $max: if($deep, length($maps) - 1, length($maps));
@@ -177,6 +379,31 @@ http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions
 
   @return $map;
 }
+```
+
+```scss:sample.scss
+$map1: (
+  key1: "value1",
+  key2: (
+    key2-1: "value2-1"
+  )
+);
+
+$map2: (
+  key2: (
+    key2-1: "value2-1-2",
+    key2-2: "value2-2-2"
+  )
+);
+
+@debug map-extend($map1, $map2, true);
+// (
+//   key1: "value1",
+//   key2: (
+//     key2-1: "value2-1-2",
+//     key2-2: "value2-2-2"
+//   )
+// )
 ```
 
 
