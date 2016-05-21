@@ -4,7 +4,6 @@ slug: "redux-saga-intro"
 date: "2016-05-22"
 categories: ["JavaScript"]
 image: ""
-draft: true
 ---
 
 
