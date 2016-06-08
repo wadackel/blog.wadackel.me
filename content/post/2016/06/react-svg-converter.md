@@ -8,9 +8,11 @@ draft: true
 ---
 
 
-SketchなりIllustratorなりで作成したSVGのアイコン群を、Reactのコンポーネントとして扱いたくなりました。アイコンの数が数個であれば、SVGのコードをコピペして手動でコンポーネント化すれば良さそうですが、3個くらいからもう辛くなってきそうです。
+SketchなりIllustratorなりで作成したSVGのアイコン群を、Reactのコンポーネントとして扱いたくなりました。アイコンの数が少なければ、SVGのコードを手動でコピペしてコンポーネント化すれば良さそうですが、3個くらいからもう辛くなってきそうです。
 
-ある程度自動でズバッと出来ないかなと試してみたら、[react-svg-converter](https://www.npmjs.com/package/react-svg-converter)を使うことで簡単に実現出来たので、その工程についてメモです。
+SVGを外部ファイル化して読み込むことも考えましたが、CSSでのスタイル指定が面倒になることや、HTTPリクエスト数を抑えるという点を考慮すると、やはりコンポーネント化しておくのが無難な気がします。
+
+ただ、そこへ労力を割くのは微妙な気がするので、ある程度自動でズバッと出来ないかなと試してみたら、[react-svg-converter](https://www.npmjs.com/package/react-svg-converter)を使うことで簡単に実現出来たので、その工程についてメモです。
 
 
 ## 前提
@@ -26,15 +28,15 @@ SketchなりIllustratorなりで作成したSVGのアイコン群を、Reactの�
 
 ## 下準備
 
-まずはSVGファイルの格納先、変換後のコンポーネントの出力先を準備しておきます。
+適当な作業ディレクトリの中に、SVGファイルの格納先、変換後のコンポーネントの出力先を準備しておきます。
 
 ```bash
 $ mkdir svg jsx
 ```
 
-`svg`ディレクトリへ変換するSVGファイルを入れておきます。
+`svg`ディレクトリの中へ変換するSVGファイルを入れておきます。
 
-そしたら、`npm init`してから[react-svg-converter](https://www.npmjs.com/package/react-svg-converter)をインストールします。
+ファイルの準備が出来たら、`npm init`してから[react-svg-converter](https://www.npmjs.com/package/react-svg-converter)をインストールします。
 
 ```bash
 $ npm init
@@ -84,7 +86,7 @@ $ npm run build
 ```text:results
 .
 ├── index.js
-├── jsx
+├── jsx #ここにjsファイルが出力されました
 │   ├── CircleBottom.js
 │   ├── ...
 │   └── Upload.js
@@ -112,4 +114,4 @@ SVGの最適化も一緒に行われているみたいなので、元のSVGフ�
 
 思ったよりも簡単に、かつ期待に沿う形で、ズバババっとSVGファイルからReactのコンポーネントへ一括変換することができました。
 
-最初にあげた画像ではアイコンの数こそ少なかったですが、今後増えた場合や修正を加えた場合でも、今回用意したタスクを使いまわせるので捗りそうです。
+最初にあげた画像ではアイコンの数こそ少なかったですが、今後増えたり修正を加えた場合でも、今回用意したタスクを使いまわせるので捗りそうです。
