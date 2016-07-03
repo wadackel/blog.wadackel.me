@@ -4,7 +4,6 @@ slug: "react-md-spinner"
 date: "2016-07-03"
 categories: ["JavaScript"]
 image: ""
-draft: true
 ---
 
 Googleの提唱する[Material Design](https://material.google.com/)チックなSpinnerを、Reactコンポーネント化して公開しました。
