@@ -4,7 +4,6 @@ slug: "react-enzyme-mocha-power-assert"
 date: "2016-07-05"
 categories: ["JavaScript"]
 image: ""
-draft: true
 ---
 
 
@@ -36,7 +35,7 @@ draft: true
     - react-dom v15.2.0
 
 
-既に対象となるコンポーネントがコーディング済み、という前提で進めたいと思います。
+ビルド周りは特に関係無いと思いますが念のため。既に対象となるコンポーネントがコーディング済み、という前提で進めたいと思います。
 
 
 ### テスト対象のコンポーネント
@@ -194,7 +193,7 @@ $ touch test/.setup.js test/Toast.spec.js
 
 フルレンダリングを使ったテストでは、shallowレンダリングとは異なり`document`オブジェクトに対してグローバルにアクセス出来る状態が必要です。enzymeのガイドを参考にjsdomの設定を行います。
 
-> enzyme/jsdom.md at master · airbnb/enzyme
+> enzyme/jsdom.md at master · airbnb/enzyme  
 > https://github.com/airbnb/enzyme/blob/master/docs/guides/jsdom.md
 
 ```javascript
