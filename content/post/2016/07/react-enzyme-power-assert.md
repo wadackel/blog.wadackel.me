@@ -179,7 +179,7 @@ $ touch test/.setup.js test/Toast.spec.js
 
 ```json
 "scripts": {
-  "test": "mocha test/.setup.js test/**/*.spec.js --compilers js:babel-register"
+  "test": "mocha test/**/*.spec.js -r test/.setup.js --compilers js:babel-register"
 }
 ```
 
@@ -277,3 +277,19 @@ $ npm test
 週末に公開した[react-md-spinner](https://github.com/tsuyoshiwada/react-md-spinner)でテストを書く時に、enzymeどうやって使おうっていうところを軽く調べた内容について纏めました。enzyme使ってみよう、という方の参考になれば嬉しいです。
 
 Reactに限らずmocha+power-assertを使ったテストが自分の中でよく使うスタックなので、enzymeはそれらと簡単に統合出来て、割と直感的なAPIでテストが書き進められるので良い感じですね。
+
+
+
+
+## 追記: 2016.07.15
+
+{{% tweet "753817777421418496" %}}
+
+azuさんのツイートで言及いただいていたので、該当箇所を修正しました。恥ずかしながら`--require`オプションを使ったことが無かったので参考になりました。ありがとうございます。
+
+一応変更箇所のdiffを貼っておきます。
+
+```diff:package.json
+-    "test": "mocha test/.setup.js test/**/*.spec.js --compilers js:babel-register"
++    "test": "mocha test/**/*.spec.js -r test/.setup --compilers js:babel-register"
+```
