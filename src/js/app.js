@@ -8,7 +8,9 @@ import {addEvent, removeEvent} from "./utils/events"
 attachFastClick(document.body);
 
 new SweetScroll({
-  duration: 1200
+  duration: 1000,
+  quickMode: true,
+  easing: "easeOutQuint"
 });
 
 
