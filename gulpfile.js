@@ -59,7 +59,7 @@ gulp.task("hugo:build", (cb) => {
 });
 
 gulp.task("hugo:watch", (cb) => {
-  return cp.spawn("hugo", ["server", "--renderToDisk", "--port=8080", "-D"], {stdio: "inherit"}).on("close", cb);
+  return cp.spawn("hugo", ["server", "--renderToDisk", "--port=8080", "-D", "-w"], {stdio: "inherit"}).on("close", cb);
 });
 
 
