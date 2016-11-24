@@ -4,22 +4,23 @@ slug: "create-react-app"
 date: "2016-11-24"
 categories: ["JavaScript"]
 image: ""
-draft: true
 ---
 
-今年の7月に[create-react-app](https://github.com/facebookincubator/create-react-app)がリリースされ、僕の観測範囲内ではかなり話題となりました。  
-昨晩、Reactコンポーネントの素振りを目的として初めて使ってみたのですがなかなか便利だったので、コンポーネントの素振り+GitHub Pagesへデプロイするまでの作業メモです。
+今年の7月に[create-react-app](https://github.com/facebookincubator/create-react-app)がリリースされ、僕の観測範囲内ではかなり話題となりました。
+
+昨晩、Reactコンポーネントの素振りを目的として初めて使ってみたのですが、なかなか便利だったので、素振り+GitHub Pagesへデプロイするまでの作業メモです。
 
 
 
 
 ## 前提
 
-あくまで`create-react-app`をWebアプリの開発用途としてではなく、Reactコンポーネントの素振りを目的として使います。そのため、詳しい使い方については触れません。  
+あくまで`create-react-app`をWebアプリの開発用途としてではなく、Reactコンポーネントの素振りを目的として使います。そのため、詳しい使い方については触れません。
+
 詳しい使い方については以下が参考になるかなと思います。
 
-* [create-react-app](https://github.com/facebookincubator/create-react-app)
-* [Facebook公式のcreate-react-appコマンドを使ってReact.jsアプリを爆速で作成する - Qiita](http://qiita.com/chibicode/items/8533dd72f1ebaeb4b614)
+> * [create-react-app](https://github.com/facebookincubator/create-react-app)
+> * [Facebook公式のcreate-react-appコマンドを使ってReact.jsアプリを爆速で作成する - Qiita](http://qiita.com/chibicode/items/8533dd72f1ebaeb4b614)
 
 また、公式のドキュメントにはGitHub Pagesへのデプロイの他にHerokuなんかも記載されてますが、極々簡単に使いたいだけなので今回は特に触れません。
 
@@ -56,7 +57,7 @@ $ create-react-app --version
 
 
 
-## 環境構築
+## 素振り環境の構築
 
 `create-react-app`コマンドが使えるようになったので、早速素振り環境を作ります。
 
@@ -68,8 +69,8 @@ $ create-react-app my-app
 $ cd my-app
 ```
 
-ここで既に準備が出来ているので、`start`でブラウザが開いて動作が確認できます。  
-設定いらずで簡単にReactの環境構築が出来てらくちんですね。
+ここで既に諸々の準備が出来ているので、`start`でブラウザが開いて動作が確認できます。  
+設定いらずで簡単にReactを試せる環境構築が出来て良い感じです。
 
 ```bash
 $ npm start
@@ -77,7 +78,13 @@ $ npm start
 
 ---
 
-あとはいつもどおり、`npm install`で必要なコンポーネントをインストールして、`src/App.js`辺りにコードを書くだけです。
+あとはいつもどおり、`$ npm install`で必要なコンポーネントをインストールして、`src/App.js`辺りにコードを書くだけです。
+
+ちなみに以下実行すると、`build`ディレクトリに最適化済みの静的ファイルが生成されます。
+
+```bash
+$ npm run build
+```
 
 
 
@@ -88,11 +95,19 @@ $ npm start
 もし、まだGitHub上にリポジトリがなければ作っておく必要があります。
 
 
+### 前準備
+
+これは必須ではありませんが、やっておくと良いかもしれません。
+
+1. `public/index.html`の`<title>`タグ変更
+2. TODO
+
+
 ### package.jsonの編集
 
 GitHub Pagesとして公開するURLを`package.json`の`homepage`に設定します。
 
-```json
+```json:package.json
 {
   "name": "my-app",
   "version": "0.1.0",
@@ -101,7 +116,7 @@ GitHub Pagesとして公開するURLを`package.json`の`homepage`に設定し�
 }
 ```
 
-上記`[]`の中身適当に帰る必要があります。
+上記`[]`の中身は適当に変える必要があります。
 
 
 ### npm scriptsの編集
@@ -115,7 +130,7 @@ $ npm i -D gh-pages
 
 インストールが終わったら、`scripts`へ`deploy`を追加します。
 
-```json
+```json:package.json
 {
   // ...
   "scripts": {
@@ -125,8 +140,24 @@ $ npm i -D gh-pages
 }
 ```
 
-これで`$ npm run deploy`を実行すると、`gh-pages`ブランチへ`build`ディレクトリ以下のファイルがpushされるので、先に`homepage`に指定URLで動作確認ができるようになります。
+これで`$ npm run deploy`を実行すると、`build`が実行された後、`gh-pages`ブランチへ`build`ディレクトリ以下のファイルがpushされるので、先に`homepage`へ指定したURLで動作確認ができるようになります。
+
+
+### GitHub上でgh-pagesをGitHub Pagesへと登録
+
+リポジトリ > Settings > GitHub Pages を開き、**Source**から`gh-pages`を選択して**Save**すれば完了です。
+
 
 
 
 ## まとめ
+
+ほとんど公式のドキュメントに記載されている内容ですが、上記で簡単にReactコンポーネントの素振りができました。
+
+昨晩触ったきっかけですが、趣味リポジトリの`node_modules`をインストールしなおしている間(これがめっちゃ長い...)にさくっと触ったレベルですが、かなり短時間で気になっていたライブラリを触ってみることが出来ました。
+
+{{% tweet "801423156456005632" %}}
+
+素振りの他にも自作ライブラリのDEMOや動作確認なんかにも重宝しそうですね。
+
+ただ、個人的にガッツリ開発するぞっとなった場合は、やっぱり一から設定していきたので、あくまで素振り+サンプルなんかに使っていきたいなという感じでした。
