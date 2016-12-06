@@ -7,16 +7,17 @@ import {addEvent, removeEvent} from "./utils/events"
 
 attachFastClick(document.body);
 
-new SweetScroll({
-  duration: 1000,
-  quickMode: true,
-  easing: "easeOutQuint"
-});
-
-
 
 addEvent(document, "DOMContentLoaded", () => {
   const $html = $("html");
+
+
+  // Scroll
+  new SweetScroll({
+    duration: 600,
+    quickMode: true,
+    easing: "easeOutQuart"
+  });
 
 
   // Code block
