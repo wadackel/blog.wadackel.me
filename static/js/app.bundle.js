@@ -1,15 +1,3569 @@
-!function t(e,n,i){function o(l,a){if(!n[l]){if(!e[l]){var c="function"==typeof require&&require;if(!a&&c)return c(l,!0);if(r)return r(l,!0);var s=new Error("Cannot find module '"+l+"'");throw s.code="MODULE_NOT_FOUND",s}var u=n[l]={exports:{}};e[l][0].call(u.exports,function(t){var n=e[l][1][t];return o(n?n:t)},u,u.exports,t,e,n,i)}return n[l].exports}for(var r="function"==typeof require&&require,l=0;l<i.length;l++)o(i[l]);return o}({1:[function(t,e,n){!function(i,o){if("function"==typeof define&&define.amd)define(["module","select"],o);else if("undefined"!=typeof n)o(e,t("select"));else{var r={exports:{}};o(r,i.select),i.clipboardAction=r.exports}}(this,function(t,e){"use strict";function n(t){return t&&t.__esModule?t:{default:t}}function i(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}var o=n(e),r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},l=function(){function t(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}return function(e,n,i){return n&&t(e.prototype,n),i&&t(e,i),e}}(),a=function(){function t(e){i(this,t),this.resolveOptions(e),this.initSelection()}return l(t,[{key:"resolveOptions",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action=t.action,this.emitter=t.emitter,this.target=t.target,this.text=t.text,this.trigger=t.trigger,this.selectedText=""}},{key:"initSelection",value:function(){this.text?this.selectFake():this.target&&this.selectTarget()}},{key:"selectFake",value:function(){var t=this,e="rtl"==document.documentElement.getAttribute("dir");this.removeFake(),this.fakeHandlerCallback=function(){return t.removeFake()},this.fakeHandler=document.body.addEventListener("click",this.fakeHandlerCallback)||!0,this.fakeElem=document.createElement("textarea"),this.fakeElem.style.fontSize="12pt",this.fakeElem.style.border="0",this.fakeElem.style.padding="0",this.fakeElem.style.margin="0",this.fakeElem.style.position="absolute",this.fakeElem.style[e?"right":"left"]="-9999px";var n=window.pageYOffset||document.documentElement.scrollTop;this.fakeElem.addEventListener("focus",window.scrollTo(0,n)),this.fakeElem.style.top=n+"px",this.fakeElem.setAttribute("readonly",""),this.fakeElem.value=this.text,document.body.appendChild(this.fakeElem),this.selectedText=(0,o.default)(this.fakeElem),this.copyText()}},{key:"removeFake",value:function(){this.fakeHandler&&(document.body.removeEventListener("click",this.fakeHandlerCallback),this.fakeHandler=null,this.fakeHandlerCallback=null),this.fakeElem&&(document.body.removeChild(this.fakeElem),this.fakeElem=null)}},{key:"selectTarget",value:function(){this.selectedText=(0,o.default)(this.target),this.copyText()}},{key:"copyText",value:function(){var t=void 0;try{t=document.execCommand(this.action)}catch(e){t=!1}this.handleResult(t)}},{key:"handleResult",value:function(t){this.emitter.emit(t?"success":"error",{action:this.action,text:this.selectedText,trigger:this.trigger,clearSelection:this.clearSelection.bind(this)})}},{key:"clearSelection",value:function(){this.target&&this.target.blur(),window.getSelection().removeAllRanges()}},{key:"destroy",value:function(){this.removeFake()}},{key:"action",set:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"copy";if(this._action=t,"copy"!==this._action&&"cut"!==this._action)throw new Error('Invalid "action" value, use either "copy" or "cut"')},get:function(){return this._action}},{key:"target",set:function(t){if(void 0!==t){if(!t||"object"!==("undefined"==typeof t?"undefined":r(t))||1!==t.nodeType)throw new Error('Invalid "target" value, use a valid Element');if("copy"===this.action&&t.hasAttribute("disabled"))throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');if("cut"===this.action&&(t.hasAttribute("readonly")||t.hasAttribute("disabled")))throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');this._target=t}},get:function(){return this._target}}]),t}();t.exports=a})},{select:8}],2:[function(t,e,n){!function(i,o){if("function"==typeof define&&define.amd)define(["module","./clipboard-action","tiny-emitter","good-listener"],o);else if("undefined"!=typeof n)o(e,t("./clipboard-action"),t("tiny-emitter"),t("good-listener"));else{var r={exports:{}};o(r,i.clipboardAction,i.tinyEmitter,i.goodListener),i.clipboard=r.exports}}(this,function(t,e,n,i){"use strict";function o(t){return t&&t.__esModule?t:{default:t}}function r(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function l(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function a(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}function c(t,e){var n="data-clipboard-"+t;if(e.hasAttribute(n))return e.getAttribute(n)}var s=o(e),u=o(n),h=o(i),f=function(){function t(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}return function(e,n,i){return n&&t(e.prototype,n),i&&t(e,i),e}}(),d=function(t){function e(t,n){r(this,e);var i=l(this,(e.__proto__||Object.getPrototypeOf(e)).call(this));return i.resolveOptions(n),i.listenClick(t),i}return a(e,t),f(e,[{key:"resolveOptions",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action="function"==typeof t.action?t.action:this.defaultAction,this.target="function"==typeof t.target?t.target:this.defaultTarget,this.text="function"==typeof t.text?t.text:this.defaultText}},{key:"listenClick",value:function(t){var e=this;this.listener=(0,h.default)(t,"click",function(t){return e.onClick(t)})}},{key:"onClick",value:function(t){var e=t.delegateTarget||t.currentTarget;this.clipboardAction&&(this.clipboardAction=null),this.clipboardAction=new s.default({action:this.action(e),target:this.target(e),text:this.text(e),trigger:e,emitter:this})}},{key:"defaultAction",value:function(t){return c("action",t)}},{key:"defaultTarget",value:function(t){var e=c("target",t);if(e)return document.querySelector(e)}},{key:"defaultText",value:function(t){return c("text",t)}},{key:"destroy",value:function(){this.listener.destroy(),this.clipboardAction&&(this.clipboardAction.destroy(),this.clipboardAction=null)}}]),e}(u.default);t.exports=d})},{"./clipboard-action":1,"good-listener":7,"tiny-emitter":10}],3:[function(t,e,n){function i(t,e){for(;t&&t!==document;){if(t.matches(e))return t;t=t.parentNode}}if(Element&&!Element.prototype.matches){var o=Element.prototype;o.matches=o.matchesSelector||o.mozMatchesSelector||o.msMatchesSelector||o.oMatchesSelector||o.webkitMatchesSelector}e.exports=i},{}],4:[function(t,e,n){function i(t,e,n,i,r){var l=o.apply(this,arguments);return t.addEventListener(n,l,r),{destroy:function(){t.removeEventListener(n,l,r)}}}function o(t,e,n,i){return function(n){n.delegateTarget=r(n.target,e),n.delegateTarget&&i.call(t,n)}}var r=t("./closest");e.exports=i},{"./closest":3}],5:[function(t,e,n){!function(){"use strict";/**
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function (global, factory) {
+    if (typeof define === "function" && define.amd) {
+        define(['module', 'select'], factory);
+    } else if (typeof exports !== "undefined") {
+        factory(module, require('select'));
+    } else {
+        var mod = {
+            exports: {}
+        };
+        factory(mod, global.select);
+        global.clipboardAction = mod.exports;
+    }
+})(this, function (module, _select) {
+    'use strict';
+
+    var _select2 = _interopRequireDefault(_select);
+
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            default: obj
+        };
+    }
+
+    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+        return typeof obj;
+    } : function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var _createClass = function () {
+        function defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+                var descriptor = props[i];
+                descriptor.enumerable = descriptor.enumerable || false;
+                descriptor.configurable = true;
+                if ("value" in descriptor) descriptor.writable = true;
+                Object.defineProperty(target, descriptor.key, descriptor);
+            }
+        }
+
+        return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps);
+            if (staticProps) defineProperties(Constructor, staticProps);
+            return Constructor;
+        };
+    }();
+
+    var ClipboardAction = function () {
+        /**
+         * @param {Object} options
+         */
+        function ClipboardAction(options) {
+            _classCallCheck(this, ClipboardAction);
+
+            this.resolveOptions(options);
+            this.initSelection();
+        }
+
+        /**
+         * Defines base properties passed from constructor.
+         * @param {Object} options
+         */
+
+
+        _createClass(ClipboardAction, [{
+            key: 'resolveOptions',
+            value: function resolveOptions() {
+                var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+                this.action = options.action;
+                this.emitter = options.emitter;
+                this.target = options.target;
+                this.text = options.text;
+                this.trigger = options.trigger;
+
+                this.selectedText = '';
+            }
+        }, {
+            key: 'initSelection',
+            value: function initSelection() {
+                if (this.text) {
+                    this.selectFake();
+                } else if (this.target) {
+                    this.selectTarget();
+                }
+            }
+        }, {
+            key: 'selectFake',
+            value: function selectFake() {
+                var _this = this;
+
+                var isRTL = document.documentElement.getAttribute('dir') == 'rtl';
+
+                this.removeFake();
+
+                this.fakeHandlerCallback = function () {
+                    return _this.removeFake();
+                };
+                this.fakeHandler = document.body.addEventListener('click', this.fakeHandlerCallback) || true;
+
+                this.fakeElem = document.createElement('textarea');
+                // Prevent zooming on iOS
+                this.fakeElem.style.fontSize = '12pt';
+                // Reset box model
+                this.fakeElem.style.border = '0';
+                this.fakeElem.style.padding = '0';
+                this.fakeElem.style.margin = '0';
+                // Move element out of screen horizontally
+                this.fakeElem.style.position = 'absolute';
+                this.fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px';
+                // Move element to the same position vertically
+                var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+                this.fakeElem.addEventListener('focus', window.scrollTo(0, yPosition));
+                this.fakeElem.style.top = yPosition + 'px';
+
+                this.fakeElem.setAttribute('readonly', '');
+                this.fakeElem.value = this.text;
+
+                document.body.appendChild(this.fakeElem);
+
+                this.selectedText = (0, _select2.default)(this.fakeElem);
+                this.copyText();
+            }
+        }, {
+            key: 'removeFake',
+            value: function removeFake() {
+                if (this.fakeHandler) {
+                    document.body.removeEventListener('click', this.fakeHandlerCallback);
+                    this.fakeHandler = null;
+                    this.fakeHandlerCallback = null;
+                }
+
+                if (this.fakeElem) {
+                    document.body.removeChild(this.fakeElem);
+                    this.fakeElem = null;
+                }
+            }
+        }, {
+            key: 'selectTarget',
+            value: function selectTarget() {
+                this.selectedText = (0, _select2.default)(this.target);
+                this.copyText();
+            }
+        }, {
+            key: 'copyText',
+            value: function copyText() {
+                var succeeded = void 0;
+
+                try {
+                    succeeded = document.execCommand(this.action);
+                } catch (err) {
+                    succeeded = false;
+                }
+
+                this.handleResult(succeeded);
+            }
+        }, {
+            key: 'handleResult',
+            value: function handleResult(succeeded) {
+                this.emitter.emit(succeeded ? 'success' : 'error', {
+                    action: this.action,
+                    text: this.selectedText,
+                    trigger: this.trigger,
+                    clearSelection: this.clearSelection.bind(this)
+                });
+            }
+        }, {
+            key: 'clearSelection',
+            value: function clearSelection() {
+                if (this.target) {
+                    this.target.blur();
+                }
+
+                window.getSelection().removeAllRanges();
+            }
+        }, {
+            key: 'destroy',
+            value: function destroy() {
+                this.removeFake();
+            }
+        }, {
+            key: 'action',
+            set: function set() {
+                var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'copy';
+
+                this._action = action;
+
+                if (this._action !== 'copy' && this._action !== 'cut') {
+                    throw new Error('Invalid "action" value, use either "copy" or "cut"');
+                }
+            },
+            get: function get() {
+                return this._action;
+            }
+        }, {
+            key: 'target',
+            set: function set(target) {
+                if (target !== undefined) {
+                    if (target && (typeof target === 'undefined' ? 'undefined' : _typeof(target)) === 'object' && target.nodeType === 1) {
+                        if (this.action === 'copy' && target.hasAttribute('disabled')) {
+                            throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');
+                        }
+
+                        if (this.action === 'cut' && (target.hasAttribute('readonly') || target.hasAttribute('disabled'))) {
+                            throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');
+                        }
+
+                        this._target = target;
+                    } else {
+                        throw new Error('Invalid "target" value, use a valid Element');
+                    }
+                }
+            },
+            get: function get() {
+                return this._target;
+            }
+        }]);
+
+        return ClipboardAction;
+    }();
+
+    module.exports = ClipboardAction;
+});
+},{"select":8}],2:[function(require,module,exports){
+(function (global, factory) {
+    if (typeof define === "function" && define.amd) {
+        define(['module', './clipboard-action', 'tiny-emitter', 'good-listener'], factory);
+    } else if (typeof exports !== "undefined") {
+        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
+    } else {
+        var mod = {
+            exports: {}
+        };
+        factory(mod, global.clipboardAction, global.tinyEmitter, global.goodListener);
+        global.clipboard = mod.exports;
+    }
+})(this, function (module, _clipboardAction, _tinyEmitter, _goodListener) {
+    'use strict';
+
+    var _clipboardAction2 = _interopRequireDefault(_clipboardAction);
+
+    var _tinyEmitter2 = _interopRequireDefault(_tinyEmitter);
+
+    var _goodListener2 = _interopRequireDefault(_goodListener);
+
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            default: obj
+        };
+    }
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var _createClass = function () {
+        function defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+                var descriptor = props[i];
+                descriptor.enumerable = descriptor.enumerable || false;
+                descriptor.configurable = true;
+                if ("value" in descriptor) descriptor.writable = true;
+                Object.defineProperty(target, descriptor.key, descriptor);
+            }
+        }
+
+        return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps);
+            if (staticProps) defineProperties(Constructor, staticProps);
+            return Constructor;
+        };
+    }();
+
+    function _possibleConstructorReturn(self, call) {
+        if (!self) {
+            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        }
+
+        return call && (typeof call === "object" || typeof call === "function") ? call : self;
+    }
+
+    function _inherits(subClass, superClass) {
+        if (typeof superClass !== "function" && superClass !== null) {
+            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+        }
+
+        subClass.prototype = Object.create(superClass && superClass.prototype, {
+            constructor: {
+                value: subClass,
+                enumerable: false,
+                writable: true,
+                configurable: true
+            }
+        });
+        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+    }
+
+    var Clipboard = function (_Emitter) {
+        _inherits(Clipboard, _Emitter);
+
+        /**
+         * @param {String|HTMLElement|HTMLCollection|NodeList} trigger
+         * @param {Object} options
+         */
+        function Clipboard(trigger, options) {
+            _classCallCheck(this, Clipboard);
+
+            var _this = _possibleConstructorReturn(this, (Clipboard.__proto__ || Object.getPrototypeOf(Clipboard)).call(this));
+
+            _this.resolveOptions(options);
+            _this.listenClick(trigger);
+            return _this;
+        }
+
+        /**
+         * Defines if attributes would be resolved using internal setter functions
+         * or custom functions that were passed in the constructor.
+         * @param {Object} options
+         */
+
+
+        _createClass(Clipboard, [{
+            key: 'resolveOptions',
+            value: function resolveOptions() {
+                var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+                this.action = typeof options.action === 'function' ? options.action : this.defaultAction;
+                this.target = typeof options.target === 'function' ? options.target : this.defaultTarget;
+                this.text = typeof options.text === 'function' ? options.text : this.defaultText;
+            }
+        }, {
+            key: 'listenClick',
+            value: function listenClick(trigger) {
+                var _this2 = this;
+
+                this.listener = (0, _goodListener2.default)(trigger, 'click', function (e) {
+                    return _this2.onClick(e);
+                });
+            }
+        }, {
+            key: 'onClick',
+            value: function onClick(e) {
+                var trigger = e.delegateTarget || e.currentTarget;
+
+                if (this.clipboardAction) {
+                    this.clipboardAction = null;
+                }
+
+                this.clipboardAction = new _clipboardAction2.default({
+                    action: this.action(trigger),
+                    target: this.target(trigger),
+                    text: this.text(trigger),
+                    trigger: trigger,
+                    emitter: this
+                });
+            }
+        }, {
+            key: 'defaultAction',
+            value: function defaultAction(trigger) {
+                return getAttributeValue('action', trigger);
+            }
+        }, {
+            key: 'defaultTarget',
+            value: function defaultTarget(trigger) {
+                var selector = getAttributeValue('target', trigger);
+
+                if (selector) {
+                    return document.querySelector(selector);
+                }
+            }
+        }, {
+            key: 'defaultText',
+            value: function defaultText(trigger) {
+                return getAttributeValue('text', trigger);
+            }
+        }, {
+            key: 'destroy',
+            value: function destroy() {
+                this.listener.destroy();
+
+                if (this.clipboardAction) {
+                    this.clipboardAction.destroy();
+                    this.clipboardAction = null;
+                }
+            }
+        }]);
+
+        return Clipboard;
+    }(_tinyEmitter2.default);
+
+    /**
+     * Helper function to retrieve attribute value.
+     * @param {String} suffix
+     * @param {Element} element
+     */
+    function getAttributeValue(suffix, element) {
+        var attribute = 'data-clipboard-' + suffix;
+
+        if (!element.hasAttribute(attribute)) {
+            return;
+        }
+
+        return element.getAttribute(attribute);
+    }
+
+    module.exports = Clipboard;
+});
+},{"./clipboard-action":1,"good-listener":7,"tiny-emitter":10}],3:[function(require,module,exports){
+/**
+ * A polyfill for Element.matches()
+ */
+if (Element && !Element.prototype.matches) {
+    var proto = Element.prototype;
+
+    proto.matches = proto.matchesSelector ||
+                    proto.mozMatchesSelector ||
+                    proto.msMatchesSelector ||
+                    proto.oMatchesSelector ||
+                    proto.webkitMatchesSelector;
+}
+
+/**
+ * Finds the closest parent that matches a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @return {Function}
+ */
+function closest (element, selector) {
+    while (element && element !== document) {
+        if (element.matches(selector)) return element;
+        element = element.parentNode;
+    }
+}
+
+module.exports = closest;
+
+},{}],4:[function(require,module,exports){
+var closest = require('./closest');
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function delegate(element, selector, type, callback, useCapture) {
+    var listenerFn = listener.apply(this, arguments);
+
+    element.addEventListener(type, listenerFn, useCapture);
+
+    return {
+        destroy: function() {
+            element.removeEventListener(type, listenerFn, useCapture);
+        }
+    }
+}
+
+/**
+ * Finds closest match and invokes callback.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Function}
+ */
+function listener(element, selector, type, callback) {
+    return function(e) {
+        e.delegateTarget = closest(e.target, selector);
+
+        if (e.delegateTarget) {
+            callback.call(element, e);
+        }
+    }
+}
+
+module.exports = delegate;
+
+},{"./closest":3}],5:[function(require,module,exports){
+;(function () {
+	'use strict';
+
+	/**
 	 * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
 	 *
 	 * @codingstandard ftlabs-jsv2
 	 * @copyright The Financial Times Limited [All Rights Reserved]
 	 * @license MIT License (see LICENSE.txt)
 	 */
-function t(e,n){function o(t,e){return function(){return t.apply(e,arguments)}}var r;if(n=n||{},this.trackingClick=!1,this.trackingClickStart=0,this.targetElement=null,this.touchStartX=0,this.touchStartY=0,this.lastTouchIdentifier=0,this.touchBoundary=n.touchBoundary||10,this.layer=e,this.tapDelay=n.tapDelay||200,this.tapTimeout=n.tapTimeout||700,!t.notNeeded(e)){for(var l=["onMouse","onClick","onTouchStart","onTouchMove","onTouchEnd","onTouchCancel"],a=this,c=0,s=l.length;c<s;c++)a[l[c]]=o(a[l[c]],a);i&&(e.addEventListener("mouseover",this.onMouse,!0),e.addEventListener("mousedown",this.onMouse,!0),e.addEventListener("mouseup",this.onMouse,!0)),e.addEventListener("click",this.onClick,!0),e.addEventListener("touchstart",this.onTouchStart,!1),e.addEventListener("touchmove",this.onTouchMove,!1),e.addEventListener("touchend",this.onTouchEnd,!1),e.addEventListener("touchcancel",this.onTouchCancel,!1),Event.prototype.stopImmediatePropagation||(e.removeEventListener=function(t,n,i){var o=Node.prototype.removeEventListener;"click"===t?o.call(e,t,n.hijacked||n,i):o.call(e,t,n,i)},e.addEventListener=function(t,n,i){var o=Node.prototype.addEventListener;"click"===t?o.call(e,t,n.hijacked||(n.hijacked=function(t){t.propagationStopped||n(t)}),i):o.call(e,t,n,i)}),"function"==typeof e.onclick&&(r=e.onclick,e.addEventListener("click",function(t){r(t)},!1),e.onclick=null)}}var n=navigator.userAgent.indexOf("Windows Phone")>=0,i=navigator.userAgent.indexOf("Android")>0&&!n,o=/iP(ad|hone|od)/.test(navigator.userAgent)&&!n,r=o&&/OS 4_\d(_\d)?/.test(navigator.userAgent),l=o&&/OS [6-7]_\d/.test(navigator.userAgent),a=navigator.userAgent.indexOf("BB10")>0;t.prototype.needsClick=function(t){switch(t.nodeName.toLowerCase()){case"button":case"select":case"textarea":if(t.disabled)return!0;break;case"input":if(o&&"file"===t.type||t.disabled)return!0;break;case"label":case"iframe":case"video":return!0}return/\bneedsclick\b/.test(t.className)},t.prototype.needsFocus=function(t){switch(t.nodeName.toLowerCase()){case"textarea":return!0;case"select":return!i;case"input":switch(t.type){case"button":case"checkbox":case"file":case"image":case"radio":case"submit":return!1}return!t.disabled&&!t.readOnly;default:return/\bneedsfocus\b/.test(t.className)}},t.prototype.sendClick=function(t,e){var n,i;document.activeElement&&document.activeElement!==t&&document.activeElement.blur(),i=e.changedTouches[0],n=document.createEvent("MouseEvents"),n.initMouseEvent(this.determineEventType(t),!0,!0,window,1,i.screenX,i.screenY,i.clientX,i.clientY,!1,!1,!1,!1,0,null),n.forwardedTouchEvent=!0,t.dispatchEvent(n)},t.prototype.determineEventType=function(t){return i&&"select"===t.tagName.toLowerCase()?"mousedown":"click"},t.prototype.focus=function(t){var e;o&&t.setSelectionRange&&0!==t.type.indexOf("date")&&"time"!==t.type&&"month"!==t.type?(e=t.value.length,t.setSelectionRange(e,e)):t.focus()},t.prototype.updateScrollParent=function(t){var e,n;if(e=t.fastClickScrollParent,!e||!e.contains(t)){n=t;do{if(n.scrollHeight>n.offsetHeight){e=n,t.fastClickScrollParent=n;break}n=n.parentElement}while(n)}e&&(e.fastClickLastScrollTop=e.scrollTop)},t.prototype.getTargetElementFromEventTarget=function(t){return t.nodeType===Node.TEXT_NODE?t.parentNode:t},t.prototype.onTouchStart=function(t){var e,n,i;if(t.targetTouches.length>1)return!0;if(e=this.getTargetElementFromEventTarget(t.target),n=t.targetTouches[0],o){if(i=window.getSelection(),i.rangeCount&&!i.isCollapsed)return!0;if(!r){if(n.identifier&&n.identifier===this.lastTouchIdentifier)return t.preventDefault(),!1;this.lastTouchIdentifier=n.identifier,this.updateScrollParent(e)}}return this.trackingClick=!0,this.trackingClickStart=t.timeStamp,this.targetElement=e,this.touchStartX=n.pageX,this.touchStartY=n.pageY,t.timeStamp-this.lastClickTime<this.tapDelay&&t.preventDefault(),!0},t.prototype.touchHasMoved=function(t){var e=t.changedTouches[0],n=this.touchBoundary;return Math.abs(e.pageX-this.touchStartX)>n||Math.abs(e.pageY-this.touchStartY)>n},t.prototype.onTouchMove=function(t){return!this.trackingClick||((this.targetElement!==this.getTargetElementFromEventTarget(t.target)||this.touchHasMoved(t))&&(this.trackingClick=!1,this.targetElement=null),!0)},t.prototype.findControl=function(t){return void 0!==t.control?t.control:t.htmlFor?document.getElementById(t.htmlFor):t.querySelector("button, input:not([type=hidden]), keygen, meter, output, progress, select, textarea")},t.prototype.onTouchEnd=function(t){var e,n,a,c,s,u=this.targetElement;if(!this.trackingClick)return!0;if(t.timeStamp-this.lastClickTime<this.tapDelay)return this.cancelNextClick=!0,!0;if(t.timeStamp-this.trackingClickStart>this.tapTimeout)return!0;if(this.cancelNextClick=!1,this.lastClickTime=t.timeStamp,n=this.trackingClickStart,this.trackingClick=!1,this.trackingClickStart=0,l&&(s=t.changedTouches[0],u=document.elementFromPoint(s.pageX-window.pageXOffset,s.pageY-window.pageYOffset)||u,u.fastClickScrollParent=this.targetElement.fastClickScrollParent),a=u.tagName.toLowerCase(),"label"===a){if(e=this.findControl(u)){if(this.focus(u),i)return!1;u=e}}else if(this.needsFocus(u))return t.timeStamp-n>100||o&&window.top!==window&&"input"===a?(this.targetElement=null,!1):(this.focus(u),this.sendClick(u,t),o&&"select"===a||(this.targetElement=null,t.preventDefault()),!1);return!(!o||r||(c=u.fastClickScrollParent,!c||c.fastClickLastScrollTop===c.scrollTop))||(this.needsClick(u)||(t.preventDefault(),this.sendClick(u,t)),!1)},t.prototype.onTouchCancel=function(){this.trackingClick=!1,this.targetElement=null},t.prototype.onMouse=function(t){return!this.targetElement||(!!t.forwardedTouchEvent||(!t.cancelable||(!(!this.needsClick(this.targetElement)||this.cancelNextClick)||(t.stopImmediatePropagation?t.stopImmediatePropagation():t.propagationStopped=!0,t.stopPropagation(),t.preventDefault(),!1))))},t.prototype.onClick=function(t){var e;return this.trackingClick?(this.targetElement=null,this.trackingClick=!1,!0):"submit"===t.target.type&&0===t.detail||(e=this.onMouse(t),e||(this.targetElement=null),e)},t.prototype.destroy=function(){var t=this.layer;i&&(t.removeEventListener("mouseover",this.onMouse,!0),t.removeEventListener("mousedown",this.onMouse,!0),t.removeEventListener("mouseup",this.onMouse,!0)),t.removeEventListener("click",this.onClick,!0),t.removeEventListener("touchstart",this.onTouchStart,!1),t.removeEventListener("touchmove",this.onTouchMove,!1),t.removeEventListener("touchend",this.onTouchEnd,!1),t.removeEventListener("touchcancel",this.onTouchCancel,!1)},t.notNeeded=function(t){var e,n,o,r;if("undefined"==typeof window.ontouchstart)return!0;if(n=+(/Chrome\/([0-9]+)/.exec(navigator.userAgent)||[,0])[1]){if(!i)return!0;if(e=document.querySelector("meta[name=viewport]")){if(e.content.indexOf("user-scalable=no")!==-1)return!0;if(n>31&&document.documentElement.scrollWidth<=window.outerWidth)return!0}}if(a&&(o=navigator.userAgent.match(/Version\/([0-9]*)\.([0-9]*)/),o[1]>=10&&o[2]>=3&&(e=document.querySelector("meta[name=viewport]")))){if(e.content.indexOf("user-scalable=no")!==-1)return!0;if(document.documentElement.scrollWidth<=window.outerWidth)return!0}return"none"===t.style.msTouchAction||"manipulation"===t.style.touchAction||(r=+(/Firefox\/([0-9]+)/.exec(navigator.userAgent)||[,0])[1],!!(r>=27&&(e=document.querySelector("meta[name=viewport]"),e&&(e.content.indexOf("user-scalable=no")!==-1||document.documentElement.scrollWidth<=window.outerWidth)))||("none"===t.style.touchAction||"manipulation"===t.style.touchAction))},t.attach=function(e,n){return new t(e,n)},"function"==typeof define&&"object"==typeof define.amd&&define.amd?define(function(){return t}):"undefined"!=typeof e&&e.exports?(e.exports=t.attach,e.exports.FastClick=t):window.FastClick=t}()},{}],6:[function(t,e,n){n.node=function(t){return void 0!==t&&t instanceof HTMLElement&&1===t.nodeType},n.nodeList=function(t){var e=Object.prototype.toString.call(t);return void 0!==t&&("[object NodeList]"===e||"[object HTMLCollection]"===e)&&"length"in t&&(0===t.length||n.node(t[0]))},n.string=function(t){return"string"==typeof t||t instanceof String},n.fn=function(t){var e=Object.prototype.toString.call(t);return"[object Function]"===e}},{}],7:[function(t,e,n){function i(t,e,n){if(!t&&!e&&!n)throw new Error("Missing required arguments");if(!a.string(e))throw new TypeError("Second argument must be a String");if(!a.fn(n))throw new TypeError("Third argument must be a Function");if(a.node(t))return o(t,e,n);if(a.nodeList(t))return r(t,e,n);if(a.string(t))return l(t,e,n);throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList")}function o(t,e,n){return t.addEventListener(e,n),{destroy:function(){t.removeEventListener(e,n)}}}function r(t,e,n){return Array.prototype.forEach.call(t,function(t){t.addEventListener(e,n)}),{destroy:function(){Array.prototype.forEach.call(t,function(t){t.removeEventListener(e,n)})}}}function l(t,e,n){return c(document.body,t,e,n)}var a=t("./is"),c=t("delegate");e.exports=i},{"./is":6,delegate:4}],8:[function(t,e,n){function i(t){var e;if("SELECT"===t.nodeName)t.focus(),e=t.value;else if("INPUT"===t.nodeName||"TEXTAREA"===t.nodeName)t.focus(),t.setSelectionRange(0,t.value.length),e=t.value;else{t.hasAttribute("contenteditable")&&t.focus();var n=window.getSelection(),i=document.createRange();i.selectNodeContents(t),n.removeAllRanges(),n.addRange(i),e=n.toString()}return e}e.exports=i},{}],9:[function(t,e,n){/*!
+
+	/*jslint browser:true, node:true*/
+	/*global define, Event, Node*/
+
+
+	/**
+	 * Instantiate fast-clicking listeners on the specified layer.
+	 *
+	 * @constructor
+	 * @param {Element} layer The layer to listen on
+	 * @param {Object} [options={}] The options to override the defaults
+	 */
+	function FastClick(layer, options) {
+		var oldOnClick;
+
+		options = options || {};
+
+		/**
+		 * Whether a click is currently being tracked.
+		 *
+		 * @type boolean
+		 */
+		this.trackingClick = false;
+
+
+		/**
+		 * Timestamp for when click tracking started.
+		 *
+		 * @type number
+		 */
+		this.trackingClickStart = 0;
+
+
+		/**
+		 * The element being tracked for a click.
+		 *
+		 * @type EventTarget
+		 */
+		this.targetElement = null;
+
+
+		/**
+		 * X-coordinate of touch start event.
+		 *
+		 * @type number
+		 */
+		this.touchStartX = 0;
+
+
+		/**
+		 * Y-coordinate of touch start event.
+		 *
+		 * @type number
+		 */
+		this.touchStartY = 0;
+
+
+		/**
+		 * ID of the last touch, retrieved from Touch.identifier.
+		 *
+		 * @type number
+		 */
+		this.lastTouchIdentifier = 0;
+
+
+		/**
+		 * Touchmove boundary, beyond which a click will be cancelled.
+		 *
+		 * @type number
+		 */
+		this.touchBoundary = options.touchBoundary || 10;
+
+
+		/**
+		 * The FastClick layer.
+		 *
+		 * @type Element
+		 */
+		this.layer = layer;
+
+		/**
+		 * The minimum time between tap(touchstart and touchend) events
+		 *
+		 * @type number
+		 */
+		this.tapDelay = options.tapDelay || 200;
+
+		/**
+		 * The maximum time for a tap
+		 *
+		 * @type number
+		 */
+		this.tapTimeout = options.tapTimeout || 700;
+
+		if (FastClick.notNeeded(layer)) {
+			return;
+		}
+
+		// Some old versions of Android don't have Function.prototype.bind
+		function bind(method, context) {
+			return function() { return method.apply(context, arguments); };
+		}
+
+
+		var methods = ['onMouse', 'onClick', 'onTouchStart', 'onTouchMove', 'onTouchEnd', 'onTouchCancel'];
+		var context = this;
+		for (var i = 0, l = methods.length; i < l; i++) {
+			context[methods[i]] = bind(context[methods[i]], context);
+		}
+
+		// Set up event handlers as required
+		if (deviceIsAndroid) {
+			layer.addEventListener('mouseover', this.onMouse, true);
+			layer.addEventListener('mousedown', this.onMouse, true);
+			layer.addEventListener('mouseup', this.onMouse, true);
+		}
+
+		layer.addEventListener('click', this.onClick, true);
+		layer.addEventListener('touchstart', this.onTouchStart, false);
+		layer.addEventListener('touchmove', this.onTouchMove, false);
+		layer.addEventListener('touchend', this.onTouchEnd, false);
+		layer.addEventListener('touchcancel', this.onTouchCancel, false);
+
+		// Hack is required for browsers that don't support Event#stopImmediatePropagation (e.g. Android 2)
+		// which is how FastClick normally stops click events bubbling to callbacks registered on the FastClick
+		// layer when they are cancelled.
+		if (!Event.prototype.stopImmediatePropagation) {
+			layer.removeEventListener = function(type, callback, capture) {
+				var rmv = Node.prototype.removeEventListener;
+				if (type === 'click') {
+					rmv.call(layer, type, callback.hijacked || callback, capture);
+				} else {
+					rmv.call(layer, type, callback, capture);
+				}
+			};
+
+			layer.addEventListener = function(type, callback, capture) {
+				var adv = Node.prototype.addEventListener;
+				if (type === 'click') {
+					adv.call(layer, type, callback.hijacked || (callback.hijacked = function(event) {
+						if (!event.propagationStopped) {
+							callback(event);
+						}
+					}), capture);
+				} else {
+					adv.call(layer, type, callback, capture);
+				}
+			};
+		}
+
+		// If a handler is already declared in the element's onclick attribute, it will be fired before
+		// FastClick's onClick handler. Fix this by pulling out the user-defined handler function and
+		// adding it as listener.
+		if (typeof layer.onclick === 'function') {
+
+			// Android browser on at least 3.2 requires a new reference to the function in layer.onclick
+			// - the old one won't work if passed to addEventListener directly.
+			oldOnClick = layer.onclick;
+			layer.addEventListener('click', function(event) {
+				oldOnClick(event);
+			}, false);
+			layer.onclick = null;
+		}
+	}
+
+	/**
+	* Windows Phone 8.1 fakes user agent string to look like Android and iPhone.
+	*
+	* @type boolean
+	*/
+	var deviceIsWindowsPhone = navigator.userAgent.indexOf("Windows Phone") >= 0;
+
+	/**
+	 * Android requires exceptions.
+	 *
+	 * @type boolean
+	 */
+	var deviceIsAndroid = navigator.userAgent.indexOf('Android') > 0 && !deviceIsWindowsPhone;
+
+
+	/**
+	 * iOS requires exceptions.
+	 *
+	 * @type boolean
+	 */
+	var deviceIsIOS = /iP(ad|hone|od)/.test(navigator.userAgent) && !deviceIsWindowsPhone;
+
+
+	/**
+	 * iOS 4 requires an exception for select elements.
+	 *
+	 * @type boolean
+	 */
+	var deviceIsIOS4 = deviceIsIOS && (/OS 4_\d(_\d)?/).test(navigator.userAgent);
+
+
+	/**
+	 * iOS 6.0-7.* requires the target element to be manually derived
+	 *
+	 * @type boolean
+	 */
+	var deviceIsIOSWithBadTarget = deviceIsIOS && (/OS [6-7]_\d/).test(navigator.userAgent);
+
+	/**
+	 * BlackBerry requires exceptions.
+	 *
+	 * @type boolean
+	 */
+	var deviceIsBlackBerry10 = navigator.userAgent.indexOf('BB10') > 0;
+
+	/**
+	 * Determine whether a given element requires a native click.
+	 *
+	 * @param {EventTarget|Element} target Target DOM element
+	 * @returns {boolean} Returns true if the element needs a native click
+	 */
+	FastClick.prototype.needsClick = function(target) {
+		switch (target.nodeName.toLowerCase()) {
+
+		// Don't send a synthetic click to disabled inputs (issue #62)
+		case 'button':
+		case 'select':
+		case 'textarea':
+			if (target.disabled) {
+				return true;
+			}
+
+			break;
+		case 'input':
+
+			// File inputs need real clicks on iOS 6 due to a browser bug (issue #68)
+			if ((deviceIsIOS && target.type === 'file') || target.disabled) {
+				return true;
+			}
+
+			break;
+		case 'label':
+		case 'iframe': // iOS8 homescreen apps can prevent events bubbling into frames
+		case 'video':
+			return true;
+		}
+
+		return (/\bneedsclick\b/).test(target.className);
+	};
+
+
+	/**
+	 * Determine whether a given element requires a call to focus to simulate click into element.
+	 *
+	 * @param {EventTarget|Element} target Target DOM element
+	 * @returns {boolean} Returns true if the element requires a call to focus to simulate native click.
+	 */
+	FastClick.prototype.needsFocus = function(target) {
+		switch (target.nodeName.toLowerCase()) {
+		case 'textarea':
+			return true;
+		case 'select':
+			return !deviceIsAndroid;
+		case 'input':
+			switch (target.type) {
+			case 'button':
+			case 'checkbox':
+			case 'file':
+			case 'image':
+			case 'radio':
+			case 'submit':
+				return false;
+			}
+
+			// No point in attempting to focus disabled inputs
+			return !target.disabled && !target.readOnly;
+		default:
+			return (/\bneedsfocus\b/).test(target.className);
+		}
+	};
+
+
+	/**
+	 * Send a click event to the specified element.
+	 *
+	 * @param {EventTarget|Element} targetElement
+	 * @param {Event} event
+	 */
+	FastClick.prototype.sendClick = function(targetElement, event) {
+		var clickEvent, touch;
+
+		// On some Android devices activeElement needs to be blurred otherwise the synthetic click will have no effect (#24)
+		if (document.activeElement && document.activeElement !== targetElement) {
+			document.activeElement.blur();
+		}
+
+		touch = event.changedTouches[0];
+
+		// Synthesise a click event, with an extra attribute so it can be tracked
+		clickEvent = document.createEvent('MouseEvents');
+		clickEvent.initMouseEvent(this.determineEventType(targetElement), true, true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);
+		clickEvent.forwardedTouchEvent = true;
+		targetElement.dispatchEvent(clickEvent);
+	};
+
+	FastClick.prototype.determineEventType = function(targetElement) {
+
+		//Issue #159: Android Chrome Select Box does not open with a synthetic click event
+		if (deviceIsAndroid && targetElement.tagName.toLowerCase() === 'select') {
+			return 'mousedown';
+		}
+
+		return 'click';
+	};
+
+
+	/**
+	 * @param {EventTarget|Element} targetElement
+	 */
+	FastClick.prototype.focus = function(targetElement) {
+		var length;
+
+		// Issue #160: on iOS 7, some input elements (e.g. date datetime month) throw a vague TypeError on setSelectionRange. These elements don't have an integer value for the selectionStart and selectionEnd properties, but unfortunately that can't be used for detection because accessing the properties also throws a TypeError. Just check the type instead. Filed as Apple bug #15122724.
+		if (deviceIsIOS && targetElement.setSelectionRange && targetElement.type.indexOf('date') !== 0 && targetElement.type !== 'time' && targetElement.type !== 'month') {
+			length = targetElement.value.length;
+			targetElement.setSelectionRange(length, length);
+		} else {
+			targetElement.focus();
+		}
+	};
+
+
+	/**
+	 * Check whether the given target element is a child of a scrollable layer and if so, set a flag on it.
+	 *
+	 * @param {EventTarget|Element} targetElement
+	 */
+	FastClick.prototype.updateScrollParent = function(targetElement) {
+		var scrollParent, parentElement;
+
+		scrollParent = targetElement.fastClickScrollParent;
+
+		// Attempt to discover whether the target element is contained within a scrollable layer. Re-check if the
+		// target element was moved to another parent.
+		if (!scrollParent || !scrollParent.contains(targetElement)) {
+			parentElement = targetElement;
+			do {
+				if (parentElement.scrollHeight > parentElement.offsetHeight) {
+					scrollParent = parentElement;
+					targetElement.fastClickScrollParent = parentElement;
+					break;
+				}
+
+				parentElement = parentElement.parentElement;
+			} while (parentElement);
+		}
+
+		// Always update the scroll top tracker if possible.
+		if (scrollParent) {
+			scrollParent.fastClickLastScrollTop = scrollParent.scrollTop;
+		}
+	};
+
+
+	/**
+	 * @param {EventTarget} targetElement
+	 * @returns {Element|EventTarget}
+	 */
+	FastClick.prototype.getTargetElementFromEventTarget = function(eventTarget) {
+
+		// On some older browsers (notably Safari on iOS 4.1 - see issue #56) the event target may be a text node.
+		if (eventTarget.nodeType === Node.TEXT_NODE) {
+			return eventTarget.parentNode;
+		}
+
+		return eventTarget;
+	};
+
+
+	/**
+	 * On touch start, record the position and scroll offset.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.onTouchStart = function(event) {
+		var targetElement, touch, selection;
+
+		// Ignore multiple touches, otherwise pinch-to-zoom is prevented if both fingers are on the FastClick element (issue #111).
+		if (event.targetTouches.length > 1) {
+			return true;
+		}
+
+		targetElement = this.getTargetElementFromEventTarget(event.target);
+		touch = event.targetTouches[0];
+
+		if (deviceIsIOS) {
+
+			// Only trusted events will deselect text on iOS (issue #49)
+			selection = window.getSelection();
+			if (selection.rangeCount && !selection.isCollapsed) {
+				return true;
+			}
+
+			if (!deviceIsIOS4) {
+
+				// Weird things happen on iOS when an alert or confirm dialog is opened from a click event callback (issue #23):
+				// when the user next taps anywhere else on the page, new touchstart and touchend events are dispatched
+				// with the same identifier as the touch event that previously triggered the click that triggered the alert.
+				// Sadly, there is an issue on iOS 4 that causes some normal touch events to have the same identifier as an
+				// immediately preceeding touch event (issue #52), so this fix is unavailable on that platform.
+				// Issue 120: touch.identifier is 0 when Chrome dev tools 'Emulate touch events' is set with an iOS device UA string,
+				// which causes all touch events to be ignored. As this block only applies to iOS, and iOS identifiers are always long,
+				// random integers, it's safe to to continue if the identifier is 0 here.
+				if (touch.identifier && touch.identifier === this.lastTouchIdentifier) {
+					event.preventDefault();
+					return false;
+				}
+
+				this.lastTouchIdentifier = touch.identifier;
+
+				// If the target element is a child of a scrollable layer (using -webkit-overflow-scrolling: touch) and:
+				// 1) the user does a fling scroll on the scrollable layer
+				// 2) the user stops the fling scroll with another tap
+				// then the event.target of the last 'touchend' event will be the element that was under the user's finger
+				// when the fling scroll was started, causing FastClick to send a click event to that layer - unless a check
+				// is made to ensure that a parent layer was not scrolled before sending a synthetic click (issue #42).
+				this.updateScrollParent(targetElement);
+			}
+		}
+
+		this.trackingClick = true;
+		this.trackingClickStart = event.timeStamp;
+		this.targetElement = targetElement;
+
+		this.touchStartX = touch.pageX;
+		this.touchStartY = touch.pageY;
+
+		// Prevent phantom clicks on fast double-tap (issue #36)
+		if ((event.timeStamp - this.lastClickTime) < this.tapDelay) {
+			event.preventDefault();
+		}
+
+		return true;
+	};
+
+
+	/**
+	 * Based on a touchmove event object, check whether the touch has moved past a boundary since it started.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.touchHasMoved = function(event) {
+		var touch = event.changedTouches[0], boundary = this.touchBoundary;
+
+		if (Math.abs(touch.pageX - this.touchStartX) > boundary || Math.abs(touch.pageY - this.touchStartY) > boundary) {
+			return true;
+		}
+
+		return false;
+	};
+
+
+	/**
+	 * Update the last position.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.onTouchMove = function(event) {
+		if (!this.trackingClick) {
+			return true;
+		}
+
+		// If the touch has moved, cancel the click tracking
+		if (this.targetElement !== this.getTargetElementFromEventTarget(event.target) || this.touchHasMoved(event)) {
+			this.trackingClick = false;
+			this.targetElement = null;
+		}
+
+		return true;
+	};
+
+
+	/**
+	 * Attempt to find the labelled control for the given label element.
+	 *
+	 * @param {EventTarget|HTMLLabelElement} labelElement
+	 * @returns {Element|null}
+	 */
+	FastClick.prototype.findControl = function(labelElement) {
+
+		// Fast path for newer browsers supporting the HTML5 control attribute
+		if (labelElement.control !== undefined) {
+			return labelElement.control;
+		}
+
+		// All browsers under test that support touch events also support the HTML5 htmlFor attribute
+		if (labelElement.htmlFor) {
+			return document.getElementById(labelElement.htmlFor);
+		}
+
+		// If no for attribute exists, attempt to retrieve the first labellable descendant element
+		// the list of which is defined here: http://www.w3.org/TR/html5/forms.html#category-label
+		return labelElement.querySelector('button, input:not([type=hidden]), keygen, meter, output, progress, select, textarea');
+	};
+
+
+	/**
+	 * On touch end, determine whether to send a click event at once.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.onTouchEnd = function(event) {
+		var forElement, trackingClickStart, targetTagName, scrollParent, touch, targetElement = this.targetElement;
+
+		if (!this.trackingClick) {
+			return true;
+		}
+
+		// Prevent phantom clicks on fast double-tap (issue #36)
+		if ((event.timeStamp - this.lastClickTime) < this.tapDelay) {
+			this.cancelNextClick = true;
+			return true;
+		}
+
+		if ((event.timeStamp - this.trackingClickStart) > this.tapTimeout) {
+			return true;
+		}
+
+		// Reset to prevent wrong click cancel on input (issue #156).
+		this.cancelNextClick = false;
+
+		this.lastClickTime = event.timeStamp;
+
+		trackingClickStart = this.trackingClickStart;
+		this.trackingClick = false;
+		this.trackingClickStart = 0;
+
+		// On some iOS devices, the targetElement supplied with the event is invalid if the layer
+		// is performing a transition or scroll, and has to be re-detected manually. Note that
+		// for this to function correctly, it must be called *after* the event target is checked!
+		// See issue #57; also filed as rdar://13048589 .
+		if (deviceIsIOSWithBadTarget) {
+			touch = event.changedTouches[0];
+
+			// In certain cases arguments of elementFromPoint can be negative, so prevent setting targetElement to null
+			targetElement = document.elementFromPoint(touch.pageX - window.pageXOffset, touch.pageY - window.pageYOffset) || targetElement;
+			targetElement.fastClickScrollParent = this.targetElement.fastClickScrollParent;
+		}
+
+		targetTagName = targetElement.tagName.toLowerCase();
+		if (targetTagName === 'label') {
+			forElement = this.findControl(targetElement);
+			if (forElement) {
+				this.focus(targetElement);
+				if (deviceIsAndroid) {
+					return false;
+				}
+
+				targetElement = forElement;
+			}
+		} else if (this.needsFocus(targetElement)) {
+
+			// Case 1: If the touch started a while ago (best guess is 100ms based on tests for issue #36) then focus will be triggered anyway. Return early and unset the target element reference so that the subsequent click will be allowed through.
+			// Case 2: Without this exception for input elements tapped when the document is contained in an iframe, then any inputted text won't be visible even though the value attribute is updated as the user types (issue #37).
+			if ((event.timeStamp - trackingClickStart) > 100 || (deviceIsIOS && window.top !== window && targetTagName === 'input')) {
+				this.targetElement = null;
+				return false;
+			}
+
+			this.focus(targetElement);
+			this.sendClick(targetElement, event);
+
+			// Select elements need the event to go through on iOS 4, otherwise the selector menu won't open.
+			// Also this breaks opening selects when VoiceOver is active on iOS6, iOS7 (and possibly others)
+			if (!deviceIsIOS || targetTagName !== 'select') {
+				this.targetElement = null;
+				event.preventDefault();
+			}
+
+			return false;
+		}
+
+		if (deviceIsIOS && !deviceIsIOS4) {
+
+			// Don't send a synthetic click event if the target element is contained within a parent layer that was scrolled
+			// and this tap is being used to stop the scrolling (usually initiated by a fling - issue #42).
+			scrollParent = targetElement.fastClickScrollParent;
+			if (scrollParent && scrollParent.fastClickLastScrollTop !== scrollParent.scrollTop) {
+				return true;
+			}
+		}
+
+		// Prevent the actual click from going though - unless the target node is marked as requiring
+		// real clicks or if it is in the whitelist in which case only non-programmatic clicks are permitted.
+		if (!this.needsClick(targetElement)) {
+			event.preventDefault();
+			this.sendClick(targetElement, event);
+		}
+
+		return false;
+	};
+
+
+	/**
+	 * On touch cancel, stop tracking the click.
+	 *
+	 * @returns {void}
+	 */
+	FastClick.prototype.onTouchCancel = function() {
+		this.trackingClick = false;
+		this.targetElement = null;
+	};
+
+
+	/**
+	 * Determine mouse events which should be permitted.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.onMouse = function(event) {
+
+		// If a target element was never set (because a touch event was never fired) allow the event
+		if (!this.targetElement) {
+			return true;
+		}
+
+		if (event.forwardedTouchEvent) {
+			return true;
+		}
+
+		// Programmatically generated events targeting a specific element should be permitted
+		if (!event.cancelable) {
+			return true;
+		}
+
+		// Derive and check the target element to see whether the mouse event needs to be permitted;
+		// unless explicitly enabled, prevent non-touch click events from triggering actions,
+		// to prevent ghost/doubleclicks.
+		if (!this.needsClick(this.targetElement) || this.cancelNextClick) {
+
+			// Prevent any user-added listeners declared on FastClick element from being fired.
+			if (event.stopImmediatePropagation) {
+				event.stopImmediatePropagation();
+			} else {
+
+				// Part of the hack for browsers that don't support Event#stopImmediatePropagation (e.g. Android 2)
+				event.propagationStopped = true;
+			}
+
+			// Cancel the event
+			event.stopPropagation();
+			event.preventDefault();
+
+			return false;
+		}
+
+		// If the mouse event is permitted, return true for the action to go through.
+		return true;
+	};
+
+
+	/**
+	 * On actual clicks, determine whether this is a touch-generated click, a click action occurring
+	 * naturally after a delay after a touch (which needs to be cancelled to avoid duplication), or
+	 * an actual click which should be permitted.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.onClick = function(event) {
+		var permitted;
+
+		// It's possible for another FastClick-like library delivered with third-party code to fire a click event before FastClick does (issue #44). In that case, set the click-tracking flag back to false and return early. This will cause onTouchEnd to return early.
+		if (this.trackingClick) {
+			this.targetElement = null;
+			this.trackingClick = false;
+			return true;
+		}
+
+		// Very odd behaviour on iOS (issue #18): if a submit element is present inside a form and the user hits enter in the iOS simulator or clicks the Go button on the pop-up OS keyboard the a kind of 'fake' click event will be triggered with the submit-type input element as the target.
+		if (event.target.type === 'submit' && event.detail === 0) {
+			return true;
+		}
+
+		permitted = this.onMouse(event);
+
+		// Only unset targetElement if the click is not permitted. This will ensure that the check for !targetElement in onMouse fails and the browser's click doesn't go through.
+		if (!permitted) {
+			this.targetElement = null;
+		}
+
+		// If clicks are permitted, return true for the action to go through.
+		return permitted;
+	};
+
+
+	/**
+	 * Remove all FastClick's event listeners.
+	 *
+	 * @returns {void}
+	 */
+	FastClick.prototype.destroy = function() {
+		var layer = this.layer;
+
+		if (deviceIsAndroid) {
+			layer.removeEventListener('mouseover', this.onMouse, true);
+			layer.removeEventListener('mousedown', this.onMouse, true);
+			layer.removeEventListener('mouseup', this.onMouse, true);
+		}
+
+		layer.removeEventListener('click', this.onClick, true);
+		layer.removeEventListener('touchstart', this.onTouchStart, false);
+		layer.removeEventListener('touchmove', this.onTouchMove, false);
+		layer.removeEventListener('touchend', this.onTouchEnd, false);
+		layer.removeEventListener('touchcancel', this.onTouchCancel, false);
+	};
+
+
+	/**
+	 * Check whether FastClick is needed.
+	 *
+	 * @param {Element} layer The layer to listen on
+	 */
+	FastClick.notNeeded = function(layer) {
+		var metaViewport;
+		var chromeVersion;
+		var blackberryVersion;
+		var firefoxVersion;
+
+		// Devices that don't support touch don't need FastClick
+		if (typeof window.ontouchstart === 'undefined') {
+			return true;
+		}
+
+		// Chrome version - zero for other browsers
+		chromeVersion = +(/Chrome\/([0-9]+)/.exec(navigator.userAgent) || [,0])[1];
+
+		if (chromeVersion) {
+
+			if (deviceIsAndroid) {
+				metaViewport = document.querySelector('meta[name=viewport]');
+
+				if (metaViewport) {
+					// Chrome on Android with user-scalable="no" doesn't need FastClick (issue #89)
+					if (metaViewport.content.indexOf('user-scalable=no') !== -1) {
+						return true;
+					}
+					// Chrome 32 and above with width=device-width or less don't need FastClick
+					if (chromeVersion > 31 && document.documentElement.scrollWidth <= window.outerWidth) {
+						return true;
+					}
+				}
+
+			// Chrome desktop doesn't need FastClick (issue #15)
+			} else {
+				return true;
+			}
+		}
+
+		if (deviceIsBlackBerry10) {
+			blackberryVersion = navigator.userAgent.match(/Version\/([0-9]*)\.([0-9]*)/);
+
+			// BlackBerry 10.3+ does not require Fastclick library.
+			// https://github.com/ftlabs/fastclick/issues/251
+			if (blackberryVersion[1] >= 10 && blackberryVersion[2] >= 3) {
+				metaViewport = document.querySelector('meta[name=viewport]');
+
+				if (metaViewport) {
+					// user-scalable=no eliminates click delay.
+					if (metaViewport.content.indexOf('user-scalable=no') !== -1) {
+						return true;
+					}
+					// width=device-width (or less than device-width) eliminates click delay.
+					if (document.documentElement.scrollWidth <= window.outerWidth) {
+						return true;
+					}
+				}
+			}
+		}
+
+		// IE10 with -ms-touch-action: none or manipulation, which disables double-tap-to-zoom (issue #97)
+		if (layer.style.msTouchAction === 'none' || layer.style.touchAction === 'manipulation') {
+			return true;
+		}
+
+		// Firefox version - zero for other browsers
+		firefoxVersion = +(/Firefox\/([0-9]+)/.exec(navigator.userAgent) || [,0])[1];
+
+		if (firefoxVersion >= 27) {
+			// Firefox 27+ does not have tap delay if the content is not zoomable - https://bugzilla.mozilla.org/show_bug.cgi?id=922896
+
+			metaViewport = document.querySelector('meta[name=viewport]');
+			if (metaViewport && (metaViewport.content.indexOf('user-scalable=no') !== -1 || document.documentElement.scrollWidth <= window.outerWidth)) {
+				return true;
+			}
+		}
+
+		// IE11: prefixed -ms-touch-action is no longer supported and it's recomended to use non-prefixed version
+		// http://msdn.microsoft.com/en-us/library/windows/apps/Hh767313.aspx
+		if (layer.style.touchAction === 'none' || layer.style.touchAction === 'manipulation') {
+			return true;
+		}
+
+		return false;
+	};
+
+
+	/**
+	 * Factory method for creating a FastClick object
+	 *
+	 * @param {Element} layer The layer to listen on
+	 * @param {Object} [options={}] The options to override the defaults
+	 */
+	FastClick.attach = function(layer, options) {
+		return new FastClick(layer, options);
+	};
+
+
+	if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+
+		// AMD. Register as an anonymous module.
+		define(function() {
+			return FastClick;
+		});
+	} else if (typeof module !== 'undefined' && module.exports) {
+		module.exports = FastClick.attach;
+		module.exports.FastClick = FastClick;
+	} else {
+		window.FastClick = FastClick;
+	}
+}());
+
+},{}],6:[function(require,module,exports){
+/**
+ * Check if argument is a HTML element.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.node = function(value) {
+    return value !== undefined
+        && value instanceof HTMLElement
+        && value.nodeType === 1;
+};
+
+/**
+ * Check if argument is a list of HTML elements.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.nodeList = function(value) {
+    var type = Object.prototype.toString.call(value);
+
+    return value !== undefined
+        && (type === '[object NodeList]' || type === '[object HTMLCollection]')
+        && ('length' in value)
+        && (value.length === 0 || exports.node(value[0]));
+};
+
+/**
+ * Check if argument is a string.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.string = function(value) {
+    return typeof value === 'string'
+        || value instanceof String;
+};
+
+/**
+ * Check if argument is a function.
+ *
+ * @param {Object} value
+ * @return {Boolean}
+ */
+exports.fn = function(value) {
+    var type = Object.prototype.toString.call(value);
+
+    return type === '[object Function]';
+};
+
+},{}],7:[function(require,module,exports){
+var is = require('./is');
+var delegate = require('delegate');
+
+/**
+ * Validates all params and calls the right
+ * listener function based on its target type.
+ *
+ * @param {String|HTMLElement|HTMLCollection|NodeList} target
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listen(target, type, callback) {
+    if (!target && !type && !callback) {
+        throw new Error('Missing required arguments');
+    }
+
+    if (!is.string(type)) {
+        throw new TypeError('Second argument must be a String');
+    }
+
+    if (!is.fn(callback)) {
+        throw new TypeError('Third argument must be a Function');
+    }
+
+    if (is.node(target)) {
+        return listenNode(target, type, callback);
+    }
+    else if (is.nodeList(target)) {
+        return listenNodeList(target, type, callback);
+    }
+    else if (is.string(target)) {
+        return listenSelector(target, type, callback);
+    }
+    else {
+        throw new TypeError('First argument must be a String, HTMLElement, HTMLCollection, or NodeList');
+    }
+}
+
+/**
+ * Adds an event listener to a HTML element
+ * and returns a remove listener function.
+ *
+ * @param {HTMLElement} node
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenNode(node, type, callback) {
+    node.addEventListener(type, callback);
+
+    return {
+        destroy: function() {
+            node.removeEventListener(type, callback);
+        }
+    }
+}
+
+/**
+ * Add an event listener to a list of HTML elements
+ * and returns a remove listener function.
+ *
+ * @param {NodeList|HTMLCollection} nodeList
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenNodeList(nodeList, type, callback) {
+    Array.prototype.forEach.call(nodeList, function(node) {
+        node.addEventListener(type, callback);
+    });
+
+    return {
+        destroy: function() {
+            Array.prototype.forEach.call(nodeList, function(node) {
+                node.removeEventListener(type, callback);
+            });
+        }
+    }
+}
+
+/**
+ * Add an event listener to a selector
+ * and returns a remove listener function.
+ *
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Object}
+ */
+function listenSelector(selector, type, callback) {
+    return delegate(document.body, selector, type, callback);
+}
+
+module.exports = listen;
+
+},{"./is":6,"delegate":4}],8:[function(require,module,exports){
+function select(element) {
+    var selectedText;
+
+    if (element.nodeName === 'SELECT') {
+        element.focus();
+
+        selectedText = element.value;
+    }
+    else if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
+        element.focus();
+        element.setSelectionRange(0, element.value.length);
+
+        selectedText = element.value;
+    }
+    else {
+        if (element.hasAttribute('contenteditable')) {
+            element.focus();
+        }
+
+        var selection = window.getSelection();
+        var range = document.createRange();
+
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        selectedText = selection.toString();
+    }
+
+    return selectedText;
+}
+
+module.exports = select;
+
+},{}],9:[function(require,module,exports){
+/*!
  * sweet-scroll
  * Modern and the sweet smooth scroll library.
  * @author tsuyoshiwada
  * @license MIT
  * @version 2.1.0
  */
-!function(t,i){"object"==typeof n&&"undefined"!=typeof e?e.exports=i():"function"==typeof define&&define.amd?define(i):t.SweetScroll=i()}(this,function(){"use strict";function t(t){return null==t?"":"object"===("undefined"==typeof t?"undefined":yt(t))||"function"==typeof t?Ct[Object.prototype.toString.call(t)]||"object":"undefined"==typeof t?"undefined":yt(t)}function e(e){return"number"===t(e)}function n(e){return"string"===t(e)}function i(e){return"function"===t(e)}function o(t){return Array.isArray(t)}function r(t){var n=null==t?null:t.length;return e(n)&&n>=0&&n<=Et}function l(t){return!o(t)&&t-parseFloat(t)+1>=0}function a(e){return!o(e)&&"object"===t(e)}function c(t,e){return t&&t.hasOwnProperty(e)}function s(t,e,n){if(null==t)return t;var i=n||t;if(a(t)){for(var o in t)if(c(t,o)&&e.call(i,t[o],o)===!1)break}else if(r(t))for(var l=0;l<t.length&&e.call(i,t[l],l)!==!1;l++);return t}function u(t){for(var e=arguments.length,n=Array(e>1?e-1:0),i=1;i<e;i++)n[i-1]=arguments[i];return s(n,function(e){s(e,function(e,n){t[n]=e})}),t}function h(t){return t.replace(/\s*/g,"")||""}function f(t){"undefined"!=typeof console&&"function"==typeof console.error&&console.error(t);try{throw new Error(t)}catch(t){}}function d(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;if(t)return(null==e?Tt:e).querySelector(t)}function p(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;if(t)return(null==e?Tt:e).querySelectorAll(t)}function v(t,e){for(var n=(t.document||t.ownerDocument).querySelectorAll(e),i=n.length;--i>=0&&n.item(i)!==t;);return i>-1}function g(t){return t===Tt.documentElement||t===Tt.body}function m(){var t=wt.outerWidth,e=wt.innerWidth;return t?t/e:1}function y(t){for(var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"y",n=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],i=xt[e],o=t instanceof Element?[t]:p(t),r=[],l=Tt.createElement("div"),a=0;a<o.length;a++){var c=o[a];if(c[i]>0?r.push(c):(l.style.width=c.clientWidth+1+"px",l.style.height=c.clientHeight+1+"px",c.appendChild(l),c[i]=1.5/m(),c[i]>0&&r.push(c),c[i]=0,c.removeChild(l)),!n&&r.length>0)break}return r}function k(t,e){var n=y(t,e,!1);return n.length>=1?n[0]:null}function b(t){return null!=t&&t===t.window?t:9===t.nodeType&&t.defaultView}function E(t){return vt(t.scrollHeight,t.clientHeight,t.offsetHeight)}function S(t){return vt(t.scrollWidth,t.clientWidth,t.offsetWidth)}function C(t){return{width:S(t),height:E(t)}}function w(){return{width:vt(S(Tt.body),S(Tt.documentElement)),height:vt(E(Tt.body),E(Tt.documentElement))}}function T(t){return g(t)?{viewport:{width:gt(wt.innerWidth,Tt.documentElement.clientWidth),height:wt.innerHeight},size:w()}:{viewport:{width:t.clientWidth,height:t.clientHeight},size:C(t)}}function x(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"y",n=b(t);return n?n[Lt[e]]:t[xt[e]]}function L(t,e){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:"y",i=b(t),o="y"===n;i?i.scrollTo(o?i[Lt.x]:e,o?e:i[Lt.y]):t[xt[n]]=e}function O(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;if(!t||t&&!t.getClientRects().length)return{top:0,left:0};var n=t.getBoundingClientRect();if(n.width||n.height){var i={},o=null;if(null==e||g(e))o=t.ownerDocument.documentElement,i.top=wt.pageYOffset,i.left=wt.pageXOffset;else{o=e;var r=o.getBoundingClientRect();i.top=r.top*-1+o.scrollTop,i.left=r.left*-1+o.scrollLeft}return{top:n.top+i.top-o.clientTop,left:n.left+i.left-o.clientLeft}}return n}function _(t,e,n){var i=e.split(",");i.forEach(function(e){t.addEventListener(e.trim(),n,!1)})}function A(t,e,n){var i=e.split(",");i.forEach(function(e){t.removeEventListener(e.trim(),n,!1)})}function M(t){return t}function I(t,e,n,i,o){return i*(e/=o)*e+n}function P(t,e,n,i,o){return-i*(e/=o)*(e-2)+n}function N(t,e,n,i,o){return(e/=o/2)<1?i/2*e*e+n:-i/2*(--e*(e-2)-1)+n}function D(t,e,n,i,o){return i*(e/=o)*e*e+n}function j(t,e,n,i,o){return i*((e=e/o-1)*e*e+1)+n}function $(t,e,n,i,o){return(e/=o/2)<1?i/2*e*e*e+n:i/2*((e-=2)*e*e+2)+n}function F(t,e,n,i,o){return i*(e/=o)*e*e*e+n}function q(t,e,n,i,o){return-i*((e=e/o-1)*e*e*e-1)+n}function H(t,e,n,i,o){return(e/=o/2)<1?i/2*e*e*e*e+n:-i/2*((e-=2)*e*e*e-2)+n}function W(t,e,n,i,o){return i*(e/=o)*e*e*e*e+n}function R(t,e,n,i,o){return i*((e=e/o-1)*e*e*e*e+1)+n}function B(t,e,n,i,o){return(e/=o/2)<1?i/2*e*e*e*e*e+n:i/2*((e-=2)*e*e*e*e+2)+n}function z(t,e,n,i,o){return-i*ct(e/o*(pt/2))+i+n}function X(t,e,n,i,o){return i*st(e/o*(pt/2))+n}function Y(t,e,n,i,o){return-i/2*(ct(pt*e/o)-1)+n}function Q(t,e,n,i,o){return 0===e?n:i*ut(2,10*(e/o-1))+n}function U(t,e,n,i,o){return e===o?n+i:i*(-ut(2,-10*e/o)+1)+n}function V(t,e,n,i,o){return 0===e?n:e===o?n+i:(e/=o/2)<1?i/2*ut(2,10*(e-1))+n:i/2*(-ut(2,-10*--e)+2)+n}function J(t,e,n,i,o){return-i*(ft(1-(e/=o)*e)-1)+n}function G(t,e,n,i,o){return i*ft(1-(e=e/o-1)*e)+n}function K(t,e,n,i,o){return(e/=o/2)<1?-i/2*(ft(1-e*e)-1)+n:i/2*(ft(1-(e-=2)*e)+1)+n}function Z(t,e,n,i,o){var r=1.70158,l=0,a=i;return 0===e?n:1===(e/=o)?n+i:(l||(l=.3*o),a<ht(i)?(a=i,r=l/4):r=l/(2*pt)*dt(i/a),-(a*ut(2,10*(e-=1))*st((e*o-r)*(2*pt)/l))+n)}function tt(t,e,n,i,o){var r=1.70158,l=0,a=i;return 0===e?n:1===(e/=o)?n+i:(l||(l=.3*o),a<ht(i)?(a=i,r=l/4):r=l/(2*pt)*dt(i/a),a*ut(2,-10*e)*st((e*o-r)*(2*pt)/l)+i+n)}function et(t,e,n,i,o){var r=1.70158,l=0,a=i;return 0===e?n:2===(e/=o/2)?n+i:(l||(l=o*(.3*1.5)),a<ht(i)?(a=i,r=l/4):r=l/(2*pt)*dt(i/a),e<1?-.5*(a*ut(2,10*(e-=1))*st((e*o-r)*(2*pt)/l))+n:a*ut(2,-10*(e-=1))*st((e*o-r)*(2*pt)/l)*.5+i+n)}function nt(t,e,n,i,o){var r=arguments.length>5&&void 0!==arguments[5]?arguments[5]:1.70158;return i*(e/=o)*e*((r+1)*e-r)+n}function it(t,e,n,i,o){var r=arguments.length>5&&void 0!==arguments[5]?arguments[5]:1.70158;return i*((e=e/o-1)*e*((r+1)*e+r)+1)+n}function ot(t,e,n,i,o){var r=arguments.length>5&&void 0!==arguments[5]?arguments[5]:1.70158;return(e/=o/2)<1?i/2*(e*e*(((r*=1.525)+1)*e-r))+n:i/2*((e-=2)*e*(((r*=1.525)+1)*e+r)+2)+n}function rt(t,e,n,i,o){return(e/=o)<1/2.75?i*(7.5625*e*e)+n:e<2/2.75?i*(7.5625*(e-=1.5/2.75)*e+.75)+n:e<2.5/2.75?i*(7.5625*(e-=2.25/2.75)*e+.9375)+n:i*(7.5625*(e-=2.625/2.75)*e+.984375)+n}function lt(t,e,n,i,o){return i-rt(t,o-e,0,i,o)+n}function at(t,e,n,i,o){return e<o/2?.5*lt(t,2*e,0,i,o)+n:.5*rt(t,2*e-o,0,i,o)+.5*i+n}var ct=Math.cos,st=Math.sin,ut=Math.pow,ht=Math.abs,ft=Math.sqrt,dt=Math.asin,pt=Math.PI,vt=Math.max,gt=Math.min,mt=Math.round,yt="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},kt=(function(){function t(t){this.value=t}function e(e){function n(t,e){return new Promise(function(n,o){var a={key:t,arg:e,resolve:n,reject:o,next:null};l?l=l.next=a:(r=l=a,i(t,e))})}function i(n,r){try{var l=e[n](r),a=l.value;a instanceof t?Promise.resolve(a.value).then(function(t){i("next",t)},function(t){i("throw",t)}):o(l.done?"return":"normal",l.value)}catch(t){o("throw",t)}}function o(t,e){switch(t){case"return":r.resolve({value:e,done:!0});break;case"throw":r.reject(e);break;default:r.resolve({value:e,done:!1})}r=r.next,r?i(r.key,r.arg):l=null}var r,l;this._invoke=n,"function"!=typeof e.return&&(this.return=void 0)}return"function"==typeof Symbol&&Symbol.asyncIterator&&(e.prototype[Symbol.asyncIterator]=function(){return this}),e.prototype.next=function(t){return this._invoke("next",t)},e.prototype.throw=function(t){return this._invoke("throw",t)},e.prototype.return=function(t){return this._invoke("return",t)},{wrap:function(t){return function(){return new e(t.apply(this,arguments))}},await:function(e){return new t(e)}}}(),function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}),bt=function(){function t(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}return function(e,n,i){return n&&t(e.prototype,n),i&&t(e,i),e}}(),Et=ut(2,53)-1,St=["Boolean","Number","String","Function","Array","Object"],Ct={};St.forEach(function(t){Ct["[object "+t+"]"]=t.toLowerCase()});for(var wt=window,Tt=document,xt={y:"scrollTop",x:"scrollLeft"},Lt={y:"pageYOffset",x:"pageXOffset"},Ot=(function(){var t=navigator.userAgent;return(t.indexOf("Android 2.")===-1&&t.indexOf("Android 4.0")===-1||t.indexOf("Mobile Safari")===-1||t.indexOf("Chrome")!==-1||t.indexOf("Windows Phone")!==-1)&&(wt.history&&"pushState"in wt.history&&"file:"!==wt.location.protocol)}()),_t=Object.freeze({linear:M,InQuad:I,OutQuad:P,InOutQuad:N,InCubic:D,OutCubic:j,InOutCubic:$,InQuart:F,OutQuart:q,InOutQuart:H,InQuint:W,OutQuint:R,InOutQuint:B,InSine:z,OutSine:X,InOutSine:Y,InExpo:Q,OutExpo:U,InOutExpo:V,InCirc:J,OutCirc:G,InOutCirc:K,InElastic:Z,OutElastic:tt,InOutElastic:et,InBack:nt,OutBack:it,InOutBack:ot,OutBounce:rt,InBounce:lt,InOutBounce:at}),At=["ms","moz","webkit"],Mt=0,It=wt.requestAnimationFrame,Pt=wt.cancelAnimationFrame,Nt=0;Nt<At.length&&!It;++Nt)It=wt[At[Nt]+"RequestAnimationFrame"],Pt=wt[At[Nt]+"CancelAnimationFrame"]||wt[At[Nt]+"CancelRequestAnimationFrame"];It||(It=function(t){var e=Date.now(),n=vt(0,16-(e-Mt)),i=setTimeout(function(){t(e+n)},n);return Mt=e+n,i}),Pt||(Pt=function(t){clearTimeout(t)});var Dt=function(){function t(e){kt(this,t),this.el=e,this.props={},this.options={},this.progress=!1,this.easing=null,this.startTime=null,this.rafId=null}return bt(t,[{key:"run",value:function(t,e,n){var o=this;this.progress||(this.props={x:t,y:e},this.options=n,this.easing=i(n.easing)?n.easing:_t[n.easing.replace("ease","")],this.progress=!0,setTimeout(function(){o.startProps=o.calcStartProps(t,e),o.rafId=It(function(t){return o._loop(t)})},this.options.delay))}},{key:"stop",value:function(){var t=!(arguments.length>0&&void 0!==arguments[0])||arguments[0],e=this.options.complete;this.startTime=null,this.progress=!1,Pt(this.rafId),t&&(L(this.el,this.props.x,"x"),L(this.el,this.props.y,"y")),i(e)&&(e.call(this),this.options.complete=null)}},{key:"_loop",value:function(t){var e=this;if(this.startTime||(this.startTime=t),!this.progress)return void this.stop(!1);var n=this.el,i=this.props,o=this.options,r=this.startTime,l=this.startProps,a=this.easing,c=o.duration,u=o.step,h={},f=t-r,d=gt(1,vt(f/c,0));s(i,function(t,e){var n=l[e],i=t-n;if(0===i)return!0;var o=a(d,c*d,0,1,c);h[e]=mt(n+i*o)}),s(h,function(t,e){L(n,t,e)}),f<=c?(u.call(this,d,h),this.rafId=It(function(t){return e._loop(t)})):this.stop(!0)}},{key:"calcStartProps",value:function(t,e){var n={x:x(this.el,"x"),y:x(this.el,"y")};if(this.options.quickMode){var i=T(this.el),o=i.viewport,r=o.width,l=o.height;ht(n.y-e)>l&&(n.y=n.y>e?e+l:e-l),ht(n.x-t)>r&&(n.x=n.x>t?t+r:t-r)}return n}}]),t}(),jt=function(){return"onwheel"in Tt?"wheel":"onmousewheel"in Tt?"mousewheel":"DOMMouseScroll"}(),$t=jt+", touchstart, touchmove",Ft=function(){function t(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"body, html";kt(this,t),this.options=u({},t.defaults,e),this.container=this.getContainer(n),null==this.container?(this.header=null,this.tween=null,/comp|inter|loaded/.test(Tt.readyState)?this.log('Not found scrollable container. => "'+n+'"'):this.log("Should be initialize later than DOMContentLoaded.")):(this.header=d(this.options.header),this.tween=new Dt(this.container),this._trigger=null,this._shouldCallCancelScroll=!1,this.bindContainerClick())}return bt(t,[{key:"log",value:function(t){this.options.outputLog&&f("[SweetScroll] "+t)}},{key:"getScrollOffset",value:function(t,e){var i=this.container,o=this.header,r=this.parseCoodinate(e.offset),l=this.parseCoodinate(t);if(!l&&n(t))if("#"===t)l={top:0,left:0};else{var a=d(t),c=O(a,i);if(!c)return;l=c}return l?(r&&(l.top+=r.top,l.left+=r.left),o&&(l.top=vt(0,l.top-C(o).height)),l):null}},{key:"normalizeScrollOffset",value:function(t,e){var n=this.container,i=u({},t),o=T(n),r=o.viewport,l=o.size;return i.top=e.verticalScroll?vt(0,gt(l.height-r.height,i.top)):x(n,"y"),i.left=e.horizontalScroll?vt(0,gt(l.width-r.width,i.left)):x(n,"x"),i}},{key:"to",value:function(t){var e=this,i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},o=this.container,r=u({},this.options,i),l=this._trigger,a=n(t)&&/^#/.test(t)?t:null;if(this._options=r,this._trigger=null,this._shouldCallCancelScroll=!1,this.stop(),!o)return this.log("Not found container element.");var c=this.getScrollOffset(t,r);return c?this.hook(r,"beforeScroll",c,l)===!1?void(this._options=null):(c=this.normalizeScrollOffset(c,r),this.tween.run(c.left,c.top,{duration:r.duration,delay:r.delay,easing:r.easing,quickMode:r.quickMode,complete:function(){null!=a&&a!==wt.location.hash&&e.updateURLHash(a,r.updateURL),e.unbindContainerStop(),e._options=null,e._shouldCallCancelScroll?e.hook(r,"cancelScroll"):e.hook(r,"afterScroll",c,l),e.hook(r,"completeScroll",e._shouldCallCancelScroll)},step:function(t,n){e.hook(r,"stepScroll",t,n)}}),void this.bindContainerStop()):this.log("Invalid parameter of distance. => "+t)}},{key:"toTop",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this.to(t,u({},e,{verticalScroll:!0,horizontalScroll:!1}))}},{key:"toLeft",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this.to(t,u({},e,{verticalScroll:!1,horizontalScroll:!0}))}},{key:"toElement",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};if(t instanceof Element){var n=O(t,this.container);this.to(n,u({},e))}else this.log("Invalid parameter.")}},{key:"stop",value:function(){var t=arguments.length>0&&void 0!==arguments[0]&&arguments[0];this.container?(this._stopScrollListener&&(this._shouldCallCancelScroll=!0),this.tween.stop(t)):this.log("Not found scrollable container.")}},{key:"update",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.container?(this.stop(),this.unbindContainerClick(),this.unbindContainerStop(),this.options=u({},this.options,t),this.header=d(this.options.header),this.bindContainerClick()):this.log("Not found scrollable container.")}},{key:"destroy",value:function(){this.container?(this.stop(),this.unbindContainerClick(),this.unbindContainerStop(),this.container=null,this.header=null,this.tween=null):this.log("Not found scrollable container.")}},{key:"beforeScroll",value:function(t,e){return!0}},{key:"cancelScroll",value:function(){}},{key:"afterScroll",value:function(t,e){}},{key:"completeScroll",value:function(t){}},{key:"stepScroll",value:function(t,e){}},{key:"parseCoodinate",value:function(t){var e=this._options?this._options.verticalScroll:this.options.verticalScroll,i={top:0,left:0};if(c(t,"top")||c(t,"left"))i=u(i,t);else if(o(t))2===t.length?(i.top=t[0],i.left=t[1]):(i.top=e?t[0]:0,i.left=e?0:t[0]);else if(l(t))i.top=e?t:0,i.left=e?0:t;else{if(!n(t))return null;var r=h(t);if(/^\d+,\d+$/.test(r))r=r.split(","),i.top=r[0],i.left=r[1];else if(/^(top|left):\d+,?(?:(top|left):\d+)?$/.test(r)){var a=r.match(/top:(\d+)/),s=r.match(/left:(\d+)/);i.top=a?a[1]:0,i.left=s?s[1]:0}else{if(!this.container||!/^(\+|-)=(\d+)$/.test(r))return null;var f=x(this.container,e?"y":"x"),d=r.match(/^(\+|-)=(\d+)$/),p=d[1],v=parseInt(d[2],10);"+"===p?(i.top=e?f+v:0,i.left=e?0:f+v):(i.top=e?f-v:0,i.left=e?0:f-v)}}return i.top=parseInt(i.top,10),i.left=parseInt(i.left,10),i}},{key:"updateURLHash",value:function(t,e){Ot&&e&&wt.history["replace"===e?"replaceState":"pushState"](null,null,t)}},{key:"getContainer",value:function(t){var e=this.options,n=e.verticalScroll,i=e.horizontalScroll,o=null;return n&&(o=k(t,"y")),!o&&i&&(o=k(t,"x")),o}},{key:"bindContainerClick",value:function(){var t=this.container;t&&(this._containerClickListener=this.handleContainerClick.bind(this),_(t,"click",this._containerClickListener))}},{key:"unbindContainerClick",value:function(){var t=this.container;t&&this._containerClickListener&&(A(t,"click",this._containerClickListener),this._containerClickListener=null)}},{key:"bindContainerStop",value:function(){var t=this.container;t&&(this._stopScrollListener=this.handleStopScroll.bind(this),_(t,$t,this._stopScrollListener))}},{key:"unbindContainerStop",value:function(){var t=this.container;t&&this._stopScrollListener&&(A(t,$t,this._stopScrollListener),this._stopScrollListener=null)}},{key:"hook",value:function(t,e){for(var n=t[e],o=arguments.length,r=Array(o>2?o-2:0),l=2;l<o;l++)r[l-2]=arguments[l];if(i(n)){var a=n.apply(this,r);if("undefined"==typeof a)return a}return this[e].apply(this,r)}},{key:"handleStopScroll",value:function(t){var e=this._options?this._options.stopScroll:this.options.stopScroll;e?this.stop():t.preventDefault()}},{key:"handleContainerClick",value:function(t){for(var e=this.options,n=t.target;n&&n!==Tt;n=n.parentNode)if(v(n,e.trigger)){var i=n.getAttribute("data-scroll"),o=this.parseDataOptions(n),r=i||n.getAttribute("href");e=u({},e,o),e.preventDefault&&t.preventDefault(),e.stopPropagation&&t.stopPropagation(),this._trigger=n,e.horizontalScroll&&e.verticalScroll?this.to(r,e):e.verticalScroll?this.toTop(r,e):e.horizontalScroll&&this.toLeft(r,e)}}},{key:"parseDataOptions",value:function(t){var e=t.getAttribute("data-scroll-options");return e?JSON.parse(e):{}}}]),t}();return Ft.defaults={trigger:"[data-scroll]",header:"[data-scroll-header]",duration:1e3,delay:0,easing:"easeOutQuint",offset:0,verticalScroll:!0,horizontalScroll:!1,stopScroll:!0,updateURL:!1,preventDefault:!0,stopPropagation:!0,outputLog:!1,quickMode:!1,beforeScroll:null,afterScroll:null,cancelScroll:null,completeScroll:null,stepScroll:null},Ft})},{}],10:[function(t,e,n){function i(){}i.prototype={on:function(t,e,n){var i=this.e||(this.e={});return(i[t]||(i[t]=[])).push({fn:e,ctx:n}),this},once:function(t,e,n){function i(){o.off(t,i),e.apply(n,arguments)}var o=this;return i._=e,this.on(t,i,n)},emit:function(t){var e=[].slice.call(arguments,1),n=((this.e||(this.e={}))[t]||[]).slice(),i=0,o=n.length;for(i;i<o;i++)n[i].fn.apply(n[i].ctx,e);return this},off:function(t,e){var n=this.e||(this.e={}),i=n[t],o=[];if(i&&e)for(var r=0,l=i.length;r<l;r++)i[r].fn!==e&&i[r].fn._!==e&&o.push(i[r]);return o.length?n[t]=o:delete n[t],this}},e.exports=i},{}],11:[function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}var o=t("fastclick"),r=i(o),l=t("clipboard"),a=i(l),c=t("sweet-scroll"),s=i(c),u=t("./gnav"),h=i(u),f=t("./utils/selectors"),d=t("./utils/events");(0,r.default)(document.body),(0,d.addEvent)(document,"DOMContentLoaded",function(){function t(t,e){var n="highlight-"+e,i=t.parentNode,o=t.className.match(/language-.+:(.+)/);i.id=n,o&&(t.className=t.className.replace(/(language-.+)(:.+)/,"$1"),i.insertAdjacentHTML("afterbegin",'<span class="highlight-filename">'+o[1]+"</span>")),i.insertAdjacentHTML("afterbegin",'<span class="highlight-copy" data-clipboard-target="#'+n+'"><span class="highlight-copy__msg"></span></span>'),hljs.highlightBlock(t)}function e(t,e){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1200,i=(0,f.$)(".highlight-copy__msg",t);i.textContent=e,i.classList.add("is-active"),t.classList.add("is-active"),setTimeout(function(){i.classList.remove("is-active"),t.classList.remove("is-active")},n)}(0,f.$)("html");new s.default({duration:600,quickMode:!0,easing:"easeOutQuart"});var n=(0,f.$$)("pre code");n&&Array.prototype.slice.call(n).forEach(t);var i=new a.default(".highlight-copy",{target:function(t){var e=(0,f.$)(t.getAttribute("data-clipboard-target")),n=(0,f.$)("code",e);return n}});i.on("success",function(t){e(t.trigger,"Copied!!"),t.clearSelection()}),i.on("error",function(t){e(t.trigger,"Error...")});var o=830,r=(0,f.$)(".header__logo"),l=!1;(0,d.addEvent)(r,"mouseenter, touchstart",function(t){l===!1&&(r.classList.add("is-hover"),clearInterval(l),l=setTimeout(function(){r.classList.remove("is-hover"),l=!1},o))}),new h.default})},{"./gnav":12,"./utils/events":13,"./utils/selectors":14,clipboard:2,fastclick:5,"sweet-scroll":9}],12:[function(t,e,n){"use strict";function i(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(n,"__esModule",{value:!0});var o=function(){function t(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}return function(e,n,i){return n&&t(e.prototype,n),i&&t(e,i),e}}(),r=t("./utils/selectors"),l=t("./utils/events"),a="onwheel"in document?"wheel":"onmousewheel"in document?"mousewheel":"DOMMouseScroll",c=[a,"touchmove"].join(","),s=function(){function t(){i(this,t),this.status=t.Status.CLOSE,this.$el=(0,r.$)("[data-gnav]"),this.$trigger=(0,r.$)("[data-gnav-trigger]"),this.$bg=(0,r.$)("[data-gnav-bg]"),this.$html=(0,r.$)("html"),this.bindEvents()}return o(t,[{key:"toggle",value:function(){this.status==t.Status.CLOSE?this.open():this.close()}},{key:"open",value:function(){this.status=t.Status.OPEN,this.$html.classList.add("is-gnav-open"),this.bindCloseEvents()}},{key:"close",value:function(){this.status=t.Status.CLOSE,this.$html.classList.remove("is-gnav-open"),this.unbindCloseEvents()}},{key:"bindEvents",value:function(){var t=this,e=["handleClick","handleBgClick","handleWheel","handleTriggerClick","handleDocWheel","handleDocClick"];e.forEach(function(e){t[e]=t[e].bind(t)}),(0,l.addEvent)(this.$el,"click",this.handleClick),(0,l.addEvent)(this.$bg,"click",this.handleBgClick),(0,l.addEvent)(this.$trigger,"click",this.handleTriggerClick)}},{key:"bindCloseEvents",value:function(){(0,l.addEvent)(this.$el,c,this.handleWheel),(0,l.addEvent)(document,c,this.handleDocWheel),(0,l.addEvent)(document,"click",this.handleDocClick)}},{key:"unbindCloseEvents",value:function(){(0,l.removeEvent)(this.$el,c,this.handleWheel),(0,l.removeEvent)(document,c,this.handleDocWheel),(0,l.removeEvent)(document,"click",this.handleDocClick)}},{key:"handleClick",value:function(t){t.stopPropagation()}},{key:"handleBgClick",value:function(t){t.preventDefault(),t.stopPropagation()}},{key:"handleWheel",value:function(t){t.preventDefault(),t.stopPropagation()}},{key:"handleTriggerClick",value:function(t){t.preventDefault(),t.stopPropagation(),this.toggle()}},{key:"handleDocWheel",value:function(){this.close()}},{key:"handleDocClick",value:function(t){t.preventDefault(),this.close()}}]),t}();n.default=s,s.Status={OPEN:1,CLOSE:2}},{"./utils/events":13,"./utils/selectors":14}],13:[function(t,e,n){"use strict";function i(t,e,n){var i=e.split(",");i.forEach(function(e){t.addEventListener(e.trim(),n,!1)})}function o(t,e,n){var i=e.split(",");i.forEach(function(e){t.removeEventListener(e.trim(),n,!1)})}Object.defineProperty(n,"__esModule",{value:!0}),n.addEvent=i,n.removeEvent=o},{}],14:[function(t,e,n){"use strict";function i(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;if(t)return(null==e?document:e).querySelector(t)}function o(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;if(t)return(null==e?document:e).querySelectorAll(t)}function r(t,e){for(var n=(t.document||t.ownerDocument).querySelectorAll(e),i=n.length;--i>=0&&n.item(i)!==t;);return i>-1}Object.defineProperty(n,"__esModule",{value:!0}),n.$=i,n.$$=o,n.matches=r},{}]},{},[11]);
+
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    (global.SweetScroll = factory());
+}(this, (function () { 'use strict';
+
+var cos = Math.cos;
+var sin = Math.sin;
+var pow = Math.pow;
+var abs = Math.abs;
+var sqrt = Math.sqrt;
+var asin = Math.asin;
+var PI = Math.PI;
+var max = Math.max;
+var min = Math.min;
+var round = Math.round;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+var asyncGenerator = function () {
+  function AwaitValue(value) {
+    this.value = value;
+  }
+
+  function AsyncGenerator(gen) {
+    var front, back;
+
+    function send(key, arg) {
+      return new Promise(function (resolve, reject) {
+        var request = {
+          key: key,
+          arg: arg,
+          resolve: resolve,
+          reject: reject,
+          next: null
+        };
+
+        if (back) {
+          back = back.next = request;
+        } else {
+          front = back = request;
+          resume(key, arg);
+        }
+      });
+    }
+
+    function resume(key, arg) {
+      try {
+        var result = gen[key](arg);
+        var value = result.value;
+
+        if (value instanceof AwaitValue) {
+          Promise.resolve(value.value).then(function (arg) {
+            resume("next", arg);
+          }, function (arg) {
+            resume("throw", arg);
+          });
+        } else {
+          settle(result.done ? "return" : "normal", result.value);
+        }
+      } catch (err) {
+        settle("throw", err);
+      }
+    }
+
+    function settle(type, value) {
+      switch (type) {
+        case "return":
+          front.resolve({
+            value: value,
+            done: true
+          });
+          break;
+
+        case "throw":
+          front.reject(value);
+          break;
+
+        default:
+          front.resolve({
+            value: value,
+            done: false
+          });
+          break;
+      }
+
+      front = front.next;
+
+      if (front) {
+        resume(front.key, front.arg);
+      } else {
+        back = null;
+      }
+    }
+
+    this._invoke = send;
+
+    if (typeof gen.return !== "function") {
+      this.return = undefined;
+    }
+  }
+
+  if (typeof Symbol === "function" && Symbol.asyncIterator) {
+    AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+      return this;
+    };
+  }
+
+  AsyncGenerator.prototype.next = function (arg) {
+    return this._invoke("next", arg);
+  };
+
+  AsyncGenerator.prototype.throw = function (arg) {
+    return this._invoke("throw", arg);
+  };
+
+  AsyncGenerator.prototype.return = function (arg) {
+    return this._invoke("return", arg);
+  };
+
+  return {
+    wrap: function (fn) {
+      return function () {
+        return new AsyncGenerator(fn.apply(this, arguments));
+      };
+    },
+    await: function (value) {
+      return new AwaitValue(value);
+    }
+  };
+}();
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
+
+
+
+var get = function get(object, property, receiver) {
+  if (object === null) object = Function.prototype;
+  var desc = Object.getOwnPropertyDescriptor(object, property);
+
+  if (desc === undefined) {
+    var parent = Object.getPrototypeOf(object);
+
+    if (parent === null) {
+      return undefined;
+    } else {
+      return get(parent, property, receiver);
+    }
+  } else if ("value" in desc) {
+    return desc.value;
+  } else {
+    var getter = desc.get;
+
+    if (getter === undefined) {
+      return undefined;
+    }
+
+    return getter.call(receiver);
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var set = function set(object, property, value, receiver) {
+  var desc = Object.getOwnPropertyDescriptor(object, property);
+
+  if (desc === undefined) {
+    var parent = Object.getPrototypeOf(object);
+
+    if (parent !== null) {
+      set(parent, property, value, receiver);
+    }
+  } else if ("value" in desc && desc.writable) {
+    desc.value = value;
+  } else {
+    var setter = desc.set;
+
+    if (setter !== undefined) {
+      setter.call(receiver, value);
+    }
+  }
+
+  return value;
+};
+
+var MAX_ARRAY_INDEX = pow(2, 53) - 1;
+var classTypeList = ["Boolean", "Number", "String", "Function", "Array", "Object"];
+var classTypes = {};
+
+classTypeList.forEach(function (name) {
+  classTypes["[object " + name + "]"] = name.toLowerCase();
+});
+
+function getType(obj) {
+  if (obj == null) {
+    return "";
+  }
+
+  return (typeof obj === "undefined" ? "undefined" : _typeof(obj)) === "object" || typeof obj === "function" ? classTypes[Object.prototype.toString.call(obj)] || "object" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
+}
+
+function isNumber(obj) {
+  return getType(obj) === "number";
+}
+
+function isString(obj) {
+  return getType(obj) === "string";
+}
+
+
+
+function isFunction(obj) {
+  return getType(obj) === "function";
+}
+
+function isArray(obj) {
+  return Array.isArray(obj);
+}
+
+function isArrayLike(obj) {
+  var length = obj == null ? null : obj.length;
+
+  return isNumber(length) && length >= 0 && length <= MAX_ARRAY_INDEX;
+}
+
+function isNumeric(obj) {
+  return !isArray(obj) && obj - parseFloat(obj) + 1 >= 0;
+}
+
+function isObject(obj) {
+  return !isArray(obj) && getType(obj) === "object";
+}
+
+function hasProp(obj, key) {
+  return obj && obj.hasOwnProperty(key);
+}
+
+
+
+function each(obj, iterate, context) {
+  if (obj == null) return obj;
+
+  var ctx = context || obj;
+
+  if (isObject(obj)) {
+    for (var key in obj) {
+      if (!hasProp(obj, key)) continue;
+      if (iterate.call(ctx, obj[key], key) === false) break;
+    }
+  } else if (isArrayLike(obj)) {
+    for (var i = 0; i < obj.length; i++) {
+      if (iterate.call(ctx, obj[i], i) === false) break;
+    }
+  }
+
+  return obj;
+}
+
+function merge(obj) {
+  for (var _len = arguments.length, sources = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    sources[_key - 1] = arguments[_key];
+  }
+
+  each(sources, function (source) {
+    each(source, function (value, key) {
+      obj[key] = value;
+    });
+  });
+
+  return obj;
+}
+
+function removeSpaces(str) {
+  return str.replace(/\s*/g, "") || "";
+}
+
+function warning(message) {
+  /* eslint-disable no-console */
+  if (typeof console !== "undefined" && typeof console.error === "function") {
+    console.error(message);
+  }
+  /* eslint-enable no-console */
+
+  /* eslint-disable no-empty */
+  try {
+    throw new Error(message);
+  } catch (e) {}
+  /* eslint-enable no-empty */
+}
+
+var win = window;
+var doc = document;
+
+function $(selector) {
+  var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (!selector) return;
+
+  return (context == null ? doc : context).querySelector(selector);
+}
+
+function $$(selector) {
+  var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (!selector) return;
+
+  return (context == null ? doc : context).querySelectorAll(selector);
+}
+
+function matches(el, selector) {
+  var results = (el.document || el.ownerDocument).querySelectorAll(selector);
+  var i = results.length;
+  while (--i >= 0 && results.item(i) !== el) {}
+
+  return i > -1;
+}
+
+var directionMethodMap = {
+  y: "scrollTop",
+  x: "scrollLeft"
+};
+
+var directionPropMap = {
+  y: "pageYOffset",
+  x: "pageXOffset"
+};
+
+function isRootContainer(el) {
+  return el === doc.documentElement || el === doc.body;
+}
+
+function getZoomLevel() {
+  var outerWidth = win.outerWidth,
+      innerWidth = win.innerWidth;
+
+
+  return outerWidth ? outerWidth / innerWidth : 1;
+}
+
+function getScrollable(selectors) {
+  var direction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "y";
+  var all = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+  var method = directionMethodMap[direction];
+  var elements = selectors instanceof Element ? [selectors] : $$(selectors);
+  var scrollables = [];
+  var $div = doc.createElement("div");
+
+  for (var i = 0; i < elements.length; i++) {
+    var el = elements[i];
+
+    if (el[method] > 0) {
+      scrollables.push(el);
+    } else {
+      $div.style.width = el.clientWidth + 1 + "px";
+      $div.style.height = el.clientHeight + 1 + "px";
+      el.appendChild($div);
+
+      el[method] = 1.5 / getZoomLevel();
+      if (el[method] > 0) {
+        scrollables.push(el);
+      }
+      el[method] = 0;
+
+      el.removeChild($div);
+    }
+
+    if (!all && scrollables.length > 0) break;
+  }
+
+  return scrollables;
+}
+
+function scrollableFind(selectors, direction) {
+  var scrollables = getScrollable(selectors, direction, false);
+
+  return scrollables.length >= 1 ? scrollables[0] : null;
+}
+
+function getWindow(el) {
+  return el != null && el === el.window ? el : el.nodeType === 9 && el.defaultView;
+}
+
+function getHeight(el) {
+  return max(el.scrollHeight, el.clientHeight, el.offsetHeight);
+}
+
+function getWidth(el) {
+  return max(el.scrollWidth, el.clientWidth, el.offsetWidth);
+}
+
+function getSize(el) {
+  return {
+    width: getWidth(el),
+    height: getHeight(el)
+  };
+}
+
+function getDocumentSize() {
+  return {
+    width: max(getWidth(doc.body), getWidth(doc.documentElement)),
+    height: max(getHeight(doc.body), getHeight(doc.documentElement))
+  };
+}
+
+function getViewportAndElementSizes(el) {
+  if (isRootContainer(el)) {
+    return {
+      viewport: {
+        width: min(win.innerWidth, doc.documentElement.clientWidth),
+        height: win.innerHeight
+      },
+      size: getDocumentSize()
+    };
+  }
+
+  return {
+    viewport: {
+      width: el.clientWidth,
+      height: el.clientHeight
+    },
+    size: getSize(el)
+  };
+}
+
+function getScroll(el) {
+  var direction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "y";
+
+  var currentWindow = getWindow(el);
+
+  return currentWindow ? currentWindow[directionPropMap[direction]] : el[directionMethodMap[direction]];
+}
+
+function setScroll(el, offset) {
+  var direction = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "y";
+
+  var currentWindow = getWindow(el);
+  var top = direction === "y";
+  if (currentWindow) {
+    currentWindow.scrollTo(!top ? offset : currentWindow[directionPropMap.x], top ? offset : currentWindow[directionPropMap.y]);
+  } else {
+    el[directionMethodMap[direction]] = offset;
+  }
+}
+
+function getOffset(el) {
+  var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (!el || el && !el.getClientRects().length) {
+    return { top: 0, left: 0 };
+  }
+
+  var rect = el.getBoundingClientRect();
+
+  if (rect.width || rect.height) {
+    var scroll = {};
+    var ctx = null;
+    if (context == null || isRootContainer(context)) {
+      ctx = el.ownerDocument.documentElement;
+      scroll.top = win.pageYOffset;
+      scroll.left = win.pageXOffset;
+    } else {
+      ctx = context;
+      var ctxRect = ctx.getBoundingClientRect();
+      scroll.top = ctxRect.top * -1 + ctx.scrollTop;
+      scroll.left = ctxRect.left * -1 + ctx.scrollLeft;
+    }
+
+    return {
+      top: rect.top + scroll.top - ctx.clientTop,
+      left: rect.left + scroll.left - ctx.clientLeft
+    };
+  }
+
+  return rect;
+}
+
+// @link https://github.com/Modernizr/Modernizr
+var history = function () {
+  var ua = navigator.userAgent;
+  if ((ua.indexOf("Android 2.") !== -1 || ua.indexOf("Android 4.0") !== -1) && ua.indexOf("Mobile Safari") !== -1 && ua.indexOf("Chrome") === -1 && ua.indexOf("Windows Phone") === -1) {
+    return false;
+  }
+
+  return win.history && "pushState" in win.history && win.location.protocol !== "file:";
+}();
+
+function addEvent(el, event, listener) {
+  var events = event.split(",");
+  events.forEach(function (eventName) {
+    el.addEventListener(eventName.trim(), listener, false);
+  });
+}
+
+function removeEvent(el, event, listener) {
+  var events = event.split(",");
+  events.forEach(function (eventName) {
+    el.removeEventListener(eventName.trim(), listener, false);
+  });
+}
+
+/* eslint-disable no-param-reassign, newline-before-return, max-params, new-cap */
+function linear(p) {
+  return p;
+}
+
+function InQuad(x, t, b, c, d) {
+  return c * (t /= d) * t + b;
+}
+
+function OutQuad(x, t, b, c, d) {
+  return -c * (t /= d) * (t - 2) + b;
+}
+
+function InOutQuad(x, t, b, c, d) {
+  if ((t /= d / 2) < 1) {
+    return c / 2 * t * t + b;
+  }
+  return -c / 2 * (--t * (t - 2) - 1) + b;
+}
+
+function InCubic(x, t, b, c, d) {
+  return c * (t /= d) * t * t + b;
+}
+
+function OutCubic(x, t, b, c, d) {
+  return c * ((t = t / d - 1) * t * t + 1) + b;
+}
+
+function InOutCubic(x, t, b, c, d) {
+  if ((t /= d / 2) < 1) {
+    return c / 2 * t * t * t + b;
+  }
+  return c / 2 * ((t -= 2) * t * t + 2) + b;
+}
+
+function InQuart(x, t, b, c, d) {
+  return c * (t /= d) * t * t * t + b;
+}
+
+function OutQuart(x, t, b, c, d) {
+  return -c * ((t = t / d - 1) * t * t * t - 1) + b;
+}
+
+function InOutQuart(x, t, b, c, d) {
+  if ((t /= d / 2) < 1) {
+    return c / 2 * t * t * t * t + b;
+  }
+  return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+}
+
+function InQuint(x, t, b, c, d) {
+  return c * (t /= d) * t * t * t * t + b;
+}
+
+function OutQuint(x, t, b, c, d) {
+  return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
+}
+
+function InOutQuint(x, t, b, c, d) {
+  if ((t /= d / 2) < 1) {
+    return c / 2 * t * t * t * t * t + b;
+  }
+  return c / 2 * ((t -= 2) * t * t * t * t + 2) + b;
+}
+
+function InSine(x, t, b, c, d) {
+  return -c * cos(t / d * (PI / 2)) + c + b;
+}
+
+function OutSine(x, t, b, c, d) {
+  return c * sin(t / d * (PI / 2)) + b;
+}
+
+function InOutSine(x, t, b, c, d) {
+  return -c / 2 * (cos(PI * t / d) - 1) + b;
+}
+
+function InExpo(x, t, b, c, d) {
+  return t === 0 ? b : c * pow(2, 10 * (t / d - 1)) + b;
+}
+
+function OutExpo(x, t, b, c, d) {
+  return t === d ? b + c : c * (-pow(2, -10 * t / d) + 1) + b;
+}
+
+function InOutExpo(x, t, b, c, d) {
+  if (t === 0) return b;
+  if (t === d) return b + c;
+  if ((t /= d / 2) < 1) return c / 2 * pow(2, 10 * (t - 1)) + b;
+  return c / 2 * (-pow(2, -10 * --t) + 2) + b;
+}
+
+function InCirc(x, t, b, c, d) {
+  return -c * (sqrt(1 - (t /= d) * t) - 1) + b;
+}
+
+function OutCirc(x, t, b, c, d) {
+  return c * sqrt(1 - (t = t / d - 1) * t) + b;
+}
+
+function InOutCirc(x, t, b, c, d) {
+  if ((t /= d / 2) < 1) {
+    return -c / 2 * (sqrt(1 - t * t) - 1) + b;
+  }
+  return c / 2 * (sqrt(1 - (t -= 2) * t) + 1) + b;
+}
+
+function InElastic(x, t, b, c, d) {
+  var s = 1.70158;
+  var p = 0;
+  var a = c;
+  if (t === 0) return b;
+  if ((t /= d) === 1) return b + c;
+  if (!p) p = d * .3;
+  if (a < abs(c)) {
+    a = c;
+    s = p / 4;
+  } else {
+    s = p / (2 * PI) * asin(c / a);
+  }
+  return -(a * pow(2, 10 * (t -= 1)) * sin((t * d - s) * (2 * PI) / p)) + b;
+}
+
+function OutElastic(x, t, b, c, d) {
+  var s = 1.70158;
+  var p = 0;
+  var a = c;
+  if (t === 0) return b;
+  if ((t /= d) === 1) return b + c;
+  if (!p) p = d * .3;
+  if (a < abs(c)) {
+    a = c;
+    s = p / 4;
+  } else {
+    s = p / (2 * PI) * asin(c / a);
+  }
+  return a * pow(2, -10 * t) * sin((t * d - s) * (2 * PI) / p) + c + b;
+}
+
+function InOutElastic(x, t, b, c, d) {
+  var s = 1.70158;
+  var p = 0;
+  var a = c;
+  if (t === 0) return b;
+  if ((t /= d / 2) === 2) return b + c;
+  if (!p) p = d * (.3 * 1.5);
+  if (a < abs(c)) {
+    a = c;
+    s = p / 4;
+  } else {
+    s = p / (2 * PI) * asin(c / a);
+  }
+  if (t < 1) {
+    return -.5 * (a * pow(2, 10 * (t -= 1)) * sin((t * d - s) * (2 * PI) / p)) + b;
+  }
+  return a * pow(2, -10 * (t -= 1)) * sin((t * d - s) * (2 * PI) / p) * .5 + c + b;
+}
+
+function InBack(x, t, b, c, d) {
+  var s = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 1.70158;
+
+  return c * (t /= d) * t * ((s + 1) * t - s) + b;
+}
+
+function OutBack(x, t, b, c, d) {
+  var s = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 1.70158;
+
+  return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
+}
+
+function InOutBack(x, t, b, c, d) {
+  var s = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 1.70158;
+
+  if ((t /= d / 2) < 1) {
+    return c / 2 * (t * t * (((s *= 1.525) + 1) * t - s)) + b;
+  }
+  return c / 2 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2) + b;
+}
+
+function OutBounce(x, t, b, c, d) {
+  if ((t /= d) < 1 / 2.75) {
+    return c * (7.5625 * t * t) + b;
+  } else if (t < 2 / 2.75) {
+    return c * (7.5625 * (t -= 1.5 / 2.75) * t + .75) + b;
+  } else if (t < 2.5 / 2.75) {
+    return c * (7.5625 * (t -= 2.25 / 2.75) * t + .9375) + b;
+  } else {
+    return c * (7.5625 * (t -= 2.625 / 2.75) * t + .984375) + b;
+  }
+}
+
+function InBounce(x, t, b, c, d) {
+  return c - OutBounce(x, d - t, 0, c, d) + b;
+}
+
+function InOutBounce(x, t, b, c, d) {
+  if (t < d / 2) {
+    return InBounce(x, t * 2, 0, c, d) * .5 + b;
+  }
+  return OutBounce(x, t * 2 - d, 0, c, d) * .5 + c * .5 + b;
+}
+
+var Easing = Object.freeze({
+	linear: linear,
+	InQuad: InQuad,
+	OutQuad: OutQuad,
+	InOutQuad: InOutQuad,
+	InCubic: InCubic,
+	OutCubic: OutCubic,
+	InOutCubic: InOutCubic,
+	InQuart: InQuart,
+	OutQuart: OutQuart,
+	InOutQuart: InOutQuart,
+	InQuint: InQuint,
+	OutQuint: OutQuint,
+	InOutQuint: InOutQuint,
+	InSine: InSine,
+	OutSine: OutSine,
+	InOutSine: InOutSine,
+	InExpo: InExpo,
+	OutExpo: OutExpo,
+	InOutExpo: InOutExpo,
+	InCirc: InCirc,
+	OutCirc: OutCirc,
+	InOutCirc: InOutCirc,
+	InElastic: InElastic,
+	OutElastic: OutElastic,
+	InOutElastic: InOutElastic,
+	InBack: InBack,
+	OutBack: OutBack,
+	InOutBack: InOutBack,
+	OutBounce: OutBounce,
+	InBounce: InBounce,
+	InOutBounce: InOutBounce
+});
+
+var vendors = ["ms", "moz", "webkit"];
+var lastTime = 0;
+
+var raf = win.requestAnimationFrame;
+var caf = win.cancelAnimationFrame;
+
+for (var x = 0; x < vendors.length && !raf; ++x) {
+  raf = win[vendors[x] + "RequestAnimationFrame"];
+  caf = win[vendors[x] + "CancelAnimationFrame"] || win[vendors[x] + "CancelRequestAnimationFrame"];
+}
+
+if (!raf) {
+  raf = function raf(callback) {
+    var currentTime = Date.now();
+    var timeToCall = max(0, 16 - (currentTime - lastTime));
+    var id = setTimeout(function () {
+      callback(currentTime + timeToCall);
+    }, timeToCall);
+
+    lastTime = currentTime + timeToCall;
+
+    return id;
+  };
+}
+
+if (!caf) {
+  caf = function caf(id) {
+    clearTimeout(id);
+  };
+}
+
+var ScrollTween = function () {
+  function ScrollTween(el) {
+    classCallCheck(this, ScrollTween);
+
+    this.el = el;
+    this.props = {};
+    this.options = {};
+    this.progress = false;
+    this.easing = null;
+    this.startTime = null;
+    this.rafId = null;
+  }
+
+  createClass(ScrollTween, [{
+    key: "run",
+    value: function run(x, y, options) {
+      var _this = this;
+
+      if (this.progress) return;
+      this.props = { x: x, y: y };
+      this.options = options;
+      this.easing = isFunction(options.easing) ? options.easing : Easing[options.easing.replace("ease", "")];
+      this.progress = true;
+
+      setTimeout(function () {
+        _this.startProps = _this.calcStartProps(x, y);
+        _this.rafId = raf(function (time) {
+          return _this._loop(time);
+        });
+      }, this.options.delay);
+    }
+  }, {
+    key: "stop",
+    value: function stop() {
+      var gotoEnd = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      var complete = this.options.complete;
+
+      this.startTime = null;
+      this.progress = false;
+      caf(this.rafId);
+
+      if (gotoEnd) {
+        setScroll(this.el, this.props.x, "x");
+        setScroll(this.el, this.props.y, "y");
+      }
+
+      if (isFunction(complete)) {
+        complete.call(this);
+        this.options.complete = null;
+      }
+    }
+  }, {
+    key: "_loop",
+    value: function _loop(time) {
+      var _this2 = this;
+
+      if (!this.startTime) {
+        this.startTime = time;
+      }
+
+      if (!this.progress) {
+        this.stop(false);
+
+        return;
+      }
+
+      var el = this.el,
+          props = this.props,
+          options = this.options,
+          startTime = this.startTime,
+          startProps = this.startProps,
+          easing = this.easing;
+      var duration = options.duration,
+          step = options.step;
+
+      var toProps = {};
+      var timeElapsed = time - startTime;
+      var t = min(1, max(timeElapsed / duration, 0));
+
+      each(props, function (value, key) {
+        var initialValue = startProps[key];
+        var delta = value - initialValue;
+        if (delta === 0) return true;
+
+        var val = easing(t, duration * t, 0, 1, duration);
+        toProps[key] = round(initialValue + delta * val);
+      });
+
+      each(toProps, function (value, key) {
+        setScroll(el, value, key);
+      });
+
+      if (timeElapsed <= duration) {
+        step.call(this, t, toProps);
+        this.rafId = raf(function (currentTime) {
+          return _this2._loop(currentTime);
+        });
+      } else {
+        this.stop(true);
+      }
+    }
+  }, {
+    key: "calcStartProps",
+    value: function calcStartProps(x, y) {
+      var startProps = {
+        x: getScroll(this.el, "x"),
+        y: getScroll(this.el, "y")
+      };
+
+      if (this.options.quickMode) {
+        var _Dom$getViewportAndEl = getViewportAndElementSizes(this.el),
+            _Dom$getViewportAndEl2 = _Dom$getViewportAndEl.viewport,
+            width = _Dom$getViewportAndEl2.width,
+            height = _Dom$getViewportAndEl2.height;
+
+        if (abs(startProps.y - y) > height) {
+          startProps.y = startProps.y > y ? y + height : y - height;
+        }
+
+        if (abs(startProps.x - x) > width) {
+          startProps.x = startProps.x > x ? x + width : x - width;
+        }
+      }
+
+      return startProps;
+    }
+  }]);
+  return ScrollTween;
+}();
+
+var WHEEL_EVENT = function () {
+  if ("onwheel" in doc) {
+    return "wheel";
+  } else if ("onmousewheel" in doc) {
+    return "mousewheel";
+  } else {
+    return "DOMMouseScroll";
+  }
+}();
+
+var CONTAINER_STOP_EVENTS = WHEEL_EVENT + ", touchstart, touchmove";
+
+var SweetScroll = function () {
+  /* eslint-enable max-len */
+
+  /**
+   * SweetScroll constructor
+   * @constructor
+   * @param {Object} options
+   * @param {String | Element} container
+   */
+  function SweetScroll() {
+    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var container = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "body, html";
+    classCallCheck(this, SweetScroll);
+
+    this.options = merge({}, SweetScroll.defaults, options);
+    this.container = this.getContainer(container);
+
+    if (this.container == null) {
+      this.header = null;
+      this.tween = null;
+
+      if (!/comp|inter|loaded/.test(doc.readyState)) {
+        this.log("Should be initialize later than DOMContentLoaded.");
+      } else {
+        this.log("Not found scrollable container. => \"" + container + "\"");
+      }
+    } else {
+      this.header = $(this.options.header);
+      this.tween = new ScrollTween(this.container);
+      this._trigger = null;
+      this._shouldCallCancelScroll = false;
+      this.bindContainerClick();
+    }
+  }
+
+  /**
+   * Output log
+   * @param {String} message
+   * @return {void}
+   */
+
+
+  // Default options
+  /* eslint-disable max-len */
+
+
+  createClass(SweetScroll, [{
+    key: "log",
+    value: function log(message) {
+      if (this.options.outputLog) {
+        warning("[SweetScroll] " + message);
+      }
+    }
+
+    /**
+     * Get scroll offset
+     * @param {*} distance
+     * @param {Object} options
+     * @return {Object}
+     * @private
+     */
+
+  }, {
+    key: "getScrollOffset",
+    value: function getScrollOffset(distance, options) {
+      var container = this.container,
+          header = this.header;
+
+      var offset = this.parseCoodinate(options.offset);
+      var scroll = this.parseCoodinate(distance);
+
+      // Using the coordinates in the case of CSS Selector
+      if (!scroll && isString(distance)) {
+        if (distance === "#") {
+          scroll = {
+            top: 0,
+            left: 0
+          };
+        } else {
+          var target = $(distance);
+          var targetOffset = getOffset(target, container);
+          if (!targetOffset) return;
+          scroll = targetOffset;
+        }
+      }
+
+      if (!scroll) {
+        return null;
+      }
+
+      // Apply `offset` value
+      if (offset) {
+        scroll.top += offset.top;
+        scroll.left += offset.left;
+      }
+
+      // If the header is present apply the height
+      if (header) {
+        scroll.top = max(0, scroll.top - getSize(header).height);
+      }
+
+      return scroll;
+    }
+
+    /**
+     * Normalize scroll offset
+     * @param {Ojbect} scroll
+     * @param {Ojbect} options
+     * @return {Object}
+     * @private
+     */
+
+  }, {
+    key: "normalizeScrollOffset",
+    value: function normalizeScrollOffset(scroll, options) {
+      var container = this.container;
+
+      var finalScroll = merge({}, scroll);
+
+      // Determine the final scroll coordinates
+
+      var _Dom$getViewportAndEl = getViewportAndElementSizes(container),
+          viewport = _Dom$getViewportAndEl.viewport,
+          size = _Dom$getViewportAndEl.size;
+
+      // Adjustment of the maximum value
+
+
+      finalScroll.top = options.verticalScroll ? max(0, min(size.height - viewport.height, finalScroll.top)) : getScroll(container, "y");
+
+      finalScroll.left = options.horizontalScroll ? max(0, min(size.width - viewport.width, finalScroll.left)) : getScroll(container, "x");
+
+      return finalScroll;
+    }
+
+    /**
+     * Scroll animation to the specified position
+     * @param {*} distance
+     * @param {Object} options
+     * @return {void}
+     */
+
+  }, {
+    key: "to",
+    value: function to(distance) {
+      var _this = this;
+
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var container = this.container;
+
+      var params = merge({}, this.options, options);
+      var trigger = this._trigger;
+      var hash = isString(distance) && /^#/.test(distance) ? distance : null;
+
+      // Temporary options
+      this._options = params;
+
+      // Remove the triggering elements which has been temporarily retained
+      this._trigger = null;
+
+      // Disable the call flag of `cancelScroll`
+      this._shouldCallCancelScroll = false;
+
+      // Stop current animation
+      this.stop();
+
+      // Does not move if the container is not found
+      if (!container) {
+        return this.log("Not found container element.");
+      }
+
+      // Get scroll offset
+      var scroll = this.getScrollOffset(distance, params);
+
+      if (!scroll) {
+        return this.log("Invalid parameter of distance. => " + distance);
+      }
+
+      // Call `beforeScroll`
+      // Stop scrolling when it returns false
+      if (this.hook(params, "beforeScroll", scroll, trigger) === false) {
+        this._options = null;
+        return;
+      }
+
+      scroll = this.normalizeScrollOffset(scroll, params);
+
+      // Run the animation!!
+      this.tween.run(scroll.left, scroll.top, {
+        duration: params.duration,
+        delay: params.delay,
+        easing: params.easing,
+        quickMode: params.quickMode,
+        complete: function complete() {
+          // Update URL
+          if (hash != null && hash !== win.location.hash) {
+            _this.updateURLHash(hash, params.updateURL);
+          }
+
+          // Unbind the scroll stop events, And call `afterScroll` or `cancelScroll`
+          _this.unbindContainerStop();
+
+          // Remove the temporary options
+          _this._options = null;
+
+          // Call `cancelScroll` or `afterScroll`
+          if (_this._shouldCallCancelScroll) {
+            _this.hook(params, "cancelScroll");
+          } else {
+            _this.hook(params, "afterScroll", scroll, trigger);
+          }
+
+          // Call `completeScroll`
+          _this.hook(params, "completeScroll", _this._shouldCallCancelScroll);
+        },
+        step: function step(currentTime, props) {
+          _this.hook(params, "stepScroll", currentTime, props);
+        }
+      });
+
+      // Bind the scroll stop events
+      this.bindContainerStop();
+    }
+
+    /**
+     * Scroll animation to the specified top position
+     * @param {*} distance
+     * @param {Object} options
+     * @return {void}
+     */
+
+  }, {
+    key: "toTop",
+    value: function toTop(distance) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      this.to(distance, merge({}, options, {
+        verticalScroll: true,
+        horizontalScroll: false
+      }));
+    }
+
+    /**
+     * Scroll animation to the specified left position
+     * @param {*} distance
+     * @param {Object} options
+     * @return {void}
+     */
+
+  }, {
+    key: "toLeft",
+    value: function toLeft(distance) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      this.to(distance, merge({}, options, {
+        verticalScroll: false,
+        horizontalScroll: true
+      }));
+    }
+
+    /**
+     * Scroll animation to the specified element
+     * @param {Element} el
+     * @param {Object} options
+     * @return {void}
+     */
+
+  }, {
+    key: "toElement",
+    value: function toElement(el) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      if (el instanceof Element) {
+        var offset = getOffset(el, this.container);
+        this.to(offset, merge({}, options));
+      } else {
+        this.log("Invalid parameter.");
+      }
+    }
+
+    /**
+     * Stop the current animation
+     * @param {Boolean} gotoEnd
+     * @return {void}
+     */
+
+  }, {
+    key: "stop",
+    value: function stop() {
+      var gotoEnd = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+      if (!this.container) {
+        this.log("Not found scrollable container.");
+      } else {
+        if (this._stopScrollListener) {
+          this._shouldCallCancelScroll = true;
+        }
+
+        this.tween.stop(gotoEnd);
+      }
+    }
+
+    /**
+     * Update the instance
+     * @param {Object} options
+     * @return {void}
+     */
+
+  }, {
+    key: "update",
+    value: function update() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (!this.container) {
+        this.log("Not found scrollable container.");
+      } else {
+        this.stop();
+        this.unbindContainerClick();
+        this.unbindContainerStop();
+        this.options = merge({}, this.options, options);
+        this.header = $(this.options.header);
+        this.bindContainerClick();
+      }
+    }
+
+    /**
+     * Destroy SweetScroll instance
+     * @return {void}
+     */
+
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      if (!this.container) {
+        this.log("Not found scrollable container.");
+      } else {
+        this.stop();
+        this.unbindContainerClick();
+        this.unbindContainerStop();
+        this.container = null;
+        this.header = null;
+        this.tween = null;
+      }
+    }
+
+    /* eslint-disable no-unused-vars */
+    /**
+     * Called at before of the scroll.
+     * @param {Object} toScroll
+     * @param {Element} trigger
+     * @return {Boolean}
+     */
+
+  }, {
+    key: "beforeScroll",
+    value: function beforeScroll(toScroll, trigger) {
+      return true;
+    }
+
+    /**
+     * Called at cancel of the scroll.
+     * @return {void}
+     */
+
+  }, {
+    key: "cancelScroll",
+    value: function cancelScroll() {}
+
+    /**
+     * Called at after of the scroll.
+     * @param {Object} toScroll
+     * @param {Element} trigger
+     * @return {void}
+     */
+
+  }, {
+    key: "afterScroll",
+    value: function afterScroll(toScroll, trigger) {}
+
+    /**
+     * Called at complete of the scroll.
+     * @param {Boolean} isCancel
+     * @return {void}
+     */
+
+  }, {
+    key: "completeScroll",
+    value: function completeScroll(isCancel) {}
+
+    /**
+     * Called at each animation frame of the scroll.
+     * @param {Float} currentTime
+     * @param {Object} props
+     * @return {void}
+     */
+
+  }, {
+    key: "stepScroll",
+    value: function stepScroll(currentTime, props) {}
+    /* eslint-enable no-unused-vars */
+
+    /**
+     * Parse the value of coordinate
+     * @param {*} coodinate
+     * @return {Object}
+     */
+
+  }, {
+    key: "parseCoodinate",
+    value: function parseCoodinate(coodinate) {
+      var enableTop = this._options ? this._options.verticalScroll : this.options.verticalScroll;
+      var scroll = { top: 0, left: 0 };
+
+      // Object
+      if (hasProp(coodinate, "top") || hasProp(coodinate, "left")) {
+        scroll = merge(scroll, coodinate);
+
+        // Array
+      } else if (isArray(coodinate)) {
+        if (coodinate.length === 2) {
+          scroll.top = coodinate[0];
+          scroll.left = coodinate[1];
+        } else {
+          scroll.top = enableTop ? coodinate[0] : 0;
+          scroll.left = !enableTop ? coodinate[0] : 0;
+        }
+
+        // Number
+      } else if (isNumeric(coodinate)) {
+        scroll.top = enableTop ? coodinate : 0;
+        scroll.left = !enableTop ? coodinate : 0;
+
+        // String
+      } else if (isString(coodinate)) {
+        var trimedCoodinate = removeSpaces(coodinate);
+
+        // "{n},{n}" (Array like syntax)
+        if (/^\d+,\d+$/.test(trimedCoodinate)) {
+          trimedCoodinate = trimedCoodinate.split(",");
+          scroll.top = trimedCoodinate[0];
+          scroll.left = trimedCoodinate[1];
+
+          // "top:{n}, left:{n}" (Object like syntax)
+        } else if (/^(top|left):\d+,?(?:(top|left):\d+)?$/.test(trimedCoodinate)) {
+          var top = trimedCoodinate.match(/top:(\d+)/);
+          var left = trimedCoodinate.match(/left:(\d+)/);
+          scroll.top = top ? top[1] : 0;
+          scroll.left = left ? left[1] : 0;
+
+          // "+={n}", "-={n}" (Relative position)
+        } else if (this.container && /^(\+|-)=(\d+)$/.test(trimedCoodinate)) {
+          var current = getScroll(this.container, enableTop ? "y" : "x");
+          var results = trimedCoodinate.match(/^(\+|-)=(\d+)$/);
+          var op = results[1];
+          var value = parseInt(results[2], 10);
+          if (op === "+") {
+            scroll.top = enableTop ? current + value : 0;
+            scroll.left = !enableTop ? current + value : 0;
+          } else {
+            scroll.top = enableTop ? current - value : 0;
+            scroll.left = !enableTop ? current - value : 0;
+          }
+        } else {
+          return null;
+        }
+      } else {
+        return null;
+      }
+
+      scroll.top = parseInt(scroll.top, 10);
+      scroll.left = parseInt(scroll.left, 10);
+
+      return scroll;
+    }
+
+    /**
+     * Update the Hash of the URL.
+     * @param {String} hash
+     * @param {Boolean | String} historyType
+     * @return {void}
+     */
+
+  }, {
+    key: "updateURLHash",
+    value: function updateURLHash(hash, historyType) {
+      if (!history || !historyType) return;
+      win.history[historyType === "replace" ? "replaceState" : "pushState"](null, null, hash);
+    }
+
+    /**
+     * Get the container for the scroll, depending on the options.
+     * @param {String | Element} selector
+     * @return {?Element}
+     * @private
+     */
+
+  }, {
+    key: "getContainer",
+    value: function getContainer(selector) {
+      var _options = this.options,
+          verticalScroll = _options.verticalScroll,
+          horizontalScroll = _options.horizontalScroll;
+
+      var container = null;
+
+      if (verticalScroll) {
+        container = scrollableFind(selector, "y");
+      }
+
+      if (!container && horizontalScroll) {
+        container = scrollableFind(selector, "x");
+      }
+
+      return container;
+    }
+
+    /**
+     * Bind a click event to the container
+     * @return {void}
+     * @private
+     */
+
+  }, {
+    key: "bindContainerClick",
+    value: function bindContainerClick() {
+      var container = this.container;
+
+      if (!container) return;
+      this._containerClickListener = this.handleContainerClick.bind(this);
+      addEvent(container, "click", this._containerClickListener);
+    }
+
+    /**
+     * Unbind a click event to the container
+     * @return {void}
+     * @private
+     */
+
+  }, {
+    key: "unbindContainerClick",
+    value: function unbindContainerClick() {
+      var container = this.container;
+
+      if (!container || !this._containerClickListener) return;
+      removeEvent(container, "click", this._containerClickListener);
+      this._containerClickListener = null;
+    }
+
+    /**
+     * Bind the scroll stop of events
+     * @return {void}
+     * @private
+     */
+
+  }, {
+    key: "bindContainerStop",
+    value: function bindContainerStop() {
+      var container = this.container;
+
+      if (!container) return;
+      this._stopScrollListener = this.handleStopScroll.bind(this);
+      addEvent(container, CONTAINER_STOP_EVENTS, this._stopScrollListener);
+    }
+
+    /**
+     * Unbind the scroll stop of events
+     * @return {void}
+     * @private
+     */
+
+  }, {
+    key: "unbindContainerStop",
+    value: function unbindContainerStop() {
+      var container = this.container;
+
+      if (!container || !this._stopScrollListener) return;
+      removeEvent(container, CONTAINER_STOP_EVENTS, this._stopScrollListener);
+      this._stopScrollListener = null;
+    }
+
+    /**
+     * Call the specified callback
+     * @param {Object} options
+     * @param {String} type
+     * @param {...*} args
+     * @return {void}
+     * @private
+     */
+
+  }, {
+    key: "hook",
+    value: function hook(options, type) {
+      var callback = options[type];
+
+      // callback
+
+      for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+        args[_key - 2] = arguments[_key];
+      }
+
+      if (isFunction(callback)) {
+        var result = callback.apply(this, args);
+        if (typeof result === "undefined") return result;
+      }
+
+      // method
+      return this[type].apply(this, args);
+    }
+
+    /**
+     * Handling of scroll stop event
+     * @param {Event} e
+     * @return {void}
+     * @private
+     */
+
+  }, {
+    key: "handleStopScroll",
+    value: function handleStopScroll(e) {
+      var stopScroll = this._options ? this._options.stopScroll : this.options.stopScroll;
+      if (stopScroll) {
+        this.stop();
+      } else {
+        e.preventDefault();
+      }
+    }
+
+    /**
+     * Handling of container click event
+     * @param {Event} e
+     * @return {void}
+     * @private
+     */
+
+  }, {
+    key: "handleContainerClick",
+    value: function handleContainerClick(e) {
+      var options = this.options;
+
+      var el = e.target;
+
+      // Explore parent element until the trigger selector matches
+      for (; el && el !== doc; el = el.parentNode) {
+        if (!matches(el, options.trigger)) continue;
+        var data = el.getAttribute("data-scroll");
+        var dataOptions = this.parseDataOptions(el);
+        var href = data || el.getAttribute("href");
+
+        options = merge({}, options, dataOptions);
+
+        if (options.preventDefault) e.preventDefault();
+        if (options.stopPropagation) e.stopPropagation();
+
+        // Passes the trigger elements to callback
+        this._trigger = el;
+
+        if (options.horizontalScroll && options.verticalScroll) {
+          this.to(href, options);
+        } else if (options.verticalScroll) {
+          this.toTop(href, options);
+        } else if (options.horizontalScroll) {
+          this.toLeft(href, options);
+        }
+      }
+    }
+
+    /**
+     * Parse the data-scroll-options attribute
+     * @param {Element} el
+     * @return {Object}
+     * @private
+     */
+
+  }, {
+    key: "parseDataOptions",
+    value: function parseDataOptions(el) {
+      var options = el.getAttribute("data-scroll-options");
+      return options ? JSON.parse(options) : {};
+    }
+  }]);
+  return SweetScroll;
+}();
+
+// Export SweetScroll class
+
+
+SweetScroll.defaults = {
+  trigger: "[data-scroll]", // Selector for trigger (must be a valid css selector)
+  header: "[data-scroll-header]", // Selector for fixed header (must be a valid css selector)
+  duration: 1000, // Specifies animation duration in integer
+  delay: 0, // Specifies timer for delaying the execution of the scroll in milliseconds
+  easing: "easeOutQuint", // Specifies the pattern of easing
+  offset: 0, // Specifies the value to offset the scroll position in pixels
+  verticalScroll: true, // Enable the vertical scroll
+  horizontalScroll: false, // Enable the horizontal scroll
+  stopScroll: true, // When fired wheel or touchstart events to stop scrolling
+  updateURL: false, // Update the URL hash on after scroll (true | false | "push" | "replace")
+  preventDefault: true, // Cancels the container element click event
+  stopPropagation: true, // Prevents further propagation of the container element click event in the bubbling phase
+  outputLog: false, // Specify level of output to log
+  quickMode: false, // Instantly scroll to the destination! (It's recommended to use it with `easeOutExpo`)
+
+  // Callbacks
+  beforeScroll: null,
+  afterScroll: null,
+  cancelScroll: null,
+  completeScroll: null,
+  stepScroll: null
+};
+
+return SweetScroll;
+
+})));
+
+},{}],10:[function(require,module,exports){
+function E () {
+  // Keep this empty so it's easier to inherit from
+  // (via https://github.com/lipsmack from https://github.com/scottcorgan/tiny-emitter/issues/3)
+}
+
+E.prototype = {
+  on: function (name, callback, ctx) {
+    var e = this.e || (this.e = {});
+
+    (e[name] || (e[name] = [])).push({
+      fn: callback,
+      ctx: ctx
+    });
+
+    return this;
+  },
+
+  once: function (name, callback, ctx) {
+    var self = this;
+    function listener () {
+      self.off(name, listener);
+      callback.apply(ctx, arguments);
+    };
+
+    listener._ = callback
+    return this.on(name, listener, ctx);
+  },
+
+  emit: function (name) {
+    var data = [].slice.call(arguments, 1);
+    var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
+    var i = 0;
+    var len = evtArr.length;
+
+    for (i; i < len; i++) {
+      evtArr[i].fn.apply(evtArr[i].ctx, data);
+    }
+
+    return this;
+  },
+
+  off: function (name, callback) {
+    var e = this.e || (this.e = {});
+    var evts = e[name];
+    var liveEvents = [];
+
+    if (evts && callback) {
+      for (var i = 0, len = evts.length; i < len; i++) {
+        if (evts[i].fn !== callback && evts[i].fn._ !== callback)
+          liveEvents.push(evts[i]);
+      }
+    }
+
+    // Remove event from queue to prevent memory leak
+    // Suggested by https://github.com/lazd
+    // Ref: https://github.com/scottcorgan/tiny-emitter/commit/c6ebfaa9bc973b33d110a84a307742b7cf94c953#commitcomment-5024910
+
+    (liveEvents.length)
+      ? e[name] = liveEvents
+      : delete e[name];
+
+    return this;
+  }
+};
+
+module.exports = E;
+
+},{}],11:[function(require,module,exports){
+"use strict";
+
+var _fastclick = require("fastclick");
+
+var _fastclick2 = _interopRequireDefault(_fastclick);
+
+var _clipboard = require("clipboard");
+
+var _clipboard2 = _interopRequireDefault(_clipboard);
+
+var _sweetScroll = require("sweet-scroll");
+
+var _sweetScroll2 = _interopRequireDefault(_sweetScroll);
+
+var _gnav = require("./gnav");
+
+var _gnav2 = _interopRequireDefault(_gnav);
+
+var _selectors = require("./utils/selectors");
+
+var _events = require("./utils/events");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _fastclick2.default)(document.body);
+
+(0, _events.addEvent)(document, "DOMContentLoaded", function () {
+  var $html = (0, _selectors.$)("html");
+
+  // Scroll
+  new _sweetScroll2.default({
+    duration: 1200,
+    easing: "easeOutQuart"
+  });
+
+  // Code block
+  var $codeBlocks = (0, _selectors.$$)("pre code");
+
+  function initializeCodeBlock($el, index) {
+    var id = "highlight-" + index;
+    var $pre = $el.parentNode;
+    var filename = $el.className.match(/language-.+:(.+)/);
+
+    $pre.id = id;
+
+    // filename
+    if (filename) {
+      $el.className = $el.className.replace(/(language-.+)(:.+)/, "$1");
+      $pre.insertAdjacentHTML("afterbegin", "<span class=\"highlight-filename\">" + filename[1] + "</span>");
+    }
+
+    // btn copy
+    $pre.insertAdjacentHTML("afterbegin", "<span class=\"highlight-copy\" data-clipboard-target=\"#" + id + "\"><span class=\"highlight-copy__msg\"></span></span>");
+
+    hljs.highlightBlock($el);
+  }
+
+  if ($codeBlocks) {
+    Array.prototype.slice.call($codeBlocks).forEach(initializeCodeBlock);
+  }
+
+  // Copy code
+  var clipboard = new _clipboard2.default(".highlight-copy", {
+    target: function target(trigger) {
+      var $pre = (0, _selectors.$)(trigger.getAttribute("data-clipboard-target"));
+      var $code = (0, _selectors.$)("code", $pre);
+      return $code;
+    }
+  });
+
+  function clipboardMsg(trigger, msg) {
+    var timeout = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1200;
+
+    var $msg = (0, _selectors.$)(".highlight-copy__msg", trigger);
+    $msg.textContent = msg;
+    $msg.classList.add("is-active");
+    trigger.classList.add("is-active");
+    setTimeout(function () {
+      $msg.classList.remove("is-active");
+      trigger.classList.remove("is-active");
+    }, timeout);
+  }
+
+  clipboard.on("success", function (e) {
+    clipboardMsg(e.trigger, "Copied!!");
+    e.clearSelection();
+  });
+
+  clipboard.on("error", function (e) {
+    clipboardMsg(e.trigger, "Error...");
+  });
+
+  // Logo
+  var HEADER_LOGO_DURATION = 830;
+  var $headerLogo = (0, _selectors.$)(".header__logo");
+  var headerLogoTimer = false;
+
+  (0, _events.addEvent)($headerLogo, "mouseenter, touchstart", function (e) {
+    if (headerLogoTimer !== false) return;
+
+    $headerLogo.classList.add("is-hover");
+
+    clearInterval(headerLogoTimer);
+
+    headerLogoTimer = setTimeout(function () {
+      $headerLogo.classList.remove("is-hover");
+      headerLogoTimer = false;
+    }, HEADER_LOGO_DURATION);
+  });
+
+  // Gnav
+  new _gnav2.default();
+});
+
+},{"./gnav":12,"./utils/events":13,"./utils/selectors":14,"clipboard":2,"fastclick":5,"sweet-scroll":9}],12:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _selectors = require("./utils/selectors");
+
+var _events = require("./utils/events");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var WHEEL_EVENT = "onwheel" in document ? "wheel" : "onmousewheel" in document ? "mousewheel" : "DOMMouseScroll";
+var CLOSE_EVENTS = [WHEEL_EVENT, "touchmove"].join(",");
+
+var Gnav = function () {
+  function Gnav() {
+    _classCallCheck(this, Gnav);
+
+    this.status = Gnav.Status.CLOSE;
+    this.$el = (0, _selectors.$)("[data-gnav]");
+    this.$trigger = (0, _selectors.$)("[data-gnav-trigger]");
+    this.$bg = (0, _selectors.$)("[data-gnav-bg]");
+    this.$html = (0, _selectors.$)("html");
+    this.bindEvents();
+  }
+
+  _createClass(Gnav, [{
+    key: "toggle",
+    value: function toggle() {
+      if (this.status == Gnav.Status.CLOSE) {
+        this.open();
+      } else {
+        this.close();
+      }
+    }
+  }, {
+    key: "open",
+    value: function open() {
+      this.status = Gnav.Status.OPEN;
+      this.$html.classList.add("is-gnav-open");
+      this.bindCloseEvents();
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      this.status = Gnav.Status.CLOSE;
+      this.$html.classList.remove("is-gnav-open");
+      this.unbindCloseEvents();
+    }
+  }, {
+    key: "bindEvents",
+    value: function bindEvents() {
+      var _this = this;
+
+      var handlers = ["handleClick", "handleBgClick", "handleWheel", "handleTriggerClick", "handleDocWheel", "handleDocClick"];
+
+      handlers.forEach(function (handler) {
+        _this[handler] = _this[handler].bind(_this);
+      });
+
+      (0, _events.addEvent)(this.$el, "click", this.handleClick);
+      (0, _events.addEvent)(this.$bg, "click", this.handleBgClick);
+      (0, _events.addEvent)(this.$trigger, "click", this.handleTriggerClick);
+    }
+  }, {
+    key: "bindCloseEvents",
+    value: function bindCloseEvents() {
+      (0, _events.addEvent)(this.$el, CLOSE_EVENTS, this.handleWheel);
+      (0, _events.addEvent)(document, CLOSE_EVENTS, this.handleDocWheel);
+      (0, _events.addEvent)(document, "click", this.handleDocClick);
+    }
+  }, {
+    key: "unbindCloseEvents",
+    value: function unbindCloseEvents() {
+      (0, _events.removeEvent)(this.$el, CLOSE_EVENTS, this.handleWheel);
+      (0, _events.removeEvent)(document, CLOSE_EVENTS, this.handleDocWheel);
+      (0, _events.removeEvent)(document, "click", this.handleDocClick);
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.stopPropagation();
+    }
+  }, {
+    key: "handleBgClick",
+    value: function handleBgClick(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, {
+    key: "handleWheel",
+    value: function handleWheel(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, {
+    key: "handleTriggerClick",
+    value: function handleTriggerClick(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.toggle();
+    }
+  }, {
+    key: "handleDocWheel",
+    value: function handleDocWheel() {
+      this.close();
+    }
+  }, {
+    key: "handleDocClick",
+    value: function handleDocClick(e) {
+      e.preventDefault();
+      this.close();
+    }
+  }]);
+
+  return Gnav;
+}();
+
+exports.default = Gnav;
+
+
+Gnav.Status = {
+  OPEN: 1,
+  CLOSE: 2
+};
+
+},{"./utils/events":13,"./utils/selectors":14}],13:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addEvent = addEvent;
+exports.removeEvent = removeEvent;
+function addEvent(el, event, listener) {
+  var events = event.split(",");
+  events.forEach(function (eventName) {
+    el.addEventListener(eventName.trim(), listener, false);
+  });
+}
+
+function removeEvent(el, event, listener) {
+  var events = event.split(",");
+  events.forEach(function (eventName) {
+    el.removeEventListener(eventName.trim(), listener, false);
+  });
+}
+
+},{}],14:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.$ = $;
+exports.$$ = $$;
+exports.matches = matches;
+function $(selector) {
+  var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (!selector) return;
+  return (context == null ? document : context).querySelector(selector);
+}
+
+function $$(selector) {
+  var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (!selector) return;
+  return (context == null ? document : context).querySelectorAll(selector);
+}
+
+function matches(el, selector) {
+  var matches = (el.document || el.ownerDocument).querySelectorAll(selector);
+  var i = matches.length;
+  while (--i >= 0 && matches.item(i) !== el) {}
+  return i > -1;
+}
+
+},{}]},{},[11]);

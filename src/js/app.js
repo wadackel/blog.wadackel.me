@@ -14,8 +14,7 @@ addEvent(document, "DOMContentLoaded", () => {
 
   // Scroll
   new SweetScroll({
-    duration: 600,
-    quickMode: true,
+    duration: 1200,
     easing: "easeOutQuart"
   });
 
