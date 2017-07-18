@@ -63,6 +63,7 @@ code {
   background-color: #f0f0f0;
   border-radius: 2px;
   font-size: .77em;
+  font-weight: normal;
 }
 
 pre {
@@ -70,6 +71,8 @@ pre {
   display: block;
   background: $color-secondary;
   border-radius: 3px;
+  tab-size: 4;
+  hyphens: none;
 
   * {
     &::selection {

@@ -122,7 +122,7 @@
 
     blockquote {
       margin: 1.5rem auto;
-      padding: 1.5em;
+      padding: 1em 1.5em;
       border-left: 4px solid darken(#fff, 15%);
       color: darken(#fff, 45%);
       *:first-child {
@@ -198,7 +198,8 @@
         display: block;
         margin: 0;
         background-color: transparent;
-        font-size: .94em;
+        font-size: .82em;
+        line-height: 1.6;
       }
     }
 

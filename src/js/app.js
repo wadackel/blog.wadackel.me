@@ -1,13 +1,22 @@
 import attachFastClick from "fastclick"
+import Prism from 'prismjs';
+import 'prismjs/components/jsx';
 import Clipboard from "clipboard"
 import SweetScroll from "sweet-scroll"
 import Gnav from "./gnav"
 import {$, $$, matches} from "./utils/selectors"
 import {addEvent, removeEvent} from "./utils/events"
 
+
+// Enable fast click
 attachFastClick(document.body);
 
 
+// Disable auto highlight
+removeEvent(document, 'DOMContentLoaded', Prism.highlightAll);
+
+
+// Initialize app
 addEvent(document, "DOMContentLoaded", () => {
   const $html = $("html");
 
@@ -38,7 +47,7 @@ addEvent(document, "DOMContentLoaded", () => {
     // btn copy
     $pre.insertAdjacentHTML("afterbegin", `<span class="highlight-copy" data-clipboard-target="#${id}"><span class="highlight-copy__msg"></span></span>`);
 
-    hljs.highlightBlock($el);
+    Prism.highlightElement($el);
   }
 
   if ($codeBlocks) {

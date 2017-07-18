@@ -1,68 +1,178 @@
-// comment
-.hljs-comment,
-.hljs-quote {
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: $color-secondary;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
   color: #5c636c;
 }
 
-// red
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-  color: #e06d70;
+.token.punctuation {
+  // color: #f0c674;
 }
 
-// orange
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-  color: #e5bf76;
+.namespace {
+  opacity: 0.7;
 }
 
-// yellow
-.hljs-attribute {
-  color: #f0c674;
-}
-
-// green
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-  color: #00ae82;
-}
-
-// blue
-.hljs-title,
-.hljs-section {
-  color: #4dadbe;
-}
-
-// purple
-.hljs-keyword,
-.hljs-selector-tag {
+.token.property,
+.token.keyword,
+.token.tag {
   color: #c67cd5;
 }
 
-// base
-.hljs {
-  display: block;
-  color: #abb2c0;
+.token.class-name {
+  color: #4dadbe;
 }
 
-.hljs-emphasis {
-  color: #fff;
+.token.boolean,
+.token.constant {
+  color: #4dadbe;
 }
 
-.hljs-strong {
-  color: #fff;
+.token.symbol,
+.token.deleted {
+  color: #f92672;
 }
+
+.token.number {
+  color: #4dadbe;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #00ae82;
+}
+
+.token.variable {
+  color: #c6c5fe;
+}
+
+.token.operator {
+  // color: #ededed;
+}
+
+.token.entity {
+  color: #ffffb6;
+}
+
+.token.url {
+  color: #96cbfe;
+}
+
+.language-css .token.string,
+.style .token.string {
+  color: #87c38a;
+}
+
+.token.atrule,
+.token.attr-value {
+  color: #f9ee98;
+}
+
+.token.function {
+  color: #e5bf76;
+}
+
+.token.regex {
+  color: #e9c062;
+}
+
+.token.important {
+  color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+  color: #fff;
+  font-weight: normal;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+// // comment
+// .hljs-comment,
+// .hljs-quote {
+//   color: #5c636c;
+// }
+//
+// // red
+// .hljs-variable,
+// .hljs-template-variable,
+// .hljs-tag,
+// .hljs-name,
+// .hljs-selector-id,
+// .hljs-selector-class,
+// .hljs-regexp,
+// .hljs-deletion {
+//   color: #e06d70;
+// }
+//
+// // orange
+// .hljs-number,
+// .hljs-built_in,
+// .hljs-builtin-name,
+// .hljs-literal,
+// .hljs-type,
+// .hljs-params,
+// .hljs-meta,
+// .hljs-link {
+//   color: #e5bf76;
+// }
+//
+// // yellow
+// .hljs-attribute {
+//   color: #f0c674;
+// }
+//
+// // green
+// .hljs-string,
+// .hljs-symbol,
+// .hljs-bullet,
+// .hljs-addition {
+//   color: #00ae82;
+// }
+//
+// // blue
+// .hljs-title,
+// .hljs-section {
+//   color: #4dadbe;
+// }
+//
+// // purple
+// .hljs-keyword,
+// .hljs-selector-tag {
+//   color: #c67cd5;
+// }
+//
+// // base
+// .hljs {
+//   display: block;
+//   color: #abb2c0;
+// }
+//
+// .hljs-emphasis {
+//   color: #fff;
+// }
+//
+// .hljs-strong {
+//   color: #fff;
+// }
