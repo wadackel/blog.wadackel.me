@@ -20,9 +20,9 @@
     transition: all .3s $ease-out-quint;
     svg {
       @include absolute(50%, auto, auto, 50%, 1);
-      width: 15px;
-      height: auto;
-      margin-top: -12px;
+      width: 10px;
+      height: 16px;
+      margin-top: -8px;
       transition: all .5s $ease-out-quint;
     }
     path {
@@ -72,13 +72,13 @@
     @include m(prev) {
       @extend .pager__item;
       svg {
-        margin-left: -8px;
+        margin-left: -6px;
       }
     }
     @include m(next) {
       @extend .pager__item;
       svg {
-        margin-left: -6px;
+        margin-left: -4px;
       }
     }
     @include m(disabled) {
