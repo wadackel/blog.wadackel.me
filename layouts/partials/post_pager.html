@@ -1,7 +1,7 @@
 {{ if or .PrevInSection .NextInSection }}
 <div class="post-pager">
   {{ if .NextInSection }}
-    <a class="post-pager__item--next" href="{{ .NextInSection.Permalink }}">
+    <a class="post-pager__item post-pager__item--next" href="{{ .NextInSection.Permalink }}">
       <span class="post-pager__item__label">Newer Post</span>
       <span class="post-pager__item__title">{{ .NextInSection.Title }}</span>
       {{ if .NextInSection.Params.image }}
@@ -9,11 +9,11 @@
       {{ end }}
     </a>
   {{ else }}
-    <span class="post-pager__item--next post-pager__item--disabled"></span>
+    <span class="post-pager__item post-pager__item--next post-pager__item--disabled"></span>
   {{ end }}
 
   {{ if .PrevInSection }}
-    <a class="post-pager__item--prev" href="{{ .PrevInSection.Permalink }}">
+    <a class="post-pager__item post-pager__item--prev" href="{{ .PrevInSection.Permalink }}">
       <span class="post-pager__item__label">Older Post</span>
       <span class="post-pager__item__title">{{ .PrevInSection.Title }}</span>
       {{ if .PrevInSection.Params.image }}
@@ -21,7 +21,7 @@
       {{ end }}
     </a>
   {{ else }}
-    <span class="post-pager__item--prev post-pager__item--disabled"></span>
+    <span class="post-pager__item post-pager__item--prev post-pager__item--disabled"></span>
   {{ end }}
 </div>
 {{ end }}

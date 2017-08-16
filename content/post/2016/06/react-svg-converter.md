@@ -2,7 +2,7 @@
 title: "SVGファイルをズバッとReact Componentsに変換する"
 slug: "react-svg-converter"
 date: "2016-06-09"
-categories: ["JavaScript"]
+categories: ["javascript"]
 image: ""
 ---
 

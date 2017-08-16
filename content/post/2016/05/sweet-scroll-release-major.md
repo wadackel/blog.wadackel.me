@@ -2,7 +2,7 @@
 title: "sweet-scroll.jsの1.0.0をリリースした"
 slug: "sweet-scroll-release-major"
 date: "2016-05-20"
-categories: ["JavaScript"]
+categories: ["javascript"]
 image: ""
 ---
 
