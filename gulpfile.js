@@ -1,88 +1,67 @@
-"use strict";
-
 const cp = require("child_process");
 const del = require("del");
-const browserify = require("browserify");
-const watchify = require("watchify");
-const source = require("vinyl-source-stream");
 const gulp = require("gulp");
 const runSequence = require("run-sequence").use(gulp);
 const $ = require("gulp-load-plugins")();
-let isBuild = false;
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config');
 
 
-gulp.task("clean", (cb) => {
-  return del(["./public/"], cb);
-});
+gulp.task("clean", done => (
+  del(["./public/"], done)
+));
 
 
-gulp.task("sass", () => {
-  return gulp.src("./src/sass/**/*.scss")
+gulp.task("postcss", () => (
+  gulp.src('./src/css/style.css')
     .pipe($.plumber())
-    .pipe($.sass({outputStyle: "expanded"}).on("error", $.sass.logError))
-    .pipe($.autoprefixer())
-    .pipe($.combineMq())
-    .pipe($.cssnano())
-    .pipe(gulp.dest("./static/css"));
+    .pipe($.postcss())
+    .pipe(gulp.dest('./static/css/'))
+));
+
+gulp.task("postcss:watch", () => (
+  $.watch('./src/css/**/*.css', () => {
+    gulp.start('postcss');
+  })
+));
+
+
+gulp.task("webpack", (done) => {
+  webpack(webpackConfig, (err, stats) => {
+    if (err) throw new Error($.util.PluginError('webpack', err));
+    console.log(stats.toString({ colors: true })); // eslint-disable-line
+    done();
+  });
+});
+
+gulp.task("webpack:watch", (done) => {
+  webpack(webpackConfig).watch({}, (err, stats) => {
+    if (err) throw new Error($.util.PluginError('webpack', err));
+    console.log(stats.toString({ colors: true })); // eslint-disable-line
+  });
+
+  done();
 });
 
 
-gulp.task("browserify", () => {
-  const plugins = isBuild ? [] : [watchify];
+gulp.task("hugo:build", done => (
+  cp.spawn("hugo", [], { stdio: "inherit" }).on("close", done)
+));
 
-  return browserify({
-      entries: ["./src/js/app.js"],
-      cache: {},
-      packageCache: {},
-      plugin: plugins
-    })
-    .transform("babelify")
-    .bundle()
-    .on("error", function(err) {
-      $.util.log("[browserify]", err.message);
-      this.emit("end");
-    })
-    .pipe(source("app.bundle.js"))
-    .pipe(gulp.dest("./static/js/"));
-});
+gulp.task("hugo:watch", done => (
+  cp.spawn("hugo", ["server", "--renderToDisk", "--port=8080", "-D", "-w"], {stdio: "inherit"}).on("close", done)
+));
 
 
-gulp.task("uglify", () => {
-  return gulp.src("./static/js/app.bundle.js")
-    .pipe($.uglify({preserveComments: "some"}))
-    .pipe(gulp.dest("./static/js/"));
-});
-
-
-gulp.task("hugo:build", (cb) => {
-  return cp.spawn("hugo", [], {stdio: "inherit"}).on("close", cb);
-});
-
-gulp.task("hugo:watch", (cb) => {
-  return cp.spawn("hugo", ["server", "--renderToDisk", "--port=8080", "-D", "-w"], {stdio: "inherit"}).on("close", cb);
-});
-
-
-gulp.task("src:watch", () => {
-  gulp.watch("./src/sass/**/*.scss", ["sass"]);
-  gulp.watch("./src/js/**/*.js", ["browserify"]);
-});
-
-
-gulp.task("watch", ["src:watch", "hugo:watch"]);
-
-
-gulp.task("build", (cb) => {
-  isBuild = true;
-  return runSequence(
+gulp.task("build", done => (
+  runSequence(
     "clean",
     "hugo:build",
-    ["sass", "browserify"],
-    ["uglify"],
-    cb
-  );
-});
+    ["postcss", "webpack"],
+    done
+  )
+));
 
 
+gulp.task("watch", ["webpack:watch", "postcss:watch", "hugo:watch"]);
 gulp.task("start", ["watch"]);
-gulp.task("default", ["start"]);

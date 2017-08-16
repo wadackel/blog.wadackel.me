@@ -1,0 +1,31 @@
+.pagetop {
+  clear: both;
+  margin: 0 auto;
+  border-top: 1px solid color(var(--color-gray) lightness(+15%));
+  text-align: center;
+  font-size: 0;
+  line-height: 1;
+
+  & a {
+    display: block;
+    padding: 1rem 0;
+    transition: all 0.5s var(--ease-out-quint);
+
+    &:--enter {
+      background: var(--color-secondary);
+
+      & path {
+        fill: #fff;
+      }
+    }
+  }
+
+  & svg {
+    width: 26px;
+    height: auto;
+  }
+
+  & path {
+    fill: var(--color-secondary);
+  }
+}

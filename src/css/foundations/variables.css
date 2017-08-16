@@ -1,0 +1,51 @@
+@custom-media --viewport-sm (min-width: 567px);
+@custom-media --viewport-md (min-width: 768px);
+@custom-media --viewport-lg (min-width: 992px);
+@custom-media --viewport-xl (min-width: 1200px);
+
+:root {
+  /* Container width */
+  --container-width-xs: auto;
+  --container-width-sm: 520px;
+  --container-width-md: 720px;
+  --container-width-lg: 850px;
+  --container-width-xl: 850px;
+
+  /* Gutter width */
+  --gutter-width-xs: 20px;
+  --gutter-width-sm: 20px;
+  --gutter-width-md: 30px;
+  --gutter-width-lg: 30px;
+  --gutter-width-xl: 30px;
+
+  /* Outside gutter width */
+  --outside-gutter-width-xs: 15px;
+  --outside-gutter-width-sm: 15px;
+  --outside-gutter-width-md: 15px;
+  --outside-gutter-width-lg: 15px;
+  --outside-gutter-width-xl: 15px;
+  --footer-height: 500px;
+  --color-primary: #00c795;
+  --color-secondary: #1b2937;
+  --color-gray: #b5b5b5;
+  --color-bg: #fff;
+  --color-base: var(--color-secondary);
+  --color-link: color(var(--color-primary) blackness(+10%));
+  --color-link-enter: var(--color-primary);
+  --color-twitter: #55acee;
+  --color-facebook: #315096;
+  --color-hatena: #008fde;
+  --color-pocket: #ef4456;
+  --color-feedly: #6cc655;
+  --font-size-mobile: 16px;
+  --font-size-desktop: 18px;
+  --font-family: Avenir, "Lucida Grande", "Helvetica Neue", "游ゴシック", "YuGothic", "Hiragino Kaku Gothic ProN", "メイリオ", meiryo, sans-serif;
+  --font-family-code: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+  --font-family-accent: "Caveat", cursive;
+  --line-height: 1.8;
+  --scrollbar-color: color(#fff blackness(+25%));
+  --scrollbar-bg: color(var(--scrollbar-color) lightness(+12%));
+  --scrollbar-width: 10px;
+  --scrollbar-height: 5px;
+  --scrollbar-radius: 0;
+}
