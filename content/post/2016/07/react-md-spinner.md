@@ -2,7 +2,7 @@
 title: "Reactで使えるMaterial DesignのSpinnerコンポーネントを作った"
 slug: "react-md-spinner"
 date: "2016-07-03"
-categories: ["JavaScript"]
+categories: ["javascript"]
 image: ""
 ---
 
