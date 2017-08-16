@@ -62,19 +62,6 @@
       {{ else }}
         <p class="header__logo"><a href="/">{{ partial "svg/logo_hover.html" }}<span>{{ .Site.Title }}</span></a></p>
       {{ end }}
-      <nav class="gnav" data-gnav>
-        <ul class="gnav__list">
-          <li class="gnav__item"><a href="/"><span class="gnav__item__icon">{{ partial "svg/home.html" }}</span><span class="gnav__item__text">HOME</span></a></li>
-          <li class="gnav__item"><a href="/archives/"><span class="gnav__item__icon">{{ partial "svg/archive.html" }}</span><span class="gnav__item__text">ARCHIVES</span></a></li>
-          <li class="gnav__item"><a href="https://photographic.wadackel.me"><span class="gnav__item__icon">{{ partial "svg/camera.html" }}</span><span class="gnav__item__text">PHOTOGRAPHIC</span></a></li>
-        </ul>
-        <button class="gnav__toggle" type="button" data-gnav-trigger>
-          <span class="gnav__toggle__bar"></span>
-          <span class="gnav__toggle__bar"></span>
-          <span class="gnav__toggle__bar"></span>
-        </button>
-        <div class="gnav__bg" data-gnav-bg></div>
-      </nav>
     </header>
 
     <main class="contents" role="main">
