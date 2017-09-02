@@ -9,6 +9,5 @@ sudo mv hugo /usr/local/bin/
 yarn run build
 
 # Deploy
-sudo apt install rsync
-rsync -av --delete --omit-dir-times -e "ssh -p ${DEPLOY_PORT}" ./public/ ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}
+rsync -q -av --delete --omit-dir-times -e "ssh -p $DEPLOY_PORT" ./public/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR
 

@@ -56,8 +56,8 @@ gulp.task("hugo:watch", done => (
 gulp.task("build", done => (
   runSequence(
     "clean",
-    "hugo:build",
     ["postcss", "webpack"],
+    "hugo:build",
     done
   )
 ));
