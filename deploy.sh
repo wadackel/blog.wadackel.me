@@ -9,5 +9,4 @@ sudo mv hugo /usr/local/bin/
 yarn run build
 
 # Deploy
-rsync -q -av --delete --omit-dir-times -e "ssh -p $DEPLOY_PORT" ./public/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR
-
+rsync -av --delete --omit-dir-times -e "ssh -p $DEPLOY_PORT" ./public/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR >/dev/null 2>&1
