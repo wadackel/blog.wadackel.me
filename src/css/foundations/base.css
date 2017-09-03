@@ -115,4 +115,5 @@ pre {
   display: block;
   tab-size: 4;
   hyphens: none;
+  word-wrap: normal;
 }

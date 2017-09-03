@@ -1,5 +1,11 @@
 import Prism from 'prismjs';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-diff';
+import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-vim';
+import 'prismjs/components/prism-go';
 import Clipboard from 'clipboard';
 import SweetScroll from 'sweet-scroll';
 import { $, $$ } from './utils/selectors';
