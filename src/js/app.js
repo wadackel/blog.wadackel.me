@@ -19,8 +19,7 @@ removeEvent(document, 'DOMContentLoaded', Prism.highlightAll);
 // Initialize app
 addEvent(document, 'DOMContentLoaded', () => {
   // Scroll
-  // eslint-disable-next-line no-new
-  new SweetScroll({
+  SweetScroll.create({
     duration: 1200,
     easing: 'easeOutQuart',
   });
