@@ -214,6 +214,7 @@ pre[class*="language-"] {
 
 .token.entity {
   color: #ffffb6;
+  cursor: help;
 }
 
 .token.url {
@@ -250,8 +251,4 @@ pre[class*="language-"] {
 
 .token.italic {
   font-style: italic;
-}
-
-.token.entity {
-  cursor: help;
 }
