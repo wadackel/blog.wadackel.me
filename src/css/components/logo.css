@@ -26,6 +26,7 @@
 
 .logo__tail {
   transform-origin: 100% 0.5%;
+  transform-box: fill-box;
 
   @nest .is-hover & {
     animation: logo-tail 830ms ease-in-out alternate;
