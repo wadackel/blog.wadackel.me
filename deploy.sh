@@ -8,5 +8,7 @@ sudo mv hugo /usr/local/bin/
 # Build Hugo, And frontend resources
 yarn build
 
+ls -la public
+
 # Deploy
 rsync -av --delete --omit-dir-times -e "ssh -p $DEPLOY_PORT" ./public/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR >/dev/null 2>&1
