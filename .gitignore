@@ -1,6 +1,9 @@
 tmp
 public
 .htaccess
+static/**/*.js
+static/**/*.map
+static/**/*.css
 
 
 # Created by https://www.gitignore.io/api/osx,windows,node

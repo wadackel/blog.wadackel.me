@@ -18,7 +18,7 @@
 
 .post__title {
   margin: 0 0 0.2em;
-  font-size: 1.55rem;
+  font-size: 1.625rem;
   font-weight: normal;
   line-height: 1.6;
 
@@ -33,7 +33,7 @@
 
 .post__meta {
   margin: 0;
-  font-size: 0.55rem;
+  font-size: 0.75rem;
 }
 
 .post__category::before {
@@ -44,14 +44,14 @@
 
 .post__excerpt {
   margin: 1.4rem 0 0;
-  font-size: 0.77rem;
+  font-size: 1rem;
 }
 
 .post__content {
   margin: 0 auto 10rem;
 
   & :matches(h2, h3, h4, h5, h6) {
-    line-height: 1.4;
+    line-height: 1.6;
   }
 
   & h2 {
