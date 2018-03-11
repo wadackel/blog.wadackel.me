@@ -6,14 +6,29 @@ import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-yaml';
 import 'prismjs/components/prism-vim';
 import 'prismjs/components/prism-go';
+import 'prismjs/components/prism-markdown';
 import Clipboard from 'clipboard';
 import SweetScroll from 'sweet-scroll';
 import { $, $$ } from './utils/selectors';
 import { addEvent, removeEvent } from './utils/events';
 
 
+// Service Worker
+if ('serviceWorker' in navigator) {
+  addEvent(window, 'load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.debug('SW registered: ', registration); // eslint-disable-line no-console
+      })
+      .catch((registrationError) => {
+        console.debug('SW registration failed: ', registrationError); // eslint-disable-line no-console
+      });
+  }, { capture: false });
+}
+
+
 // Disable auto highlight
-removeEvent(document, 'DOMContentLoaded', Prism.highlightAll);
+removeEvent(document, 'DOMContentLoaded', Prism.highlightAll, { capture: false });
 
 
 // Initialize app
@@ -28,7 +43,7 @@ addEvent(document, 'DOMContentLoaded', () => {
   // Code block
   const $codeBlocks = $$('pre code');
 
-  function initializeCodeBlock($el, index) {
+  const initializeCodeBlock = ($el, index) => {
     const id = `highlight-${index}`;
     const $pre = $el.parentNode;
     const filename = $el.className.match(/language-.+:(.+)/);
@@ -45,7 +60,7 @@ addEvent(document, 'DOMContentLoaded', () => {
     $pre.insertAdjacentHTML('afterbegin', `<span class="highlight-copy" data-clipboard-target="#${id}"><span class="highlight-copy__msg"></span></span>`);
 
     Prism.highlightElement($el);
-  }
+  };
 
   if ($codeBlocks) {
     Array.prototype.slice.call($codeBlocks).forEach(initializeCodeBlock);
@@ -61,7 +76,7 @@ addEvent(document, 'DOMContentLoaded', () => {
     },
   });
 
-  function clipboardMsg(trigger, msg, timeout = 1200) {
+  const clipboardMsg = (trigger, msg, timeout = 1200) => {
     const $msg = $('.highlight-copy__msg', trigger);
     $msg.textContent = msg;
     $msg.classList.add('is-active');
@@ -70,7 +85,7 @@ addEvent(document, 'DOMContentLoaded', () => {
       $msg.classList.remove('is-active');
       trigger.classList.remove('is-active');
     }, timeout);
-  }
+  };
 
   clipboard.on('success', (e) => {
     clipboardMsg(e.trigger, 'Copied!!');
@@ -98,5 +113,10 @@ addEvent(document, 'DOMContentLoaded', () => {
       $headerLogo.classList.remove('is-hover');
       headerLogoTimer = false;
     }, HEADER_LOGO_DURATION);
+  }, {
+    capture: false,
+    passive: true,
   });
+}, {
+  capture: false,
 });

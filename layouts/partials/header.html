@@ -15,10 +15,11 @@
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
   <meta name="format-detection" content="telephone=no,address=no,email=no">
   <meta name="description" content="{{ $.Scratch.Get "description" }}">
   <meta name="author" content="{{ .Site.Params.author.en }}">
+  <meta name="theme-color" content="#00c795">
   {{ if eq .URL "404.html" }}
   <meta name="robots" content="noindex,nofollow">
   {{ end }}
@@ -40,6 +41,7 @@
   <link rel="alternate" href="{{ .RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}">
   <link rel="icon" type="image/vnd.microsoft.icon" href="/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon.png">
+  <link rel="manifest" href="{{ trim .Site.BaseURL "/" }}/manifest.json">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
   <link rel="stylesheet" href="/css/style.css">

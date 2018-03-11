@@ -37,10 +37,11 @@ pre[class*="language-"] {
     background: color(var(--color-secondary) lightness(+8%));
     border-radius: 2px 0;
     color: #abb2c0;
-    font-size: 0.8em;
+    font-size: 0.75em;
+    font-weight: normal;
     line-height: 25px;
     vertical-align: top;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 0 rgba(#fff, 0.1);
+    text-shadow: none;
 
     & + code {
       padding-top: 0.6em !important;
