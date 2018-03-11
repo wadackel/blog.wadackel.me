@@ -3,7 +3,7 @@
   "scripts": {
     "start": "npm-run-all clean watch",
     "clean": "rm -rf ./public",
-    "build": "npm-run-all clean -p build:*",
+    "build": "npm-run-all clean build:js build:css build:hugo",
     "build:js": "NODE_ENV=production webpack",
     "build:css": "postcss ./src/css/style.css -d ./static/css/",
     "build:hugo": "hugo",
