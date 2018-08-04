@@ -6,6 +6,7 @@ import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-yaml';
 import 'prismjs/components/prism-vim';
 import 'prismjs/components/prism-go';
+import 'prismjs/components/prism-rust';
 import 'prismjs/components/prism-markdown';
 import Clipboard from 'clipboard';
 import SweetScroll from 'sweet-scroll';
