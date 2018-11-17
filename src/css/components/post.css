@@ -39,12 +39,6 @@
   font-size: 0.77rem;
 }
 
-.post__category::before {
-  display: inline;
-  margin: 0 0.5em;
-  content: '/';
-}
-
 .post__excerpt {
   margin: 1.4rem 0 0;
   font-size: 1rem;

@@ -2,7 +2,6 @@
 title: サイバーエージェントに入社して半年経つ
 slug: 'ca-for-half-a-year'
 date: '2018-05-28'
-categories: ['diary']
 image: ''
 ---
 

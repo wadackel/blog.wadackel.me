@@ -2,7 +2,6 @@
 title: 'Go製のCHANGELOGジェネレータを作った'
 slug: 'git-chglog'
 date: '2018-02-20'
-categories: ['go']
 image: '/post/2018/02/git-chglog/banner.png'
 ---
 

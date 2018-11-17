@@ -2,7 +2,6 @@
 title: 'Gitの差分ファイルをZIPにまとめるCLIツールを作った'
 slug: 'git-diff-archive'
 date: '2016-04-24'
-categories: ['git']
 image: ''
 ---
 

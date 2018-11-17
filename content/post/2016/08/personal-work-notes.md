@@ -2,7 +2,6 @@
 title: 'wip: 個人開発でやる気枯渇を防ぐために気をつけてること、やってること'
 slug: 'personal-work-notes'
 date: '2016-08-26'
-categories: ['diary']
 image: ''
 ---
 

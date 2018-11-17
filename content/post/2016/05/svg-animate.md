@@ -2,7 +2,6 @@
 title: 'SVGで犬のしっぽをフリフリする'
 slug: 'svg-animate'
 date: '2016-05-07'
-categories: ['animation']
 image: ''
 ---
 

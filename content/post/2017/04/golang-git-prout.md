@@ -2,7 +2,6 @@
 title: 'Goの勉強を兼ねてGitHubのPull RequestをCheckoutするCLIツールを作った'
 slug: 'golang-git-prout'
 date: '2017-04-03'
-categories: ['golang']
 image: ''
 ---
 

@@ -2,7 +2,6 @@
 title: 'SlackとVimとメモ管理と私'
 slug: 'slack-memo-vim'
 date: '2016-12-09'
-categories: ['Vim']
 image: ''
 ---
 

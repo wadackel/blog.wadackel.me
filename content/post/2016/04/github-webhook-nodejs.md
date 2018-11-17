@@ -2,7 +2,6 @@
 title: 'GitHubのWebhookをNode.jsで受け取る'
 slug: 'github-webhook-nodejs'
 date: '2016-04-19'
-categories: ['node']
 image: ''
 ---
 

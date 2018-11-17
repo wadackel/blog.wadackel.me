@@ -2,7 +2,6 @@
 title: 'Writing An Interpreter In Rust して、Wasm で動かしてみた'
 slug: 'rs-monkey-lang'
 date: '2018-08-06'
-categories: ['rust']
 image: ''
 ---
 

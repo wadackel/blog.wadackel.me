@@ -2,7 +2,6 @@
 title: 'もうReactのフォームで消耗したくないので、HoCベースのフォームライブラリを作った'
 slug: 'react-drip-form'
 date: '2017-07-16'
-categories: ['javascript']
 image: ''
 ---
 

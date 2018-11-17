@@ -2,7 +2,6 @@
 title: 'PrevimのMarkdownプレビューをGitHubっぽい見た目に変更した'
 slug: 'previmg-github-style'
 date: '2017-09-03'
-categories: ['vim']
 image: ''
 ---
 

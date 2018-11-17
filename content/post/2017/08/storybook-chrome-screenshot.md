@@ -2,7 +2,6 @@
 title: 'Puppeteerを使ったStorybookの自動スクリーンショット撮影用のアドオンを作った'
 slug: 'storybook-chrome-screenshot'
 date: '2017-08-26'
-categories: ['javascript']
 image: ''
 ---
 

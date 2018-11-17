@@ -2,7 +2,6 @@
 title: 'PinterestなレイアウトのためのReactコンポーネントを作った'
 slug: 'react-stack-grid'
 date: '2016-11-21'
-categories: ['javascript']
 image: ''
 ---
 

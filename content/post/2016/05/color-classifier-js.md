@@ -2,7 +2,6 @@
 title: 'JavaScriptで指定した色をある基準色に分類する'
 slug: 'color-classifier-js'
 date: '2016-05-16'
-categories: ['javascript']
 image: ''
 ---
 

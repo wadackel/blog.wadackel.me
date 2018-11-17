@@ -2,7 +2,6 @@
 title: 'create-react-appを使ってReactコンポーネントの素振り、GitHub Pagesへのデプロイまで'
 slug: 'create-react-app'
 date: '2016-11-24'
-categories: ['javascript']
 image: ''
 ---
 
