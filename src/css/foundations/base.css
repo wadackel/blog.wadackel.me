@@ -7,16 +7,16 @@
 }
 
 ::selection {
-  background: rgba(0, 0, 0, 0.1);
+  background-color: var(--selection-background);
 }
 
 ::-moz-selection {
-  background: rgba(0, 0, 0, 0.1);
+  background-color: var(--selection-background);
 }
 
 html {
   box-sizing: border-box;
-  color: var(--color-base);
+  color: var(--color-text);
   font-size: var(--font-size-mobile);
   font-family: var(--font-family);
   font-weight: 500;
@@ -30,7 +30,7 @@ html {
 body {
   position: relative;
   min-width: 320px;
-  background: var(--color-bg);
+  background: var(--color-background);
   word-wrap: break-word;
 
   @media (--viewport-md) {
@@ -78,7 +78,8 @@ code {
   display: inline-block;
   margin: 0 0.15em;
   padding: 0.08em 0.3em;
-  background-color: #f0f0f0;
+  color: var(--color-code-text);
+  background-color: var(--color-code-bg);
   border-radius: 2px;
   font-size: 0.77em;
   font-weight: normal;

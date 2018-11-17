@@ -24,7 +24,7 @@
   display: block;
   width: var(--post-share-btn-size);
   height: var(--post-share-btn-size);
-  background: #fff;
+  background: var(--color-background);
   border-radius: 50%;
 
   &::before,

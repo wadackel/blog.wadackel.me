@@ -5,7 +5,7 @@
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  background: var(--color-secondary);
+  background: var(--color-code-block-bg);
   border-radius: 3px;
 
   & * {
@@ -34,7 +34,7 @@ pre[class*='language-'] {
     display: block;
     margin: 0;
     padding: 0 0.8em;
-    background: var(--color-secondary-light);
+    background: var(--color-secondary-lightest);
     border-radius: 2px 0;
     color: #abb2c0;
     font-size: 0.75em;

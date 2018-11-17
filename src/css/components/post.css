@@ -169,7 +169,7 @@
     & td {
       padding: 0.6em 0.8em;
       border: 1px solid var(--color-divider);
-      background: #fff;
+      background: var(--color-background);
     }
 
     & thead th,
@@ -179,7 +179,7 @@
 
     & tbody tr:nth-child(odd) th,
     & tbody tr:nth-child(odd) td {
-      background-color: var(--color-gray-lightest);
+      background-color: rgba(0, 0, 0, 0.05);
     }
   }
 
@@ -198,7 +198,7 @@
     min-width: 3em;
     margin: 0 0.4em;
     padding: 0.5em 1em;
-    background: #f5f5f5;
+    background: var(--color-kbd-bg);
     border-top: 1px solid var(--color-kbd-border);
     border-radius: 3px;
     box-shadow: 0 0 1em var(--color-kbd-shadow-inset) inset, 0 1px 0 var(--color-kbd-shadow-from),

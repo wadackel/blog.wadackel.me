@@ -11,12 +11,16 @@
     padding: 1rem 0;
     transition: all 0.5s var(--ease-out-quint);
 
+    & path {
+      fill: var(--color-text);
+    }
+
     &:hover,
     &:focus {
-      background: var(--color-secondary);
+      background: var(--color-text);
 
       & path {
-        fill: #fff;
+        fill: var(--color-background);
       }
     }
   }

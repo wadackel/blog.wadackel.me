@@ -41,7 +41,7 @@
   }
 
   &::before {
-    border: 2px solid var(--color-secondary);
+    border: 2px solid var(--color-text);
     transition-duration: 0.5s;
   }
 
@@ -62,7 +62,7 @@
     }
 
     &::after {
-      background: var(--color-secondary);
+      background: var(--color-text);
       opacity: 1;
       visibility: visible;
       transform: scale(1);
@@ -73,7 +73,7 @@
     }
 
     & path {
-      fill: #fff;
+      fill: var(--color-background);
     }
   }
 
@@ -89,7 +89,7 @@
   }
 
   & path {
-    fill: var(--color-secondary);
+    fill: var(--color-text);
     transition: all 0.5s var(--ease-out-quint);
   }
 }
