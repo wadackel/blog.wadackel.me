@@ -1,15 +1,7 @@
 {{ if ne .Paginator.TotalPages 1 }}
-<nav class="pager" role="navigation" aria-label="前後記事のナビゲーション">
-  {{ if .Paginator.HasPrev }}
-    <a class="pager__item pager__item--prev" href="{{ .Paginator.Prev.URL }}" title="古い記事へ遷移">{{ partial "svg/arrow_left.html" }}</a>
-  {{ else }}
-    <span class="pager__item pager__item--prev pager__item--disabled">{{ partial "svg/arrow_left.html" }}</span>
-  {{ end }}
-  <span class="pager__number" aria-current="true">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
-  {{ if .Paginator.HasNext }}
-    <a class="pager__item pager__item--next" href="{{ .Paginator.Next.URL }}" title="新しい記事へ遷移">{{ partial "svg/arrow_right.html" }}</a>
-  {{ else }}
-    <span class="pager__item pager__item--next pager__item--disabled">{{ partial "svg/arrow_right.html" }}</span>
-  {{ end }}
+<nav class="pager" role="navigation" aria-label="ページ送りナビゲーション">
+  <a class="pager__item pager__item--prev" {{ if .Paginator.HasPrev }}href="{{ .Paginator.Prev.URL }}"{{ else }}aria-disabled="true"{{ end }} aria-label="新しい記事へ遷移">{{ partial "svg/arrow_left.html" }}</a>
+  <span class="pager__number">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+  <a class="pager__item pager__item--next" {{ if .Paginator.HasNext }}href="{{ .Paginator.Next.URL }}"{{ else }}aria-disabled="true"{{ end }} aria-label="古い記事へ遷移">{{ partial "svg/arrow_right.html" }}</a>
 </nav>
 {{ end }}

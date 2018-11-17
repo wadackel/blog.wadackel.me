@@ -7,44 +7,16 @@
 }
 
 ::selection {
-  background: rgba(0, 0, 0, 0.1);
+  background-color: var(--selection-background);
 }
 
 ::-moz-selection {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-::-webkit-scrollbar {
-  width: calc(var(--scrollbar-width) / 2);
-  background: color(var(--scrollbar-bg) lightness(+3%));
-  z-index: 10;
-
-  &:hover {
-    background: var(--scrollbar-bg);
-  }
-
-  /* stylelint-disable-next-line */
-  &:horizontal {
-    height: var(--scrollbar-height);
-  }
-
-  @media (--viewport-md) {
-    width: var(--scrollbar-width);
-  }
-}
-
-::-webkit-scrollbar-track {
-  border-radius: var(--scrollbar-radius);
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: var(--scrollbar-radius);
-  background: var(--scrollbar-color);
+  background-color: var(--selection-background);
 }
 
 html {
   box-sizing: border-box;
-  color: var(--color-base);
+  color: var(--color-text);
   font-size: var(--font-size-mobile);
   font-family: var(--font-family);
   font-weight: 500;
@@ -58,7 +30,7 @@ html {
 body {
   position: relative;
   min-width: 320px;
-  background: var(--color-bg);
+  background: var(--color-background);
   word-wrap: break-word;
 
   @media (--viewport-md) {
@@ -72,11 +44,13 @@ h1 {
 
 a {
   color: var(--color-link);
-  text-decoration: none;
+  text-decoration: underline;
   transition: all 0.25s var(--ease-out-quint);
 
-  &:--enter {
+  &:hover,
+  &:focus {
     color: var(--color-link-enter);
+    text-decoration: none;
   }
 }
 
@@ -104,7 +78,8 @@ code {
   display: inline-block;
   margin: 0 0.15em;
   padding: 0.08em 0.3em;
-  background-color: #f0f0f0;
+  color: var(--color-code-text);
+  background-color: var(--color-code-bg);
   border-radius: 2px;
   font-size: 0.77em;
   font-weight: normal;
@@ -116,4 +91,32 @@ pre {
   tab-size: 4;
   hyphens: none;
   word-wrap: normal;
+
+  & ::-webkit-scrollbar {
+    width: calc(var(--scrollbar-width) / 2);
+    background: var(--scrollbar-bg);
+    z-index: 10;
+
+    &:hover {
+      background: var(--scrollbar-bg-enter);
+    }
+
+    /* stylelint-disable-next-line */
+    &:horizontal {
+      height: var(--scrollbar-height);
+    }
+
+    @media (--viewport-md) {
+      width: var(--scrollbar-width);
+    }
+  }
+
+  & ::-webkit-scrollbar-track {
+    border-radius: var(--scrollbar-radius);
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    border-radius: var(--scrollbar-radius);
+    background: var(--scrollbar-color);
+  }
 }

@@ -24,7 +24,7 @@
   display: block;
   width: var(--post-share-btn-size);
   height: var(--post-share-btn-size);
-  background: #fff;
+  background: var(--color-background);
   border-radius: 50%;
 
   &::before,
@@ -40,7 +40,7 @@
     border-radius: 50%;
     transition-property: all;
     transition-timing-function: var(--ease-out-quint);
-    content: "";
+    content: '';
   }
 
   &::before {
@@ -56,7 +56,8 @@
     transition-duration: 0.25s;
   }
 
-  &:--enter {
+  &:hover,
+  &:focus {
     &::before {
       opacity: 0;
       transform: scale(1.2);
@@ -96,31 +97,61 @@
 }
 
 .post-share__btn--twitter {
-  & path { fill: var(--color-twitter); }
-  &::before { border-color: var(--color-twitter); }
-  &::after { background-color: var(--color-twitter); }
+  & path {
+    fill: var(--color-twitter);
+  }
+  &::before {
+    border-color: var(--color-twitter);
+  }
+  &::after {
+    background-color: var(--color-twitter);
+  }
 }
 
 .post-share__btn--facebook {
-  & path { fill: var(--color-facebook); }
-  &::before { border-color: var(--color-facebook); }
-  &::after { background-color: var(--color-facebook); }
+  & path {
+    fill: var(--color-facebook);
+  }
+  &::before {
+    border-color: var(--color-facebook);
+  }
+  &::after {
+    background-color: var(--color-facebook);
+  }
 }
 
 .post-share__btn--hatena {
-  & path { fill: var(--color-hatena); }
-  &::before { border-color: var(--color-hatena); }
-  &::after { background-color: var(--color-hatena); }
+  & path {
+    fill: var(--color-hatena);
+  }
+  &::before {
+    border-color: var(--color-hatena);
+  }
+  &::after {
+    background-color: var(--color-hatena);
+  }
 }
 
 .post-share__btn--pocket {
-  & path { fill: var(--color-pocket); }
-  &::before { border-color: var(--color-pocket); }
-  &::after { background-color: var(--color-pocket); }
+  & path {
+    fill: var(--color-pocket);
+  }
+  &::before {
+    border-color: var(--color-pocket);
+  }
+  &::after {
+    background-color: var(--color-pocket);
+  }
 }
 
 .post-share__btn--feedly {
-  & path { fill: var(--color-feedly); }
-  &::before { border-color: var(--color-feedly); }
-  &::after { background-color: var(--color-feedly); }
+  & path {
+    fill: var(--color-feedly);
+  }
+  &::before {
+    border-color: var(--color-feedly);
+  }
+  &::after {
+    background-color: var(--color-feedly);
+  }
 }

@@ -1,9 +1,9 @@
 ---
-title: "Writing An Interpreter In Rust して、Wasm で動かしてみた"
-slug: "rs-monkey-lang"
-date: "2018-08-06"
-categories: ["rust"]
-image: ""
+title: 'Writing An Interpreter In Rust して、Wasm で動かしてみた'
+slug: 'rs-monkey-lang'
+date: '2018-08-06'
+categories: ['rust']
+image: ''
 ---
 
 ## はじめに
@@ -14,12 +14,11 @@ image: ""
 
 ちなみに [Writing An Interpreter In Go][writing-an-interpreter-in-go] は、既に様々な方が読まれているような有名な本なので特別紹介はしませんが、かなりの良書なので「**読んだことない！**」という方は是非読んでみると面白いかもしれません。
 
-> - [『Writing An Interpreter In Go / Go言語でつくるインタプリタ』- razokulover publog](https://razokulover.hateblo.jp/entry/2018/06/18/121105)
-> - [Writing An Interpreter In Goを読んだ | SOTA](https://deeeet.com/writing/2017/01/12/go-interpreter/)
+> - [『Writing An Interpreter In Go / Go 言語でつくるインタプリタ』- razokulover publog](https://razokulover.hateblo.jp/entry/2018/06/18/121105)
+> - [Writing An Interpreter In Go を読んだ | SOTA](https://deeeet.com/writing/2017/01/12/go-interpreter/)
 > - [『Writing An Interpreter In Go』を読んだ](https://medium.com/@r7kamura/write-an-interpreter-in-go-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0-99c98d746d7c)
 
-最初のブログ記事にある通り、最近 O'Reilly さんから 『[Go言語でつくるインタプリタ](https://www.oreilly.co.jp/books/9784873118222/)』というタイトルで日本語訳も出ています。
-
+最初のブログ記事にある通り、最近 O'Reilly さんから 『[Go 言語でつくるインタプリタ](https://www.oreilly.co.jp/books/9784873118222/)』というタイトルで日本語訳も出ています。
 
 ## 成果物
 
@@ -39,7 +38,6 @@ image: ""
 
 ※ちなみにガワの実装をサボりまくっているので、Chrome でしか動作しないと思います :)
 
-
 ## 実装について
 
 Writing An Interpreter In Go では、次の流れで実装が進んでいきます。
@@ -49,12 +47,11 @@ Writing An Interpreter In Go では、次の流れで実装が進んでいきま
 3. Evaluation (評価)
 4. Extending the interpreter (言語拡張)
 
-3までのステップでは `Integer` のみを扱い、4で `String` や `Array`、`Hash` 等が追加で実装される構成です。各ステップ分かりやすく解説してくれながら進んでいくし、ライブラリ等は使用せずにスクラッチで書かれているので、非常に分かりやすかったです。Rust へのポーティング、実装内容の理解という面でスクラッチは嬉しいですね。
+3 までのステップでは `Integer` のみを扱い、4 で `String` や `Array`、`Hash` 等が追加で実装される構成です。各ステップ分かりやすく解説してくれながら進んでいくし、ライブラリ等は使用せずにスクラッチで書かれているので、非常に分かりやすかったです。Rust へのポーティング、実装内容の理解という面でスクラッチは嬉しいですね。
 
 ---
 
 以下、各ステップ + Formatter についての概要と、Rust での実装について簡単にですが触れたいと思います。
-
 
 ### Lexer (字句解析器)
 
@@ -128,7 +125,6 @@ pub enum Token {
 }
 ```
 
-
 ### Parser (構文解析器)
 
 Parser は Lexer によってトークン化されたソースコードを AST へと変換していきます。AST の構造が Go とは大きく異なるため、ここが一番実装が大変でした...。
@@ -192,7 +188,6 @@ AST の定義さえ出来れば、あとはひたすらトークンを落とし�
 Pratt Parser に関して、Writing An Interpreter In Go 以外だと、以下の記事が疑似コードを使った説明があり参考になるかと思います。
 
 > [Pratt Parsing - DEV Community](https://dev.to/jrop/pratt-parsing)
-
 
 ### Evaluator (評価器)
 
@@ -267,7 +262,6 @@ impl Evaluator {
 
 `eval_array_literal` を見ていただくと分かる通り、Rust (ホスト言語) にある機能 (`Array` を `Vec` で表現) を使って評価していくことがメインの実装です。
 
-
 ### Formatter
 
 Evaluator + REPL までで、Writing An Interpreter In Go のメインとなる内容は終わりです。Formatter は本で学習した内容の応用編として作ってみました。言語本体が Formatter を提供するのは気持ちいいですよね。
@@ -312,23 +306,24 @@ impl Formatter {
 例に上げた関数以外の文や式を全て実装し、
 
 ```javascript:BEFORE
-if         (          true ) {  puts("Hello")     }      else 
-{
-  puts("unreachable")    }
+if (true) {
+  puts('Hello');
+} else {
+  puts('unreachable');
+}
 ```
 
 こんなグダグダなソースコードも
 
 ```javascript:AFTER
 if (true) {
-  puts("Hello");
+  puts('Hello');
 } else {
-  puts("unreachable");
+  puts('unreachable');
 }
 ```
 
 良い感じに整形されるようになっています。
-
 
 ### これらを Wasm で動かす
 
@@ -366,7 +361,7 @@ pub fn eval(input_ptr: *mut c_char) -> *mut c_char {
 
 `alloc`, `dealloc` 辺りは JavaScript と Rust (というより WebAssembly) で共有されるメモリ空間である [WebAssembly.Memory](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory) の Allocate, Deallocate を行うための実装で、以下とっても参考になりました。
 
-> - [Rust + WebAssembly でpngデコードを行うnode_moduleを作ってみる](https://qiita.com/bokuweb/items/87a169429960f0dae2cb)
+> - [Rust + WebAssembly で png デコードを行う node_module を作ってみる](https://qiita.com/bokuweb/items/87a169429960f0dae2cb)
 > - [KOBA789/rust-wasm](https://github.com/KOBA789/rust-wasm)
 
 JavaScript と WebAssembly では、直接渡せるデータ型が数値に限定されるみたいです。そのため、ソースコードの様な文字列を渡すためには、渡す側がメモリに書き込み受け取る側ではそのポインタを受け取るような実装にする必要があります。(ここが最初本当に分からなかった...)
@@ -378,9 +373,11 @@ JavaScript 側で文字列を渡した後、戻り値を文字列化するには
 ```javascript:実装の雰囲気
 const input = '...'; // 入力されたソースコード
 
-const { instance: { exports } } = await WebAssembly.instantiateStreaming(fetch('...'));
-const encoder = new TextEncoder('UTF-8')
-const decoder = new TextDecoder('UTF-8')
+const {
+  instance: { exports },
+} = await WebAssembly.instantiateStreaming(fetch('...'));
+const encoder = new TextEncoder('UTF-8');
+const decoder = new TextDecoder('UTF-8');
 
 // WebAssembly へ文字列を渡すためにメモリに書き込む
 const buf = encoder.encode(input);
@@ -429,7 +426,6 @@ $ wasm-gc target/wasm32-unknown-unknown/release/main.wasm main.wasm
 
 大部分を端折ってはいますが、これで一通り実装についての紹介は終わりです。もし詳細な実装に興味がある方がいれば [リポジトリ](https://github.com/tsuyoshiwada/rs-monkey-lang) を見ていただけると良いかなと思います :D
 
-
 ## さいごに
 
 初洋書、初 Rust、初言語処理系、初 Wasm と、かなり自分の中では挑戦的な内容だったんですが、最後までかなり楽しく進められたなという感想です。  
@@ -442,6 +438,5 @@ Rust を触ってみて、まだまだ理解が足らず、コンパイラに怒
 ---
 
 ちなみに Writing An Interpreter In Go の続編? である [Writing A Compiler In Go](https://compilerbook.com/) (Monkey 言語用のコンパイラ及び VM の実装を行う) が最近出たのでそっちも読んでみようと思っています。
-
 
 [writing-an-interpreter-in-go]: https://interpreterbook.com/

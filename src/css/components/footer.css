@@ -3,7 +3,7 @@
   z-index: 1;
   height: var(--footer-height);
   padding: 0 3rem;
-  background: url("../images/footer_bg.jpg") 0 0;
+  background: url('../images/footer_bg.jpg') 0 0;
   background-size: 95px 95px;
   color: #fff;
   text-align: center;
@@ -84,6 +84,14 @@
   & a {
     display: block;
     padding: 8px;
+
+    &:hover,
+    &:focus {
+      & path {
+        fill: var(--color-primary);
+        transform: scale(0.9);
+      }
+    }
   }
 
   & svg {
@@ -95,13 +103,6 @@
     fill: #fff;
     transform-origin: 50% 50%;
     transition: all 0.4s var(--ease-out-quint);
-  }
-
-  &:--enter {
-    & path {
-      fill: var(--color-primary);
-      transform: scale(0.9);
-    }
   }
 }
 

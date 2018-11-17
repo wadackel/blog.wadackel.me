@@ -11,14 +11,16 @@
   flex: 1;
   overflow: hidden;
   padding: 15px;
-  border-top: 1px solid color(var(--color-gray) lightness(+15%));
-  color: var(--color-secondary);
+  border-top: 1px solid var(--color-divider);
+  color: var(--color-text);
   line-height: 1;
+  text-decoration: none;
   transition: all 0.5s var(--ease-out-quint);
 
-  &:--enter {
-    color: #fff;
-    background: var(--color-secondary);
+  &:hover,
+  &:focus {
+    background: var(--color-text);
+    color: var(--color-background);
 
     & .post-pager__item__label {
       color: var(--color-primary);
@@ -41,11 +43,11 @@
 
 .post-pager__item--prev {
   text-align: left;
-  border-left: 1px solid color(var(--color-gray) lightness(+15%));
+  border-left: 1px solid var(--color-divider);
 }
 
 .post-pager__item--disabled {
-  background-color: #fff !important;
+  background-color: var(--color-background) !important;
 }
 
 .post-pager__item__label,
@@ -57,7 +59,7 @@
 
 .post-pager__item__label {
   margin: 0 0 0.5em;
-  color: color(var(--color-secondary) lightness(+15%));
+  color: var(--color-secondary-lighter);
   font-size: 0.75rem;
   font-family: var(--font-family-accent);
 

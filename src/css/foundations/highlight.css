@@ -3,9 +3,9 @@
   --highlight-copy-arrow-size: calc(var(--highlight-copy-size) / 5);
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-  background: var(--color-secondary);
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: var(--color-code-block-bg);
   border-radius: 3px;
 
   & * {
@@ -34,7 +34,7 @@ pre[class*="language-"] {
     display: block;
     margin: 0;
     padding: 0 0.8em;
-    background: color(var(--color-secondary) lightness(+8%));
+    background: var(--color-secondary-lightest);
     border-radius: 2px 0;
     color: #abb2c0;
     font-size: 0.75em;
@@ -55,13 +55,15 @@ pre[class*="language-"] {
     right: 0;
     width: var(--highlight-copy-size);
     height: var(--highlight-copy-size);
+    border: 0;
     border-radius: 0 3px;
+    background: transparent;
     cursor: pointer;
     transition: all 0.3s var(--ease-out-quint);
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
@@ -84,9 +86,8 @@ pre[class*="language-"] {
       border-width: 1px 1px 0 0;
     }
 
-    &:--enter:not(.is-active) {
-      background: color(var(--color-secondary) blackness(+5%));
-
+    &:hover:not(.is-active),
+    &:focus:not(.is-active) {
       &::before {
         transform: translateX(calc(var(--highlight-copy-arrow-size) - 1px)) rotate(225deg);
       }
@@ -99,7 +100,6 @@ pre[class*="language-"] {
     &.is-active {
       cursor: default;
       pointer-events: none;
-      background: color(var(--color-secondary) blackness(+5%));
 
       &::before {
         transform: translateX(calc(var(--highlight-copy-arrow-size) - 3px)) rotate(225deg);
@@ -144,7 +144,7 @@ pre[class*="language-"] {
       border-width: 5px 5px 0;
       border-style: solid;
       border-color: var(--color-secondary) transparent transparent transparent;
-      content: "";
+      content: '';
     }
 
     &.is-active {
@@ -156,7 +156,7 @@ pre[class*="language-"] {
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
   padding: 0.1em;
   border-radius: 0.3em;
 }

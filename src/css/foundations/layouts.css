@@ -2,7 +2,7 @@
   position: relative;
   z-index: 10000;
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  background: var(--color-bg);
+  background: var(--color-background);
 
   @media (--viewport-md) {
     margin-bottom: var(--footer-height);

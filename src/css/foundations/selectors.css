@@ -1,6 +1,0 @@
-:root {
-  @custom-selector :--enter :hover, :focus;
-  @custom-selector :--disabled :disabled, .disabled;
-  @custom-selector :--control-text input, textarea;
-  @custom-selector :--control input, textarea, select;
-}

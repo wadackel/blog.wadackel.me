@@ -1,9 +1,9 @@
 ---
-title: "Storybookとreg-suitで気軽にはじめるVisual Regression Testing"
-slug: "storybook-chrome-screenshot-with-reg-viz"
-date: "2018-01-14"
-categories: ["javascript"]
-image: ""
+title: 'Storybookとreg-suitで気軽にはじめるVisual Regression Testing'
+slug: 'storybook-chrome-screenshot-with-reg-viz'
+date: '2018-01-14'
+categories: ['javascript']
+image: ''
 ---
 
 [scs]: https://github.com/tsuyoshiwada/storybook-chrome-screenshot
@@ -11,8 +11,7 @@ image: ""
 [quramy]: https://twitter.com/Quramy
 [bokuweb]: https://twitter.com/bokuweb17
 
-
-約半年前に「[Puppeteerを使ったStorybookの自動スクリーンショット撮影用のアドオンを作った](https://blog.wadackel.me/2017/storybook-chrome-screenshot/)」という記事を書きました。この時 [storybook-chrome-screenshot][scs] というアドオンを作って公開した紹介でした。
+約半年前に「[Puppeteer を使った Storybook の自動スクリーンショット撮影用のアドオンを作った](https://blog.wadackel.me/2017/storybook-chrome-screenshot/)」という記事を書きました。この時 [storybook-chrome-screenshot][scs] というアドオンを作って公開した紹介でした。
 
 当初は React のみのサポートだったのですが継続的に手を加えていて、最近 Angular と Vue.js へのサポートが完了したり、機能的にも大分実用的になってきました。
 
@@ -22,39 +21,32 @@ image: ""
 
 だらだら書いていたら思っていたよりも長くなってしまったので、<a href="#toc_10" data-scroll>各種ツールのセットアップ</a> だけで充分という方は読み飛ばしていただけると幸いです。
 
-
-
-
 ## 各ツールの選択理由
 
 まず、「**何故このツールを使うのか？**」といったところをざっと整理しておきます。
 
-* **reg-suit**
-    - Visual Regression Testing の為のツール
-    - 比較元、比較先の画像を検証に掛け、差分の有無を検知
-    - 検証の結果を分かりやすい形式でレポートしてくれる
-    - 比較に使用する画像は自前で用意する必要がある
-    - 画像生成に関知しないことで、汎用的な Visual Regression Testing の枠組みを提供する
-* **Storybook**
-    - 実際に動作するコンポーネントカタログを提供する
-    - 便利なアドオンの資産がある
-    - 視覚的にコンポーネントの確認ができるため
-        - 新規参入する開発者が、各コンポーネントの挙動を把握する時間の短縮に繋がる
-        - デザイナとの協業もやりやすい
-* **storybook-chrome-screenshot**
-    - Storybook の 各ストーリーからスクリーンショット画像を生成する
-    - それ以上でもそれ以下でも無い
-    - React, Angular, Vue.js で同じように使用できる
+- **reg-suit**
+  - Visual Regression Testing の為のツール
+  - 比較元、比較先の画像を検証に掛け、差分の有無を検知
+  - 検証の結果を分かりやすい形式でレポートしてくれる
+  - 比較に使用する画像は自前で用意する必要がある
+  - 画像生成に関知しないことで、汎用的な Visual Regression Testing の枠組みを提供する
+- **Storybook**
+  - 実際に動作するコンポーネントカタログを提供する
+  - 便利なアドオンの資産がある
+  - 視覚的にコンポーネントの確認ができるため
+    - 新規参入する開発者が、各コンポーネントの挙動を把握する時間の短縮に繋がる
+    - デザイナとの協業もやりやすい
+- **storybook-chrome-screenshot**
+  - Storybook の 各ストーリーからスクリーンショット画像を生成する
+  - それ以上でもそれ以下でも無い
+  - React, Angular, Vue.js で同じように使用できる
 
 reg-suit と storybook-chrome-screenshot は互いに疎なライブラリです。どちらも責務は単一のもので、片方の役割を別のものへ差し替えることも可能です。必然的に一つのものにロックインし過ぎない構成となるため、選択に遊びが入る点は魅力です。(ここは個人差があると思います)
 
-
-
-
 ## 目指すべきゴール
 
-次に Storybook でコンポーネントカタログを作り、reg-suit で Visual Regression Testing を導入したあとに、どのような恩恵を受けることが可能かを整理します。大きく分けて3つです。
-
+次に Storybook でコンポーネントカタログを作り、reg-suit で Visual Regression Testing を導入したあとに、どのような恩恵を受けることが可能かを整理します。大きく分けて 3 つです。
 
 ### 1. UI の変更に対する品質の担保
 
@@ -62,13 +54,11 @@ reg-suit と storybook-chrome-screenshot は互いに疎なライブラリです
 
 Visual Regression Testing を導入することで、そういった漏れ減らし、変更容易性を高めることで品質の担保へ繋げることが可能です。
 
-
 ### 2. 開発者の変更に対する精神的負荷を低減
 
-1で挙げたように、変更容易性が高まることで、コンポーネントに手を加える際に、開発者の精神的負荷を低減することに繋がります。
+1 で挙げたように、変更容易性が高まることで、コンポーネントに手を加える際に、開発者の精神的負荷を低減することに繋がります。
 
 開発者が触れない、触りたくないと感じるコンポーネントが増え、全体のコードが不安定になればなるほど、プロジェクトの全体の品質低下に直結します。その為、この精神的負荷の低減というのは個人的に一番重要だと感じています。
-
 
 ### 3. レビュー速度の向上
 
@@ -78,17 +68,12 @@ Visual Regression Testing を導入することで、そういった漏れ減ら
 
 ただし、実行時間が増えてもあくまで機械的なものなので、レビュワーを含めた開発者がより有意義な開発に注力することが出来る、という点は非常に大きいです。
 
-
 ---
-
 
 ここらへんまでの話は、reg-viz のメンテナである [@Quramy][quramy] さん、[@bokuweb][bokuweb] さんの記事で分かりやすく纏められています。
 
-> * [コンポーネント/単体テスト単位でのvisual regressionテストを行うためのツールを作った話し - Qiita](https://qiita.com/bokuweb/items/bf9de229a3c91c01a480)
-> * [1日10万枚の画像を検証するためにやったこと - Qiita](https://qiita.com/Quramy/items/46d0b09ae4d8887b0941)
-
-
-
+> - [コンポーネント/単体テスト単位での visual regression テストを行うためのツールを作った話し - Qiita](https://qiita.com/bokuweb/items/bf9de229a3c91c01a480)
+> - [1 日 10 万枚の画像を検証するためにやったこと - Qiita](https://qiita.com/Quramy/items/46d0b09ae4d8887b0941)
 
 ## 前提
 
@@ -99,7 +84,6 @@ React + Storybook でごく単純なプロジェクトを想定します。[crea
 > tsuyoshiwada/scs-with-reg-viz  
 > https://github.com/tsuyoshiwada/scs-with-reg-viz
 
-
 ### サンプルプロジェクト作成
 
 `scs-with-reg-viz` というプロジェクトを作成します。以下、`npm` の代わりに `yarn` を使用し、グローバルに入れる必要がありそうなものは `npx` を使っているので、「俺はグローバルインストールするぜっ!!」という方は適宜読み替えてください。
@@ -109,8 +93,7 @@ $ npx create-react-app scs-with-reg-viz
 $ cd scs-with-reg-viz
 ```
 
-
-### Storybookのセットアップ
+### Storybook のセットアップ
 
 まずは Storybook が動作可能な状態を作っておきます。
 
@@ -132,12 +115,11 @@ import { configure } from '@storybook/react';
 const req = require.context('../src', true, /\.stories\.js$/);
 
 configure(() => {
-  req.keys().forEach(filename => req(filename));
+  req.keys().forEach((filename) => req(filename));
 }, module);
 ```
 
 `src` 以下の `*.stories.js` をストーリー記述用のファイルとして使用します。
-
 
 ### 対象コンポーネントの作成
 
@@ -147,7 +129,7 @@ configure(() => {
 $ touch src/Button.js src/Button.stories.js
 ```
 
-`primary` という Props を受け取り、2種類のスタイルを提供するだけのボタンです。
+`primary` という Props を受け取り、2 種類のスタイルを提供するだけのボタンです。
 
 ```javascript:src/Button.js
 import React from 'react';
@@ -166,8 +148,7 @@ export const Button = ({ children, primary }) => (
       color: primary ? '#fff' : '#363636',
       font: 'normal 16px/50px sans-serif',
       textRendering: 'optimizeLegibility',
-    }}
-  >
+    }}>
     {children}
   </button>
 );
@@ -181,16 +162,11 @@ import { storiesOf } from '@storybook/react';
 import { Button } from './Button';
 
 storiesOf('Button', module)
-  .add('with default style', () => (
-    <Button>Default</Button>
-  ))
-  .add('with primary style', () => (
-    <Button primary>Primary</Button>
-  ));
+  .add('with default style', () => <Button>Default</Button>)
+  .add('with primary style', () => <Button primary>Primary</Button>);
 ```
 
-
-### Storybookを動かしてみる
+### Storybook を動かしてみる
 
 まず `package.json` の `scripts` に `storybook` を作成。これを通して Storybook を起動するようにします。
 
@@ -212,13 +188,9 @@ http://localhost:9001 で以下のように Storybook が動作していれば�
 
 ![Storybookの動作確認]({{% image "storybook-setup.png" %}})
 
-
-
-
 ## セットアップ
 
 ここまでで Storybook が動作するところまで来たので、Visual Regression Testing を実現するために storybook-chrome-screenshot と reg-suit、最後に CircleCI をそれぞれセットアップしていきます。
-
 
 ### storybook-chrome-screenshot
 
@@ -259,7 +231,7 @@ import 'storybook-chrome-screenshot/register';
  import { storiesOf } from '@storybook/react';
 +import { withScreenshot } from 'storybook-chrome-screenshot';
  import { Button } from './Button';
- 
+
  storiesOf('Button', module)
 +  .addDecorator(withScreenshot())
    .add('with default style', () => (
@@ -267,7 +239,7 @@ import 'storybook-chrome-screenshot/register';
    ))
 ```
 
-`addDecorator` で `withScreenshot` を実行することで、全てのストーリーを対象にスクリーンショットを撮影することができます。今回の例では、デフォルトスタイルと `primary` スタイルの2つです。
+`addDecorator` で `withScreenshot` を実行することで、全てのストーリーを対象にスクリーンショットを撮影することができます。今回の例では、デフォルトスタイルと `primary` スタイルの 2 つです。
 
 基本的なセットアップが終わったら、Storybook と同様に npm scripts を通して実行できるように `package.json` に設定します。
 
@@ -295,7 +267,6 @@ $ yarn screenshot
 ```text:.gitignore
 /__screenshots__
 ```
-
 
 ### reg-suit
 
@@ -357,7 +328,6 @@ $ npx reg-suit init --use-yarn
 $ yarn regression
 ```
 
-
 ### CircleCI
 
 https://circleci.com/add-projects/gh/<username> から、対象プロジェクトを追加してください。  
@@ -385,8 +355,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
 
       - run: yarn
 
@@ -401,15 +371,11 @@ jobs:
 
 Docker の Primary Image として、[reg-viz/node-xcb](https://hub.docker.com/r/regviz/node-xcb/) を使用していますが、これは Headless Chrome を Node.js で動かすのに適した Image となっています。storybook-chrome-screenshot は内部で [Puppeteer](https://github.com/GoogleChrome/puppeteer) を使用しているため、これをベースにしておけば楽できます。reg-viz が提供しているという点もいい感じです。
 
-実際にスクリーンショットを撮影し、Visual Regression Testing を実行しているのは最後の2行です。
-
-
-
+実際にスクリーンショットを撮影し、Visual Regression Testing を実行しているのは最後の 2 行です。
 
 ## 実際に動かしてみる
 
 一通りのセットアップが終わったので、例はショボいですが実際の開発に近い形で動作確認を行います。
-
 
 ### ブランチを切って作業
 
@@ -421,8 +387,7 @@ Docker の Primary Image として、[reg-viz/node-xcb](https://hub.docker.com/r
 $ git checkout -b monosugoi-feature
 ```
 
-
-### Buttonのスタイルを変更
+### Button のスタイルを変更
 
 `padding` と `font-size` を変更します。もちろん作業中は Storybook で動作確認しながら。
 
@@ -445,8 +410,6 @@ $ git checkout -b monosugoi-feature
      }}
    >
 ```
-
-
 
 ### Pull Request を送る
 
@@ -478,10 +441,6 @@ CircleCI 上での Visual Regression Testing が完了したら、次のよう�
 ![reg-suitの差分詳細]({{% image "reg-suit-detail.png" %}})
 
 あとは、レビュワーが変更内容を確認して問題無いようなら Approve するだけで OK です。仮に変更内容に意図しない差分が含まれる場合は、ここで修正する、といったフローになります。
-
-
-
-
 
 ## おわりに
 
