@@ -25,26 +25,46 @@
   --outside-gutter-width-lg: 15px;
   --outside-gutter-width-xl: 15px;
   --footer-height: 500px;
+
+  /* Colors */
   --color-primary: #00c795;
+  --color-primary-dark: #008666;
+  --color-secondary-light: #283d52;
   --color-secondary: #1b2937;
+  --color-secondary-dark: #344f6a;
+  --color-gray-lightest: #f8f8f8;
+  --color-gray-lighter: #dedede;
   --color-gray: #b5b5b5;
+  --color-gray-dark: #767676;
   --color-bg: #fff;
+  --color-divider: #dbdbdb;
   --color-base: var(--color-secondary);
-  --color-link: color(var(--color-primary) blackness(+10%));
+  --color-link: var(--color-primary-dark);
   --color-link-enter: var(--color-primary);
+  --color-kbd-text: var(--color-secondary);
+  --color-kbd-border: #e9e9e9;
+  --color-kbd-shadow-inset: #e5e5e5;
+  --color-kbd-shadow-from: #e7e7e7;
+  --color-kbd-shadow-to: #afafaf;
   --color-twitter: #55acee;
   --color-facebook: #315096;
   --color-hatena: #008fde;
   --color-pocket: #ef4456;
   --color-feedly: #6cc655;
+
+  /* Typography */
   --font-size-mobile: 16px;
   --font-size-desktop: 18px;
-  --font-family: Avenir, "Lucida Grande", "Helvetica Neue", "游ゴシック", "YuGothic", "Hiragino Kaku Gothic ProN", "メイリオ", meiryo, sans-serif;
+  --font-family: Avenir, 'Lucida Grande', 'Helvetica Neue', '游ゴシック', 'YuGothic', 'Hiragino Kaku Gothic ProN',
+    'メイリオ', meiryo, sans-serif;
   --font-family-code: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-  --font-family-accent: "Caveat", cursive;
+  --font-family-accent: 'Caveat', serif;
   --line-height: 1.8;
-  --scrollbar-color: color(#fff blackness(+25%));
-  --scrollbar-bg: color(var(--scrollbar-color) lightness(+12%));
+
+  /* Scrollbars */
+  --scrollbar-color: #ccc;
+  --scrollbar-bg: #f2f2f2;
+  --scrollbar-bg-enter: #ebebeb;
   --scrollbar-width: 10px;
   --scrollbar-height: 5px;
   --scrollbar-radius: 0;

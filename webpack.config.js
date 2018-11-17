@@ -1,41 +1,60 @@
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
-const WorkboxBuildWebpackPlugin = require('workbox-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 const DIST_DIR = path.resolve(__dirname, 'static');
+const MANIFEST_PATH = path.join(__dirname, 'data/manifest.json');
 
 module.exports = {
   mode: IS_PRODUCTION ? 'production' : 'development',
 
-  entry: './src/js/app.js',
+  entry: {
+    app: './src/js/app.js',
+  },
 
   output: {
-    filename: 'app.bundle.js',
-    path: path.resolve(DIST_DIR, 'js'),
+    filename: 'js/[name].bundle.[contenthash].js',
+    path: DIST_DIR,
+    publicPath: '/',
   },
 
   devtool: IS_PRODUCTION ? false : 'inline-source-map',
 
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: [
-          'babel-loader',
-        ],
-      },
-    ],
-  },
-
   plugins: [
-    ...(IS_PRODUCTION ? [
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production'),
-      }),
-    ] : []),
-    new WorkboxBuildWebpackPlugin({
+    ...(IS_PRODUCTION
+      ? [
+          new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production'),
+          }),
+        ]
+      : []),
+    new ManifestPlugin({
+      fileName: MANIFEST_PATH,
+      generate: (seed, files) => {
+        let current = {};
+
+        try {
+          current = JSON.parse(fs.readFileSync(MANIFEST_PATH, { encoding: 'utf8' }));
+          current = Object.keys(current)
+            .filter((key) => !key.startsWith('precache-manifest.'))
+            .reduce(
+              (acc, cur) => ({
+                ...acc,
+                [cur]: current[cur],
+              }),
+              {},
+            );
+        } catch (e) {
+          console.error(e); // eslint-disable-line no-console
+        }
+
+        return files.reduce((manifest, { name, path: p }) => ({ ...manifest, [name]: p }), { ...seed, ...current });
+      },
+    }),
+    new GenerateSW({
       globDirectory: DIST_DIR,
       globPatterns: ['**/*.{html,js,css}'],
       swDest: path.join(DIST_DIR, 'sw.js'),
@@ -45,7 +64,7 @@ module.exports = {
           handler: 'cacheFirst',
           options: {
             cacheName: 'googleapis',
-            cacheExpiration: {
+            expiration: {
               maxEntries: 30,
               maxAgeSeconds: 60 * 60 * 24 * 30,
             },

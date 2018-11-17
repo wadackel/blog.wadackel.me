@@ -11,14 +11,16 @@
   flex: 1;
   overflow: hidden;
   padding: 15px;
-  border-top: 1px solid color(var(--color-gray) lightness(+15%));
+  border-top: 1px solid var(--color-divider);
   color: var(--color-secondary);
   line-height: 1;
+  text-decoration: none;
   transition: all 0.5s var(--ease-out-quint);
 
-  &:--enter {
-    color: #fff;
+  &:hover,
+  &:focus {
     background: var(--color-secondary);
+    color: #fff;
 
     & .post-pager__item__label {
       color: var(--color-primary);
@@ -41,7 +43,7 @@
 
 .post-pager__item--prev {
   text-align: left;
-  border-left: 1px solid color(var(--color-gray) lightness(+15%));
+  border-left: 1px solid var(--color-divider);
 }
 
 .post-pager__item--disabled {
@@ -57,7 +59,7 @@
 
 .post-pager__item__label {
   margin: 0 0 0.5em;
-  color: color(var(--color-secondary) lightness(+15%));
+  color: var(--color-secondary-dark);
   font-size: 0.75rem;
   font-family: var(--font-family-accent);
 

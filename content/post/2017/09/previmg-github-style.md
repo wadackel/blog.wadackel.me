@@ -1,12 +1,10 @@
 ---
-title: "PrevimのMarkdownプレビューをGitHubっぽい見た目に変更した"
-slug: "previmg-github-style"
-date: "2017-09-03"
-categories: ["vim"]
-image: ""
+title: 'PrevimのMarkdownプレビューをGitHubっぽい見た目に変更した'
+slug: 'previmg-github-style'
+date: '2017-09-03'
+categories: ['vim']
+image: ''
 ---
-
-
 
 ## はじめに
 
@@ -22,8 +20,6 @@ image: ""
 
 Previm では CSS の変更がサポートされているので該当部分だけさくっと修正しようと思い立ったのですが、せっかくなのでリポジトリで表示される内容に近いほうが良いと思い GitHub のスタイルに合わせてみました。
 
-
-
 ## 変更前と変更後
 
 ![GitHub の見た目にかなり近くなった]({{% image "after.png" %}})
@@ -33,8 +29,6 @@ Previm では CSS の変更がサポートされているので該当部分だ�
 ![変更前と変更後の比較]({{% image "detail.png" %}})
 
 右側が変更後のスタイルです。シンタックスハイライトは GitHub とは結構違ったりしますが大分近くはなりました。
-
-
 
 ## 変更方法
 
@@ -55,11 +49,7 @@ let g:previm_custom_css_path = '~/dotfiles/templates/previm/markdown.css'
 
 これで Vim を再起動して実際にプレビューするだけです。Previm 便利...。
 
-
-
-
 ## おわりに
 
 Emoji の表示 GFM への対応などは考慮せず、CSS で出来る範囲のことしかやっていませんが、見た目が整ったのでいざプレビューする時に大分見やすくなりました。  
 もし同じようにプレビューの見た目を整えたいと思っている方がいたら、是非今回のスタイルを当てて快適な Vim x Markdown ライフを。
-

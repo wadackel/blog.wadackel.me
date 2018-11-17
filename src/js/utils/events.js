@@ -3,7 +3,8 @@ const SUPPORTS_PASSIVE_OPTIONS = (() => {
 
   try {
     const opts = Object.defineProperty({}, 'passive', {
-      get() { // eslint-disable-line getter-return
+      // eslint-disable-next-line getter-return
+      get() {
         enablePassive = true;
       },
     });
