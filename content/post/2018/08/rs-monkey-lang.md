@@ -304,13 +304,13 @@ impl Formatter {
 
 例に上げた関数以外の文や式を全て実装し、
 
+<!-- prettier-ignore-start -->
 ```javascript:BEFORE
-if (true) {
-  puts('Hello');
-} else {
-  puts('unreachable');
-}
+if         (          true ) {  puts("Hello")     }      else 
+{
+  puts("unreachable")    }
 ```
+<!-- prettier-ignore-end -->
 
 こんなグダグダなソースコードも
 
