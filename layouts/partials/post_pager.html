@@ -1,5 +1,5 @@
 {{ if or .PrevInSection .NextInSection }}
-<div class="post-pager">
+<nav class="post-pager" role="navigation" aria-label="前後記事のナビゲーション">
   {{ if .NextInSection }}
     <a class="post-pager__item post-pager__item--next" href="{{ .NextInSection.Permalink }}">
       <span class="post-pager__item__label">Newer Post</span>
@@ -23,5 +23,5 @@
   {{ else }}
     <span class="post-pager__item post-pager__item--prev post-pager__item--disabled"></span>
   {{ end }}
-</div>
+</nav>
 {{ end }}

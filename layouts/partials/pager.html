@@ -1,5 +1,5 @@
 {{ if ne .Paginator.TotalPages 1 }}
-<nav class="pager" role="navigation" aria-label="前後記事のナビゲーション">
+<nav class="pager" role="navigation" aria-label="ページ送りナビゲーション">
   <a class="pager__item pager__item--prev" {{ if .Paginator.HasPrev }}href="{{ .Paginator.Prev.URL }}"{{ else }}aria-disabled="true"{{ end }} aria-label="新しい記事へ遷移">{{ partial "svg/arrow_left.html" }}</a>
   <span class="pager__number">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
   <a class="pager__item pager__item--next" {{ if .Paginator.HasNext }}href="{{ .Paginator.Next.URL }}"{{ else }}aria-disabled="true"{{ end }} aria-label="古い記事へ遷移">{{ partial "svg/arrow_right.html" }}</a>
