@@ -11,17 +11,6 @@ paginatePath: "page"
 metaDataFormat: "yaml"
 hasCJKLanguage: true
 
-# Markdown
-blackfriday:
-  plainIDAnchors: true
-  extensions:
-    - autoLinking
-    - fencedCodeBlocks
-    - definitionLists
-    - strikethrough
-  extensionsmask:
-    - autoHeaderIds
-
 # More options
 params:
   # Basic
