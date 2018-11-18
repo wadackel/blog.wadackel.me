@@ -22,7 +22,9 @@
   background: transparent;
   border-radius: 50%;
   text-align: center;
-  transition: all 0.3s var(--ease-out-quint);
+  transition-property: color, background;
+  transition-duration: 320ms;
+  transition-timing-function: var(--ease-out-quint);
 
   &::before,
   &::after {

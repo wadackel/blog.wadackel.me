@@ -14,6 +14,11 @@
   background-color: var(--selection-background);
 }
 
+:focus {
+  outline: 3px solid rgba(131, 192, 253, 0.5);
+  outline-offset: 1px;
+}
+
 html {
   box-sizing: border-box;
   color: var(--color-text);
@@ -45,18 +50,14 @@ h1 {
 a {
   color: var(--color-link);
   text-decoration: underline;
-  transition: all 0.25s var(--ease-out-quint);
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--ease-out-quint);
 
   &:hover,
   &:focus {
     color: var(--color-link-enter);
     text-decoration: none;
-  }
-}
-
-button {
-  &:focus {
-    outline: none;
   }
 }
 

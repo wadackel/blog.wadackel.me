@@ -8,8 +8,3 @@
     margin-bottom: var(--footer-height);
   }
 }
-
-.contents {
-  overflow-x: hidden;
-  overflow-y: visible;
-}

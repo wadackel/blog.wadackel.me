@@ -63,7 +63,7 @@ addEvent(
       // btn copy
       $pre.insertAdjacentHTML(
         'afterbegin',
-        `<button class="highlight-copy" aria-label="ソースコードをクリップボードへコピー" data-clipboard-target="#${id}"><span class="highlight-copy__msg"></span></button>`,
+        `<button class="highlight-copy" type="button" aria-label="ソースコードをクリップボードへコピー" data-clipboard-target="#${id}"><span class="highlight-copy__msg"></span></button>`,
       );
 
       Prism.highlightElement($el);

@@ -18,7 +18,9 @@
 
   & svg,
   & a {
-    transition: all 0.75s var(--ease-out-quint);
+    transition-property: color, fill;
+    transition-duration: 750ms;
+    transition-timing-function: var(--ease-out-quint);
   }
 
   & svg {
@@ -36,10 +38,6 @@
     display: block;
     color: var(--color-primary);
     text-decoration: none;
-
-    &:focus {
-      outline: none;
-    }
   }
 
   & span {

@@ -15,7 +15,9 @@
   color: var(--color-text);
   line-height: 1;
   text-decoration: none;
-  transition: all 0.5s var(--ease-out-quint);
+  transition-property: color, background;
+  transition-duration: 440ms;
+  transition-timing-function: var(--ease-out-quint);
 
   &:hover,
   &:focus {
