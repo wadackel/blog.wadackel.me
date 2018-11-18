@@ -5,7 +5,7 @@
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  background: var(--color-code-block-bg);
+  background: var(--color-code-block-background);
   border-radius: 3px;
 
   & * {
