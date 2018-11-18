@@ -2,7 +2,6 @@
 title: 'SVGで犬のしっぽをフリフリする'
 slug: 'svg-animate'
 date: '2016-05-07'
-categories: ['animation']
 image: ''
 ---
 
@@ -24,15 +23,15 @@ image: ''
 
 しっぽを振るために、振る前と後で二つの状態のイラストを用意しました。この時、パスの制御点の総数を変えてしまうと SMIL アニメーションがうまくいかない点に注意する必要があります。
 
-![しっぽを振る前]({{% image "logo_before.png" %}})
+{{% image "しっぽを振る前" "logo_before.png" %}}
 
-![しっぽを振った後]({{% image "logo_after.png" %}})
+{{% image "しっぽを振った後" "logo_after.png" %}}
 
 ### SVG の書き出し
 
 用意したイラストを SVG として書き出します。
 
-![SVGのexport]({{% image "export_svg.png" %}})
+{{% image "SVGのexport" "export_svg.png" %}}
 
 ### SVG のコードを最適化
 
@@ -45,7 +44,7 @@ SVG の最適化には色々な方法があると思いますが、今回 GUI �
 
 SVGOMG へアクセス後、右側メニューの「Open SVG」に先ほど作った SVG をファイルを指定します。ファイルの指定後、以下の様に書き出しの設定を行います。
 
-![SVGOMGでの書き出し設定例]({{% image "svgomg.png" %}})
+{{% image "SVGOMGでの書き出し設定例" "svgomg.png" %}}
 
 | 項目            | On/Off  |
 | --------------- | ------- |
@@ -133,7 +132,7 @@ SMIL を使ってしっぽを振る場合、以下の様に SVG を作成しま�
 `しっぽを振る前`、`しっぽを振った後`に、<a href="#toc_0" data-scroll>下準備</a>でそれぞれ書きだした SVG の`d`属性の値を割り当てます。  
 実際にこれを HTML で表示してみると、以下の様になります。(色味などは別途指定済み)
 
-![SMILのループアニメーション]({{% image "smil_loop.gif" %}})
+{{% image "SMILのループアニメーション" "smil_loop.gif" %}}
 
 ### animate 要素の属性指定
 
@@ -154,7 +153,7 @@ SMIL を使ってしっぽを振る場合、以下の様に SVG を作成しま�
 
 以下、マウスオーバでアニメーションを実行する例です。
 
-![マウスに応じて動作するSMIL]({{% image "smil_hover.gif" %}})
+{{% image "マウスに応じて動作するSMIL" "smil_hover.gif" %}}
 
 変更点と参考コードを記載しますが、詳細は別途調べてみてください。
 
@@ -192,7 +191,7 @@ SMIL を使ってしっぽを振る場合、以下の様に SVG を作成しま�
 SMIL では、2 つのイラスト(`d`属性値)を丸々変える方法でしたが、CSS では動かす部分のみ分割し、分割したパーツに対して CSSTransiion、または CSSAnimation を適用していきます。  
 [GitHub Corners](http://tholman.com/github-corners/)で Octocat が手をヒョコヒョコとさせているのも、この方法をとっています。
 
-![GitHub Cornersのアニメーション]({{% image "github_corners.gif" %}})
+{{% image "GitHub Cornersのアニメーション" "github_corners.gif" %}}
 
 ### パーツを分割
 
@@ -203,7 +202,7 @@ SMIL では、2 つのイラスト(`d`属性値)を丸々変える方法でし�
 
 の 2 種類に分けて分割します。
 
-![パーツの分割図]({{% image "css_parts.png" %}})
+{{% image "パーツの分割図" "css_parts.png" %}}
 
 パスを上手く分割出来たら、Sketch 上でグループ化しておき、そのグループを SVG として書き出しておきます。あとは、<a href="#toc_2" data-scroll>SVG の書き出し</a>と同じ要領でコードを最適化しておきます。
 
@@ -249,7 +248,7 @@ SVG は最終的に以下の様になりました。
 
 そして、これを HTML で実際に表示したものが以下。
 
-![CSSでしっぽを振るアニメーション]({{% image "css_loop.gif" %}})
+{{% image "CSSでしっぽを振るアニメーション" "css_loop.gif" %}}
 
 ## まとめ
 

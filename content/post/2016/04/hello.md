@@ -2,7 +2,6 @@
 title: 'Hugoで新しくブログ作り直した'
 slug: 'hello'
 date: '2016-04-17'
-categories: ['diary']
 image: ''
 ---
 

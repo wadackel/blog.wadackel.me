@@ -1,6 +1,7 @@
 ---
 title: "wadackel.me"
 baseurl: "https://blog.wadackel.me/"
+defaultContentLanguage: "ja"
 permalinks:
   post: /:year/:slug/
 canonifyurls: true
@@ -9,17 +10,6 @@ paginate: 20
 paginatePath: "page"
 metaDataFormat: "yaml"
 hasCJKLanguage: true
-
-# Markdown
-blackfriday:
-  plainIDAnchors: true
-  extensions:
-    - autoLinking
-    - fencedCodeBlocks
-    - definitionLists
-    - strikethrough
-  extensionsmask:
-    - autoHeaderIds
 
 # More options
 params:

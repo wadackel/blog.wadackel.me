@@ -2,7 +2,6 @@
 title: '2017年の振り返りと反省、2018年への抱負'
 slug: 'ref'
 date: '2017-12-31'
-categories: ['diary']
 image: ''
 ---
 

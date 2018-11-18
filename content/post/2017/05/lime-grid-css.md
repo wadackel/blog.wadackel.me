@@ -2,12 +2,11 @@
 title: 'ブレイクポイント毎に柔軟な調整ができるFlexboxベースのCSSグリッドシステムを作った'
 slug: 'lime-grid-css'
 date: '2017-05-28'
-categories: ['css']
 ---
 
 「ブレイクポイント毎にカラム間の余白を変えられるグリッドシステムってなかなか無いな」と思いたち、[lime-grid.css](https://github.com/tsuyoshiwada/lime-grid.css) という Flexbox ベースの CSS グリッドシステムを公開しました。
 
-![LIME GRID]({{% image "repo-banner.png" %}})
+{{% image "LIME GRID" "repo-banner.png" %}}
 
 > lime-grid.css  
 > https://tsuyoshiwada.github.io/lime-grid.css/
@@ -20,7 +19,7 @@ CSS のグリッドシステムは既にかなりの数のフレームワーク�
 
 しかし、一般的に使われているものの多くはカラム間の余白 (gutter width) が固定値で、以下の様なデザインの要件によっては使いづらいことも。
 
-![イメージ]({{% image "image.png" %}})
+{{% image "イメージ" "image.png" %}}
 
 - デスクトップ = `40px`
 - タブレット = `30px`

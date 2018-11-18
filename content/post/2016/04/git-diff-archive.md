@@ -2,7 +2,6 @@
 title: 'Gitの差分ファイルをZIPにまとめるCLIツールを作った'
 slug: 'git-diff-archive'
 date: '2016-04-24'
-categories: ['git']
 image: ''
 ---
 
@@ -53,7 +52,7 @@ $ gda 845e6bc
 
 実際に実行してみると、以下の様に各種情報が表示されます。
 
-![スクリーンショット]({{% image "screenshot.png" %}})
+{{% image "スクリーンショット" "screenshot.png" %}}
 
 表示される内容は以下の内容です。
 

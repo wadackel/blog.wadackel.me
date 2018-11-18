@@ -2,7 +2,6 @@
 title: 'SlackとVimとメモ管理と私'
 slug: 'slack-memo-vim'
 date: '2016-12-09'
-categories: ['Vim']
 image: ''
 ---
 
@@ -59,7 +58,7 @@ Slack の提供するアプリは使い勝手もよく見やすいと思いま�
 
 Slack をメモ代わりに使うためのプラグインを作ってみました。
 
-![スクリーンショット]({{% image "screenshot.gif" %}})
+{{% image "スクリーンショット" "screenshot.gif" %}}
 
 上記では新規バッファを開き、メモを書いて Slack に投稿したりしてます。
 
@@ -132,7 +131,7 @@ let g:slack_memo_channel = '<YOUR_MEMO_CHANNEL_ID>'
 :SlackMemoPost
 ```
 
-![メモの投稿デモ]({{% image "demo-post.gif" %}})
+{{% image "メモの投稿デモ" "demo-post.gif" %}}
 
 メモの投稿後は通常のファイルと同様に`:w`などで保存すると、そのまま Slack 上のメモが更新されるようになっています。
 
@@ -146,7 +145,7 @@ let g:slack_memo_channel = '<YOUR_MEMO_CHANNEL_ID>'
 :SlackMemoList
 ```
 
-![メモの一覧デモ]({{% image "demo-list.gif" %}})
+{{% image "メモの一覧デモ" "demo-list.gif" %}}
 
 一覧を閉じるときは`<Esc>`か`q`をタイプします。勿論`:q`でも OK です。
 
@@ -166,7 +165,7 @@ let g:slack_memo_channel = '<YOUR_MEMO_CHANNEL_ID>'
 
 キーマップの一覧でも示しましたが、削除したいメモにカーソルを合わせ、`d`をタイプすると確認が出るので`y`で削除します。
 
-![メモの削除デモ]({{% image "demo-delete.gif" %}})
+{{% image "メモの削除デモ" "demo-delete.gif" %}}
 
 複数選択で削除したいのですが未実装です...。
 
@@ -174,7 +173,7 @@ let g:slack_memo_channel = '<YOUR_MEMO_CHANNEL_ID>'
 
 GFM の TODO リストはそのままでも充分に見やすいですが、Slack 上ではやや見づらく感じたので emoji として表示するようになっています。
 
-![GFMのTODOリストデモ]({{% image "demo-gfm.gif" %}})
+{{% image "GFMのTODOリストデモ" "demo-gfm.gif" %}}
 
 ### Bot のユーザ名やアイコンを変更
 

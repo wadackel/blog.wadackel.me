@@ -2,7 +2,6 @@
 title: 'Go製のCHANGELOGジェネレータを作った'
 slug: 'git-chglog'
 date: '2018-02-20'
-categories: ['go']
 image: '/post/2018/02/git-chglog/banner.png'
 ---
 
@@ -10,7 +9,7 @@ image: '/post/2018/02/git-chglog/banner.png'
 
 タイトルにある通り、[git-chglog][git-chglog] という Go 製の CHANGELOG ジェネレータを作りました。
 
-![git-chglog]({{% image "banner.png" %}})
+{{% image "git-chglog" "banner.png" %}}
 
 > git-chglog/git-chglog  
 > https://github.com/git-chglog/git-chglog
@@ -19,7 +18,7 @@ Git を使用したコミットとタグからなる情報を元に CHANGELOG �
 
 まだまともなサンプルが用意出来ていないのですが、以下は Angular のリポジトリで試しに作ってみたイメージです。
 
-![Angularのリポジトリでgit-chglogを使ったサンプル]({{% image "angular.png" %}})
+{{% image "Angularのリポジトリでgit-chglogを使ったサンプル" "angular.png" %}}
 
 2018/02/20 時点の Angular のコミット数がおよそ 9600 程度で、生成までの時間が 2.5〜3.5s なので、まぁストレスなく使えるレベルの速度かなと思います。
 
@@ -166,7 +165,7 @@ options:
 $ git-chglog --init
 ```
 
-![--initオプションのデモ]({{% image "init.gif" %}})
+{{% image "--initオプションのデモ" "init.gif" %}}
 
 設定とテンプレートはデフォルトでは `.chglog` ディレクトリに展開されます。
 

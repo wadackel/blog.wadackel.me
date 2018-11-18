@@ -2,7 +2,6 @@
 title: 'Writing An Interpreter In Rust して、Wasm で動かしてみた'
 slug: 'rs-monkey-lang'
 date: '2018-08-06'
-categories: ['rust']
 image: ''
 ---
 
@@ -29,7 +28,7 @@ image: ''
 
 ターミナル上で REPL を動作させることも出来るのですが、どちらかというと今回はブラウザ上で動かすことの出来る Playground が主役です。
 
-![Monkey Programming Language Playground]({{% image "playground.png" %}})
+{{% image "Monkey Programming Language Playground" "playground.png" %}}
 
 > Monkey Programming Language Playground  
 > https://tsuyoshiwada.github.io/rs-monkey-lang/
@@ -305,13 +304,13 @@ impl Formatter {
 
 例に上げた関数以外の文や式を全て実装し、
 
+<!-- prettier-ignore-start -->
 ```javascript:BEFORE
-if (true) {
-  puts('Hello');
-} else {
-  puts('unreachable');
-}
+if         (          true ) {  puts("Hello")     }      else 
+{
+  puts("unreachable")    }
 ```
+<!-- prettier-ignore-end -->
 
 こんなグダグダなソースコードも
 

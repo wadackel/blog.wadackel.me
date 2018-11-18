@@ -2,7 +2,6 @@
 title: 'Sassのmap操作をおさらいする+便利な関数をいくつか'
 slug: 'sass-map-functions'
 date: '2016-05-17'
-categories: ['Sass']
 image: ''
 ---
 

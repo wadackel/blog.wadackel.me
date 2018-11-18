@@ -2,7 +2,6 @@
 title: 'Puppeteerを使ったStorybookの自動スクリーンショット撮影用のアドオンを作った'
 slug: 'storybook-chrome-screenshot'
 date: '2017-08-26'
-categories: ['javascript']
 image: ''
 ---
 
@@ -22,7 +21,7 @@ image: ''
 
 ## 作ったもの
 
-![デモンストレーション]({{% image "demo.gif" %}})
+{{% image "デモンストレーション" "demo.gif" %}}
 
 > tsuyoshiwada/storybook-chrome-screenshot  
 > https://github.com/tsuyoshiwada/storybook-chrome-screenshot

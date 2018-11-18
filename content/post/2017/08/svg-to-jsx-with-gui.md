@@ -2,7 +2,6 @@
 title: 'ブラウザ上でSVGをJSXに変換するWebアプリを作った'
 slug: 'svg-to-jsx-with-gui'
 date: '2017-08-15'
-categories: ['javascript']
 image: ''
 ---
 
@@ -12,7 +11,7 @@ image: ''
 
 ## 作ったもの
 
-![スクリーンショット]({{% image "screenshot.png" %}})
+{{% image "スクリーンショット" "screenshot.png" %}}
 
 > SVG to JSX with GUI  
 > [https://tsuyoshiwada.github.io/svg-to-jsx-with-gui/](https://tsuyoshiwada.github.io/svg-to-jsx-with-gui/)

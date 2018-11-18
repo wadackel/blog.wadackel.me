@@ -2,7 +2,6 @@
 title: 'enzyme+mocha+power-assertでReactコンポーネントのフルレンダリングテスト'
 slug: 'react-enzyme-mocha-power-assert'
 date: '2016-07-05'
-categories: ['javascript']
 image: ''
 ---
 

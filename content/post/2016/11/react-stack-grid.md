@@ -2,7 +2,6 @@
 title: 'PinterestなレイアウトのためのReactコンポーネントを作った'
 slug: 'react-stack-grid'
 date: '2016-11-21'
-categories: ['javascript']
 image: ''
 ---
 
@@ -15,14 +14,14 @@ image: ''
 
 ## DEMO
 
-![スクリーンショット]({{% image "screenshot.png" %}})
+{{% image "スクリーンショット" "screenshot.png" %}}
 
 実際の動作は GitHub Pages から確認できます。  
 https://tsuyoshiwada.github.io/react-stack-grid/
 
 単純な`<div>`を使った矩形と、画像を入れ込んだサンプルとなっています。幾つかのアニメーション用のプリセットもあるので是非試してみてください。
 
-![Gifアニメ]({{% image "live-demo.gif" %}})
+{{% image "Gifアニメ" "live-demo.gif" %}}
 
 手持ちの iPhone6s でも必要十分な感じで動作してます。
 

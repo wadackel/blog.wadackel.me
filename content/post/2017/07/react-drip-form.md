@@ -2,7 +2,6 @@
 title: 'もうReactのフォームで消耗したくないので、HoCベースのフォームライブラリを作った'
 slug: 'react-drip-form'
 date: '2017-07-16'
-categories: ['javascript']
 image: ''
 ---
 
@@ -15,7 +14,7 @@ image: ''
 
 ## 作ったもの
 
-![react-drip-form]({{% image "repo-banner.png" %}})
+{{% image "react-drip-form" "repo-banner.png" %}}
 
 **react-drip-form** という、HoC ベースで React のフォームコンポーネントを構築するライブラリを作りました。元となるコードを書いている時、「**さくっとフォームの実装を済ませてゆっくりコーヒーでも飲みてぇ...**」という気持ちがかなり高まってたので、コーヒーを連想させる名前にしてみました。
 
@@ -276,7 +275,7 @@ export default class App extends Component {
 
 ### 基本構成
 
-![構成図]({{% image "design.png" %}})
+{{% image "構成図" "design.png" %}}
 
 以下の 3 つのコンポーネントが登場しました。
 
@@ -330,7 +329,7 @@ export default dripFormField()(Input);
 
 ### フォームの状態をフォームが持つ
 
-![フォームの状態]({{% image "form-state.png" %}})
+{{% image "フォームの状態" "form-state.png" %}}
 
 一般的な React のフォーム、というよりはライブラリが提供する機能部分での話になります。  
 **react-drip-form** はアプリケーションのステートには一切関知せず、フォームの中で状態が閉じています。それには以下のメリットがあると考えています。

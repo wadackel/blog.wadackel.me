@@ -2,7 +2,6 @@
 title: 'SVGファイルをズバッとReact Componentsに変換する'
 slug: 'react-svg-converter'
 date: '2016-06-09'
-categories: ['javascript']
 image: ''
 ---
 
@@ -14,7 +13,7 @@ SVG を外部ファイル化して読み込むことも考えましたが、CSS 
 
 ## 前提
 
-![Sketch上のSVGアイコン群]({{% image "artboard.png" %}})
+{{% image "Sketch上のSVGアイコン群" "artboard.png" %}}
 
 - 上記の様なアイコンセット(SVG ファイル)を React コンポーネント(JSX)化したい
 - 書き出されるコンポーネントは Stateless Functions としたい

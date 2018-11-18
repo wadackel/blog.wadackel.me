@@ -2,7 +2,6 @@
 title: 'JavaScriptで指定した色をある基準色に分類する'
 slug: 'color-classifier-js'
 date: '2016-05-16'
-categories: ['javascript']
 image: ''
 ---
 
@@ -47,7 +46,7 @@ JavaScript に書き直して、[The CIEDE2000 Color-Difference Formula](http://
 
 以下のページで指定色が、どの基準色へ分類されるか確認できます。
 
-![デモページ]({{% image "playground.png" %}})
+{{% image "デモページ" "playground.png" %}}
 
 > http://tsuyoshiwada.github.io/color-classifier/
 
