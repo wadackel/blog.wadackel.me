@@ -3,12 +3,10 @@
   "scripts": {
     "start": "npm-run-all clean watch",
     "clean": "rimraf 'public' 'static/**/*.+(js|css)'",
-    "build": "npm-run-all clean build:assets build:hugo",
-    "build:assets": "npm-run-all -p build:js build:css",
+    "build": "npm-run-all clean build:css build:js build:hugo",
     "build:js": "NODE_ENV=production webpack",
     "build:css": "postcss ./src/css/style.css -d ./static/css/",
     "build:hugo": "hugo",
-    "postbuild:css": "rimraf manifest.json",
     "watch": "npm-run-all -p watch:*",
     "watch:js": "webpack --watch",
     "watch:css": "yarn build:css --watch",
