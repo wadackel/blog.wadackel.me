@@ -79,7 +79,7 @@ code {
   margin: 0 0.15em;
   padding: 0.08em 0.3em;
   color: var(--color-code-text);
-  background-color: var(--color-code-bg);
+  background-color: var(--color-code-background);
   border-radius: 2px;
   font-size: 0.77em;
   font-weight: normal;
@@ -94,11 +94,11 @@ pre {
 
   & ::-webkit-scrollbar {
     width: calc(var(--scrollbar-width) / 2);
-    background: var(--scrollbar-bg);
+    background: var(--scrollbar-background);
     z-index: 10;
 
     &:hover {
-      background: var(--scrollbar-bg-enter);
+      background: var(--scrollbar-background-enter);
     }
 
     /* stylelint-disable-next-line */
