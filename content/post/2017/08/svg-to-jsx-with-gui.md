@@ -11,7 +11,7 @@ image: ''
 
 ## 作ったもの
 
-![スクリーンショット]({{% image "screenshot.png" %}})
+{{% image "スクリーンショット" "screenshot.png" %}}
 
 > SVG to JSX with GUI  
 > [https://tsuyoshiwada.github.io/svg-to-jsx-with-gui/](https://tsuyoshiwada.github.io/svg-to-jsx-with-gui/)

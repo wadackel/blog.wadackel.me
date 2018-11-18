@@ -10,7 +10,7 @@ image: ''
 
 ## 作ったもの
 
-![DEMO]({{% image "demo.gif" %}})
+{{% image "DEMO" "demo.gif" %}}
 
 > [tsuyoshiwada/git-prout: Checkout pull request locally with Golang.](https://github.com/tsuyoshiwada/git-prout)
 

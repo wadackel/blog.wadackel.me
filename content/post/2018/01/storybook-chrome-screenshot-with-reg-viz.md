@@ -185,7 +185,7 @@ $ yarn storybook
 
 http://localhost:9001 で以下のように Storybook が動作していれば、サンプルプロジェクトの作成は完了です。
 
-![Storybookの動作確認]({{% image "storybook-setup.png" %}})
+{{% image "Storybookの動作確認" "storybook-setup.png" %}}
 
 ## セットアップ
 
@@ -259,7 +259,7 @@ $ yarn screenshot
 
 少し待ち、次のような表示になれば OK です。
 
-![2つのスクリーンショット画像が生成されている]({{% image "storybook-chrome-screenshot.png" %}})
+{{% image "2つのスクリーンショット画像が生成されている" "storybook-chrome-screenshot.png" %}}
 
 デフォルトで storybook-chrome-screenshot は `__screenshots__` というディレクトリに画像を生成するので、これは Git の管理対象外にしておきます。
 
@@ -425,7 +425,7 @@ push したら GitHub 上で master に向けて PR を作成します。
 
 CircleCI 上での Visual Regression Testing が完了したら、次のように PR に reg-suit が結果をレポートしてくれます。
 
-![PRにreg-suitが結果をレポートしてくれる]({{% image "pull-request.png" %}})
+{{% image "PRにreg-suitが結果をレポートしてくれる" "pull-request.png" %}}
 
 > 画像撮影したのが Merge したあとですが気にしないでください...
 
@@ -433,11 +433,11 @@ CircleCI 上での Visual Regression Testing が完了したら、次のよう�
 
 さらにレポート用の HTML を確認すると、次のように視覚的に変更の差分を確認することができます。
 
-![reg-suitのレポート]({{% image "reg-suit-summary.png" %}})
+{{% image "reg-suitのレポート" "reg-suit-summary.png" %}}
 
 対象の画像を選択することで詳細に差分を確認出来るので分かりやすいです。
 
-![reg-suitの差分詳細]({{% image "reg-suit-detail.png" %}})
+{{% image "reg-suitの差分詳細" "reg-suit-detail.png" %}}
 
 あとは、レビュワーが変更内容を確認して問題無いようなら Approve するだけで OK です。仮に変更内容に意図しない差分が含まれる場合は、ここで修正する、といったフローになります。
 

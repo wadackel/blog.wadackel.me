@@ -338,7 +338,7 @@ export default connect(mapStateToProps)(App);
 
 ここまで実装できたら、`$ npm start`してから[http://localhost:3000/](http://localhost:3000/)をブラウザで開いて動作を確認してみます。
 
-![動作イメージ]({{% image "demo.gif" %}})
+{{% image "動作イメージ" "demo.gif" %}}
 
 ちゃんと動作している模様です。
 

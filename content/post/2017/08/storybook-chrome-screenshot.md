@@ -21,7 +21,7 @@ image: ''
 
 ## 作ったもの
 
-![デモンストレーション]({{% image "demo.gif" %}})
+{{% image "デモンストレーション" "demo.gif" %}}
 
 > tsuyoshiwada/storybook-chrome-screenshot  
 > https://github.com/tsuyoshiwada/storybook-chrome-screenshot

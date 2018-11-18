@@ -28,7 +28,7 @@ image: ''
 
 ターミナル上で REPL を動作させることも出来るのですが、どちらかというと今回はブラウザ上で動かすことの出来る Playground が主役です。
 
-![Monkey Programming Language Playground]({{% image "playground.png" %}})
+{{% image "Monkey Programming Language Playground" "playground.png" %}}
 
 > Monkey Programming Language Playground  
 > https://tsuyoshiwada.github.io/rs-monkey-lang/

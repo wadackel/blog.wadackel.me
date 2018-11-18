@@ -14,14 +14,14 @@ Google の提唱する[Material Design](https://material.google.com/)チック�
 
 ## デモ
 
-![デモンストレーション]({{% image "demo.png" %}})
+{{% image "デモンストレーション" "demo.png" %}}
 
 > React MD Spinner - DEMO  
 > https://tsuyoshiwada.github.io/react-md-spinner/
 
 実際の動きは以下の様にカラフルな円形がくるくる回る感じになっています。
 
-![gifイメージ]({{% image "demo.gif" %}})
+{{% image "gifイメージ" "demo.gif" %}}
 
 手持ちの iPhone6s で確認している限り、スマートフォンでも必要充分スムーズに動作しています。
 
@@ -62,17 +62,17 @@ export default class SpinnerExample extends Component {
 
 指定可能なするプロパティは以下の通りです。
 
-| プロパティ    | 型             | デフォルト値                                            | 概要                                                                            |
-| :------------ | :------------- | :------------------------------------------------------ | :------------------------------------------------------------------------------ |
-| `className`   | string         | undefined                                               | コンポーネントに対して`className`を設定します。                                 |
-| `style`       | object         | undefined                                               | MDSpinner 内のルート要素に対してスタイルを設定します。                          |
-| `size`        | number, string | 28                                                      | スピナーのサイズを設定します。                                                  |
-| `duration`    | number         | 1333                                                    | アニメーションの速度を設定します。                                              |
-| `color1`      | string         | ![color1]({{% image "color1.png" %}}) rgb(66, 165, 245) | スピナーの色を CSS に有効な文字列で設定します。                                 |
-| `color2`      | string         | ![color2]({{% image "color2.png" %}}) rgb(239, 83, 80)  | 同上                                                                            |
-| `color3`      | string         | ![color3]({{% image "color3.png" %}}) rgb(253, 216, 53) | 同上                                                                            |
-| `color4`      | string         | ![color4]({{% image "color4.png" %}}) rgb(76, 175, 80)  | 同上                                                                            |
-| `singleColor` | string         | undefined                                               | 基本は`color1`~`color4`と同様ですが、単色指定を行うと他の色設定は無視されます。 |
+| プロパティ    | 型             | デフォルト値                                          | 概要                                                                            |
+| :------------ | :------------- | :---------------------------------------------------- | :------------------------------------------------------------------------------ |
+| `className`   | string         | undefined                                             | コンポーネントに対して`className`を設定します。                                 |
+| `style`       | object         | undefined                                             | MDSpinner 内のルート要素に対してスタイルを設定します。                          |
+| `size`        | number, string | 28                                                    | スピナーのサイズを設定します。                                                  |
+| `duration`    | number         | 1333                                                  | アニメーションの速度を設定します。                                              |
+| `color1`      | string         | {{% image "color1" "color1.png" %}} rgb(66, 165, 245) | スピナーの色を CSS に有効な文字列で設定します。                                 |
+| `color2`      | string         | {{% image "color2" "color2.png" %}} rgb(239, 83, 80)  | 同上                                                                            |
+| `color3`      | string         | {{% image "color3" "color3.png" %}} rgb(253, 216, 53) | 同上                                                                            |
+| `color4`      | string         | {{% image "color4" "color4.png" %}} rgb(76, 175, 80)  | 同上                                                                            |
+| `singleColor` | string         | undefined                                             | 基本は`color1`~`color4`と同様ですが、単色指定を行うと他の色設定は無視されます。 |
 
 サイズや色味を変更可能な為、使う場面やアプリに応じたスタイルを適用できる様に柔軟性を持たせてみました(つもり)。
 
