@@ -9,9 +9,11 @@ import 'prismjs/components/prism-go';
 import 'prismjs/components/prism-rust';
 import 'prismjs/components/prism-markdown';
 import Clipboard from 'clipboard';
-import SweetScroll from 'sweet-scroll';
+import quicklink from 'quicklink';
 import { $, $$ } from './utils/selectors';
 import { addEvent, removeEvent } from './utils/events';
+
+quicklink();
 
 // Service Worker
 if ('serviceWorker' in navigator) {
@@ -38,12 +40,6 @@ addEvent(
   document,
   'DOMContentLoaded',
   () => {
-    // Scroll
-    SweetScroll.create({
-      duration: 1200,
-      easing: 'easeOutQuart',
-    });
-
     // Code block
     const $codeBlocks = $$('pre code');
 
