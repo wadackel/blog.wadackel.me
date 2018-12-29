@@ -56,6 +56,6 @@
     "lime-grid.css": "^0.1.0",
     "normalize.css": "^8.0.0",
     "prismjs": "^1.12.2",
-    "sweet-scroll": "^3.0.0"
+    "quicklink": "^1.0.0"
   }
 }
