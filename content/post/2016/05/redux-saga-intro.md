@@ -7,10 +7,10 @@ image: ''
 
 Web アプリを構築したくて久し振りに React を触ってみると、前に少し触っていたのにすっかり忘れてしまっていました。圧倒的に記憶力が低いので、継続的に触っていないと中々覚えられません...。
 
-今だと Angular2 がグイグイ来てたりしてますが、それよりも一度触ったことのある React+Redux を使った方が学習コストを抑えられるな、という訳で再度勉強中です。  
+今だと Angular2 がグイグイ来てたりしてますが、それよりも一度触ったことのある React+Redux を使った方が学習コストを抑えられるな、という訳で再度勉強中です。
 改めて色々と調べていると、[redux-saga](https://github.com/yelouafi/redux-saga)という Redux の Middleware が非同期処理を書きやすく出来るぞ！との事だったので、まずはシンプルなカウンターサンプルの実装をして感じを掴んでいきたいと思います。
 
-最後の<a href="#toc_18" data-scroll>参考</a>にもあげていますが、そもそも redux-saga とは一体何者なんだ？というところにおいて、以下の記事が大変参考になりました。
+最後の [参考](#参考) にもあげていますが、そもそも redux-saga とは一体何者なんだ？というところにおいて、以下の記事が大変参考になりました。
 
 > [redux-saga で非同期処理と戦う - Qiita](http://qiita.com/kuy/items/716affc808ebb3e1e8ac)
 
@@ -125,7 +125,7 @@ browser-sync が起動したら`http://localhost:3000/`にアクセスしてみ�
 
 ## カウンターサンプルの方針を整理
 
-[公式のサンプル](https://github.com/yelouafi/redux-saga/tree/master/examples/counter)は最低限のファイル構成で構築されています。  
+[公式のサンプル](https://github.com/yelouafi/redux-saga/tree/master/examples/counter)は最低限のファイル構成で構築されています。
 「まずは簡単な動作をさせて理解を進める」という事を踏まえると正しいアプローチだと思いますが、出来れば実際アプリの書いていくことを想定して、最低限ファイルの分割くらいはしておきたいです。
 
 なので今回作成するサンプルでは、実装内容こそ公式に沿っていきますが、ファイル構成や細かい点において自分なりの変更を加えつつ進めてみます。
@@ -209,7 +209,7 @@ export default function counter(state = 0, action) {
 
 ## Action Creator を作成
 
-[公式のサンプル](https://github.com/yelouafi/redux-saga/blob/master/examples/counter/src/main.js)では ActionType の指定を文字列を使っていたので、定数へと置き換えました。  
+[公式のサンプル](https://github.com/yelouafi/redux-saga/blob/master/examples/counter/src/main.js)では ActionType の指定を文字列を使っていたので、定数へと置き換えました。
 また、redux-saga を導入することで Action Creator がやるべきは、Action を生成して戻り値として返す、という責務のみにできるみたいです。
 
 ```javascript:src/actions/index.js
@@ -228,7 +228,7 @@ export const incrementIfOdd = createAction(INCREMENT_IF_ODD);
 
 より簡略した Action Creator にするため、[redux-actions](https://github.com/acdlite/redux-actions)というユーティリティを使ってみました。
 
-`createAction`は引数に渡した文字列を`type`として、[Flux の標準的な Action オブジェクト](https://github.com/acdlite/flux-standard-action)を返す関数を生成してくれます。  
+`createAction`は引数に渡した文字列を`type`として、[Flux の標準的な Action オブジェクト](https://github.com/acdlite/flux-standard-action)を返す関数を生成してくれます。
 例えば、上記の`increment`アクションを実行すると以下の様なオブジェクトを返します。
 
 ```javascript
@@ -348,7 +348,7 @@ export default connect(mapStateToProps)(App);
 
 ---
 
-公式では[tape](https://github.com/substack/tape)を使ったテストをしていますが、ここでは個人的な好みにより`mocha`+`power-assert`をメインに行ってみます。  
+公式では[tape](https://github.com/substack/tape)を使ったテストをしていますが、ここでは個人的な好みにより`mocha`+`power-assert`をメインに行ってみます。
 また、React+Redux においてテストを書くのが初めてなので間違っている箇所などあるかもしれません。もし問題あれば[Twitter](https://twitter.com/wadackel)などで教えていただけると嬉しいです。
 
 テスト対象は以下とします。
@@ -453,7 +453,7 @@ export class App extends Component {
 export default connect(mapStateToProps)(App);
 ```
 
-Redux と繋ぐための`connect`で返す`App`、単純なコンポーネントとしての`App`をそれぞれ export するように変更します。  
+Redux と繋ぐための`connect`で返す`App`、単純なコンポーネントとしての`App`をそれぞれ export するように変更します。
 これは、テスト内ではモックの`props`を渡したいためです。
 
 それではテストコードを書いていきます。今回はレンダリングの中身については確認していません。

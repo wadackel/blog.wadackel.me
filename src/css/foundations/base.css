@@ -26,6 +26,7 @@ html {
   font-family: var(--font-family);
   font-weight: 500;
   line-height: var(--line-height);
+  scroll-behavior: smooth;
 
   @media (--viewport-md) {
     font-size: var(--font-size-desktop);

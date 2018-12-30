@@ -4,7 +4,8 @@
 
 .pager {
   clear: both;
-  margin: 8rem auto;
+  margin: 8rem auto 0;
+  padding-bottom: 8rem;
   text-align: center;
   font-size: 0;
 }
