@@ -18,7 +18,7 @@ image: ''
 
 ---
 
-だらだら書いていたら思っていたよりも長くなってしまったので、<a href="#toc_10" data-scroll>各種ツールのセットアップ</a> だけで充分という方は読み飛ばしていただけると幸いです。
+だらだら書いていたら思っていたよりも長くなってしまったので、[各種ツールのセットアップ](#セットアップ) だけで充分という方は読み飛ばしていただけると幸いです。
 
 ## 各ツールの選択理由
 
@@ -80,7 +80,7 @@ React + Storybook でごく単純なプロジェクトを想定します。[crea
 
 以下、全ての工程が終わっている状態のサンプルリポジトリは以下です。
 
-> tsuyoshiwada/scs-with-reg-viz  
+> tsuyoshiwada/scs-with-reg-viz
 > https://github.com/tsuyoshiwada/scs-with-reg-viz
 
 ### サンプルプロジェクト作成
@@ -329,7 +329,7 @@ $ yarn regression
 
 ### CircleCI
 
-https://circleci.com/add-projects/gh/<username> から、対象プロジェクトを追加してください。  
+https://circleci.com/add-projects/gh/<username> から、対象プロジェクトを追加してください。
 プロジェクトの追加が出来たら、 Settings > AWS Permissions で AWS の AccessKey と SecretKey を設定します。
 
 次に CircleCI の設定ファイルを作成します。
@@ -443,12 +443,12 @@ CircleCI 上での Visual Regression Testing が完了したら、次のよう�
 
 ## おわりに
 
-自分の備忘録的に纏めた側面があるため、できるだけ詳細にと思って書いたら長くなってしまいましたが、既に Storybook のセットアップが出来ている環境なら短時間で導入可能です。  
+自分の備忘録的に纏めた側面があるため、できるだけ詳細にと思って書いたら長くなってしまいましたが、既に Storybook のセットアップが出来ている環境なら短時間で導入可能です。
 個人的には UI の変更に恐怖心を抱く前に、是非導入すべき仕組みだと感じます。
 
 ---
 
-便利な reg-suit を作ってくれた [@Quramy][quramy] さん、[@bokuweb][bokuweb] さんには感謝感激です。  
+便利な reg-suit を作ってくれた [@Quramy][quramy] さん、[@bokuweb][bokuweb] さんには感謝感激です。
 [@Quramy][quramy] さんは storybook-chrome-screenshot の [Angular 対応](https://github.com/tsuyoshiwada/storybook-chrome-screenshot/pull/21) もしていただりしました。
 
 {{% tweet "951460726178070528" %}}
