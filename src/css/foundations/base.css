@@ -15,7 +15,7 @@
 }
 
 :focus {
-  outline: 3px solid rgba(131, 192, 253, 0.5);
+  outline: 3px solid rgba(141, 202, 253, 0.5);
   outline-offset: 1px;
 }
 
