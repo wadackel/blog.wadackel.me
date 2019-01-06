@@ -11,7 +11,7 @@ image: '/post/2018/02/git-chglog/banner.png'
 
 {{% image "git-chglog" "banner.png" %}}
 
-> git-chglog/git-chglog  
+> git-chglog/git-chglog
 > https://github.com/git-chglog/git-chglog
 
 Git を使用したコミットとタグからなる情報を元に CHANGELOG を作成するためのツールです。
@@ -158,7 +158,7 @@ options:
 
 ### 1 からこれを作るのはダルすぎる...
 
-これらをスクラッチで作るのはいくらなんでも乱暴過ぎます。  
+これらをスクラッチで作るのはいくらなんでも乱暴過ぎます。
 対話形式で設定ファイル + テンプレートを作るための `--init` オプションを用意しています。
 
 ```bash:対話形式で設定とテンプレートを作成できる
@@ -236,7 +236,7 @@ feat: Add new feature
 Add new feature
 ```
 
-これらは全て、コミットの一行目をパースするための正規表現の指定で実現しています。  
+これらは全て、コミットの一行目をパースするための正規表現の指定で実現しています。
 例えば一番上のフォーマットだと次の通りです。
 
 ```yaml
@@ -274,7 +274,7 @@ header:
 
 使ってみたよ、という方がいましたら [Issues](https://github.com/git-chglog/git-chglog/issues) や [Twitter](https://twitter.com/wadackel) などで、問題の報告や感想など何らかのフィードバックをいただけると嬉しいです。(勿論 PR でも)
 
-> git-chglog/git-chglog  
+> git-chglog/git-chglog
 > https://github.com/git-chglog/git-chglog
 
 ---

@@ -11,6 +11,10 @@ paginatePath: "page"
 metaDataFormat: "yaml"
 hasCJKLanguage: true
 
+blackfriday:
+  extensions:
+  - backslashLineBreak
+
 # More options
 params:
   # Basic
