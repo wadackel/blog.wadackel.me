@@ -43,7 +43,7 @@ module.exports = {
             .reduce(
               (acc, cur) => ({
                 ...acc,
-                [cur]: current[cur],
+                [cur]: `/${current[cur].replace(/^\//, '')}`,
               }),
               {},
             );
