@@ -43,7 +43,7 @@ module.exports = {
             .reduce(
               (acc, cur) => ({
                 ...acc,
-                [cur]: current[cur],
+                [cur]: `/${current[cur].replace(/^\//, '')}`,
               }),
               {},
             );
@@ -55,8 +55,6 @@ module.exports = {
       },
     }),
     new GenerateSW({
-      globDirectory: DIST_DIR,
-      globPatterns: ['**/*.{html,js,css}'],
       swDest: path.join(DIST_DIR, 'sw.js'),
       runtimeCaching: [
         {

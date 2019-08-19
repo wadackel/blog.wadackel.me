@@ -11,17 +11,6 @@
         <p>お探しのページは一時的にアクセスができない状況にあるか、削除・変更された可能性があります。</p>
         <p><a href="/">トップページへ戻る</a></p>
       </div>
-      <section class="archives">
-        <h2>最近の投稿</h2>
-        {{ range first 5 (where .Site.Pages "Section" "post") }}
-          <div class="archives__item">
-            <h3 class="archives__item__title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <p class="archives__item__meta">
-              <time class="archives__item__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time>
-            </p>
-          </div>
-        {{ end }}
-      </section>
     </div>
   </article>
 </div>

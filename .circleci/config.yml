@@ -20,7 +20,7 @@ jobs:
   build:
     working_directory: ~/workspace
     docker:
-      - image: circleci/node:10.11
+      - image: circleci/node:12.0
     steps:
       - checkout
       - *yarn_restore_cache

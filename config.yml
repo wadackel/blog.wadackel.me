@@ -4,7 +4,6 @@ baseurl: "https://blog.wadackel.me/"
 defaultContentLanguage: "ja"
 permalinks:
   post: /:year/:slug/
-canonifyurls: true
 googleAnalytics: "UA-76551157-1"
 paginate: 20
 paginatePath: "page"
