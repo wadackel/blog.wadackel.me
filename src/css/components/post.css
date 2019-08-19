@@ -65,7 +65,7 @@
       width: 113px;
       height: 9px;
       margin: 9px auto 0;
-      background: url('../images/h2_after.png') no-repeat center center;
+      background: url('/images/h2_after.png') no-repeat center center;
       background-size: 113px auto;
       content: '';
     }
