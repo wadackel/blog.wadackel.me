@@ -23,9 +23,9 @@
   "author": "tsuyoshiwada",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^9.4.3",
+    "autoprefixer": "^9.6.1",
     "css-mqpacker": "^7.0.0",
-    "cssnano": "^4.1.8",
+    "cssnano": "^4.1.10",
     "eslint": "^5.11.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.3.0",
@@ -33,20 +33,20 @@
     "eslint-plugin-prettier": "^3.0.1",
     "npm-run-all": "^4.1.5",
     "opener": "^1.5.1",
-    "postcss-cli": "^6.1.0",
-    "postcss-custom-media": "^7.0.7",
+    "postcss-cli": "^6.1.3",
+    "postcss-custom-media": "^7.0.8",
     "postcss-easy-import": "^3.0.0",
     "postcss-hash": "^1.0.2",
-    "postcss-nesting": "^7.0.0",
-    "prettier": "^1.15.3",
+    "postcss-nesting": "^7.0.1",
+    "prettier": "^1.18.2",
     "rimraf": "^2.6.2",
     "stylelint": "^9.9.0",
     "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-prettier": "^1.0.5",
-    "wait-on": "^3.2.0",
-    "webpack": "^4.28.2",
-    "webpack-cli": "^3.1.2",
+    "wait-on": "^3.3.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
     "webpack-manifest-plugin": "^2.0.4",
     "workbox-sw": "^3.6.3",
     "workbox-webpack-plugin": "^3.6.3"
@@ -55,7 +55,14 @@
     "clipboard": "^2.0.0",
     "lime-grid.css": "^0.1.0",
     "normalize.css": "^8.0.0",
-    "prismjs": "^1.12.2",
-    "quicklink": "^1.0.0"
+    "prismjs": "^1.17.1",
+    "quicklink": "^1.0.1"
+  },
+  "browserslist": {
+    "browsers": [
+      "last 2 Chrome versions",
+      "last 2 Android versions",
+      "last 2 iOS versions"
+    ]
   }
 }

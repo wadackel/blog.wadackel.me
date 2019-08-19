@@ -5,6 +5,7 @@
 .post {
   margin-right: auto;
   margin-left: auto;
+  margin: 0 auto 8rem;
 }
 
 .post__header {
@@ -45,8 +46,6 @@
 }
 
 .post__content {
-  margin: 0 auto 10rem;
-
   & h2,
   & h3,
   & h4,

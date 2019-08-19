@@ -6,7 +6,6 @@ module.exports = {
     require('postcss-nesting'),
     require('autoprefixer')({
       remove: false,
-      browsers: ['last 2 Chrome versions', 'last 2 Android versions', 'last 2 iOS versions'],
     }),
     require('css-mqpacker')({
       sort: true,
