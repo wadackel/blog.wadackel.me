@@ -6,7 +6,7 @@ image: ''
 ---
 
 React を使って作成している Web アプリ内で、画像の色を自動的に取得後、用意しておいた幾つかの基準色(カラーパレット)に分類する必要がありました。  
-この機能を実現するために実装した内容を[color-classifier.js](https://github.com/tsuyoshiwada/color-classifier)というライブラリに切り出したので、処理内容や使い方について書いてみます。
+この機能を実現するために実装した内容を[color-classifier.js](https://github.com/wadackel/color-classifier)というライブラリに切り出したので、処理内容や使い方について書いてみます。
 
 ## はじめに
 
@@ -16,7 +16,7 @@ React を使って作成している Web アプリ内で、画像の色を自動
 
 対象のリポジトリは以下です。
 
-> [tsuyoshiwada/color-classifier](https://github.com/tsuyoshiwada/color-classifier)
+> [wadackel/color-classifier](https://github.com/wadackel/color-classifier)
 
 ### 色の分類を実現するステップ
 
@@ -40,7 +40,7 @@ JavaScript に書き直して、[The CIEDE2000 Color-Difference Formula](http://
 
 実際のソースは以下で確認できます。
 
-> [color-classifier/src/utils/color-diff.js](https://github.com/tsuyoshiwada/color-classifier/blob/master/src/utils/color-diff.js)
+> [color-classifier/src/utils/color-diff.js](https://github.com/wadackel/color-classifier/blob/master/src/utils/color-diff.js)
 
 ## デモページ
 
@@ -48,7 +48,7 @@ JavaScript に書き直して、[The CIEDE2000 Color-Difference Formula](http://
 
 {{% image "デモページ" "playground.png" %}}
 
-> http://tsuyoshiwada.github.io/color-classifier/
+> http://wadackel.github.io/color-classifier/
 
 ちょっと分かりづらいかもしれないので簡単に補足です。
 
@@ -64,7 +64,7 @@ Browserify,webpack,Node.js 上で使う場合は、npm からインストール�
 $ npm install color-classifier --save
 ```
 
-`<script>`で直接読み込む場合は、[color-classifier.min.js](https://raw.githubusercontent.com/tsuyoshiwada/color-classifier/master/color-classifier.min.js)をダウンロードしても OK です。
+`<script>`で直接読み込む場合は、[color-classifier.min.js](https://raw.githubusercontent.com/wadackel/color-classifier/master/color-classifier.min.js)をダウンロードしても OK です。
 
 ## 使い方
 
@@ -105,11 +105,11 @@ const color = colorClassifier.classify('#fefefe', 'hex');
 console.log(color); // #fff
 ```
 
-それぞれのアルゴリズムによって、分類される結果の差異は[デモページ](http://tsuyoshiwada.github.io/color-classifier/)で確認してみるのが良いかなと思います。
+それぞれのアルゴリズムによって、分類される結果の差異は[デモページ](http://wadackel.github.io/color-classifier/)で確認してみるのが良いかなと思います。
 
 ---
 
-他に指定色を配列で一気に指定する`classifyFromArray`というメソッドがあったり、デフォルトで幾つかの基準色を用意していたりしますが、詳細は[README](https://github.com/tsuyoshiwada/color-classifier)を確認いただけたらと思います。
+他に指定色を配列で一気に指定する`classifyFromArray`というメソッドがあったり、デフォルトで幾つかの基準色を用意していたりしますが、詳細は[README](https://github.com/wadackel/color-classifier)を確認いただけたらと思います。
 
 ## まとめ
 

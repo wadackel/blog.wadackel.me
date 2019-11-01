@@ -16,7 +16,7 @@ Web アプリを構築したくて久し振りに React を触ってみると、
 
 また、今回使用したサンプルコードは以下のリポジトリに公開しています。
 
-> [tsuyoshiwada/redux-saga-sandbox/counter](https://github.com/tsuyoshiwada/redux-saga-sandbox/tree/master/counter)
+> [wadackel/redux-saga-sandbox/counter](https://github.com/wadackel/redux-saga-sandbox/tree/master/counter)
 
 ## 環境のセットアップ
 
@@ -501,7 +501,7 @@ sinon の`spy`を使って、dispatch の実行を監視して渡された引数
 
 冒頭にも書きましたが、GitHub にコードを置いているので全体の確認が必要な場合は以下よりお願いします。
 
-> [tsuyoshiwada/redux-saga-sandbox/counter](https://github.com/tsuyoshiwada/redux-saga-sandbox/tree/master/counter)
+> [wadackel/redux-saga-sandbox/counter](https://github.com/wadackel/redux-saga-sandbox/tree/master/counter)
 
 ## 参考
 

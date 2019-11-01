@@ -12,23 +12,23 @@ image: ''
 
 {{% image "DEMO" "demo.gif" %}}
 
-> [tsuyoshiwada/git-prout: Checkout pull request locally with Golang.](https://github.com/tsuyoshiwada/git-prout)
+> [wadackel/git-prout: Checkout pull request locally with Golang.](https://github.com/wadackel/git-prout)
 
 ## インストール
 
 macOS の場合は Homebrew を使ってインストール可能です。
 
 ```bash
-$ brew tap tsuyoshiwada/git-prout
+$ brew tap wadackel/git-prout
 $ brew install git-prout
 ```
 
-それ以外の場合は[リリースページ](https://github.com/tsuyoshiwada/git-prout/releases)の中から必要なファイルを落としてきて、PATH の通ったところに配置し、`git-prout` にリネームします。
+それ以外の場合は[リリースページ](https://github.com/wadackel/git-prout/releases)の中から必要なファイルを落としてきて、PATH の通ったところに配置し、`git-prout` にリネームします。
 
 Go を使用する場合は以下。
 
 ```bash
-$ go get -u github.com/tsuyoshiwada/git-prout
+$ go get -u github.com/wadackel/git-prout
 ```
 
 ## 使い方
@@ -158,7 +158,7 @@ branches:
     - master
 after_success:
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
-  - ghr --username tsuyoshiwada --token $GITHUB_TOKEN --replace `grep 'Version =' version.go | sed -E 's/.*"(.+)"$$/\1/'` dist/
+  - ghr --username wadackel --token $GITHUB_TOKEN --replace `grep 'Version =' version.go | sed -E 's/.*"(.+)"$$/\1/'` dist/
 ```
 
 `ghr` に渡すバージョンは `version.go` で定義した `Version` 定数の値を拾って指定しました。

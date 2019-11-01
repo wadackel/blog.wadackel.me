@@ -5,7 +5,7 @@ date: '2016-05-20'
 image: ''
 ---
 
-去年の末に、jQuery 無しで動かせて、ES2015 フレンドリーな感じのスムーススクロール用ライブラリ、[sweet-scroll.js](https://github.com/tsuyoshiwada/sweet-scroll)を公開したのですが、ブログ以外のサイトで使ってみたり Issue もらった内容の改善を経て、`v1.0.0`(メジャーバージョン)をリリースしました。
+去年の末に、jQuery 無しで動かせて、ES2015 フレンドリーな感じのスムーススクロール用ライブラリ、[sweet-scroll.js](https://github.com/wadackel/sweet-scroll)を公開したのですが、ブログ以外のサイトで使ってみたり Issue もらった内容の改善を経て、`v1.0.0`(メジャーバージョン)をリリースしました。
 
 どのタイミングでメジャーバージョンに上げるか迷ったのですが、今後大きく機能が変わることは無さそうだなと感じたので、このタイミングです。
 
@@ -17,7 +17,7 @@ image: ''
 
 リポジトリは以下です。
 
-> [tsuyoshiwada/sweet-scroll](https://github.com/tsuyoshiwada/sweet-scroll)
+> [wadackel/sweet-scroll](https://github.com/wadackel/sweet-scroll)
 
 ## 改善点
 

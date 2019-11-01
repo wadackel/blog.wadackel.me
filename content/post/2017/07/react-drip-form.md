@@ -18,10 +18,10 @@ image: ''
 
 **react-drip-form** という、HoC ベースで React のフォームコンポーネントを構築するライブラリを作りました。元となるコードを書いている時、「**さくっとフォームの実装を済ませてゆっくりコーヒーでも飲みてぇ...**」という気持ちがかなり高まってたので、コーヒーを連想させる名前にしてみました。
 
-> tsuyoshiwada/react-drip-form  
-> https://github.com/tsuyoshiwada/react-drip-form
+> wadackel/react-drip-form  
+> https://github.com/wadackel/react-drip-form
 
-ドキュメントのページでは、[Create React App][create-react-app] を使った [Quick Start](https://tsuyoshiwada.github.io/react-drip-form/docs/) もあるので、さくっと試すことが出来ると思います。
+ドキュメントのページでは、[Create React App][create-react-app] を使った [Quick Start](https://wadackel.github.io/react-drip-form/docs/) もあるので、さくっと試すことが出来ると思います。
 
 ## 特徴
 
@@ -121,7 +121,7 @@ const Input = ({ input, meta: { error, dirty, touched }, ...rest }) => (
 export default dripFormField()(Input);
 ```
 
-実際の動作は [ドキュメントページ](https://tsuyoshiwada.github.io/react-drip-form/) で確認できます。
+実際の動作は [ドキュメントページ](https://wadackel.github.io/react-drip-form/) で確認できます。
 
 ### ネストしたフィールド
 
@@ -233,7 +233,7 @@ export default class App extends Component {
 
 ---
 
-他にもエラーメッセージのカスタマイズや、非同期検証の実装例、Redux との統合などの[サンプル](https://tsuyoshiwada.github.io/react-drip-form/examples/basic-form/)がありますので、興味があれば確認してみてください。
+他にもエラーメッセージのカスタマイズや、非同期検証の実装例、Redux との統合などの[サンプル](https://wadackel.github.io/react-drip-form/examples/basic-form/)がありますので、興味があれば確認してみてください。
 
 以降、背景や設計について紹介していきます。
 
@@ -322,8 +322,8 @@ export default dripFormField()(Input);
 
 しかし、「**プロトタイプの段階だからまずは動作するものを**」といったケースにさくっと使えるように、別パッケージとして [styled-components](https://github.com/styled-components/styled-components) でスタイルを持たせたコンポーネントセットを提供しています。
 
-> tsuyoshiwada/react-drip-form-components  
-> https://github.com/tsuyoshiwada/react-drip-form-components
+> wadackel/react-drip-form-components  
+> https://github.com/wadackel/react-drip-form-components
 
 他にもこの記事を公開した段階で [Material-UI](https://github.com/callemall/material-ui) と [React-Bootstrap](https://github.com/react-bootstrap/react-bootstrap) 用のコンポーネントセットも公開しています。
 
@@ -344,7 +344,7 @@ export default dripFormField()(Input);
 
 ### Validator のパッケージを分割
 
-内部的に使用する Validator は[別パッケージ](https://github.com/tsuyoshiwada/drip-form-validator)として切り出しています。  
+内部的に使用する Validator は[別パッケージ](https://github.com/wadackel/drip-form-validator)として切り出しています。  
 これはお気持ち程度の内容になってしまいますが、**React (View ライブラリ) とロジックの依存性を最小限に**したかったためです。
 
 あまり現実的に無いケースだとは思いますが、React の外からも扱えるようになっていれば、サーバサイドで同じバリデーションロジックを使いまわしたり出来るかなと思います。
@@ -366,7 +366,7 @@ React Native は自分自身が使ったことが無いため、今後の予定�
 
 これから少しずつ TODO の消化と安定した動作への調整をしていきたいと思います。
 
-お気づきの点などあれば [Issues](https://github.com/tsuyoshiwada/react-drip-form/issues) や [Twitter](https://twitter.com/wadackel) で教えてくださるとうれしいです。
+お気づきの点などあれば [Issues](https://github.com/wadackel/react-drip-form/issues) や [Twitter](https://twitter.com/wadackel) で教えてくださるとうれしいです。
 
-> tsuyoshiwada/react-drip-form  
-> https://github.com/tsuyoshiwada/react-drip-form
+> wadackel/react-drip-form  
+> https://github.com/wadackel/react-drip-form

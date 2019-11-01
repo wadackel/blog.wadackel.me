@@ -4,12 +4,12 @@ slug: 'lime-grid-css'
 date: '2017-05-28'
 ---
 
-「ブレイクポイント毎にカラム間の余白を変えられるグリッドシステムってなかなか無いな」と思いたち、[lime-grid.css](https://github.com/tsuyoshiwada/lime-grid.css) という Flexbox ベースの CSS グリッドシステムを公開しました。
+「ブレイクポイント毎にカラム間の余白を変えられるグリッドシステムってなかなか無いな」と思いたち、[lime-grid.css](https://github.com/wadackel/lime-grid.css) という Flexbox ベースの CSS グリッドシステムを公開しました。
 
 {{% image "LIME GRID" "repo-banner.png" %}}
 
 > lime-grid.css  
-> https://tsuyoshiwada.github.io/lime-grid.css/
+> https://wadackel.github.io/lime-grid.css/
 
 以降、作った背景や使い方、カスタマイズの方法について書いていきたいと思います。
 
@@ -58,7 +58,7 @@ $ npm install lime-grid.css --save
 $ yarn add lime-grid.css
 ```
 
-又は [lime-grid.min.css](https://raw.githubusercontent.com/tsuyoshiwada/lime-grid.css/master/lime-grid.min.css) をダウンロードします。
+又は [lime-grid.min.css](https://raw.githubusercontent.com/wadackel/lime-grid.css/master/lime-grid.min.css) をダウンロードします。
 
 ## 使い方
 
@@ -97,7 +97,7 @@ Flexbox Grid を使ったことのある方であれば、違和感なく使い�
 | `.row`                         | カラムを内包する行                                 |
 | `.col-{xs,sm,md,lg,xl}-[1-12]` | 各カラムでサイズをそれぞれ指定                     |
 
-実際の挙動は[デモ](https://tsuyoshiwada.github.io/lime-grid.css/)を見ていただきたいのですが、それぞれのブレイクポイントで各カラム間の余白が微妙に変わっていることが分かると思います。  
+実際の挙動は[デモ](https://wadackel.github.io/lime-grid.css/)を見ていただきたいのですが、それぞれのブレイクポイントで各カラム間の余白が微妙に変わっていることが分かると思います。  
 `10px` 等の小さな変化ではありますが、モバイルの 2 カラムで `30px` は空きすぎだよなぁという場面もあるので、それぞれ変化を付けられるのは重宝します。
 
 ~~ただ、全てのブレイクポイントで基本的には余白が変わることが前提となるので、以下のようにカラム指定の省略は不可です。~~
@@ -160,7 +160,7 @@ Flexbox Grid を使ったことのある方であれば、違和感なく使い�
 ---
 
 他にも整列位置の調整や、並び順の設定が可能です。詳しくはデモを参照ください。  
-https://tsuyoshiwada.github.io/lime-grid.css/
+https://wadackel.github.io/lime-grid.css/
 
 ## カスタマイズ
 
@@ -210,14 +210,14 @@ PostCSS を使ってオプションを変更した状態で使用することが
 ```
 
 変数の詳細は以下のソースコードを参照してください。  
-https://github.com/tsuyoshiwada/lime-grid.css/blob/master/src/variables.css
+https://github.com/wadackel/lime-grid.css/blob/master/src/variables.css
 
 ## 所感
 
 冒頭で書いた「ブレイクポイントでカラム間余白を調整したい」といった要望が、どの程度一般的にあるかは分かりませんが、少なくとも僕はやりたいと思うことが多いため作りました。  
 同じような考えを持っている方は是非使ってみてフィードバックいただけると嬉しいです。
 
-バグや機能要望などは [Twitter](https://twitter.com/wadackel) や、[Issues](https://github.com/tsuyoshiwada/lime-grid.css/issues) までいただければと思います。
+バグや機能要望などは [Twitter](https://twitter.com/wadackel) や、[Issues](https://github.com/wadackel/lime-grid.css/issues) までいただければと思います。
 
 ---
 

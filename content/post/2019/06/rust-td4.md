@@ -17,14 +17,14 @@ image: ''
 
 {{% image "Playground" "playground.png" %}}
 
-> https://tsuyoshiwada.github.io/rs-td4/
+> https://wadackel.github.io/rs-td4/
 
 GitHub Pages にホストした上記の URL で、実際に入力を与え、書き込んだ ROM に従ってプログラムを実行することができます。(16 ステップで表現できるものは大分限られますが...) デフォルトで設定されている ROM は、書籍で紹介されている `LED ちかちか` というプログラムの内容です。
 
 リポジトリは以下。
 
-> tsuyoshiwada/rs-td4  
-> https://github.com/tsuyoshiwada/rs-td4
+> wadackel/rs-td4  
+> https://github.com/wadackel/rs-td4
 
 ## TD4 の仕様
 
@@ -275,7 +275,7 @@ fn jnc(register: &mut Register, im: u8) {
 
 これもすごく簡単な、仕様をそのままコードに落としたようなコードになるかと思います。
 
-ここでは全ての命令を書きませんが、基本的に前述したような処理を各命令分実装するだけです。全ての実装に興味がある方は [ここらへんのコード](https://github.com/tsuyoshiwada/rs-td4/blob/484fc2e9dd1454d6063ce3ccd393a06ee50c0bb6/td4/src/cpu.rs#L70-L138) を見ていただけると雰囲気が伝わるかと思います。
+ここでは全ての命令を書きませんが、基本的に前述したような処理を各命令分実装するだけです。全ての実装に興味がある方は [ここらへんのコード](https://github.com/wadackel/rs-td4/blob/484fc2e9dd1454d6063ce3ccd393a06ee50c0bb6/td4/src/cpu.rs#L70-L138) を見ていただけると雰囲気が伝わるかと思います。
 
 ### リセット
 

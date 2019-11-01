@@ -65,7 +65,7 @@ $ gda 845e6bc
 
 生成する zip ファイルの名前を変えたり、幾つか指定できるオプションがあります。詳細は以下のリポジトリで確認できます。
 
-> [tsuyoshiwada/git-diff-archive](https://github.com/tsuyoshiwada/git-diff-archive)
+> [wadackel/git-diff-archive](https://github.com/wadackel/git-diff-archive)
 
 ## 動作の仕組みと実装について
 

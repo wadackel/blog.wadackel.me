@@ -9,15 +9,15 @@ image: ''
 
 リポジトリは以下です。
 
-> tsuyoshiwada/react-stack-grid  
-> https://github.com/tsuyoshiwada/react-stack-grid
+> wadackel/react-stack-grid  
+> https://github.com/wadackel/react-stack-grid
 
 ## DEMO
 
 {{% image "スクリーンショット" "screenshot.png" %}}
 
 実際の動作は GitHub Pages から確認できます。  
-https://tsuyoshiwada.github.io/react-stack-grid/
+https://wadackel.github.io/react-stack-grid/
 
 単純な`<div>`を使った矩形と、画像を入れ込んだサンプルとなっています。幾つかのアニメーション用のプリセットもあるので是非試してみてください。
 
@@ -61,7 +61,7 @@ class MyComponent extends Component {
 一点必須なのは、内部的に ReactTransitionGroup を使っているので子要素に対して、必ず`key`プロパティが必要なことが挙げられます。  
 多くの場合、何らかのデータを回すことになると思うのであまり気にする必要はないかなと思います。
 
-その他いくつかプロパティが設定可能ですので、詳細は[リポジトリ](https://github.com/tsuyoshiwada/react-stack-grid)をご確認ください。
+その他いくつかプロパティが設定可能ですので、詳細は[リポジトリ](https://github.com/wadackel/react-stack-grid)をご確認ください。
 
 ## アニメーションの調整
 
@@ -74,7 +74,7 @@ class MyComponent extends Component {
 - `leaved`
 
 スタイルオブジェクトには`translateX`や`scale`、`rotate`などの拡張構文が指定可能です。  
-`transform`の値を作るのが意外と大変なので、直感的に書けるかなと思います。ここらへんの処理は[easy-css-transform-builder](https://github.com/tsuyoshiwada/easy-css-transform-builder)という別パッケージに切り出しています。
+`transform`の値を作るのが意外と大変なので、直感的に書けるかなと思います。ここらへんの処理は[easy-css-transform-builder](https://github.com/wadackel/easy-css-transform-builder)という別パッケージに切り出しています。
 
 先ほどのコールバック関数には 3 つの引数が渡ってきます。それらを使うことで柔軟な対応ができると思います。  
 渡ってくる引数は以下のとおりです。
@@ -130,7 +130,7 @@ class MyComponent extends Component {
 }
 ```
 
-[DEMO](https://tsuyoshiwada.github.io/react-stack-grid/)で使っているアニメーションは元から用意しているので、`transitiions`を`import`することで使用可能です。
+[DEMO](https://wadackel.github.io/react-stack-grid/)で使っているアニメーションは元から用意しているので、`transitiions`を`import`することで使用可能です。
 
 ```javascript
 import StackGrid, { transitions, easings } from "react-stack-grid";
@@ -168,4 +168,4 @@ class MyComponent extends Component {
 
 あまり使用頻度が高いとは思いませんが、もし Pinterest っぽいレイアウトを実装する必要があれば使ってみていただけると嬉しいです。
 
-[Issues](https://github.com/tsuyoshiwada/react-stack-grid/issues) & PR お待ちしております。
+[Issues](https://github.com/wadackel/react-stack-grid/issues) & PR お待ちしております。

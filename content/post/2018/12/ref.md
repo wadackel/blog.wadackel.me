@@ -77,7 +77,7 @@ San Francisco でコーヒー豆を買いたくて、歩いていた途中の道
 
 - [git-chglog](https://github.com/git-chglog/git-chglog)
   - Go で実装した CHANGELOG ジェネレータ
-- [rs-monkey-lang](https://github.com/tsuyoshiwada/rs-monkey-lang)
+- [rs-monkey-lang](https://github.com/wadackel/rs-monkey-lang)
   - Rust で書いたインタープリタ実装
 
 他に細かいものでいくつか書きましたが、全体的に数がすくない...
@@ -98,7 +98,7 @@ San Francisco でコーヒー豆を買いたくて、歩いていた途中の道
 
 ### storybook-chrome-screenshot
 
-[storybook-chrome-screenshot](https://github.com/tsuyoshiwada/storybook-chrome-screenshot) という、Storybook の各 Story をスクリーンショットに落とし込む Addon を書いたのですが、パフォーマンスや動作上の問題が大きくなってきました。
+[storybook-chrome-screenshot](https://github.com/wadackel/storybook-chrome-screenshot) という、Storybook の各 Story をスクリーンショットに落とし込む Addon を書いたのですが、パフォーマンスや動作上の問題が大きくなってきました。
 
 それらの改善について、[@Quramy さんが書いた FOLIO アドベントカレンダー 2018](https://medium.com/@Quramy/folio%E3%81%AE%E7%94%BB%E5%83%8F%E5%9B%9E%E5%B8%B0%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E8%A3%8F%E5%81%B4-c848030991bc) でも触れられていました。実はここらへんの話は今年 Slack やご飯を食べながら話していて、[zisui](https://github.com/Quramy/zisui) との統合に向けてそろそろ動きたいなと考えています...。
 

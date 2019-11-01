@@ -23,17 +23,17 @@ image: ''
 
 実際に出来上がったものは以下のリポジトリです。
 
-> tsuyoshiwada/rs-monkey-lang  
-> https://github.com/tsuyoshiwada/rs-monkey-lang
+> wadackel/rs-monkey-lang  
+> https://github.com/wadackel/rs-monkey-lang
 
 ターミナル上で REPL を動作させることも出来るのですが、どちらかというと今回はブラウザ上で動かすことの出来る Playground が主役です。
 
 {{% image "Monkey Programming Language Playground" "playground.png" %}}
 
 > Monkey Programming Language Playground  
-> https://tsuyoshiwada.github.io/rs-monkey-lang/
+> https://wadackel.github.io/rs-monkey-lang/
 
-幾つかスニペットを用意しているので実際に動かしてみると面白いかなと思います。Monkey 言語の簡単なドキュメントも [README](https://github.com/tsuyoshiwada/rs-monkey-lang#documentation) に記載しています。
+幾つかスニペットを用意しているので実際に動かしてみると面白いかなと思います。Monkey 言語の簡単なドキュメントも [README](https://github.com/wadackel/rs-monkey-lang#documentation) に記載しています。
 
 ※ちなみにガワの実装をサボりまくっているので、Chrome でしか動作しないと思います :)
 
@@ -423,7 +423,7 @@ $ cargo build --release --target wasm32-unknown-unknown
 $ wasm-gc target/wasm32-unknown-unknown/release/main.wasm main.wasm
 ```
 
-大部分を端折ってはいますが、これで一通り実装についての紹介は終わりです。もし詳細な実装に興味がある方がいれば [リポジトリ](https://github.com/tsuyoshiwada/rs-monkey-lang) を見ていただけると良いかなと思います :D
+大部分を端折ってはいますが、これで一通り実装についての紹介は終わりです。もし詳細な実装に興味がある方がいれば [リポジトリ](https://github.com/wadackel/rs-monkey-lang) を見ていただけると良いかなと思います :D
 
 ## さいごに
 

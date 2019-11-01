@@ -9,15 +9,15 @@ Google の提唱する[Material Design](https://material.google.com/)チック�
 
 リポジトリは以下です。
 
-> tsuyoshiwada/react-md-spinner  
-> https://github.com/tsuyoshiwada/react-md-spinner
+> wadackel/react-md-spinner  
+> https://github.com/wadackel/react-md-spinner
 
 ## デモ
 
 {{% image "デモンストレーション" "demo.png" %}}
 
 > React MD Spinner - DEMO  
-> https://tsuyoshiwada.github.io/react-md-spinner/
+> https://wadackel.github.io/react-md-spinner/
 
 実際の動きは以下の様にカラフルな円形がくるくる回る感じになっています。
 
@@ -98,15 +98,15 @@ export default class SpinnerExample extends Component {
 
 このアプローチ方法については、ググれば幾つかの方法が出てきます。`react-md-spinner`では、この処理部分のみ別のパッケージとして切り出して公開しました。(コンポーネントのテストとは分離したかったので)
 
-> tsuyoshiwada/css-keyframer  
-> https://github.com/tsuyoshiwada/css-keyframer
+> wadackel/css-keyframer  
+> https://github.com/wadackel/css-keyframer
 
 指定したスタイルに必要なベンダープレフィックスを自動的に付与したり、`@keyframes`の登録/登録解除といった必要最低限の API を実装したものです。
 
 ## まとめ
 
 見た目は限りなくシンプルなので、Material Design の Spinner として公開しましたが、色味を変更すれば幅広いデザインに適用出来そうなので、Spinner 探してたのよね〜という方に是非使ってみて欲しいなと思います。  
-バグや機能改善は[Issues](https://github.com/tsuyoshiwada/react-md-spinner/issues)や[Twitter](https://twitter.com/wadackel)までいただけると嬉しいです。
+バグや機能改善は[Issues](https://github.com/wadackel/react-md-spinner/issues)や[Twitter](https://twitter.com/wadackel)までいただけると嬉しいです。
 
-> tsuyoshiwada/react-md-spinner  
-> https://github.com/tsuyoshiwada/react-md-spinner
+> wadackel/react-md-spinner  
+> https://github.com/wadackel/react-md-spinner

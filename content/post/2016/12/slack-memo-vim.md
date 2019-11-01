@@ -66,8 +66,8 @@ Slack をメモ代わりに使うためのプラグインを作ってみまし�
 
 プラグインのリポジトリは以下です。
 
-> tsuyoshiwada/slack-memo-vim  
-> https://github.com/tsuyoshiwada/slack-memo-vim
+> wadackel/slack-memo-vim  
+> https://github.com/wadackel/slack-memo-vim
 
 Windows 環境が手元に無いため未確認です。すみません。
 
@@ -79,14 +79,14 @@ Windows 環境が手元に無いため未確認です。すみません。
 
 ```vim:.vimrc
 call dein#add('mattn/webapi-vim')
-call dein#add('tsuyoshiwada/slack-memo-vim', {'depends': 'mattn/webapi-vim'})
+call dein#add('wadackel/slack-memo-vim', {'depends': 'mattn/webapi-vim'})
 ```
 
 ### [NeoBundle](https://github.com/Shougo/neobundle.vim)
 
 ```vim:.vimrc
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'tsuyoshiwada/slack-memo-vim', {'depends': 'mattn/webapi-vim'}
+NeoBundle 'wadackel/slack-memo-vim', {'depends': 'mattn/webapi-vim'}
 ```
 
 ### Slack のトークン、メモ用チャンネルの設定
@@ -236,7 +236,7 @@ Slack の API で各チャンネルの履歴を一度に取得出来るのが、
 まだまだエラー処理が雑だったり、至らないところばかりですが、なんとかぎりぎりプラグインとして動くところまで出来ました。  
 これを作るまで、10 行以上の Vim Script を書いたことが無いくらいだったのでご容赦いただければ幸いです。
 
-機能要望やバグなどありましたら[Issues](https://github.com/tsuyoshiwada/slack-memo-vim/issues)や[Twitter](https://twitter.com/wadackel)までご連絡いただければ嬉しいです。
+機能要望やバグなどありましたら[Issues](https://github.com/wadackel/slack-memo-vim/issues)や[Twitter](https://twitter.com/wadackel)までご連絡いただければ嬉しいです。
 
 ---
 

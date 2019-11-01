@@ -23,8 +23,8 @@ image: ''
 
 {{% image "デモンストレーション" "demo.gif" %}}
 
-> tsuyoshiwada/storybook-chrome-screenshot  
-> https://github.com/tsuyoshiwada/storybook-chrome-screenshot
+> wadackel/storybook-chrome-screenshot  
+> https://github.com/wadackel/storybook-chrome-screenshot
 
 `storybook-chrome-screenshot` というまんまの名前の Addon を作りました。  
 ローカルで動作させてみると、上記のアニメーションのようにスクリーンショットが生成されます。
@@ -102,4 +102,4 @@ $ npm run screenshot
 
 ## おわりに
 
-まだ CI で動作させたり、といった実際の運用を見越した検証が不十分です。もし実際に使ってみたよ！という方がいて問題や機能改善について何かあれば [Issues](https://github.com/tsuyoshiwada/storybook-chrome-screenshot/issues) や [PR](https://github.com/tsuyoshiwada/storybook-chrome-screenshot/pulls) お待ちしています。
+まだ CI で動作させたり、といった実際の運用を見越した検証が不十分です。もし実際に使ってみたよ！という方がいて問題や機能改善について何かあれば [Issues](https://github.com/wadackel/storybook-chrome-screenshot/issues) や [PR](https://github.com/wadackel/storybook-chrome-screenshot/pulls) お待ちしています。

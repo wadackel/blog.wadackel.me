@@ -101,8 +101,8 @@ export default class Toast extends Component {
 
 今回使用したファイルは以下のリポジトリにあるので、記事に書かれていない箇所で不明な点があればご確認ください。
 
-> tsuyoshiwada/enzyme-sample  
-> https://github.com/tsuyoshiwada/enzyme-sample
+> wadackel/enzyme-sample  
+> https://github.com/wadackel/enzyme-sample
 
 ## テストに必要なパッケージのインストール
 
@@ -255,7 +255,7 @@ $ npm test
 
 ---
 
-週末に公開した[react-md-spinner](https://github.com/tsuyoshiwada/react-md-spinner)でテストを書く時に、enzyme どうやって使おうっていうところを軽く調べた内容について纏めました。enzyme 使ってみよう、という方の参考になれば嬉しいです。
+週末に公開した[react-md-spinner](https://github.com/wadackel/react-md-spinner)でテストを書く時に、enzyme どうやって使おうっていうところを軽く調べた内容について纏めました。enzyme 使ってみよう、という方の参考になれば嬉しいです。
 
 React に限らず mocha+power-assert を使ったテストが自分の中でよく使うスタックなので、enzyme はそれらと簡単に統合出来て、割と直感的な API でテストが書き進められるので良い感じですね。
 

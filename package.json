@@ -20,7 +20,7 @@
     "format:js": "yarn lint:js --fix",
     "format:css": "yarn lint:css --fix"
   },
-  "author": "tsuyoshiwada",
+  "author": "wadackel",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^9.6.1",

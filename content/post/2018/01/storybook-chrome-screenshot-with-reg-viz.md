@@ -5,7 +5,7 @@ date: '2018-01-14'
 image: ''
 ---
 
-[scs]: https://github.com/tsuyoshiwada/storybook-chrome-screenshot
+[scs]: https://github.com/wadackel/storybook-chrome-screenshot
 [reg]: https://github.com/reg-viz/reg-suit
 [quramy]: https://twitter.com/Quramy
 [bokuweb]: https://twitter.com/bokuweb17
@@ -80,8 +80,8 @@ React + Storybook でごく単純なプロジェクトを想定します。[crea
 
 以下、全ての工程が終わっている状態のサンプルリポジトリは以下です。
 
-> tsuyoshiwada/scs-with-reg-viz
-> https://github.com/tsuyoshiwada/scs-with-reg-viz
+> wadackel/scs-with-reg-viz
+> https://github.com/wadackel/scs-with-reg-viz
 
 ### サンプルプロジェクト作成
 
@@ -429,7 +429,7 @@ CircleCI 上での Visual Regression Testing が完了したら、次のよう�
 
 > 画像撮影したのが Merge したあとですが気にしないでください...
 
-実際の PR は https://github.com/tsuyoshiwada/scs-with-reg-viz/pull/1 です。
+実際の PR は https://github.com/wadackel/scs-with-reg-viz/pull/1 です。
 
 さらにレポート用の HTML を確認すると、次のように視覚的に変更の差分を確認することができます。
 
@@ -449,7 +449,7 @@ CircleCI 上での Visual Regression Testing が完了したら、次のよう�
 ---
 
 便利な reg-suit を作ってくれた [@Quramy][quramy] さん、[@bokuweb][bokuweb] さんには感謝感激です。
-[@Quramy][quramy] さんは storybook-chrome-screenshot の [Angular 対応](https://github.com/tsuyoshiwada/storybook-chrome-screenshot/pull/21) もしていただりしました。
+[@Quramy][quramy] さんは storybook-chrome-screenshot の [Angular 対応](https://github.com/wadackel/storybook-chrome-screenshot/pull/21) もしていただりしました。
 
 {{% tweet "951460726178070528" %}}
 

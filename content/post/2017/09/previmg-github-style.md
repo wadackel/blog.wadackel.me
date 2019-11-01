@@ -44,7 +44,7 @@ let g:previm_custom_css_path = '~/dotfiles/templates/previm/markdown.css'
 
 次に上記で指定したファイルを作成して、次のスタイルを記述します。
 
-> [dotfiles/templates/previm/markdown.css](https://github.com/tsuyoshiwada/dotfiles/blob/9023005bb30d4d895f69233156dd6f488d29e841/templates/previm/markdown.css)
+> [dotfiles/templates/previm/markdown.css](https://github.com/wadackel/dotfiles/blob/9023005bb30d4d895f69233156dd6f488d29e841/templates/previm/markdown.css)
 
 これで Vim を再起動して実際にプレビューするだけです。Previm 便利...。
 
