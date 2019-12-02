@@ -135,8 +135,8 @@ lazy_static! {
         v.push((4, "#000080"));
         v.push((5, "#800080"));
         // 256 色の定義
-        v.push((253, "#dadada"));
         v.push((254, "#e4e4e4"));
+        v.push((255, "#eeeeee"));
         v
     };
 }
