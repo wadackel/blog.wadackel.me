@@ -5,7 +5,7 @@
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  background: var(--color-code-block-background);
+  background: var(--color-code-block-background) !important;
   border-radius: 3px;
 
   & * {
@@ -23,7 +23,7 @@ pre[class*='language-'] {
     display: block;
     padding: 1em !important;
     overflow: auto;
-    color: #abb2c0;
+    color: #abb2c0 !important;
     font-size: 1em;
     line-height: 1.4;
     -webkit-overflow-scrolling: touch;
