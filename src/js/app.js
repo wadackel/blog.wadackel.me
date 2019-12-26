@@ -1,5 +1,6 @@
 import Prism from 'prismjs';
 import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-docker';
 import 'prismjs/components/prism-diff';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-jsx';
