@@ -1,5 +1,5 @@
 ---
-title: Cloud Run を使って Pull Request 単位でプレビュー環境を立ち上げる
+title: Cloud Run と GitHub Actions を使って Pull Request 単位でプレビュー環境を立ち上げる
 slug: 'cloud-run-pull-request-preview'
 date: '2019-12-26'
 image: ''
