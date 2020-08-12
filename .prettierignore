@@ -1,4 +1,4 @@
-public/**/*
-static/**/*.js
-static/**/*.map
-static/**/*.css
+.cache
+package.json
+package-lock.json
+public

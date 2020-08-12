@@ -1,68 +1,158 @@
 {
   "private": true,
+  "name": "blog.wadackel.me",
   "scripts": {
-    "start": "npm-run-all clean watch",
-    "clean": "rimraf 'public' 'static/**/*.+(js|css)'",
-    "build": "npm-run-all clean build:css build:js build:hugo",
-    "build:js": "NODE_ENV=production webpack",
-    "build:css": "postcss ./src/css/style.css -d ./static/css/",
-    "build:hugo": "hugo",
-    "watch": "npm-run-all -p watch:*",
-    "watch:js": "webpack --watch",
-    "watch:css": "yarn build:css --watch",
-    "watch:hugo": "hugo server --renderToDisk --port=8080 -D -w",
-    "watch:open": "wait-on http://localhost:8080 && opener http://localhost:8080",
-    "lint": "npm-run-all lint:js lint:css",
-    "lint:js": "eslint '*.js' 'src/js/**/*.js'",
-    "lint:css": "stylelint 'src/css/**/*.css'",
-    "format": "npm-run-all format:prettier -p format:js format:css",
-    "format:prettier": "prettier --config prettier.config.js --write '**/*.+(js|css|md|json)'",
-    "format:js": "yarn lint:js --fix",
-    "format:css": "yarn lint:css --fix"
-  },
-  "author": "wadackel",
-  "license": "MIT",
-  "devDependencies": {
-    "autoprefixer": "^9.6.1",
-    "css-mqpacker": "^7.0.0",
-    "cssnano": "^4.1.10",
-    "eslint": "^5.11.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "npm-run-all": "^4.1.5",
-    "opener": "^1.5.1",
-    "postcss-cli": "^6.1.3",
-    "postcss-custom-media": "^7.0.8",
-    "postcss-easy-import": "^3.0.0",
-    "postcss-hash": "^1.0.2",
-    "postcss-nesting": "^7.0.1",
-    "prettier": "^1.18.2",
-    "rimraf": "^2.6.2",
-    "stylelint": "^9.9.0",
-    "stylelint-config-prettier": "^4.0.0",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-prettier": "^1.0.5",
-    "wait-on": "^3.3.0",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
-    "webpack-manifest-plugin": "^2.0.4",
-    "workbox-sw": "^3.6.3",
-    "workbox-webpack-plugin": "^3.6.3"
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "lint": "eslint . --ext \".js,.jsx,.ts,.tsx\"",
+    "format": "yarn format:lint && yarn format:prettier",
+    "format:lint": "yarn lint --fix",
+    "format:prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,yml}\"",
+    "typecheck": "tsc",
+    "scaffold": "scaffdog generate"
   },
   "dependencies": {
-    "clipboard": "^2.0.0",
-    "lime-grid.css": "^0.1.0",
-    "normalize.css": "^8.0.0",
-    "prismjs": "^1.17.1",
-    "quicklink": "^1.0.1"
+    "classnames": "^2.2.6",
+    "dayjs": "^1.8.33",
+    "preact": "^10.4.7",
+    "preact-render-to-string": "^5.1.10",
+    "prismjs": "^1.21.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-schemaorg": "^1.2.0",
+    "schema-dts": "^0.6.0",
+    "typeface-caveat": "^0.0.76"
   },
-  "browserslist": {
-    "browsers": [
-      "last 2 Chrome versions",
-      "last 2 Android versions",
-      "last 2 iOS versions"
+  "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.44",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-helmet": "^6.1.0",
+    "@types/vfile-message": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
+    "@weknow/gatsby-remark-twitter": "^0.2.3",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "gatsby": "^2.24.36",
+    "gatsby-awesome-pagination": "^0.3.6",
+    "gatsby-cli": "^2.12.78",
+    "gatsby-plugin-feed": "^2.5.11",
+    "gatsby-plugin-google-analytics": "^2.3.13",
+    "gatsby-plugin-manifest": "^2.4.23",
+    "gatsby-plugin-minify-classnames": "^0.2.0",
+    "gatsby-plugin-netlify-cache": "^1.2.0",
+    "gatsby-plugin-postcss": "^2.3.11",
+    "gatsby-plugin-preact": "^4.0.9",
+    "gatsby-plugin-react-helmet": "^3.3.10",
+    "gatsby-plugin-remove-generator": "^1.0.5",
+    "gatsby-plugin-sitemap": "^2.4.11",
+    "gatsby-plugin-typescript": "^2.4.17",
+    "gatsby-remark-autolink-headers": "^2.3.11",
+    "gatsby-remark-copy-images": "^0.2.1",
+    "gatsby-remark-prismjs": "^3.5.10",
+    "gatsby-remark-prismjs-title": "^1.0.0",
+    "gatsby-source-filesystem": "^2.3.24",
+    "gatsby-transformer-remark": "^2.8.28",
+    "hast-util-to-html": "^7.1.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "parse-numeric-range": "^1.2.0",
+    "postcss-custom-media": "^7.0.8",
+    "postcss-nesting": "^7.0.1",
+    "prettier": "^2.0.5",
+    "remark-rehype": "^7.0.0",
+    "scaffdog": "^0.3.0",
+    "typescript": "^3.9.7",
+    "unified": "^9.1.0",
+    "unist-util-visit": "^2.0.3"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "env": {
+      "node": true,
+      "browser": true,
+      "es6": true
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "plugins": [
+      "import",
+      "@typescript-eslint",
+      "react",
+      "react-hooks"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "prettier"
+    ],
+    "rules": {
+      "react/prop-types": "off",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "import/default": "off",
+      "import/no-named-as-default": "off",
+      "import/no-named-as-default-member": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.tsx"
+        ],
+        "extends": [
+          "plugin:@typescript-eslint/recommended",
+          "prettier/@typescript-eslint",
+          "plugin:import/typescript"
+        ],
+        "rules": {
+          "@typescript-eslint/no-unused-vars": "off",
+          "@typescript-eslint/no-explicit-any": "off",
+          "@typescript-eslint/no-empty-interface": "off",
+          "@typescript-eslint/no-non-null-assertion": "off",
+          "@typescript-eslint/explicit-module-boundary-types": "off",
+          "@typescript-eslint/ban-types": "off",
+          "@typescript-eslint/ban-ts-comment": "off",
+          "import/order": [
+            "error",
+            {
+              "newlines-between": "never"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,md,yml}": [
+      "prettier --write"
     ]
   }
 }
