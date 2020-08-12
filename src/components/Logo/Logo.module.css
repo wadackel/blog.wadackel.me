@@ -1,9 +1,3 @@
-@keyframes shake-reverse {
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-}
-
 @keyframes shake {
   0% {
     transform: translate(0, 0) rotate(0deg);
