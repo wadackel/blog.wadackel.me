@@ -77,6 +77,9 @@
     "unified": "^9.1.0",
     "unist-util-visit": "^2.0.3"
   },
+  "resolutions": {
+    "unified": "9.0.0"
+  },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
     "env": {
