@@ -1,0 +1,153 @@
+:root {
+  --post-share-btn-size: 40px;
+}
+
+.wrapper {
+  clear: both;
+  margin: 8rem auto;
+  padding: 0;
+  font-size: 0;
+  text-align: center;
+}
+
+.item {
+  display: inline-block;
+  margin: 0 0 0 10px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.button {
+  position: relative;
+  display: block;
+  width: var(--post-share-btn-size);
+  height: var(--post-share-btn-size);
+  background: var(--color-background);
+  border-radius: 50%;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    width: var(--post-share-btn-size);
+    height: var(--post-share-btn-size);
+    margin-top: calc(var(--post-share-btn-size) / 2 * -1);
+    margin-left: calc(var(--post-share-btn-size) / 2 * -1);
+    border-radius: 50%;
+    transition-property: all;
+    transition-timing-function: var(--ease-out-quint);
+    content: '';
+  }
+
+  &::before {
+    border-width: 2px;
+    border-style: solid;
+    transition-duration: 0.5s;
+  }
+
+  &::after {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.2);
+    transition-duration: 0.25s;
+  }
+
+  & svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: auto;
+    height: 14px;
+    margin: auto;
+    transition: all 0.5s var(--ease-out-quint);
+  }
+
+  & path {
+    transition: all 0.5s var(--ease-out-quint);
+  }
+
+  &.isTwitter {
+    & path {
+      fill: var(--color-twitter);
+    }
+
+    &::before {
+      border-color: var(--color-twitter);
+    }
+
+    &::after {
+      background-color: var(--color-twitter);
+    }
+  }
+
+  &.isHatena {
+    & path {
+      fill: var(--color-hatena);
+    }
+
+    &::before {
+      border-color: var(--color-hatena);
+    }
+
+    &::after {
+      background-color: var(--color-hatena);
+    }
+  }
+
+  &.isPocket {
+    & path {
+      fill: var(--color-pocket);
+    }
+
+    &::before {
+      border-color: var(--color-pocket);
+    }
+
+    &::after {
+      background-color: var(--color-pocket);
+    }
+  }
+
+  &.isFeedly {
+    & path {
+      fill: var(--color-feedly);
+    }
+
+    &::before {
+      border-color: var(--color-feedly);
+    }
+
+    &::after {
+      background-color: var(--color-feedly);
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    &::before {
+      opacity: 0;
+      transform: scale(1.2);
+    }
+
+    &::after {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1, 1);
+    }
+
+    & svg {
+      transform: scale(0.85);
+    }
+
+    & path {
+      fill: #fff;
+    }
+  }
+}

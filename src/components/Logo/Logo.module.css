@@ -1,0 +1,64 @@
+@keyframes shake-reverse {
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  15% {
+    transform: translate(14%, 2%) rotate(40deg);
+  }
+
+  35% {
+    transform: translate(14%, 2%) rotate(20deg);
+  }
+
+  50% {
+    transform: translate(14%, 2%) rotate(40deg);
+  }
+
+  85% {
+    transform: translate(-2%, 2%) rotate(-5deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.wrapper {
+  position: relative;
+  display: block;
+  padding-bottom: calc(274 / 400 * 100 * 1%);
+  width: 100%;
+  height: 0;
+}
+
+.wrapper svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.body,
+.tail {
+  fill: currentColor;
+}
+
+.tail {
+  transform-origin: 100% 0.5%;
+  transform-box: fill-box;
+}
+
+.isAnimating .tail {
+  animation-name: shake;
+  animation-duration: 830ms;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
