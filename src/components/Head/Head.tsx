@@ -114,11 +114,15 @@ export const Head: React.FC<Props> = ({
       <meta property="og:type" content="article" />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
+      <meta name="og:image" content={`${metadata.siteUrl}/wadackelme.png`} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:site" content={`@${metadata.social.twitter}`} />
-      <meta name="twitter:image" content={publisher.image[0]} />
+      <meta
+        name="twitter:image"
+        content={`${metadata.siteUrl}/wadackelme.png`}
+      />
 
       <link rel="me" href={`https://twitter.com/${metadata.social.twitter}`} />
       <link rel="canonical" href={seo.url} />
