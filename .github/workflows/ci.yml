@@ -74,7 +74,7 @@ jobs:
   deploy:
     name: Deploy to Netlify
     runs-on: ubuntu-latest
-    needs: [typecheck, lint]
+    needs: [build, lint]
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
