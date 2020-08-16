@@ -3,10 +3,6 @@ const prismComponents = require('prismjs/components');
 const visit = require('unist-util-visit');
 const parseRange = require('parse-numeric-range');
 
-/**
- * TOOD Highlight Lines
- */
-
 // bash
 // bash{1,4-6}
 // bash:Example
@@ -141,24 +137,35 @@ const loadLanguage = (language) => {
   require(`prismjs/components/prism-${base}.js`);
 };
 
-// TODO Use highlight
-const highlightCode = (language, code /*, highlight */) => {
-  if (language === 'text') {
-    return code;
-  }
+const highlightCode = (language, code, highlight) => {
+  let highlighted = code;
 
-  if (!Prism.languages[language]) {
-    try {
-      loadLanguage(language);
-    } catch (e) {
-      console.error(e);
+  if (language !== 'text') {
+    if (!Prism.languages[language]) {
+      try {
+        loadLanguage(language);
+      } catch (e) {
+        console.error(e);
+      }
     }
+
+    const grammar = Prism.languages[language];
+
+    highlighted = Prism.highlight(code, grammar, language);
   }
 
-  const grammar = Prism.languages[language];
-  const highlighted = Prism.highlight(code, grammar, language);
+  return highlighted
+    .split('\n')
+    .map((line, index) => {
+      const n = index + 1;
 
-  return highlighted;
+      if (highlight?.includes(n)) {
+        return `<span class="highlight-line">${line}</span>`;
+      }
+
+      return line;
+    })
+    .join('\n');
 };
 
 module.exports = ({ markdownAST }) => {
