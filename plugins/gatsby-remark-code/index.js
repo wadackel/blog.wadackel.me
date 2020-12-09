@@ -137,10 +137,34 @@ const loadLanguage = (language) => {
   require(`prismjs/components/prism-${base}.js`);
 };
 
+const escape = (code) => {
+  const htmlEscapes = {
+    '&': `&amp;`,
+    '>': `&gt;`,
+    '<': `&lt;`,
+    '"': `&quot;`,
+    "'": `&#39;`,
+  };
+
+  const escapedChars = (char) => htmlEscapes[char];
+
+  const chars = Object.keys(htmlEscapes);
+
+  const charsRe = new RegExp(`[${chars.join(``)}]`, `g`);
+
+  const rehasUnescapedChars = new RegExp(charsRe.source);
+
+  return code && rehasUnescapedChars.test(code)
+    ? code.replace(charsRe, escapedChars)
+    : code;
+};
+
 const highlightCode = (language, code, highlight) => {
   let highlighted = code;
 
-  if (language !== 'text') {
+  if (language === 'text') {
+    highlighted = escape(code);
+  } else {
     if (!Prism.languages[language]) {
       try {
         loadLanguage(language);
