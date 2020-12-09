@@ -216,7 +216,7 @@
     display: inline-block;
     min-width: 3em;
     margin: 0 0.4em;
-    padding: 0.5em 1em;
+    padding: 0.05em 0.5em;
     background: var(--color-kbd-background);
     border-top: 1px solid var(--color-kbd-border);
     border-radius: 3px;
@@ -228,6 +228,7 @@
     font-weight: normal;
     font-family: var(--font-monospace);
     text-align: center;
+    vertical-align: text-bottom;
   }
 
   & :global(.highlight) {
