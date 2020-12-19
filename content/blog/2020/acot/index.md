@@ -324,3 +324,9 @@ $ acot preset test
 途中で何度か記載した通り、今回の内容はまだ暫定を含むものばかりです。ただ、モチベーションに書いたような内容へ共感し、導入や開発に興味ある方がいれば是非お声がけいただけると嬉しいです。
 
 一緒に開発している [@masuP9](https://twitter.com/masuP9) も [Web アクセシビリティ Advent Calendar 2020](https://adventar.org/calendars/5001) の 12/18 分で、別観点から acot について書いてくれるみたいなのでお楽しみに。
+
+---
+
+**追記:** [@masuP9](https://twitter.com/masuP9) のブログでも書いてくれました。
+
+> [Web アクセシビリティの検証ツール「acot」 / masuP.net](https://masup.net/2020/12/acot-accessibility-testing-framework)
