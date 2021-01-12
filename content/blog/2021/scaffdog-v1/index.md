@@ -52,14 +52,14 @@ questions:
 
 ![複数入力のデモ](./multiple-questions.gif)
 
-`choices` フィールドを指定すると、テキスト入力ではなくリスト選択の prompt が採用されます。
+上記 gif 画像のとおり、`choices` フィールドを指定するとテキスト入力の代わりにリスト選択の prompt が採用されます。
 
-また、オブジェクトのキーに指定した入力が、テンプレート内の変数 `inputs` からアクセス可能です。
+また、オブジェクトのキーに対応した入力が、テンプレート内の変数 `inputs` からアクセス可能です。
 
 ````markdown:inputs.XXXで入力へアクセス可能
 # `{{ inputs.name }}.txt`
 
-```typescript
+```
 name = {{ inputs.name }}
 variant = {{ inputs.variant }}
 description = {{ inputs.description }}
@@ -79,6 +79,8 @@ module.exports = {
   files: ['./*'], // Markdown ファイルの検索パターン
 };
 ```
+
+拡張子は不要で、Markdown のファイルのみマッチします。
 
 #### グローバル変数の定義
 
