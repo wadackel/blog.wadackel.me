@@ -72,7 +72,7 @@
     "postcss-nesting": "^7.0.1",
     "prettier": "^2.0.5",
     "remark-rehype": "^7.0.0",
-    "scaffdog": "^0.3.0",
+    "scaffdog": "1.0.0",
     "typescript": "^3.9.7",
     "unified": "^9.1.0",
     "unist-util-visit": "^2.0.3"
