@@ -29,6 +29,9 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
+        commonmark: false,
+        pedantic: false,
+        gfm: true,
         plugins: [
           'gatsby-remark-emoji',
           'gatsby-remark-a11y-emoji',
