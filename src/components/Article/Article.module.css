@@ -136,7 +136,6 @@
   & ol {
     margin: 1.5em auto;
     padding: 0 0 0 1.5em;
-    list-style: none;
 
     & p {
       margin-top: 0;
@@ -153,58 +152,57 @@
 
     & ul,
     & ol {
-      margin-top: 0.44em;
+      margin-top: 0.64em;
       margin-bottom: 0;
     }
   }
 
   & ul {
-    & li::before {
-      position: absolute;
-      top: calc(0.5em + 1px);
-      left: -1.5em;
-      display: block;
-      width: 8px;
-      height: 8px;
-      background: var(--color-secondary-lighter);
-      border: 2px solid var(--color-secondary-lighter);
-      border-radius: 50%;
-      content: '';
+    list-style-type: disc;
+
+    & li::marker {
+      color: var(--color-secondary-lighter);
+      font-size: 1.3em;
+      line-height: 0;
     }
 
-    & li > ul > li::before {
-      background: var(--color-gray);
-      border-color: var(--color-gray);
+    & li > ul > li::marker {
+      color: var(--color-gray);
     }
 
-    & li > ul > li > ul > li::before {
-      background: transparent;
-      border-color: var(--color-gray);
+    & li > ul > li > ul {
+      list-style-type: circle;
+    }
+
+    & li > ul > li > ul > li::marker {
+      color: var(--color-gray-dark);
     }
   }
 
   & ol {
+    list-style: none;
     counter-reset: article;
 
     & li::before {
       position: absolute;
-      top: calc(0.5em - 2px);
-      left: calc(var(--font-size-16) * -1.5);
+      top: calc((var(--font-size-16) * var(--line-height-base)) / 2 - 9px);
+      left: calc(var(--font-size-16) * -1.3);
       display: block;
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       background: var(--color-secondary-lighter);
       border: 2px solid var(--color-secondary-lighter);
       border-radius: 50%;
       font-size: 11px;
       text-align: center;
-      line-height: 18px;
+      line-height: 14px;
       color: var(--color-background);
       counter-increment: article;
       content: counter(article);
 
       @media (--viewport-md) {
-        left: calc(var(--font-size-18) * -1.5);
+        top: calc((var(--font-size-18) * var(--line-height-base)) / 2 - 9px);
+        left: calc(var(--font-size-18) * -1.3);
       }
     }
   }

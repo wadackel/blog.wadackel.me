@@ -58,8 +58,7 @@
   --color-feedly: #6cc655;
 
   /* Typography */
-  --font-sans-serif: Avenir, 'Lucida Grande', 'Helvetica Neue', '游ゴシック',
-    'YuGothic', 'Hiragino Kaku Gothic ProN', 'メイリオ', meiryo, sans-serif;
+  --font-sans-serif: system-ui, sans-serif;
   --font-monospace: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
     monospace;
   --font-accent: 'Caveat', serif;
