@@ -360,3 +360,12 @@ cleanup-preview:
 この記事では Go を使ったアプリケーションを稼働させていますが、仕事で実際に使っているのは Node.js で書かれたアプリケーションだったりします。各種ツールが揃っていることでとにかく気軽に試せるのでいい感じです。
 
 Docker コンテナ単体で動作可能なアプリケーションとなっていれば、様々なホスト方法が検討できるのは利点となりえますね。
+
+## 追記: 2021/04/20
+
+ふと久しぶりにこの記事に近いセットアップをしていて気がついたのですが、`GoogleCloudPlatform/github-actions/setup-gcloud` という名前から [google-github-actions/setup-gcloud](https://github.com/google-github-actions/setup-gcloud) に変わっています。基本的な使い方は変わっていませんが、詳細はドキュメントを参照してください。
+
+```diff
+- GoogleCloudPlatform/github-actions/setup-gcloud@master
++ google-github-actions/setup-gcloud@master
+```
