@@ -22,14 +22,14 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
-    "react-schemaorg": "^1.2.0",
-    "schema-dts": "^0.6.0",
+    "react-schemaorg": "1.2.0",
+    "schema-dts": "0.6.0",
     "typeface-caveat": "^0.0.76"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.10",
-    "@types/node": "^14.0.27",
-    "@types/react": "^16.9.44",
+    "@types/node": "^16.11.41",
+    "@types/react": "16.14.28",
     "@types/react-dom": "^16.9.8",
     "@types/react-helmet": "^6.1.0",
     "@types/vfile-message": "^2.0.0",
@@ -71,14 +71,17 @@
     "postcss-custom-media": "^7.0.8",
     "postcss-nesting": "^7.0.1",
     "prettier": "^2.0.5",
+    "prettier-plugin-scaffdog": "1.5.0",
     "remark-rehype": "^7.0.0",
-    "scaffdog": "1.0.0",
+    "scaffdog": "1.5.0",
     "typescript": "^3.9.7",
     "unified": "^9.1.0",
     "unist-util-visit": "^2.0.3"
   },
   "resolutions": {
-    "unified": "9.0.0"
+    "@types/react": "16.14.28",
+    "unified": "9.0.0",
+    "sharp": "^0.29.1"
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
