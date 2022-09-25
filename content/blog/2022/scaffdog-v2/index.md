@@ -29,7 +29,7 @@ Markdown Driven な scaffolding ツール [scaffdog](https://github.com/scaffdog
 
 ## ドキュメントサイト
 
-![ドキュメントサイトトップページ](./scaffdog.png)
+![ドキュメントサイトトップページ](scaffdog.png)
 
 > scaffdog - Markdown driven scaffolding tool.  
 > https://scaff.dog
@@ -38,7 +38,7 @@ v2 にかけてドキュメントの量が増える想定があったこと、We
 
 特に [Built-in Helpers](https://scaff.dog/docs/templates/helpers) のページで、scaffdog が提供するヘルパー関数を一覧にしたページでは、利用例を新たに追加したため以前よりわかりやすくなったと思います。
 
-![Playground ページ](./playground.png)
+![Playground ページ](playground.png)
 
 Playground では任意の入力を使って、テンプレートドキュメントとその出力を確認することができます。従来、実際にファイルに書いてみて各種プロンプトを埋めてから晴れて動作確認ができるという状態でした。それが Web 上でさくっと動作確認ができるので個人的に重宝している機能となっています。
 
@@ -269,7 +269,7 @@ questions:
 
 上記の定義以下のようなプロンプトが表示されます。
 
-![Boolean プロンプト](./boolean.png)
+![Boolean プロンプト](boolean.png)
 
 ### Array
 
@@ -299,7 +299,7 @@ questions:
 
 上記の定義以下のようなプロンプトが表示されます。
 
-![Array プロンプト](./array.png)
+![Array プロンプト](array.png)
 
 ## プロンプトに対する条件追加
 
