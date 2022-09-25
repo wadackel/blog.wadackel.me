@@ -1452,51 +1452,55 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@scaffdog/config@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/config/-/config-1.5.0.tgz#339cc01bb2923840c1813fb1f804e16c67cc19f3"
-  integrity sha512-85sI4EpTUAIC3owvIh/sHwwffg5GsngbtiLXpymcqf7mptCPgDG7pjUS6X71Pu+Fsng/Ef/pY8CYIoIjz79JpQ==
+"@scaffdog/config@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/config/-/config-2.4.0.tgz#b69e02be0f9e60dce8581ed2d2eb7f32646afb30"
+  integrity sha512-hAa54XR5ySe6MfwtrDuR+dwVMVdEnKYDYIShxgZznkWJSDTmJtMFlP8wksIBz1Co9z7zZXWrxU94A4T0OA8kIQ==
   dependencies:
-    "@scaffdog/types" "1.5.0"
+    "@scaffdog/types" "2.4.0"
+    jiti "^1.14.0"
     zod "^3.11.6"
 
-"@scaffdog/core@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/core/-/core-1.5.0.tgz#6c39e217c007067770eb620d37992ce9a0e228f8"
-  integrity sha512-Xy7Ztv5r4tl/gEOLVBhdxjHGkenTc/54H5GZx41E9O5wmZ/mqozCJpE8mhaW5uEIRMaPCtcyDKAuBKokMTmpNA==
+"@scaffdog/core@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/core/-/core-2.4.0.tgz#12f464eb396e7cbbf148ef5b8f06dcf0c49a13c6"
+  integrity sha512-87hmYgSB/PLHvMOpt0f8Gr/3BI/STAMaMIiDYwbDeNBGbcyPg5Wb/rM3rbKB5hByL6FIQs1L+XJZOPWsipJ5Bw==
   dependencies:
-    "@scaffdog/engine" "1.5.0"
-    "@scaffdog/types" "1.5.0"
+    "@scaffdog/engine" "2.4.0"
+    "@scaffdog/types" "2.4.0"
     mdast-util-to-string "^2.0.0"
     remark-parse "^9.0.0"
     unified "^9.2.1"
     unist-util-visit-parents "^3.1.1"
 
-"@scaffdog/engine@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/engine/-/engine-1.5.0.tgz#a8c6c4007bb730c651c43e5853c64db92e0e03e5"
-  integrity sha512-4lokPOm0jW1JVY9a55MGS8mMjFVFbQuw9LDKFM6oQ3NmoTx2xbs0+Pzi635gg/L67H2BXgSHZw7JpIGY8Q4dnA==
+"@scaffdog/engine@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/engine/-/engine-2.4.0.tgz#60b387a216d1b84f7ca4e1f243683134cb45c470"
+  integrity sha512-S9ibYtwZ/hzW3O0tTEXncYEP1P66GvJOSY4VTDoviY6+r9y1I4tY0Ut9/4kwayzI2K3Q5VMSUqzKsbiDT4x+sg==
   dependencies:
-    "@scaffdog/error" "1.5.0"
-    "@scaffdog/types" "1.5.0"
+    "@scaffdog/error" "2.4.0"
+    "@scaffdog/types" "2.4.0"
     change-case "^4.1.2"
     dayjs "^1.10.4"
-    esprima "^4.0.1"
     is-plain-object "^5.0.0"
+    plur "4.0.0"
     safe-eval "^0.4.1"
 
-"@scaffdog/error@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/error/-/error-1.5.0.tgz#f10d8827de5a850dff042ed95e3eb4110e50ef5a"
-  integrity sha512-sahs6iR21C/BC9YlZRqUAbippQ/0sy/Ow1uYz0hkHgztxjffoCEzovygmR106RRlScjJE4R+wTez3W5A2bWNrw==
+"@scaffdog/error@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/error/-/error-2.4.0.tgz#973df5ef0346a68d78df9ab62aa971b81ac7b5d8"
+  integrity sha512-Zj2o/IFY5iWtLbjttKCYwZtzK73HbhC3ylegf+ytjChDORDYMvWyCo2ZJvYfSU+xJPjvsUfGGlFnXxC2VyY0bA==
   dependencies:
-    "@scaffdog/types" "1.5.0"
+    "@scaffdog/types" "2.4.0"
     chalk "^4.1.0"
+    string-length "4.0.2"
 
-"@scaffdog/types@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/types/-/types-1.5.0.tgz#ad1a4f69c3c4ff2b1460ce970b9a5057e87e6a64"
-  integrity sha512-H4lwA7Rl4r2FPKhZ7uNGrgE+rcnvDYH21/xKFGA949GxGgTkc6kRkb9tshXn5Dk1NBSy++WwMM8xCVtduGq10Q==
+"@scaffdog/types@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/types/-/types-2.4.0.tgz#38031cbb808fe390f931a64db9e13d5a75dd87d0"
+  integrity sha512-VcwDK+YxNRrc/QV7BgnfTN4vP37xu6YNbYiuoycC9E8A0d8VFc03/CB6cUf4+e7uRs9q2dxE9YctJK2mAArhRA==
+  dependencies:
+    type-fest "2.19.0"
 
 "@sideway/address@^4.1.3":
   version "4.1.4"
@@ -2901,6 +2905,13 @@ brace-expansion@^1.0.0, brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
+brace-expansion@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-2.0.1.tgz#1edc459e0f0c548486ecf9fc99f2221364b9a0ae"
+  integrity sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==
+  dependencies:
+    balanced-match "^1.0.0"
+
 braces@^2.3.1, braces@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/braces/-/braces-2.3.2.tgz#5979fd3f14cd531565e5fa2df1abfff1dfaee729"
@@ -3279,6 +3290,11 @@ change-case@^4.1.2:
     sentence-case "^3.0.4"
     snake-case "^3.0.4"
     tslib "^2.0.3"
+
+char-regex@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/char-regex/-/char-regex-1.0.2.tgz#d744358226217f981ed58f479b1d6bcc29545dcf"
+  integrity sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==
 
 character-entities-html4@^1.0.0:
   version "1.1.4"
@@ -4291,6 +4307,11 @@ deep-is@^0.1.3, deep-is@~0.1.3:
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.4.tgz#a6f2dce612fadd2ef1f519b73551f17e85199831"
   integrity sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==
 
+deepmerge@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
+  integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
+
 default-gateway@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/default-gateway/-/default-gateway-4.2.0.tgz#167104c7500c2115f6dd69b0a536bb8ed720552b"
@@ -5200,7 +5221,7 @@ espree@^7.3.0, espree@^7.3.1:
     acorn-jsx "^5.3.1"
     eslint-visitor-keys "^1.3.0"
 
-esprima@^4.0.0, esprima@^4.0.1:
+esprima@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
@@ -8191,6 +8212,11 @@ jest-worker@^25.4.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
+jiti@^1.14.0:
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.14.0.tgz#5350fff532a4d891ca4bcd700c47c1f40e6ee326"
+  integrity sha512-4IwstlaKQc9vCTC+qUXLM1hajy2ImiL9KnLvVYiaHOtS/v3wRjhLlGl121AmgDgx/O43uKmxownJghS5XMya2A==
+
 joi@^17.2.1:
   version "17.6.0"
   resolved "https://registry.yarnpkg.com/joi/-/joi-17.6.0.tgz#0bb54f2f006c09a96e75ce687957bd04290054b2"
@@ -9480,6 +9506,13 @@ minimatch@^3.0.3, minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^3.1.2:
   dependencies:
     brace-expansion "^1.1.7"
 
+minimatch@^5.0.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.0.tgz#1717b464f4971b144f6aabe8f2d0b8e4511e09c7"
+  integrity sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==
+  dependencies:
+    brace-expansion "^2.0.1"
+
 minimist@^1.1.0, minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5, minimist@^1.2.6:
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
@@ -10622,7 +10655,7 @@ please-upgrade-node@^3.2.0:
   dependencies:
     semver-compare "^1.0.0"
 
-plur@^4.0.0:
+plur@4.0.0, plur@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/plur/-/plur-4.0.0.tgz#729aedb08f452645fe8c58ef115bf16b0a73ef84"
   integrity sha512-4UGewrYgqDFw9vV6zNV+ADmPAUAfJPKtGvb/VdpQAx25X5f3xXdGdyOEVFwkl8Hl/tl7+xbeHqSEM+D5/TirUg==
@@ -11067,15 +11100,15 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier-plugin-scaffdog@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-scaffdog/-/prettier-plugin-scaffdog-1.5.0.tgz#61bd7bb120cdbf46f7c7ce50299ebb33ecd24c66"
-  integrity sha512-1joqyaF8RQg0I9LF1hTclvthpAz51F3oo90jFS9M0BDbw7mbqjk5YH91dQ7tva9/M0GhwZwaLysHmyXPmsSGEQ==
+prettier-plugin-scaffdog@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-scaffdog/-/prettier-plugin-scaffdog-2.4.0.tgz#01b9c867101e0581b6c2c596e070c49d99d1b6d6"
+  integrity sha512-E6GX9Uy+liMRDucbKx6RMG3c0ucgbixwUSpkNk6hULn1JJXlwjSdEYHQefQ7zojXdTLPu4i0zFRpcsVwkDwYXg==
   dependencies:
-    "@scaffdog/config" "1.5.0"
-    "@scaffdog/engine" "1.5.0"
-    "@scaffdog/types" "1.5.0"
-    minimatch "^3.0.4"
+    "@scaffdog/config" "2.4.0"
+    "@scaffdog/engine" "2.4.0"
+    "@scaffdog/types" "2.4.0"
+    minimatch "^5.0.0"
     prettier "2.7.1"
 
 prettier@2.7.1, prettier@^2.0.5:
@@ -12064,20 +12097,21 @@ sax@~1.2.4:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
-scaffdog@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/scaffdog/-/scaffdog-1.5.0.tgz#fe96710d315868d66c03770ea2bbea551f6b1000"
-  integrity sha512-YatB66ngwH4qyTUAmuS0w2J6Tc6pCOqoQgmM4xE4V8wRS0xSp3X5e1zbzn9fhlC9UEl/NlRasS31BV3toXzpwg==
+scaffdog@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/scaffdog/-/scaffdog-2.4.0.tgz#ba492cefb63f0942322ec88bf620974039474ae3"
+  integrity sha512-IDCi03hiUa4AKbzfsTbf9Zvsw44kqQ5Jedhp3WnjyaUPtBY2e87pJzdDHk8aYhLdOWIu1YDawc1DFhdEFb/ntQ==
   dependencies:
-    "@scaffdog/config" "1.5.0"
-    "@scaffdog/core" "1.5.0"
-    "@scaffdog/engine" "1.5.0"
-    "@scaffdog/error" "1.5.0"
-    "@scaffdog/types" "1.5.0"
+    "@scaffdog/config" "2.4.0"
+    "@scaffdog/core" "2.4.0"
+    "@scaffdog/engine" "2.4.0"
+    "@scaffdog/error" "2.4.0"
+    "@scaffdog/types" "2.4.0"
     ansi-escapes "^4.3.2"
     chalk "^4.1.0"
     cli-truncate "^2.1.0"
     consola "^2.15.3"
+    deepmerge "^4.2.2"
     figures "^3.2.0"
     front-matter "^4.0.2"
     fuse.js "^6.4.6"
@@ -12090,6 +12124,7 @@ scaffdog@1.5.0:
     micromatch "^4.0.4"
     node-emoji "^1.10.0"
     plur "^4.0.0"
+    strip-ansi "6.0.0"
     term-size "^2.2.1"
     update-notifier "^5.1.0"
     valid-filename "^3.1.0"
@@ -12784,6 +12819,14 @@ string-env-interpolation@1.0.1:
   resolved "https://registry.yarnpkg.com/string-env-interpolation/-/string-env-interpolation-1.0.1.tgz#ad4397ae4ac53fe6c91d1402ad6f6a52862c7152"
   integrity sha512-78lwMoCcn0nNu8LszbP1UA7g55OeE4v7rCeWnM5B453rnNr4aq+5it3FEYtZrSEiMvHZOZ9Jlqb0OD0M2VInqg==
 
+string-length@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/string-length/-/string-length-4.0.2.tgz#a8a8dc7bd5c1a82b9b3c8b87e125f66871b6e57a"
+  integrity sha512-+l6rNN5fYHNhZZy41RXsYptCjA2Igmq4EG7kZAYFQI1E1VTXarr6ZPXBg6eq7Y6eK4FEhY6AJlyuFIb/v/S0VQ==
+  dependencies:
+    char-regex "^1.0.2"
+    strip-ansi "^6.0.0"
+
 string-similarity@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/string-similarity/-/string-similarity-1.2.2.tgz#99b2c20a3c9bbb3903964eae1d89856db3d8db9b"
@@ -12914,6 +12957,13 @@ strip-ansi@3.0.1, strip-ansi@^3, strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   integrity sha512-VhumSSbBqDTP8p2ZLKj40UjBCV4+v8bUSEpUb4KjRgWk9pbqGF4REFj6KEagidb2f/M6AzC0EmFyDNGaw9OCzg==
   dependencies:
     ansi-regex "^2.0.0"
+
+strip-ansi@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.0.tgz#0b1571dd7669ccd4f3e06e14ef1eed26225ae532"
+  integrity sha512-AuvKTrTfQNYNIctbR1K/YGTR1756GycPsg7b9bdV9Duqur4gv6aKqHXah67Z8ImS7WEz5QVcOtlfW2rZEugt6w==
+  dependencies:
+    ansi-regex "^5.0.0"
 
 strip-ansi@^4.0.0:
   version "4.0.0"
@@ -13416,6 +13466,11 @@ type-check@~0.3.2:
   integrity sha512-ZCmOJdvOWDBYJlzAoFkC+Q0+bUyEOS1ltgp1MGU03fqHG+dbi9tBFU2Rd9QKiDZFAYrhPh2JUf7rZRIuHRKtOg==
   dependencies:
     prelude-ls "~1.1.2"
+
+type-fest@2.19.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
+  integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
 
 type-fest@^0.20.2:
   version "0.20.2"

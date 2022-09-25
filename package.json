@@ -71,9 +71,9 @@
     "postcss-custom-media": "^7.0.8",
     "postcss-nesting": "^7.0.1",
     "prettier": "^2.0.5",
-    "prettier-plugin-scaffdog": "1.5.0",
+    "prettier-plugin-scaffdog": "2.4.0",
     "remark-rehype": "^7.0.0",
-    "scaffdog": "1.5.0",
+    "scaffdog": "2.4.0",
     "typescript": "^3.9.7",
     "unified": "^9.1.0",
     "unist-util-visit": "^2.0.3"
