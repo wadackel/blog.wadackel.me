@@ -1,17 +1,19 @@
 {
   "private": true,
   "name": "blog.wadackel.me",
+  "packageManager": "pnpm@7.13.1",
   "scripts": {
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint . --ext \".js,.jsx,.ts,.tsx\"",
-    "format": "yarn format:lint && yarn format:prettier",
-    "format:lint": "yarn lint --fix",
+    "format": "pnpm format:lint && pnpm format:prettier",
+    "format:lint": "pnpm lint --fix",
     "format:prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,yml}\"",
     "typecheck": "tsc",
-    "scaffold": "scaffdog generate"
+    "scaffold": "scaffdog generate",
+    "prepare": "husky install"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -65,12 +67,13 @@
     "gatsby-source-filesystem": "^2.3.24",
     "gatsby-transformer-remark": "^2.8.28",
     "hast-util-to-html": "^7.1.1",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "parse-numeric-range": "^1.2.0",
     "postcss-custom-media": "^7.0.8",
     "postcss-nesting": "^7.0.1",
     "prettier": "^2.0.5",
+    "prettier-plugin-packagejson": "^2.3.0",
     "prettier-plugin-scaffdog": "2.4.0",
     "remark-rehype": "^7.0.0",
     "scaffdog": "2.4.0",
@@ -78,10 +81,12 @@
     "unified": "^9.1.0",
     "unist-util-visit": "^2.0.3"
   },
-  "resolutions": {
-    "@types/react": "16.14.28",
-    "unified": "9.0.0",
-    "sharp": "^0.29.1"
+  "pnpm": {
+    "overrides": {
+      "@types/react": "16.14.28",
+      "unified": "9.0.0",
+      "sharp": "^0.29.1"
+    }
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
@@ -149,15 +154,14 @@
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all",
-    "arrowParens": "always"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "arrowParens": "always",
+    "plugins": [
+      "prettier-plugin-packagejson",
+      "prettier-plugin-scaffdog"
+    ]
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,md,yml}": [
+    "*.{js,jsx,cjs,ts,tsx,css,md,yml,json}": [
       "prettier --write"
     ]
   }
