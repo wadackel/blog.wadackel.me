@@ -13,6 +13,7 @@ import remarkEmoji from 'remark-emoji';
 import remarkGfm from 'remark-gfm';
 import remarkSlug from 'remark-slug';
 import { createAstroCopyImages } from './integrations/astro-copy-images';
+import { createAstroOgimage } from './integrations/astro-ogimage';
 import { remarkCodeBlockPlugin } from './plugins/remark-code-block.mjs';
 import { remarkDefaultLayoutPlugin } from './plugins/remark-default-layout.mjs';
 import { remarkExcerptPlugin } from './plugins/remark-excerpt.mjs';
@@ -33,6 +34,9 @@ export default defineConfig({
     sitemap(),
     createAstroCopyImages({
       src: path.resolve(__dirname, 'src/pages'),
+      dist: path.resolve(__dirname, 'dist'),
+    }),
+    createAstroOgimage({
       dist: path.resolve(__dirname, 'dist'),
     }),
     partytown({

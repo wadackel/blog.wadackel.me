@@ -30,10 +30,11 @@ for (let i = 0; i < posts.length; i++) {
 const meta = {
   title: `${frontmatter.title} - ${site.title}`,
   url: new URL(url, Astro.site!.origin).toString(),
+  image: frontmatter.image ?? `${url}ogp.png`,
 };
 ---
 
-<RootLayout type="article" title={meta.title} description={frontmatter.excerpt}>
+<RootLayout type="article" title={meta.title} description={frontmatter.excerpt} image={meta.image}>
   <div class="container">
     <Article single url={url} date={frontmatter.date} title={frontmatter.title}>
       <div class="mt-20">
