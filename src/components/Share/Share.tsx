@@ -1,28 +1,28 @@
-import React, { useMemo, useCallback } from 'react';
-import classNames from 'classnames/bind';
-import { TwitterIcon, HatenaIcon, PocketIcon, FeedlyIcon } from '../icons';
+import type { FunctionComponent, JSX } from 'preact';
+import { useCallback, useMemo } from 'preact/hooks';
+import { FeedlyIcon } from '../icons/FeedlyIcon';
+import { HatenaIcon } from '../icons/HatenaIcon';
+import { PocketIcon } from '../icons/PocketIcon';
+import { TwitterIcon } from '../icons/TwitterIcon';
 import styles from './Share.module.css';
-
-const cx = classNames.bind(styles);
 
 export type Props = {
   title: string;
-  siteUrl: string;
-  slug: string;
+  url: string;
 };
 
-export const Share: React.FC<Props> = ({ title, siteUrl, slug }) => {
-  const url = siteUrl + slug;
+export const Share: FunctionComponent<Props> = ({ title, url: urlProp }) => {
+  const url = useMemo(() => new URL(urlProp), [urlProp]);
 
   const encoded = useMemo(
     () => ({
       title: encodeURIComponent(title),
-      url: encodeURIComponent(url),
+      url: encodeURIComponent(url.toString()),
     }),
     [title, url],
   );
 
-  const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = useCallback((e: JSX.TargetedMouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
     const button = e.currentTarget;
@@ -47,10 +47,10 @@ export const Share: React.FC<Props> = ({ title, siteUrl, slug }) => {
   }, []);
 
   return (
-    <ul className={styles.wrapper}>
+    <ul className={styles.list}>
       <li className={styles.item}>
         <a
-          className={cx({ button: true, isTwitter: true })}
+          className={`${styles.button} ${styles['is-twitter']}`}
           target="_blank"
           rel="noopener noreferrer"
           href={`http://twitter.com/intent/tweet?text=${encoded.title}%0a${url}`}
@@ -66,7 +66,7 @@ export const Share: React.FC<Props> = ({ title, siteUrl, slug }) => {
 
       <li className={styles.item}>
         <a
-          className={cx({ button: true, isHatena: true })}
+          className={`${styles.button} ${styles['is-hatena']}`}
           target="_blank"
           rel="noopener noreferrer"
           href={`http://b.hatena.ne.jp/add?mode=confirm&url=${url}&title=${encoded.title}`}
@@ -82,7 +82,7 @@ export const Share: React.FC<Props> = ({ title, siteUrl, slug }) => {
 
       <li className={styles.item}>
         <a
-          className={cx({ button: true, isPocket: true })}
+          className={`${styles.button} ${styles['is-pocket']}`}
           target="_blank"
           rel="noopener noreferrer"
           href={`http://getpocket.com/edit?url=${url}&title=${encoded.title}`}
@@ -98,10 +98,10 @@ export const Share: React.FC<Props> = ({ title, siteUrl, slug }) => {
 
       <li className={styles.item}>
         <a
-          className={cx({ button: true, isFeedly: true })}
+          className={`${styles.button} ${styles['is-feedly']}`}
           target="_blank"
           rel="noopener noreferrer"
-          href={`https://feedly.com/i/subscription/feed%2F${siteUrl}`}
+          href={`https://feedly.com/i/subscription/feed%2F${url.origin}`}
           aria-label="このブログをFeedlyに追加する"
         >
           <FeedlyIcon size={16} />

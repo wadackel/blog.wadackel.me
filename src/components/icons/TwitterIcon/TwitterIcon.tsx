@@ -1,7 +1,10 @@
-import React from 'react';
-import { Props } from '../props';
+import type { ComponentProps, FunctionComponent } from 'preact';
 
-export const TwitterIcon: React.FC<Props> = ({ size, ...rest }) => {
+export type Props = ComponentProps<'svg'> & {
+  size?: number;
+};
+
+export const TwitterIcon: FunctionComponent<Props> = ({ size = 24, ...rest }) => {
   return (
     <svg width={size} height={size} viewBox="0 0 24 20" {...rest}>
       <title>Twitter</title>
@@ -12,8 +15,4 @@ export const TwitterIcon: React.FC<Props> = ({ size, ...rest }) => {
       />
     </svg>
   );
-};
-
-TwitterIcon.defaultProps = {
-  size: 24,
 };

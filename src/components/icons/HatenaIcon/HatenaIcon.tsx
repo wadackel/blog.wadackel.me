@@ -1,7 +1,10 @@
-import React from 'react';
-import { Props } from '../props';
+import type { ComponentProps, FunctionComponent } from 'preact';
 
-export const HatenaIcon: React.FC<Props> = ({ size, ...rest }) => {
+export type Props = ComponentProps<'svg'> & {
+  size?: number;
+};
+
+export const HatenaIcon: FunctionComponent<Props> = ({ size = 24, ...rest }) => {
   return (
     <svg width={size} height={size} viewBox="0 0 24 20" {...rest}>
       <title>はてなブックマーク</title>
@@ -12,8 +15,4 @@ export const HatenaIcon: React.FC<Props> = ({ size, ...rest }) => {
       />
     </svg>
   );
-};
-
-HatenaIcon.defaultProps = {
-  size: 24,
 };
