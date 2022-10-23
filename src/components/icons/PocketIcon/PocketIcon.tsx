@@ -1,7 +1,10 @@
-import React from 'react';
-import { Props } from '../props';
+import type { ComponentProps, FunctionComponent } from 'preact';
 
-export const PocketIcon: React.FC<Props> = ({ size, ...rest }) => {
+export type Props = ComponentProps<'svg'> & {
+  size?: number;
+};
+
+export const PocketIcon: FunctionComponent<Props> = ({ size = 24, ...rest }) => {
   return (
     <svg width={size} height={size} viewBox="0 0 23 21" {...rest}>
       <title>Pocket</title>
@@ -12,8 +15,4 @@ export const PocketIcon: React.FC<Props> = ({ size, ...rest }) => {
       />
     </svg>
   );
-};
-
-PocketIcon.defaultProps = {
-  size: 24,
 };

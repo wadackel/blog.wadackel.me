@@ -1,8 +1,0 @@
-.page {
-  position: relative;
-  z-index: var(--depth-page);
-  overflow: hidden;
-  background: var(--color-background);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  margin-bottom: var(--footer-height);
-}
