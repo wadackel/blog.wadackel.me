@@ -11,51 +11,47 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.2
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: 'pnpm'
-      - run: pnpm i --frozen-lockfile
+          cache: 'yarn'
+      - run: yarn --frozen-lockfile --check-files
 
   build:
     runs-on: ubuntu-latest
     needs: [deps]
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.2
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: 'pnpm'
-      - run: pnpm i --frozen-lockfile
-      - run: pnpm build
+          cache: 'yarn'
+      - run: yarn
+      - run: yarn build
 
   typecheck:
     runs-on: ubuntu-latest
     needs: [deps]
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.2
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: 'pnpm'
-      - run: pnpm i --frozen-lockfile
-      - run: pnpm typecheck
+          cache: 'yarn'
+      - run: yarn
+      - run: yarn typecheck
 
   lint:
     runs-on: ubuntu-latest
     needs: [deps]
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.2
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: 'pnpm'
-      - run: pnpm i --frozen-lockfile
-      - run: pnpm lint
+          cache: 'yarn'
+      - run: yarn
+      - run: yarn lint
 
   pass:
     runs-on: ubuntu-latest

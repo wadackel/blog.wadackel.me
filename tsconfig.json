@@ -1,19 +1,21 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
+    "declaration": false,
+    "pretty": false,
+    "strict": true,
+    "jsx": "react",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "strict": true,
-    "importsNotUsedAsValues": "error",
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "isolatedModules": true,
+    "noEmit": true
   },
-  "exclude": ["functions/**/*"]
+  "include": ["module.d.ts", "src/**/*.ts", "src/**/*.tsx"]
 }

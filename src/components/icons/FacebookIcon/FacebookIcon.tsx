@@ -1,10 +1,7 @@
-import type { ComponentProps, FunctionComponent } from 'preact';
+import React from 'react';
+import { Props } from '../props';
 
-export type Props = ComponentProps<'svg'> & {
-  size?: number;
-};
-
-export const FacebookIcon: FunctionComponent<Props> = ({ size = 24, ...rest }) => {
+export const FacebookIcon: React.FC<Props> = ({ size, ...rest }) => {
   return (
     <svg width={size} height={size} viewBox="0 0 9 18" {...rest}>
       <title>Facebook</title>
@@ -15,4 +12,8 @@ export const FacebookIcon: FunctionComponent<Props> = ({ size = 24, ...rest }) =
       />
     </svg>
   );
+};
+
+FacebookIcon.defaultProps = {
+  size: 24,
 };
