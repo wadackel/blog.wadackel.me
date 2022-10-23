@@ -1,0 +1,54 @@
+---
+import Article from '../components/Article.astro';
+import Pager from '../components/Pager.astro';
+import PostContent from '../components/PostContent.astro';
+import { site } from '../config';
+import type { MarkdownPostData, PostData } from '../types';
+import { sortPostList } from '../utils/post';
+import RootLayout from './RootLayout.astro';
+import { Share } from '../components/Share';
+
+export type Props = {
+  url: string;
+  frontmatter: PostData;
+};
+
+const { url, frontmatter } = Astro.props;
+
+const posts = sortPostList(await Astro.glob<MarkdownPostData>('../pages/**/*.{md,mdx}'));
+let previous: MarkdownPostData | null = null;
+let next: MarkdownPostData | null = null;
+for (let i = 0; i < posts.length; i++) {
+  const post = posts[i];
+  if (post.url === url) {
+    previous = posts[i + 1] ?? null;
+    next = posts[i - 1] ?? null;
+    break;
+  }
+}
+
+const meta = {
+  title: `${frontmatter.title} - ${site.title}`,
+  url: new URL(url, Astro.site!.origin).toString(),
+};
+---
+
+<RootLayout type="article" title={meta.title} description={frontmatter.excerpt}>
+  <div class="container">
+    <Article single url={url} date={frontmatter.date} title={frontmatter.title}>
+      <div class="mt-20">
+        <PostContent>
+          <slot />
+        </PostContent>
+      </div>
+    </Article>
+
+    <div class="mt-32">
+      <Share client:visible title={meta.title} url={meta.url} />
+    </div>
+  </div>
+
+  <div class="mt-32">
+    <Pager previous={previous} next={next} />
+  </div>
+</RootLayout>

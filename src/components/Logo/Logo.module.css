@@ -24,33 +24,12 @@
   }
 }
 
-.wrapper {
-  position: relative;
-  display: block;
-  padding-bottom: calc(274 / 400 * 100 * 1%);
-  width: 100%;
-  height: 0;
-}
-
-.wrapper svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.body,
-.tail {
-  fill: currentColor;
-}
-
 .tail {
   transform-origin: 100% 0.5%;
   transform-box: fill-box;
 }
 
-.isAnimating .tail {
+.is-animating .tail {
   animation-name: shake;
   animation-duration: 830ms;
   animation-direction: alternate;

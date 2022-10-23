@@ -1,7 +1,10 @@
-import React from 'react';
-import { Props } from '../props';
+import type { ComponentProps, FunctionComponent } from 'preact';
 
-export const ArrowRightIcon: React.FC<Props> = ({ size, ...rest }) => {
+export type Props = ComponentProps<'svg'> & {
+  size?: number;
+};
+
+export const ArrowRightIcon: FunctionComponent<Props> = ({ size = 24, ...rest }) => {
   return (
     <svg width={size} height={size} viewBox="0 0 15 24" {...rest}>
       <title>Right</title>
@@ -12,8 +15,4 @@ export const ArrowRightIcon: React.FC<Props> = ({ size, ...rest }) => {
       />
     </svg>
   );
-};
-
-ArrowRightIcon.defaultProps = {
-  size: 24,
 };

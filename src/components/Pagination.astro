@@ -1,0 +1,86 @@
+---
+import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
+import { ArrowRightIcon } from './icons/ArrowRightIcon';
+
+export type Props = {
+  page: number;
+  total: number;
+  previous: string | null;
+  next: string | null;
+};
+
+const { page, total, previous, next } = Astro.props;
+---
+
+<style>
+  :root {
+    --pager-item-size: 50px;
+  }
+
+  .item {
+    @apply relative flex justify-center items-center rounded-full text-secondary-500;
+    width: var(--pager-item-size);
+    height: var(--pager-item-size);
+
+    &::before,
+    &::after {
+      @apply absolute top-1/2 left-1/2 rounded-full transition ease-out-quint;
+      z-index: 0;
+      width: var(--pager-item-size);
+      height: var(--pager-item-size);
+      margin-top: calc(var(--pager-item-size) / 2 * -1);
+      margin-left: calc(var(--pager-item-size) / 2 * -1);
+      content: '';
+    }
+
+    &::before {
+      @apply border-2 border-secondary-500 duration-500;
+    }
+
+    &::after {
+      @apply opacity-0 border-secondary-500 duration-200;
+      transform: scale(0.2);
+    }
+
+    &[aria-disabled='true'] {
+      @apply text-secondary-50;
+
+      &::before {
+        @apply border-secondary-50;
+      }
+    }
+
+    & svg {
+      @apply relative;
+      z-index: 1;
+    }
+
+    &[href]:where(:hover, :focus-visible) {
+      @apply text-white;
+
+      &::before {
+        @apply opacity-0;
+        transform: scale(1.2);
+      }
+
+      &::after {
+        @apply opacity-100 bg-secondary-500;
+        transform: scale(1);
+      }
+    }
+  }
+</style>
+
+<nav class="flex justify-center items-center">
+  <a class="item" href={previous} aria-label="新しい記事へ遷移" aria-disabled={previous == null}>
+    <ArrowLeftIcon class="ml-[-2px]" size={16} />
+  </a>
+
+  <span class="mx-4 font-accent">
+    Page {page} of {total}
+  </span>
+
+  <a class="item" href={next} aria-label="古い記事へ遷移" aria-disabled={next == null}
+    ><ArrowRightIcon class="mr-[-2px]" size={16} />
+  </a>
+</nav>
