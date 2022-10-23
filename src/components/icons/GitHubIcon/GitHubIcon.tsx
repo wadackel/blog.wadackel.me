@@ -1,10 +1,7 @@
-import type { ComponentProps, FunctionComponent } from 'preact';
+import React from 'react';
+import { Props } from '../props';
 
-export type Props = ComponentProps<'svg'> & {
-  size?: number;
-};
-
-export const GitHubIcon: FunctionComponent<Props> = ({ size = 24, ...rest }) => {
+export const GitHubIcon: React.FC<Props> = ({ size, ...rest }) => {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" {...rest}>
       <title>GitHub</title>
@@ -15,4 +12,8 @@ export const GitHubIcon: FunctionComponent<Props> = ({ size = 24, ...rest }) => 
       />
     </svg>
   );
+};
+
+GitHubIcon.defaultProps = {
+  size: 24,
 };
