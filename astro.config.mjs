@@ -25,7 +25,7 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://blog.wadackel.me',
+  site: process.env.CF_PAGES_URL ?? 'http://localhost:3000',
   trailingSlash: 'always',
   integrations: [
     mdx(),
