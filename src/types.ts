@@ -1,24 +1,10 @@
-export type SiteMetadata = {
-  title: string;
-  description: string;
-  siteUrl: string;
-  social: {
-    twitter: string;
-    github: string;
-  };
-};
+import type { MarkdownInstance } from 'astro';
 
-export type Frontmatter = {
+export type PostData = {
   title: string;
   date: string;
+  image?: string;
+  excerpt: string;
 };
 
-export type MarkdownRemark = {
-  id: string;
-  excerpt: string;
-  html: string;
-  frontmatter: Frontmatter;
-  fields: {
-    slug: string;
-  };
-};
+export type MarkdownPostData = MarkdownInstance<PostData>;

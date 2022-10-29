@@ -1,0 +1,20 @@
+{
+  "name": "wadackel.me",
+  "short_name": "wadackel.me",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "start_url": "/",
+  "icons": [
+    {
+      "type": "image/png",
+      "src": "/icon144.png",
+      "sizes": "144x144"
+    },
+    {
+      "type": "image/png",
+      "src": "/icon512.png",
+      "sizes": "512x512"
+    }
+  ]
+}

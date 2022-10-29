@@ -1,82 +1,59 @@
 :root {
   --post-share-btn-size: 40px;
+  --color-twitter: #55acee;
+  --color-facebook: #315096;
+  --color-hatena: #008fde;
+  --color-pocket: #ef4456;
+  --color-feedly: #6cc655;
 }
 
-.wrapper {
-  clear: both;
-  margin: 8rem auto;
-  padding: 0;
-  font-size: 0;
-  text-align: center;
+.list {
+  @apply flex justify-center items-center;
 }
 
-.item {
-  display: inline-block;
-  margin: 0 0 0 10px;
-
-  &:first-child {
-    margin-left: 0;
-  }
+.item:not(:first-child) {
+  @apply ml-3;
 }
 
 .button {
-  position: relative;
-  display: block;
+  @apply relative block bg-white rounded-full transition duration-500 ease-out-quint;
   width: var(--post-share-btn-size);
   height: var(--post-share-btn-size);
-  background: var(--color-background);
-  border-radius: 50%;
 
   &::before,
   &::after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    @apply absolute top-1/2 left-1/2 rounded-full transition ease-out-quint;
     z-index: 0;
     width: var(--post-share-btn-size);
     height: var(--post-share-btn-size);
     margin-top: calc(var(--post-share-btn-size) / 2 * -1);
     margin-left: calc(var(--post-share-btn-size) / 2 * -1);
-    border-radius: 50%;
-    transition-property: all;
-    transition-timing-function: var(--ease-out-quint);
     content: '';
   }
 
   &::before {
     border-width: 2px;
     border-style: solid;
-    transition-duration: 0.5s;
+    transition-duration: 500ms;
   }
 
   &::after {
     opacity: 0;
     visibility: hidden;
     transform: scale(0.2);
-    transition-duration: 0.25s;
+    transition-duration: 250ms;
   }
 
   & svg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    @apply absolute inset-0 transition duration-500 ease-out-quint;
     z-index: 1;
     width: auto;
     height: 14px;
     margin: auto;
-    transition: all 0.5s var(--ease-out-quint);
   }
 
-  & path {
-    transition: all 0.5s var(--ease-out-quint);
-  }
-
-  &.isTwitter {
-    & path {
-      fill: var(--color-twitter);
-    }
+  &.is-twitter {
+    color: var(--color-twitter);
 
     &::before {
       border-color: var(--color-twitter);
@@ -87,10 +64,8 @@
     }
   }
 
-  &.isHatena {
-    & path {
-      fill: var(--color-hatena);
-    }
+  &.is-hatena {
+    color: var(--color-hatena);
 
     &::before {
       border-color: var(--color-hatena);
@@ -101,10 +76,8 @@
     }
   }
 
-  &.isPocket {
-    & path {
-      fill: var(--color-pocket);
-    }
+  &.is-pocket {
+    color: var(--color-pocket);
 
     &::before {
       border-color: var(--color-pocket);
@@ -115,10 +88,8 @@
     }
   }
 
-  &.isFeedly {
-    & path {
-      fill: var(--color-feedly);
-    }
+  &.is-feedly {
+    color: var(--color-feedly);
 
     &::before {
       border-color: var(--color-feedly);
@@ -131,6 +102,8 @@
 
   &:hover,
   &:focus-visible {
+    @apply text-white;
+
     &::before {
       opacity: 0;
       transform: scale(1.2);
@@ -144,10 +117,6 @@
 
     & svg {
       transform: scale(0.85);
-    }
-
-    & path {
-      fill: #fff;
     }
   }
 }
