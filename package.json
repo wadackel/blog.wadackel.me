@@ -3,13 +3,13 @@
   "type": "module",
   "scripts": {
     "build": "astro build",
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "format": "run-s format:*",
     "format:prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,yml}\"",
     "format:lint": "npm run lint -- --fix",
     "lint": "eslint . --ext \".js,.jsx,.ts,.tsx\"",
     "prepare": "husky install",
-    "preview": "astro preview",
+    "preview": "astro preview --host",
     "scaffold": "scaffdog generate",
     "typecheck": "tsc"
   },
