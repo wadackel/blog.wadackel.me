@@ -8,5 +8,5 @@ export const site = {
     github: 'wadackel',
   },
   pagination: 10,
-  trackingId: 'UA-76551157-1',
+  trackingId: 'G-37L4MS0DLM',
 } as const;
