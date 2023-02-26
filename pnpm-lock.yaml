@@ -39,7 +39,7 @@ specifiers:
   prettier: ^2.0.5
   prettier-plugin-astro: ^0.5.5
   prettier-plugin-packagejson: ^2.3.0
-  prettier-plugin-scaffdog: 2.4.0
+  prettier-plugin-scaffdog: 2.5.0
   prismjs: ^1.29.0
   quicklink: ^2.3.0
   remark-autolink-headings: ^7.0.1
@@ -95,7 +95,7 @@ devDependencies:
   prettier: 2.7.1
   prettier-plugin-astro: 0.5.5
   prettier-plugin-packagejson: 2.3.0_prettier@2.7.1
-  prettier-plugin-scaffdog: 2.4.0
+  prettier-plugin-scaffdog: 2.5.0
   prismjs: 1.29.0
   quicklink: 2.3.0_wcqkhtmu7mswc6yz4uyexck3ty
   remark-autolink-headings: 7.0.1
@@ -139,7 +139,7 @@ packages:
     dependencies:
       '@vscode/emmet-helper': 2.8.4
       events: 3.3.0
-      prettier: 2.7.1
+      prettier: 2.8.4
       prettier-plugin-astro: 0.5.5
       source-map: 0.7.4
       vscode-css-languageservice: 6.1.1
@@ -904,6 +904,14 @@ packages:
       zod: 3.19.1
     dev: true
 
+  /@scaffdog/config/2.5.0:
+    resolution: {integrity: sha512-jXE8cuFkJzp3mMkzANB3gsTYjNzQqfvTdqA8/a4+wVp/DX52Uy/Vz98S7xeUcky+IB0J8NtRsvA29kz3H2PQPg==}
+    dependencies:
+      '@scaffdog/types': 2.5.0
+      jiti: 1.16.0
+      zod: 3.19.1
+    dev: true
+
   /@scaffdog/core/2.4.0:
     resolution: {integrity: sha512-87hmYgSB/PLHvMOpt0f8Gr/3BI/STAMaMIiDYwbDeNBGbcyPg5Wb/rM3rbKB5hByL6FIQs1L+XJZOPWsipJ5Bw==}
     dependencies:
@@ -929,6 +937,18 @@ packages:
       safe-eval: 0.4.1
     dev: true
 
+  /@scaffdog/engine/2.5.0:
+    resolution: {integrity: sha512-JylbubPp5TpuBglH9sW8PJC1NftuIkxUUL2OL+2M8/dLZDt61HM0m2tvM3dew3cmvGsXu8r2prByiNgT3JBPvg==}
+    dependencies:
+      '@scaffdog/error': 2.5.0
+      '@scaffdog/types': 2.5.0
+      change-case: 4.1.2
+      dayjs: 1.11.5
+      is-plain-object: 5.0.0
+      plur: 4.0.0
+      safe-eval: 0.4.1
+    dev: true
+
   /@scaffdog/error/2.4.0:
     resolution: {integrity: sha512-Zj2o/IFY5iWtLbjttKCYwZtzK73HbhC3ylegf+ytjChDORDYMvWyCo2ZJvYfSU+xJPjvsUfGGlFnXxC2VyY0bA==}
     dependencies:
@@ -937,10 +957,24 @@ packages:
       string-length: 4.0.2
     dev: true
 
+  /@scaffdog/error/2.5.0:
+    resolution: {integrity: sha512-aFKzVFAnRnuER3XWlOLjBh+Dm1+XoJDDf14O8efTha48Uw8uNd/YHcLom6bYv1eZQtkLuJFA7y4ttVBcV/PPfQ==}
+    dependencies:
+      '@scaffdog/types': 2.5.0
+      chalk: 4.1.2
+      string-length: 4.0.2
+    dev: true
+
   /@scaffdog/types/2.4.0:
     resolution: {integrity: sha512-VcwDK+YxNRrc/QV7BgnfTN4vP37xu6YNbYiuoycC9E8A0d8VFc03/CB6cUf4+e7uRs9q2dxE9YctJK2mAArhRA==}
     dependencies:
       type-fest: 2.19.0
+    dev: true
+
+  /@scaffdog/types/2.5.0:
+    resolution: {integrity: sha512-WCcPDiWw8P88MhUkWHMSPs1gF/EYEY8BmUBCfdZjqU3NHQ4HLXzYlqbBx2yWUsrAySbUCGj5sJqKSO3Yf3w/+A==}
+    dependencies:
+      type-fest: 3.6.0
     dev: true
 
   /@shuding/opentype.js/1.4.0-beta.0:
@@ -5818,18 +5852,24 @@ packages:
       sort-package-json: 1.57.0
     dev: true
 
-  /prettier-plugin-scaffdog/2.4.0:
-    resolution: {integrity: sha512-E6GX9Uy+liMRDucbKx6RMG3c0ucgbixwUSpkNk6hULn1JJXlwjSdEYHQefQ7zojXdTLPu4i0zFRpcsVwkDwYXg==}
+  /prettier-plugin-scaffdog/2.5.0:
+    resolution: {integrity: sha512-ctsbic1a2g8PliL6178uZTJksobKHjX9HJdJoszMdqwxjm94GeeFuMENwbiCd6SACZsYJIz0cH3wUhU3cZizbw==}
     dependencies:
-      '@scaffdog/config': 2.4.0
-      '@scaffdog/engine': 2.4.0
-      '@scaffdog/types': 2.4.0
+      '@scaffdog/config': 2.5.0
+      '@scaffdog/engine': 2.5.0
+      '@scaffdog/types': 2.5.0
       minimatch: 5.1.0
-      prettier: 2.7.1
+      prettier: 2.8.4
     dev: true
 
   /prettier/2.7.1:
     resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
+  /prettier/2.8.4:
+    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -7066,6 +7106,11 @@ packages:
   /type-fest/2.19.0:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
     engines: {node: '>=12.20'}
+    dev: true
+
+  /type-fest/3.6.0:
+    resolution: {integrity: sha512-RqTRtKTzvPpNdDUp1dVkKQRunlPITk4mXeqFlAZoJsS+fLRn8AdPK0TcQDumGayhU7fjlBfiBjsq3pe3rIfXZQ==}
+    engines: {node: '>=14.16'}
     dev: true
 
   /typedarray-to-buffer/3.1.5:

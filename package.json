@@ -125,7 +125,7 @@
     "prettier": "^2.0.5",
     "prettier-plugin-astro": "^0.5.5",
     "prettier-plugin-packagejson": "^2.3.0",
-    "prettier-plugin-scaffdog": "2.4.0",
+    "prettier-plugin-scaffdog": "2.5.0",
     "prismjs": "^1.29.0",
     "quicklink": "^2.3.0",
     "remark-autolink-headings": "^7.0.1",
