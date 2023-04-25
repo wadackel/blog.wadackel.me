@@ -180,10 +180,10 @@ const highlightCode = async (language, code, highlight) => {
       const n = index + 1;
 
       if (highlight?.includes(n)) {
-        return `<span class="highlight-line">${line}</span>`;
+        return `<span class="line is-highlight">${line}</span>`;
+      } else {
+        return `<span class="line">${line}</span>`;
       }
-
-      return line;
     })
     .join('\n');
 };
