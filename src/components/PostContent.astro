@@ -13,6 +13,8 @@
     --color-code-text: var(--color-secondary);
     --color-code-background: theme(colors.slate.100);
     --color-code-block-background: var(--color-secondary);
+    --color-code-block-highlight: theme(colors.secondary.400);
+    --color-code-block-highlight-accent: theme(colors.primary.600);
     --color-kbd-text: var(--color-text);
     --color-kbd-border: #e9e9e9;
     --color-kbd-background: #f5f5f5;
@@ -26,6 +28,7 @@
     --line-height-sm: 1.6;
     --line-height-base: 1.8;
 
+    --highlight-radius: 6px;
     --highlight-copy-size: 34px;
     --highlight-copy-arrow-size: calc(var(--highlight-copy-size) / 5);
 
@@ -140,7 +143,7 @@
       }
 
       & :where(ul, ol) {
-        margin-top: 0.64em;
+        margin-top: 0.44em;
         margin-bottom: 0;
       }
     }
@@ -173,7 +176,7 @@
 
       & li::before {
         position: absolute;
-        top: calc((var(--font-size-base) * var(--line-height-sm)) / 2 - 9px);
+        top: calc((1rem * var(--line-height-sm)) / 2 - 9px);
         left: calc(var(--font-size-base) * -1.3);
         display: block;
         width: 18px;
@@ -189,7 +192,7 @@
         content: counter(article);
 
         @screen md {
-          top: calc((var(--font-size-lg) * var(--line-height-base)) / 2 - 9px);
+          top: calc((1rem * var(--line-height-base)) / 2 - 9px);
           left: calc(var(--font-size-lg) * -1.3);
         }
       }
@@ -330,7 +333,7 @@
       margin-bottom: 1.5em;
       position: relative;
       background: var(--color-code-block-background) !important;
-      border-radius: 4px;
+      border-radius: var(--highlight-radius);
 
       & * {
         &::selection {
@@ -348,7 +351,7 @@
       margin: 0;
       padding: 0 0.8em;
       background: var(--color-secondary-lightest);
-      border-radius: 2px 0;
+      border-radius: var(--highlight-radius) 0 2px 0;
       color: #abb2c0;
       font-family: theme(fontFamily.mono);
       font-weight: normal;
@@ -372,7 +375,7 @@
       width: var(--highlight-copy-size);
       height: var(--highlight-copy-size);
       border: 0;
-      border-radius: 0 3px;
+      border-radius: 0 var(--highlight-radius);
       background: transparent;
       cursor: pointer;
 
@@ -438,7 +441,7 @@
       margin: 0 0 10px;
       padding: 0.4em 1.2em;
       background: var(--color-secondary);
-      border-radius: 3px;
+      border-radius: var(--highlight-radius);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.16);
       color: #fff;
       font-family: var(--font-sans-serif);
@@ -476,7 +479,8 @@
     & pre[class*='language-'] {
       & > code {
         clear: both;
-        display: block;
+        display: grid;
+        grid-auto-rows: minmax(calc(1em * var(--line-height-sm)), auto);
         padding: 1em;
         margin: 0 !important;
         overflow: auto;
@@ -501,6 +505,29 @@
 
     & :where(.language-css, .style) .token.string {
       color: #87c38a;
+    }
+
+    & .line {
+      position: relative;
+      display: block;
+
+      &.is-highlight {
+        padding-right: 1em;
+        padding-left: 1em;
+        margin-right: -1em;
+        margin-left: -1em;
+        background-color: var(--color-code-block-highlight);
+
+        &::before {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 4px;
+          background: var(--color-code-block-highlight-accent);
+          content: '';
+        }
+      }
     }
 
     & .token {
@@ -658,6 +685,6 @@
   };
 </script>
 
-<div class="post-content text-lg">
+<div class="post-content">
   <slot />
 </div>
