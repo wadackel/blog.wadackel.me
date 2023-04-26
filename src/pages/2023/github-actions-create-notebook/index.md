@@ -1,5 +1,5 @@
 ---
-title: 'GiftHub Actions の JavaScript アクション実装と公開に関する備忘録'
+title: 'GitHub Actions の JavaScript アクション実装と公開に関する備忘録'
 date: '2023-04-26'
 ---
 
