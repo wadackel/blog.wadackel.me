@@ -60,7 +60,6 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/line-clamp'),
     ({ addBase, theme }) => {
       addBase({
         html: {

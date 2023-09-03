@@ -1,5 +1,28 @@
 ---
+import type { TransitionAnimationPair, TransitionDirectionalAnimations } from 'astro';
 import dayjs from 'dayjs';
+
+const easeOutQuint = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+const animate: TransitionAnimationPair = {
+  old: {
+    name: 'astroFadeOut',
+    duration: '120ms',
+    easing: easeOutQuint,
+    fillMode: 'both',
+  },
+  new: {
+    name: 'astroFadeIn',
+    duration: '180ms',
+    easing: easeOutQuint,
+    fillMode: 'both',
+  },
+};
+
+const fade: TransitionDirectionalAnimations = {
+  forwards: animate,
+  backwards: animate,
+};
 
 export type Props = {
   single: boolean;
@@ -25,7 +48,7 @@ const d = dayjs(date);
 </style>
 
 <article>
-  <header class="text-center">
+  <header class="text-center" transition:name={`hero-${url}`} transition:animate={fade}>
     {
       single ? (
         <h1 class="title">{title}</h1>

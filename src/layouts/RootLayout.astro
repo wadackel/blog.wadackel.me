@@ -1,5 +1,6 @@
 ---
 import '@fontsource/caveat';
+import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/Footer.astro';
 import { Header } from '../components/Header';
 import { site } from '../config';
@@ -48,6 +49,8 @@ const { type, title, description, image = '/ogp.png' } = Astro.props;
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="blog.wadackel.me" href="/index.xml" />
     <title>{title}</title>
+
+    <ViewTransitions />
 
     <!-- Google tag (gtag.js) -->
     <script
