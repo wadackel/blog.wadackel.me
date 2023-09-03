@@ -1,4 +1,3 @@
-// import cloudflare from '@astrojs/cloudflare';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import preact from '@astrojs/preact';
@@ -6,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import compress from 'astro-compress';
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 import path from 'path';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
 import remarkEmoji from 'remark-emoji';
@@ -55,6 +54,9 @@ export default defineConfig({
       img: false,
     }),
   ],
+  image: {
+    service: passthroughImageService(),
+  },
   markdown: {
     syntaxHighlight: false,
     extendDefaultPlugins: false,
