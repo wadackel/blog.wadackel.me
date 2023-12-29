@@ -4,7 +4,7 @@ import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import remarkA11yEmoji from '@fec/remark-a11y-emoji';
-import compress from 'astro-compress';
+// import compress from 'astro-compress';
 import { defineConfig, passthroughImageService } from 'astro/config';
 import path from 'path';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
@@ -50,9 +50,9 @@ export default defineConfig({
         forward: ['dataLayer.push'],
       },
     }),
-    compress({
-      img: false,
-    }),
+    // compress({
+    //   img: false,
+    // }),
   ],
   image: {
     service: passthroughImageService(),
