@@ -132,7 +132,7 @@ const loadLanguage = async (language) => {
     }
   }
 
-  await import(`prismjs/components/prism-${base}.js` /* @vite-ignore */);
+  await import(/* @vite-ignore */ `prismjs/components/prism-${base}.js`);
 };
 
 const escape = (code) => {
