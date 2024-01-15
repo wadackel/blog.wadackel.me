@@ -10,7 +10,7 @@ jobs:
   deps:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2.2.2
       - uses: actions/setup-node@v3
         with:
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [deps]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2.2.2
       - uses: actions/setup-node@v3
         with:
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [deps]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2.2.2
       - uses: actions/setup-node@v3
         with:
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [deps]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2.2.2
       - uses: actions/setup-node@v3
         with:
