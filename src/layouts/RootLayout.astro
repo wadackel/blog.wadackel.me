@@ -46,7 +46,7 @@ const { type, title, description, image = '/ogp.png' } = Astro.props;
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
-    <link rel="alternate" type="application/rss+xml" title="blog.wadackel.me" href="/index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="blog.wadackel.me" href={new URL("/rss.xml", Astro.url)} />
     <title>{title}</title>
 
     <!-- Google tag (gtag.js) -->
