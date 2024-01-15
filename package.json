@@ -18,6 +18,9 @@
       "prettier --write"
     ]
   },
+  "browserslist": [
+    "last 2 versions"
+  ],
   "prettier": {
     "arrowParens": "always",
     "plugins": [

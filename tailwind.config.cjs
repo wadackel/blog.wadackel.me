@@ -3,7 +3,7 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     fontFamily: {
-      sans: ['system-ui', 'sans-serif'],
+      sans: ['sans-serif'],
       mono: [
         'ui-monospace',
         'SFMono-Regular',
@@ -52,6 +52,7 @@ module.exports = {
           800: '#101821',
           900: '#0d121a',
         },
+        underline: '#8fc7b9',
       },
       transitionTimingFunction: {
         'in-quint': 'cubic-bezier(0.755, 0.05, 0.855, 0.06)',
@@ -64,9 +65,13 @@ module.exports = {
       addBase({
         html: {
           minHeight: '100vh',
-          fontWeight: theme('fontWeight.medium'),
           color: theme('colors.secondary.500'),
-          letterSpacing: '0.05em',
+          fontFeatureSettings: 'normal',
+          fontVariationSettings: 'normal',
+          fontWeight: theme('fontWeight.medium'),
+          fontKerning: 'none',
+          lineBreak: 'strict',
+          hangingPunctuation: 'allow-end',
         },
         body: {
           minHeight: '100vh',
@@ -80,12 +85,14 @@ module.exports = {
         a: {
           color: theme('colors.primary.700'),
           textDecoration: 'underline',
+          textDecorationColor: theme('colors.underline'),
+          '-webkit-text-decoration-color': theme('colors.underline'),
+          textUnderlineOffset: '0.15em',
           transitionProperty: 'color',
           transitionDuration: '250ms',
           transitionTimingFunction: theme('transitionTimingFunction.out-quint'),
           '&:hover': {
             textDecoration: 'none',
-            color: theme('colors.primary.500'),
           },
         },
       });
