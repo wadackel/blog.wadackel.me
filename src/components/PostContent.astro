@@ -262,8 +262,8 @@
     & kbd {
       display: inline-block;
       min-width: 3em;
-      margin: 0 0.4em;
-      padding: 0.05em 0.5em;
+      margin: 0 0.2em;
+      padding: 0 0.5em;
       background: var(--color-kbd-background);
       border-top: 1px solid var(--color-kbd-border);
       border-radius: 3px;
@@ -271,11 +271,10 @@
         0 2px 0 var(--color-kbd-shadow-to);
       color: var(--color-kbd-text);
       text-shadow: 0 1px 0 #fff;
-      font-size: 0.88em;
+      font-size: 0.77em;
       font-weight: normal;
       font-family: theme(fontFamily.mono);
       text-align: center;
-      vertical-align: text-bottom;
     }
 
     & code {
@@ -287,6 +286,15 @@
       border-radius: 3px;
       font-size: 0.85em;
       font-weight: normal;
+
+      a & {
+        color: theme(colors.primary.700);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
 
     & pre {

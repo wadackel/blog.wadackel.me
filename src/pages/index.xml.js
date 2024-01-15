@@ -4,7 +4,7 @@ import { site } from '../config';
 const postImportResult = import.meta.glob('./**/*.{md,mdx}', { eager: true });
 const posts = Object.values(postImportResult);
 
-export const get = () =>
+export const GET = () =>
   rss({
     title: site.title,
     description: site.description,

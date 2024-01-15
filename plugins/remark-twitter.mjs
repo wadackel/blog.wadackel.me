@@ -1,7 +1,7 @@
 import { visit } from 'unist-util-visit';
 
-const MOMENT_REG = /https:\/\/twitter.com\/i\/moments\/[0-9]+/i;
-const TWEET_REG = /https:\/\/twitter\.com\/[A-Za-z0-9-_]*\/status\/[0-9]+/i;
+const MOMENT_REG = /https:\/\/(:?twitter|x).com\/i\/moments\/[0-9]+/i;
+const TWEET_REG = /https:\/\/(:?twitter|x)\.com\/[A-Za-z0-9-_]*\/status\/[0-9]+/i;
 
 const flattenEms = (children) =>
   children.reduce(
@@ -9,8 +9,8 @@ const flattenEms = (children) =>
       c.type === 'text'
         ? flat + c.value
         : c.type === 'emphasis' && c.children && c.children.length === 1
-        ? flat + `_${c.children[0].value}_`
-        : flat,
+          ? flat + `_${c.children[0].value}_`
+          : flat,
     '',
   );
 
@@ -53,6 +53,9 @@ export const remarkTwitterPlugin = () => {
     for (const node of nodes) {
       const url = node.children[0].url;
       const data = await fetchData(url);
+      if (data.html == null) {
+        continue;
+      }
       node.type = 'html';
       node.value = data.html;
       node.children = null;
