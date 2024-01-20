@@ -124,7 +124,7 @@
     "postcss-import": "^16.0.0",
     "postcss-nesting": "^12.0.2",
     "prettier": "^3.2.2",
-    "prettier-plugin-astro": "^0.12.3",
+    "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-packagejson": "^2.4.9",
     "prettier-plugin-scaffdog": "3.0.0",
     "prismjs": "^1.29.0",
