@@ -141,5 +141,5 @@
     "unified": "^11.0.4",
     "unist-util-visit": "^5.0.0"
   },
-  "packageManager": "pnpm@8.14.1"
+  "packageManager": "pnpm@8.14.2"
 }
