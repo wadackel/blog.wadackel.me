@@ -119,7 +119,7 @@
     "lint-staged": "^15.2.0",
     "mdast-util-to-string": "^4.0.0",
     "mrmime": "^2.0.0",
-    "npm-run-all2": "^5.0.0",
+    "npm-run-all2": "^6.0.0",
     "parse-numeric-range": "^1.3.0",
     "postcss-import": "^16.0.0",
     "postcss-nesting": "^12.0.2",
