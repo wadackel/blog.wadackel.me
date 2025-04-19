@@ -212,7 +212,7 @@
         margin-bottom: 0;
       }
 
-      &.twitter-tweet {
+      &.x-post {
         padding: 0;
         border: none;
       }
@@ -334,7 +334,7 @@
       }
     }
 
-    & .twitter-tweet {
+    & .x-post {
       margin: 2em auto !important;
     }
 
@@ -620,7 +620,7 @@
 <script is:inline>
   // Embed tweet
   document.addEventListener('DOMContentLoaded', () => {
-    if (document.querySelector('.twitter-tweet') != null) {
+    if (document.querySelector('.x-post') != null) {
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.innerText = `

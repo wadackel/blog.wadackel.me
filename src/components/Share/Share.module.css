@@ -1,6 +1,6 @@
 :root {
   --post-share-btn-size: 40px;
-  --color-twitter: #55acee;
+  --color-x: #000;
   --color-facebook: #315096;
   --color-hatena: #008fde;
   --color-pocket: #ef4456;
@@ -52,15 +52,15 @@
     margin: auto;
   }
 
-  &.is-twitter {
-    color: var(--color-twitter);
+  &.is-x {
+    color: var(--color-x);
 
     &::before {
-      border-color: var(--color-twitter);
+      border-color: var(--color-x);
     }
 
     &::after {
-      background-color: var(--color-twitter);
+      background-color: var(--color-x);
     }
   }
 

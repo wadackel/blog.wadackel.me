@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'preact/hooks';
 import { FeedlyIcon } from '../icons/FeedlyIcon';
 import { HatenaIcon } from '../icons/HatenaIcon';
 import { PocketIcon } from '../icons/PocketIcon';
-import { TwitterIcon } from '../icons/TwitterIcon';
+import { XIcon } from '../icons/XIcon';
 import styles from './Share.module.css';
 
 export type Props = {
@@ -50,17 +50,17 @@ export const Share: FunctionComponent<Props> = ({ title, url: urlProp }) => {
     <ul className={styles.list}>
       <li className={styles.item}>
         <a
-          className={`${styles.button} ${styles['is-twitter']}`}
+          className={`${styles.button} ${styles['is-x']}`}
           target="_blank"
           rel="noopener noreferrer"
           href={`http://twitter.com/intent/tweet?text=${encoded.title}%0a${url}`}
-          aria-label="この記事をTwitterでシェアする"
+          aria-label="この記事をXでシェアする"
           data-name="tweetwindow"
           data-width="550"
           data-height="450"
           onClick={handleClick}
         >
-          <TwitterIcon size={16} />
+          <XIcon size={16} />
         </a>
       </li>
 

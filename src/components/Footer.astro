@@ -1,7 +1,7 @@
 ---
 import { FeedlyIcon } from './icons/FeedlyIcon';
 import { GitHubIcon } from './icons/GitHubIcon';
-import { TwitterIcon } from './icons/TwitterIcon';
+import { XIcon } from './icons/XIcon';
 import { RssIcon } from './icons/RssIcon';
 import { Logo } from './Logo';
 import { site } from '../config';
@@ -42,8 +42,8 @@ const feed = new URL('/index.xml', Astro.site!.origin).toString();
 
       <ul class="flex justify-center items-center mt-4">
         <li>
-          <a class="social_button" href={`https://twitter.com/${site.social.twitter}`}>
-            <TwitterIcon size={20} />
+          <a class="social_button" href={`https://x.com/${site.social.x}`}>
+            <XIcon size={18} />
           </a>
         </li>
 
