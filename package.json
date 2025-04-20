@@ -7,7 +7,7 @@
     "format": "run-s format:*",
     "format:lint": "npm run lint -- --fix",
     "format:prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,yml}\"",
-    "lint": "eslint . --ext \".js,.jsx,.ts,.tsx\"",
+    "lint": "eslint .",
     "prepare": "husky install",
     "preview": "astro preview --host",
     "scaffold": "scaffdog generate",
@@ -32,61 +32,6 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "parser": "@typescript-eslint/parser",
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    },
-    "plugins": [
-      "import",
-      "@typescript-eslint"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:import/errors",
-      "plugin:import/warnings"
-    ],
-    "rules": {
-      "import/default": "off",
-      "import/no-named-as-default": "off",
-      "import/no-named-as-default-member": "off",
-      "import/no-unresolved": "off"
-    },
-    "overrides": [
-      {
-        "files": [
-          "*.ts",
-          "*.tsx"
-        ],
-        "extends": [
-          "plugin:@typescript-eslint/recommended",
-          "plugin:import/typescript"
-        ],
-        "rules": {
-          "@typescript-eslint/ban-ts-comment": "off",
-          "@typescript-eslint/ban-types": "off",
-          "@typescript-eslint/explicit-module-boundary-types": "off",
-          "@typescript-eslint/no-empty-interface": "off",
-          "@typescript-eslint/no-explicit-any": "off",
-          "@typescript-eslint/no-non-null-assertion": "off",
-          "@typescript-eslint/no-unused-vars": "off",
-          "import/order": [
-            "error",
-            {
-              "newlines-between": "never"
-            }
-          ]
-        }
-      }
-    ]
-  },
   "dependencies": {
     "@astrojs/cloudflare": "^8.1.0",
     "@astrojs/partytown": "^2.0.3",
@@ -99,19 +44,19 @@
     "@astrojs/sitemap": "^3.0.4",
     "@astrojs/tailwind": "^5.1.0",
     "@cloudflare/workers-types": "^4.20231218.0",
+    "@eslint/js": "^8.57.0",
     "@fec/remark-a11y-emoji": "^4.0.2",
     "@fontsource/caveat": "^5.0.16",
     "@resvg/resvg-js": "^2.6.0",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.47",
-    "@typescript-eslint/eslint-plugin": "^6.18.1",
-    "@typescript-eslint/parser": "^6.18.1",
     "astro": "^4.1.2",
     "autoprefixer": "^10.4.16",
     "dayjs": "^1.11.10",
-    "eslint": "^8.56.0",
+    "eslint": "^9.25.0",
     "eslint-plugin-import": "^2.29.1",
     "front-matter": "^4.0.2",
+    "globals": "^16.0.0",
     "globby": "^14.0.0",
     "graphemesplit": "^2.4.4",
     "hast-util-to-html": "^9.0.0",
@@ -138,6 +83,7 @@
     "scaffdog": "3.0.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
+    "typescript-eslint": "^7.5.0",
     "unified": "^11.0.4",
     "unist-util-visit": "^5.0.0"
   },
