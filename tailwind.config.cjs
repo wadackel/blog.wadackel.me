@@ -71,7 +71,15 @@ module.exports = {
           fontWeight: theme('fontWeight.medium'),
           fontKerning: 'none',
           lineBreak: 'strict',
+          textSpacingTrim: 'trim-start',
+          textAutospace: 'normal',
           hangingPunctuation: 'allow-end',
+        },
+        pre: {
+          textAutospace: 'no-autospace',
+        },
+        time: {
+          textAutospace: 'no-autospace',
         },
         body: {
           minHeight: '100vh',
