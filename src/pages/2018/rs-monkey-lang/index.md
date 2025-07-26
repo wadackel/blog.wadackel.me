@@ -11,9 +11,11 @@ date: '2018-08-06'
 
 ちなみに [Writing An Interpreter In Go][writing-an-interpreter-in-go] は、既に様々な方が読まれているような有名な本なので特別紹介はしませんが、かなりの良書なので「**読んだことない！**」という方は是非読んでみると面白いかもしれません。
 
-> - [『Writing An Interpreter In Go / Go 言語でつくるインタプリタ』- razokulover publog](https://razokulover.hateblo.jp/entry/2018/06/18/121105)
-> - [Writing An Interpreter In Go を読んだ | SOTA](https://deeeet.com/writing/2017/01/12/go-interpreter/)
-> - [『Writing An Interpreter In Go』を読んだ](https://medium.com/@r7kamura/write-an-interpreter-in-go-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0-99c98d746d7c)
+https://razokulover.hateblo.jp/entry/2018/06/18/121105
+
+https://deeeet.com/writing/2017/01/12/go-interpreter/
+
+https://medium.com/@r7kamura/write-an-interpreter-in-go-%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0-99c98d746d7c
 
 最初のブログ記事にある通り、最近 O'Reilly さんから 『[Go 言語でつくるインタプリタ](https://www.oreilly.co.jp/books/9784873118222/)』というタイトルで日本語訳も出ています。
 
@@ -21,15 +23,13 @@ date: '2018-08-06'
 
 実際に出来上がったものは以下のリポジトリです。
 
-> wadackel/rs-monkey-lang  
-> https://github.com/wadackel/rs-monkey-lang
+https://github.com/wadackel/rs-monkey-lang
 
 ターミナル上で REPL を動作させることも出来るのですが、どちらかというと今回はブラウザ上で動かすことの出来る Playground が主役です。
 
 ![Monkey Programming Language Playground](playground.png)
 
-> Monkey Programming Language Playground  
-> https://wadackel.github.io/rs-monkey-lang/
+https://wadackel.github.io/rs-monkey-lang/
 
 幾つかスニペットを用意しているので実際に動かしてみると面白いかなと思います。Monkey 言語の簡単なドキュメントも [README](https://github.com/wadackel/rs-monkey-lang#documentation) に記載しています。
 
@@ -184,7 +184,7 @@ AST の定義さえ出来れば、あとはひたすらトークンを落とし�
 
 Pratt Parser に関して、Writing An Interpreter In Go 以外だと、以下の記事が疑似コードを使った説明があり参考になるかと思います。
 
-> [Pratt Parsing - DEV Community](https://dev.to/jrop/pratt-parsing)
+https://dev.to/jrop/pratt-parsing
 
 ### Evaluator (評価器)
 
@@ -358,8 +358,9 @@ pub fn eval(input_ptr: *mut c_char) -> *mut c_char {
 
 `alloc`, `dealloc` 辺りは JavaScript と Rust (というより WebAssembly) で共有されるメモリ空間である [WebAssembly.Memory](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory) の Allocate, Deallocate を行うための実装で、以下とっても参考になりました。
 
-> - [Rust + WebAssembly で png デコードを行う node_module を作ってみる](https://qiita.com/bokuweb/items/87a169429960f0dae2cb)
-> - [KOBA789/rust-wasm](https://github.com/KOBA789/rust-wasm)
+https://qiita.com/bokuweb/items/87a169429960f0dae2cb
+
+https://github.com/KOBA789/rust-wasm
 
 JavaScript と WebAssembly では、直接渡せるデータ型が数値に限定されるみたいです。そのため、ソースコードの様な文字列を渡すためには、渡す側がメモリに書き込み受け取る側ではそのポインタを受け取るような実装にする必要があります。(ここが最初本当に分からなかった...)
 

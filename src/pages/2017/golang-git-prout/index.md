@@ -10,7 +10,7 @@ date: '2017-04-03'
 
 ![DEMO](demo.gif)
 
-> [wadackel/git-prout: Checkout pull request locally with Golang.](https://github.com/wadackel/git-prout)
+https://github.com/wadackel/git-prout
 
 ## インストール
 
@@ -55,7 +55,7 @@ $ git-prout --remote upstream 123
 $ git prout 123
 ```
 
-> 参考: [便利な「git-サブコマンド」を作成する - Qiita](http://qiita.com/b4b4r07/items/6b76a5f969231e5e9748)
+http://qiita.com/b4b4r07/items/6b76a5f969231e5e9748
 
 ---
 
@@ -65,9 +65,11 @@ $ git prout 123
 
 GitHub の Pull Request をローカルに取り込む方法は、探せば無限に出てくると思います。
 
-> - [Checking out pull requests locally - User Documentation](https://help.github.com/articles/checking-out-pull-requests-locally/)
-> - [GitHub の Pull Request を簡単にチェックアウトするたった 1 つの方法 - アジャイル SE の憂鬱](http://sinsoku.hatenablog.com/entry/2016/01/05/124957)
-> - [GitHub のプルリクエストを fetch しとくと便利 - HWPS 別館](http://d.hatena.ne.jp/holysugar/20130129/p1)
+https://help.github.com/articles/checking-out-pull-requests-locally/
+
+http://sinsoku.hatenablog.com/entry/2016/01/05/124957
+
+http://d.hatena.ne.jp/holysugar/20130129/p1
 
 正直、コマンドにしたら 2 行程度の内容なので作ったツールの優位性はそれほど無いかなと思います。
 
@@ -80,12 +82,13 @@ GitHub の Pull Request をローカルに取り込む方法は、探せば無�
 普段はフロントエンド周りを触ることが多いので、npm を使って依存関係の解決をしています。  
 Go ではそこらへんどうするの? と思っていたところ [dep](https://github.com/golang/dep) という依存関係解決のツールがあるようなので使ってみました。
 
-> - [golang/dep: Go dependency tool](https://github.com/golang/dep)
-> - [Big Sky :: golang オフィシャル謹製のパッケージ依存解決ツール「dep」](http://mattn.kaoriya.net/software/lang/go/20170125023240.htm)
+https://github.com/golang/dep
+
+http://mattn.kaoriya.net/software/lang/go/20170125023240.htm
 
 まだ不完全なプロジェクトみたいですが、今回のツールで使用する分には問題なかったです。
 
-> Alpha. Functionality is known to be broken, missing or incomplete.
+Alpha. Functionality is known to be broken, missing or incomplete.
 
 ### kingpin を使った CLI
 
@@ -101,7 +104,7 @@ Go ではそこらへんどうするの? と思っていたところ [dep](https
 
 以下参考になりました。
 
-> - [flag 並にシンプルでより強力な CLI パーサ kingpin の紹介 - Qiita](http://qiita.com/kumatch/items/258d7984c0270f6dd73a)
+http://qiita.com/kumatch/items/258d7984c0270f6dd73a
 
 ### テスト
 
@@ -110,11 +113,11 @@ Go ではそこらへんどうするの? と思っていたところ [dep](https
 
 初めて Go でテストコードを書くにあたって、「そういえば `assert` 無いな??」ってなりましたが、以下のページを読むことでスッキリしました。
 
-> - [Go の Test に対する考え方 - Qiita](http://qiita.com/Jxck_/items/8717a5982547cfa54ebc)
+http://qiita.com/Jxck_/items/8717a5982547cfa54ebc
 
 また、CLI のテストを書く際の設計指針として、以下大変参考になりました。
 
-> - [Go 言語でテストしやすいコマンドラインツールをつくる | SOTA](http://deeeet.com/writing/2014/12/18/golang-cli-test/)
+http://deeeet.com/writing/2014/12/18/golang-cli-test/
 
 ポイントは `io.Writer` をメインの処理に渡す部分になりますが、kingpin を使っている場合は以下のようにして渡すことが出来ました。
 
@@ -161,9 +164,11 @@ after_success:
 
 `ghr` に渡すバージョンは `version.go` で定義した `Version` 定数の値を拾って指定しました。
 
-> - [mitchellh/gox: A dead simple, no frills Go cross compile tool](https://github.com/mitchellh/gox)
-> - [tcnksm/ghr: Upload multiple artifacts to GitHub Release in parallel](https://github.com/tcnksm/ghr)
-> - [高速に自作パッケージを Github にリリースする ghr というツールをつくった | SOTA](http://deeeet.com/writing/2014/07/29/ghr/)
+https://github.com/mitchellh/gox
+
+https://github.com/tcnksm/ghr
+
+http://deeeet.com/writing/2014/07/29/ghr/
 
 ## おわりに
 

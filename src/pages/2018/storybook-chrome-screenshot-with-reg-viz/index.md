@@ -69,8 +69,9 @@ Visual Regression Testing を導入することで、そういった漏れ減ら
 
 ここらへんまでの話は、reg-viz のメンテナである [@Quramy][quramy] さん、[@bokuweb][bokuweb] さんの記事で分かりやすく纏められています。
 
-> - [コンポーネント/単体テスト単位での visual regression テストを行うためのツールを作った話し - Qiita](https://qiita.com/bokuweb/items/bf9de229a3c91c01a480)
-> - [1 日 10 万枚の画像を検証するためにやったこと - Qiita](https://qiita.com/Quramy/items/46d0b09ae4d8887b0941)
+https://qiita.com/bokuweb/items/bf9de229a3c91c01a480
+
+https://qiita.com/Quramy/items/46d0b09ae4d8887b0941
 
 ## 前提
 
@@ -78,8 +79,7 @@ React + Storybook でごく単純なプロジェクトを想定します。[crea
 
 以下、全ての工程が終わっている状態のサンプルリポジトリは以下です。
 
-> wadackel/scs-with-reg-viz
-> https://github.com/wadackel/scs-with-reg-viz
+https://github.com/wadackel/scs-with-reg-viz
 
 ### サンプルプロジェクト作成
 

@@ -9,7 +9,7 @@ date: '2017-09-03'
 
 僕は Vim で Markdown のプレビューを行うために [Previm](https://github.com/kannokanno/previm) を使用しています。必要な機能が実装されており、Markdown のプレビュー用途なら別ライブラリへの依存もないため導入がしやすく気に入っています。
 
-> [kannokanno/previm](https://github.com/kannokanno/previm)
+https://github.com/kannokanno/previm
 
 最近までほとんどデフォルトの設定で使用していたのですが、大きめの画像を表示させた際に画像がコンテンツ部分からはみ出してしまう点が少し気になっていました。
 
@@ -42,7 +42,7 @@ let g:previm_custom_css_path = '~/dotfiles/templates/previm/markdown.css'
 
 次に上記で指定したファイルを作成して、次のスタイルを記述します。
 
-> [dotfiles/templates/previm/markdown.css](https://github.com/wadackel/dotfiles/blob/9023005bb30d4d895f69233156dd6f488d29e841/templates/previm/markdown.css)
+https://github.com/wadackel/dotfiles/blob/9023005bb30d4d895f69233156dd6f488d29e841/templates/previm/markdown.css
 
 これで Vim を再起動して実際にプレビューするだけです。Previm 便利...。
 

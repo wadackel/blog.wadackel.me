@@ -12,7 +12,7 @@ date: '2017-08-26'
 
 まず、[Puppeteer][puppeteer] が何者かという点は、以下の記事が大変参考になるため、ここでは触れません。
 
-> [--headless 時代の本命？ Chrome を Node.js から操作するライブラリ puppeteer について - Qiita](http://qiita.com/Quramy/items/26058e83e898ec2ec078)
+http://qiita.com/Quramy/items/26058e83e898ec2ec078
 
 今回作った Addon は、上記 [Puppeeer][puppeteer] を使って、任意のストーリーのスクリーンショットを取るためのものになります。  
 スクリーンショットを取るためのモチベーションは色々と考えられますが、ここでは開発時に使用している既存のストーリーを活用して、**最小限の労力**で Visual Testing の可能な状態に持ち込むことです。もっと言うと個人的に気になっている [reg-viz](https://github.com/reg-viz) を活用するためです。
@@ -21,8 +21,7 @@ date: '2017-08-26'
 
 ![デモンストレーション](demo.gif)
 
-> wadackel/storybook-chrome-screenshot  
-> https://github.com/wadackel/storybook-chrome-screenshot
+https://github.com/wadackel/storybook-chrome-screenshot
 
 `storybook-chrome-screenshot` というまんまの名前の Addon を作りました。  
 ローカルで動作させてみると、上記のアニメーションのようにスクリーンショットが生成されます。

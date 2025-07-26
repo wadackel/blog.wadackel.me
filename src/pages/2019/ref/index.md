@@ -5,7 +5,7 @@ date: '2019-12-31'
 
 年末になったので、今年も 1 年を振り返ってみます。
 
-> 去年の振り返り: [2018 年の振り返りと反省、2019 年への抱負](https://blog.wadackel.me/2018/ref/)
+https://blog.wadackel.me/2018/ref/
 
 ## 2019 年の振り返り
 
@@ -23,7 +23,7 @@ Web のメンバーとしてメインで作っていた [WinTicket](https://www.
 
 [![品質と開発速度を両立させるために捨てたものと守ったもの](winticket-slide.jpg)](https://docs.google.com/presentation/d/13QD86hxp0dB_xHkYcyLrFX1xNt0Vg4wsqIo8yeBQmFs/edit?usp=sharing)
 
-> [品質と開発速度を両立させるために捨てたものと守ったもの](https://docs.google.com/presentation/d/13QD86hxp0dB_xHkYcyLrFX1xNt0Vg4wsqIo8yeBQmFs/edit?usp=sharing)
+https://docs.google.com/presentation/d/13QD86hxp0dB_xHkYcyLrFX1xNt0Vg4wsqIo8yeBQmFs/edit?usp=sharing
 
 リリース後、多いときで月に 20 ~ 30 程度施策が入るようなスピード感で開発が進んでいるのですが、その中でもリリース当時から変わらずパフォーマンス / アクセシビリティの改善は継続的に実施してきました。
 
@@ -35,7 +35,7 @@ Web のメンバーとしてメインで作っていた [WinTicket](https://www.
 
 途中パフォーマンスが劣化した一因となったのは A/B Testing の導入でした。どのようにして改善を図ったかは以下の記事でざっくりと紹介しました。
 
-> [Google Optimize を使った Cacheable な A/B Testing 設計 - wadackel.me](https://blog.wadackel.me/2019/optimize-ab-testing/)
+https://blog.wadackel.me/2019/optimize-ab-testing/
 
 他の取り組みについては、需要がありそうなら記事や LT で紹介できればいいかなぁと思います。
 
@@ -43,7 +43,7 @@ Web のメンバーとしてメインで作っていた [WinTicket](https://www.
 
 この取り組みは [@masuP9](https://twitter.com/masuP9) が主導してくれました。最近のことではありますが JIS X 8341-3:2016「附属書 JB（参考）試験方法」に基づいた試験を行った結果を以下のページに示しています。
 
-> [ウェブアクセシビリティについて](https://www.winticket.jp/accessibility)
+https://www.winticket.jp/accessibility
 
 満たしていない達成基準の事例と対応策についてまとめてあるので、開発陣としても、対外的にも具体的な取り組み内容が見えるものになっています。
 

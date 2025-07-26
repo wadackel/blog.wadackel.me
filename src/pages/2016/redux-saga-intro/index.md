@@ -10,11 +10,11 @@ Web アプリを構築したくて久し振りに React を触ってみると、
 
 最後の [参考](#参考) にもあげていますが、そもそも redux-saga とは一体何者なんだ？というところにおいて、以下の記事が大変参考になりました。
 
-> [redux-saga で非同期処理と戦う - Qiita](http://qiita.com/kuy/items/716affc808ebb3e1e8ac)
+http://qiita.com/kuy/items/716affc808ebb3e1e8ac
 
 また、今回使用したサンプルコードは以下のリポジトリに公開しています。
 
-> [wadackel/redux-saga-sandbox/counter](https://github.com/wadackel/redux-saga-sandbox/tree/master/counter)
+https://github.com/wadackel/redux-saga-sandbox/tree/master/counter
 
 ## 環境のセットアップ
 
@@ -519,7 +519,7 @@ sinon の`spy`を使って、dispatch の実行を監視して渡された引数
 
 冒頭にも書きましたが、GitHub にコードを置いているので全体の確認が必要な場合は以下よりお願いします。
 
-> [wadackel/redux-saga-sandbox/counter](https://github.com/wadackel/redux-saga-sandbox/tree/master/counter)
+https://github.com/wadackel/redux-saga-sandbox/tree/master/counter
 
 ## 参考
 

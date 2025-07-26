@@ -11,11 +11,11 @@ date: '2016-05-20'
 
 公開した際の記事は以下。
 
-> [ES6 フレンドリーなスムーススクロール「sweet-scroll.js」を作りました | WebDesign Dackel](http://webdesign-dackel.com/2015/12/17/sweet-scroll/)
+http://webdesign-dackel.com/2015/12/17/sweet-scroll/
 
 リポジトリは以下です。
 
-> [wadackel/sweet-scroll](https://github.com/wadackel/sweet-scroll)
+https://github.com/wadackel/sweet-scroll
 
 ## 改善点
 

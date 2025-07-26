@@ -21,7 +21,7 @@ WinTicket では一般的な React x Redux を使った SSR x SPA 構成をと�
 
 詳細な技術構成や開発の体制については今年 Inside Frontend に登壇した際の資料を参照いただけますと幸いです。
 
-> [Inside Frontend 2019 - 品質と開発速度を両立させるために捨てたものと守ったもの](https://docs.google.com/presentation/d/13QD86hxp0dB_xHkYcyLrFX1xNt0Vg4wsqIo8yeBQmFs/edit?usp=sharing)
+https://docs.google.com/presentation/d/13QD86hxp0dB_xHkYcyLrFX1xNt0Vg4wsqIo8yeBQmFs/edit?usp=sharing
 
 上記リリース当時の内容で、細かい変更点は多々ありますがそれほど大きく様変わりはしていません。
 
@@ -51,7 +51,7 @@ Optimize をブラウザで完結する使い方[^2] をする分には全て不
 - Persistence of variants for users. (ユーザーごとの配信パターンの固定)
 - Sending users’ hits (e.g., pageview hits) on the variants to Google Analytics. (各パターンでユーザーが発生させたヒット（例: ページビュー ヒット）の Google アナリティクスへの送信)
 
-> 参照: https://developers.google.com/optimize/devguides/experiments?hl=en
+https://developers.google.com/optimize/devguides/experiments?hl=en
 
 かなりの部分を自分たちで負担する必要がありますが、分かりやすいレポート画面、有意差の判定などはそのまま使える点は強みとなります。
 
@@ -142,7 +142,7 @@ sub vcl_fetch {
 
 ![ビジュアルエディタ](optimize-feature.jpg)
 
-> 引用: https://marketingplatform.google.com/about/optimize/
+https://marketingplatform.google.com/about/optimize/
 
 クライアントサイドで完結する Optimize を使用する際は、ブラウザ上のビジュアルエディタを使ってバリアント毎のコンテンツを管理できます。
 

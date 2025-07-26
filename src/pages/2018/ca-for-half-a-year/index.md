@@ -77,8 +77,7 @@ https://twitter.com/wadackel/status/993402376081100801
 
 詳しくは以下の記事を参照ください。
 
-> アーキテクチャ編: SSR と CDN ( Fastly ) とユーザー依存情報の分離（新規開発のメモ書きシリーズ 4） ::ハブろぐ  
-> https://havelog.ayumusato.com/develop/others/e751-scratch_memo_4.html
+https://havelog.ayumusato.com/develop/others/e751-scratch_memo_4.html
 
 この構成になっているのにも必然性は勿論あったにせよ、チームの皆さんの**やってみたい**とか**楽しそう**、というものを採用しています。そういったエンジニアの意見をしっかり取り入れ、議論できる環境があるというのは非常に良いことかなと思います。
 
