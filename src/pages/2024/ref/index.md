@@ -7,7 +7,7 @@ date: '2024-12-31'
 
 毎年書きたいと思いつつ中々書けていなかった反省と振り返りです。2024年はナレッジワークに転職して迎える初めての年でもあり、自分の中で変化の年でした。ナレッジワークに転職した直後については以下の記事でまとめていました。
 
-> [ナレッジワークに転職して1ヶ月が経った](/2023/join-knowledgework/)
+https://blog.wadackel.me/2023/join-knowledgework/
 
 普段 [Obsidian](https://obsidian.md) に Daily Note を書いているので、それを基に一年の振り返りと来年への抱負をまとめます。
 
@@ -35,13 +35,13 @@ date: '2024-12-31'
 
 ナレッジワークでは Visual Regression Test を採用しているのですが、入社当時は各 Story が Flaky でした。そこで Storybook の Test Runner 上で稼働させる前提の [storycap-testrun](https://github.com/reg-viz/storycap-tetstrun) というツールを開発したりしました。ツールが意図していること、各種工夫については Zenn で記事にしています。
 
-> [Storybook Test ruuner で安定した Visual Regression Testing を行う](https://zenn.dev/knowledgework/articles/297ccfb866a5b5)
+https://zenn.dev/knowledgework/articles/297ccfb866a5b5
 
 [reg-suit-report-ui](https://github.com/reg-viz/reg-cli-report-ui) を [vanilla-extract](https://vanilla-extract.style/) へ移行したりしました。仕事で vanilla-extract を採用したい欲があり実用性の検証も兼ねて移行へ取り組んでいました。過程として [stylex](https://github.com/facebook/stylex) も検討し、実際に移行を進めてみたのですが、あまりに厳しい縛りが多く結果として vanilla-extract に落ち着くなど色々と試行錯誤をしていました。
 
 また、Rust で対話型インターフェースを構築する [Promptuity](https://github.com/wadackel/promptuity) を publish したりしました。これが crates.io で公開する初めてのライブラリとなりました。[scaffdog](https://github.com/scaffdog/scaffdog) の Rust 化を目論んで開発しているものなのですが、中々本筋の実装が進んでいないのは反省点です。Promptuity の詳細に関しては以下の記事にまとめています。
 
-> [Rust で対話型インターフェースを構築する Promptuity を作った](/2024/promptuity/)
+https://blog.wadackel.me/2024/promptuity/
 
 ### プライベート
 

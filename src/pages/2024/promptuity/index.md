@@ -16,7 +16,7 @@ date: '2024-01-15'
 
 いずれも作り込まれた Crate ではあるものの、カスタマイズ性に難があるものが多い印象でした。ある程度、利用者側に自由度がある Crate が欲しいと思い、対話型インターフェースを構築する [Promptuity](https://github.com/wadackel/promptuity) [^2] という Crate を公開しました。
 
-> [wadackel/promptuity: Promptuity is a library that provides interactive prompts.](https://github.com/wadackel/promptuity?tab=readme-ov-file#build-your-own-prompt)
+https://github.com/wadackel/promptuity?tab=readme-ov-file#build-your-own-prompt
 
 ある程度動作確認[^3] ができたので、ブログに簡単に残しておきたいと思います。
 

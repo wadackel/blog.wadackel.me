@@ -7,7 +7,7 @@ date: '2023-04-26'
 
 先日、GitHub Actions の JavaScript アクションを公開した旨の記事を公開しました。
 
-> [複数リポジトリ間でファイルを同期する GitHub Actions の JavaScript アクションを作った - wadackel.me](/2023/files-sync-action/)
+https://blog.wadackel.me/2023/files-sync-action/
 
 JavaScript アクションを公開するのは 2 回目で、多少なりとも開発に関する勘所が見えてきたので、次回の開発での参考用として自分なりに意識したことや工夫したことをまとめておきたいと思います。
 
@@ -15,11 +15,13 @@ JavaScript アクションを公開するのは 2 回目で、多少なりとも
 
 本記事では JavaScript アクションの開発を中心とした内容を前提としています。開発に伴う流れは、以下のドキュメントに倣うことが推奨します。
 
-> [Creating a JavaScript action - GitHub Docs](https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action)
+https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
 
 ドキュメントにも記載がありますが、JavaScript 及び TypeScript のアクション向けテンプレートリポジトリが存在するため、こちらを利用することが手っ取り早く開発に入ることができます。以下は TypeScript 向けのテンプレートリポジトリ。
 
 > [GitHub - actions/typescript-action: Create a TypeScript Action with tests, linting, workflow, publishing, and versioning](https://github.com/actions/typescript-action)
+
+https://github.com/actions/typescript-action
 
 前回の開発では、個人的な好みにより上記テンプレートを利用することはなかったのですが、大枠の構成は踏襲しています。この記事では TypeScript テンプレートに近い構成を前提とします。
 
@@ -33,7 +35,7 @@ JavaScript アクションを公開するのは 2 回目で、多少なりとも
 
 アクションのメタデータとして `action.yml` を作成する必要があります。指定するべき値については、以下のドキュメントを参照します。
 
-> [Metadata syntax for GitHub Actions - GitHub Docs](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions)
+https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
 
 他のアクションでは、どのような値がどのように指定されているか参考にしたい場合、[actions](https://github.com/actions) Organization のリポジトリ群や、Awesome 系のリポジトリからいくつか見てみるのが良いかもしれません。
 

@@ -19,6 +19,7 @@ import { remarkExcerptPlugin } from './plugins/remark-excerpt.mjs';
 import { remarkImagePlugin } from './plugins/remark-image.mjs';
 import { remarkTablePlugin } from './plugins/remark-table.mjs';
 import { remarkTwitterPlugin } from './plugins/remark-twitter.mjs';
+import { remarkUrlEmbed } from './plugins/remark-url-embed.mjs';
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -76,6 +77,7 @@ export default defineConfig({
       remarkEmoji,
       remarkA11yEmoji,
       remarkGfm,
+      remarkUrlEmbed,
       remarkTwitterPlugin,
       remarkDefaultLayoutPlugin,
       remarkExcerptPlugin,
