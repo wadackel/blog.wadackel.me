@@ -7,7 +7,7 @@ date: '2023-04-25'
 
 複数リポジトリ間でファイル、又はディレクトリを同期する GitHub Actions の JavaScript アクションを作りました。
 
-> [GitHub - wadackel/files-sync-action: A customizable action that synchronizes files across multiple repositories.](https://github.com/wadackel/files-sync-action)
+https://github.com/wadackel/files-sync-action
 
 後述する設定によって、あるリポジトリに含まれるファイルを同期先リポジトリに push し Pull Request を作ってくれる、といった動作をします。以下、実際に動作している様子がわかる Pull Request 及び Workflow の実行ログです。
 

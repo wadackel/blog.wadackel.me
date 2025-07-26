@@ -7,6 +7,8 @@ date: '2025-07-02'
 
 GitHub の Issue や Pull Request (PR) に含まれるチェックボックスの状態に応じて、ワークフローを制御できる GitHub Actions の [checkbox-workflow-action](https://github.com/wadackel/checkbox-workflow-action) を作りました。
 
+https://github.com/wadackel/checkbox-workflow-action
+
 この Action を使うことで、例えば以下のような制御が可能です。
 
 - PR 内のチェックリストがすべてチェックされたら、自動的に Draft 解除して適当な Reviewer を割り当て
