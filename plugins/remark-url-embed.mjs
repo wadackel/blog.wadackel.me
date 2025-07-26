@@ -39,7 +39,7 @@ const createIframeHtml = (url) => {
   <iframe 
     src="https://embed.wadackel.me?url=${encodedUrl}"
     width="100%"
-    height="122"
+    height="120"
     loading="lazy"
     title="External content from ${domain}"
     style="border: none;"
