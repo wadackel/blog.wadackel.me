@@ -69,13 +69,13 @@ Storycap は内部で [Browser インスタンスを複数持ち](https://github
 
 CircleCI ではテスト分割の機構を提供しているため、これを活用することで対応できます。
 
-> [Test splitting and parallelism - CircleCI](https://circleci.com/docs/2.0/parallelism-faster-jobs)
+https://circleci.com/docs/2.0/parallelism-faster-jobs
 
 テスト分割はいくつかの手法で実現できますが、スクリーンショット撮影の並列化では[環境変数を用いた手法](https://circleci.com/docs/2.0/parallelism-faster-jobs#using-environment-variables-to-split-tests)を採用します。
 
 ちなみに、実際検証した訳ではありませんが、例えば GitHub Actions では Matrix の機能を使うことで並列化ができると思います。
 
-> [Using a matrix for your jobs - GitHub Docs](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)
+https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
 
 ## 実装例
 

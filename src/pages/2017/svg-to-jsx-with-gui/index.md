@@ -11,14 +11,12 @@ date: '2017-08-15'
 
 ![スクリーンショット](screenshot.png)
 
-> SVG to JSX with GUI  
-> [https://wadackel.github.io/svg-to-jsx-with-gui/](https://wadackel.github.io/svg-to-jsx-with-gui/)
+https://wadackel.github.io/svg-to-jsx-with-gui/
 
 よくある 2 ペインエディター風味です。  
 コードは以下のリポジトリに。
 
-> wadackel/svg-to-jsx-with-gui  
-> https://github.com/wadackel/svg-to-jsx-with-gui
+https://github.com/wadackel/svg-to-jsx-with-gui
 
 ## 出来ること
 
@@ -46,8 +44,9 @@ HTML から JSX への変換処理には [htmltojsx](https://github.com/reactjs/
 
 上記に対応すべく、2 つの PR を投げてはいるのですが動きがゆったりとしているため、暫定的な対処としてパッチを適用したものを [Scoped Package](https://github.com/wadackel/htmltojsx) として公開して使用しています。
 
-> - [Add feature for SVG attributes conversion #136](https://github.com/reactjs/react-magic/pull/136)
-> - [Fix bug that tag name of SVG would be lowercase #138](https://github.com/reactjs/react-magic/pull/138)
+https://github.com/reactjs/react-magic/pull/136
+
+https://github.com/reactjs/react-magic/pull/138
 
 ## その他、技術的ないろいろ
 
@@ -74,5 +73,4 @@ HTML から JSX への変換処理には [htmltojsx](https://github.com/reactjs/
 
 この位の小さいツールを作るのはいい気分転換になっていい感じです。ただ、毎回この手のものを作る時、実装よりもデザイン的な面に迷うことが多く、必要以上に時間がかかってしまっているなという感じがしています。ここらへん皆さんどうしているか気になるこの頃です。
 
-> SVG to JSX with GUI  
-> [https://wadackel.github.io/svg-to-jsx-with-gui/](https://wadackel.github.io/svg-to-jsx-with-gui/)
+https://wadackel.github.io/svg-to-jsx-with-gui/

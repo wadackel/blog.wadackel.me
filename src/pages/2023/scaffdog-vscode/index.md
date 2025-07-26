@@ -9,7 +9,7 @@ Markdown Driven な scaffolding ツールとして開発している [scaffdog](
 
 ![DEMO](demo.gif)
 
-> [scaffdog - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=scaffdog.scaffdog-vscode)
+https://marketplace.visualstudio.com/items?itemName=scaffdog.scaffdog-vscode
 
 scaffdog は CLI ツールとして機能提供を行っていますが、VS Code 拡張機能を通じて、GUI 操作から直感的に scaffolding を行うことを目的としています。Gif アニメーションで表示されているように、File Explorer からディレクトリを選択し、直接ファイル生成を行えるような体験を提供します。基本的にはプロジェクトローカルにインストールされた scaffdog を利用するため、CLI と GUI 間で生成されるファイルや機能に差分はありません。
 
@@ -29,7 +29,7 @@ GUI で直感的な操作を行える、というもの以外だと単純に「V
 
 以下の拡張機能をインストールします。
 
-> [scaffdog - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=scaffdog.scaffdog-vscode)
+https://marketplace.visualstudio.com/items?itemName=scaffdog.scaffdog-vscode
 
 インストール後、scaffdog が利用されているプロジェクトで以下の手順を踏むとファイル生成を行うことができます。
 

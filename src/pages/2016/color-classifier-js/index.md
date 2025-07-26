@@ -14,7 +14,7 @@ React を使って作成している Web アプリ内で、画像の色を自動
 
 対象のリポジトリは以下です。
 
-> [wadackel/color-classifier](https://github.com/wadackel/color-classifier)
+https://github.com/wadackel/color-classifier
 
 ### 色の分類を実現するステップ
 
@@ -32,13 +32,13 @@ React を使って作成している Web アプリ内で、画像の色を自動
 
 計算式は Java で書かれていましたが、以下の記事が大変参考になりました。
 
-> [色の距離（色差）の計算方法 - Qiita](http://qiita.com/shinido/items/2904fa1e9a6c78650b93)
+http://qiita.com/shinido/items/2904fa1e9a6c78650b93
 
 JavaScript に書き直して、[The CIEDE2000 Color-Difference Formula](http://www.ece.rochester.edu/~gsharma/ciede2000/)にあった[テストデータ](http://www.ece.rochester.edu/~gsharma/ciede2000/dataNprograms/ciede2000testdata.txt)もパスする事を確認しました。
 
 実際のソースは以下で確認できます。
 
-> [color-classifier/src/utils/color-diff.js](https://github.com/wadackel/color-classifier/blob/master/src/utils/color-diff.js)
+https://github.com/wadackel/color-classifier/blob/master/src/utils/color-diff.js
 
 ## デモページ
 
@@ -46,7 +46,7 @@ JavaScript に書き直して、[The CIEDE2000 Color-Difference Formula](http://
 
 ![デモページ](playground.png)
 
-> http://wadackel.github.io/color-classifier/
+http://wadackel.github.io/color-classifier/
 
 ちょっと分かりづらいかもしれないので簡単に補足です。
 

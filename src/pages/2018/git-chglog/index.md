@@ -9,8 +9,7 @@ date: '2018-02-20'
 
 ![git-chglog](banner.png)
 
-> git-chglog/git-chglog
-> https://github.com/git-chglog/git-chglog
+https://github.com/git-chglog/git-chglog
 
 Git を使用したコミットとタグからなる情報を元に CHANGELOG を作成するためのツールです。
 
@@ -272,8 +271,7 @@ header:
 
 使ってみたよ、という方がいましたら [Issues](https://github.com/git-chglog/git-chglog/issues) や [Twitter](https://twitter.com/wadackel) などで、問題の報告や感想など何らかのフィードバックをいただけると嬉しいです。(勿論 PR でも)
 
-> git-chglog/git-chglog
-> https://github.com/git-chglog/git-chglog
+https://github.com/git-chglog/git-chglog
 
 ---
 

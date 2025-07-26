@@ -7,9 +7,11 @@ date: '2016-04-24'
 
 少し調べると関連記事が沢山出てきました。
 
-> - [git で差分ファイルを抽出する - Qiita](http://qiita.com/kaminaly/items/28f9cb4e680deb700833)
-> - [git で差分ファイルを抽出して zip にまとめる方法 - HAM MEDIA MEMO](https://h2ham.net/git-diff-file-zip)
-> - [SourceTree でコミット間の差分ファイルを抽出しよう (カスタム操作を使う方法) - ICS MEDIA](https://ics.media/entry/4475)
+http://qiita.com/kaminaly/items/28f9cb4e680deb700833
+
+https://h2ham.net/git-diff-file-zip
+
+https://ics.media/entry/4475
 
 1〜2 番目の記事が CLI から実行できるので、良い感じです。  
 ただ、`git archive`を実行する際、既に削除済みのファイルが存在する場合エラーが発生してしまいました。
@@ -63,7 +65,7 @@ $ gda 845e6bc
 
 生成する zip ファイルの名前を変えたり、幾つか指定できるオプションがあります。詳細は以下のリポジトリで確認できます。
 
-> [wadackel/git-diff-archive](https://github.com/wadackel/git-diff-archive)
+https://github.com/wadackel/git-diff-archive
 
 ## 動作の仕組みと実装について
 

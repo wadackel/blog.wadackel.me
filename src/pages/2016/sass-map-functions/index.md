@@ -32,7 +32,7 @@ $btn-sizes: (
 
 最近見たコードだと、Bootstrap v4 で幾つか使っているのを見かけました。
 
-> https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
+https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
 
 ## 基本的な map 操作関数
 
@@ -174,7 +174,7 @@ $btn-states: (
 
 以下のブログ記事で紹介されていた関数群から、個人的に便利だと思った関数をいくつか抜粋します。これらの関数を`_map.scss`みたいに切り出しておいて、読み込ませておくと便利ですね。
 
-> [Extra Map Functions in Sass](http://www.sitepoint.com/extra-map-functions-sass/)
+http://www.sitepoint.com/extra-map-functions-sass/
 
 ### map-deep-get($map,$keys...)
 

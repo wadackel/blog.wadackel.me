@@ -7,7 +7,7 @@ date: '2018-11-18'
 
 以下 [@Jxck\_](https://twitter.com/jxck_) さんの記事に触発されて、このブログのデザインをダークモードに対応してみました。
 
-> [prefers-color-scheme を用いた Dark Mode 対応と User Preference Media Features | blog.jxck.io](https://blog.jxck.io/entries/2018-11-10/dark-mode-via-prefers-color-scheme.html)
+https://blog.jxck.io/entries/2018-11-10/dark-mode-via-prefers-color-scheme.html
 
 また、機能追加のついでに幾つかの改善やリファクタリングを行ったのでそれらをまとめておきたいと思います。
 

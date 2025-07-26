@@ -10,7 +10,7 @@ date: '2016-07-05'
 
 日本語の紹介記事では[@syossan27](https://twitter.com/syossan27)さんの記事が参考になりました。
 
-> [React のテストを Enzyme で書いてみよう - Qiita](http://qiita.com/syossan27/items/4a66b4fe5d6c19a4df84)
+http://qiita.com/syossan27/items/4a66b4fe5d6c19a4df84
 
 上記の記事では、コンポーネントの shallow レンダリングでのテストが実施されています。shallow レンダリングでは、全てのライフサイクルイベントが呼ばれないので、それらが必要な場合はフルレンダリングした状態でテストを実施する必要があります。
 
@@ -99,8 +99,7 @@ export default class Toast extends Component {
 
 今回使用したファイルは以下のリポジトリにあるので、記事に書かれていない箇所で不明な点があればご確認ください。
 
-> wadackel/enzyme-sample  
-> https://github.com/wadackel/enzyme-sample
+https://github.com/wadackel/enzyme-sample
 
 ## テストに必要なパッケージのインストール
 
@@ -176,8 +175,7 @@ $ touch test/.setup.js test/Toast.spec.js
 
 フルレンダリングを使ったテストでは、shallow レンダリングとは異なり`document`オブジェクトに対してグローバルにアクセス出来る状態が必要です。enzyme のガイドを参考に jsdom の設定を行います。
 
-> enzyme/jsdom.md at master · airbnb/enzyme  
-> https://github.com/airbnb/enzyme/blob/master/docs/guides/jsdom.md
+https://github.com/airbnb/enzyme/blob/master/docs/guides/jsdom.md
 
 ```javascript
 require('babel-register')();
