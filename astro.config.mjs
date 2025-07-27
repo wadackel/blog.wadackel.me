@@ -22,13 +22,7 @@ import { remarkTwitterPlugin } from './plugins/remark-twitter.mjs';
 import { remarkUrlEmbed } from './plugins/remark-url-embed.mjs';
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
-let site = 'http://localhost:3000';
-if (process.env.CF_PAGES_BRANCH === 'main') {
-  site = 'https://blog.wadackel.me';
-} else if (process.env.CF_PAGES_URL != null) {
-  site = process.env.CF_PAGES_URL;
-}
+const site = 'https://blog.wadackel.me';
 
 // https://astro.build/config
 export default defineConfig({
