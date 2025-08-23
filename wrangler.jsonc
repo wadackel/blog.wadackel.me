@@ -2,9 +2,9 @@
   // Cloudflare Workers configuration for blog.wadackel.me
   "name": "blog-wadackel-me",
   "compatibility_date": "2025-01-26",
-  
+
   // Static assets configuration
   "assets": {
-    "directory": "./dist"
-  }
+    "directory": "./dist",
+  },
 }
