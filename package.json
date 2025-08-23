@@ -58,7 +58,7 @@
     "playwright": "^1.54.2",
     "prettier": "^3.2.2",
     "prettier-plugin-packagejson": "^2.4.9",
-    "prettier-plugin-scaffdog": "3.0.0",
+    "prettier-plugin-scaffdog": "4.1.0",
     "prismjs": "^1.29.0",
     "rehype-stringify": "^9.0.4",
     "remark": "^14.0.3",
