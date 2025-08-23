@@ -18,7 +18,7 @@ dependencies:
 devDependencies:
   '@cloudflare/workers-types':
     specifier: ^4.20231218.0
-    version: 4.20250816.0
+    version: 4.20250823.0
   '@fec/remark-a11y-emoji':
     specifier: ^4.0.2
     version: 4.0.2
@@ -174,7 +174,7 @@ devDependencies:
     version: 3.2.4(@types/node@20.19.11)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@18.0.1)(tsx@4.20.4)(yaml@2.8.1)
   wrangler:
     specifier: ^4.0.0
-    version: 4.30.0(@cloudflare/workers-types@4.20250816.0)
+    version: 4.30.0(@cloudflare/workers-types@4.20250823.0)
   yaml:
     specifier: ^2.8.1
     version: 2.8.1
@@ -328,8 +328,8 @@ packages:
     os: [win32]
     optional: true
 
-  /@cloudflare/workers-types@4.20250816.0:
-    resolution: {integrity: sha512-R9ADrrINo1CqTwCddH39Tjlsc3grim6KeO7l8yddNbldH3uTkaAXYCzO0WiyLG7irLzLDrZVc4tLhN6BO3tdFw==}
+  /@cloudflare/workers-types@4.20250823.0:
+    resolution: {integrity: sha512-z5pCggF3jG//h083+GEWCyQLW0A5GHq20akG+jN6ChyHQi/yZj1FcQcMhnvbBY4PiGq+SBiEj/LClG/lDPm+jg==}
 
   /@cspotcode/source-map-support@0.8.1:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -781,7 +781,7 @@ packages:
       '@hono/node-server': 1.18.2(hono@4.9.2)
       hono: 4.9.2
       minimatch: 9.0.5
-      wrangler: 4.30.0(@cloudflare/workers-types@4.20250816.0)
+      wrangler: 4.30.0(@cloudflare/workers-types@4.20250823.0)
     dev: false
 
   /@hono/vite-dev-server@0.20.1(hono@4.9.2)(wrangler@4.30.0):
@@ -800,7 +800,7 @@ packages:
       '@hono/node-server': 1.18.2(hono@4.9.2)
       hono: 4.9.2
       minimatch: 9.0.5
-      wrangler: 4.30.0(@cloudflare/workers-types@4.20250816.0)
+      wrangler: 4.30.0(@cloudflare/workers-types@4.20250823.0)
     dev: true
 
   /@hono/vite-ssg@0.2.0(hono@4.9.2):
@@ -1016,43 +1016,43 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  /@oxlint-tsgolint/darwin-arm64@0.0.2:
-    resolution: {integrity: sha512-LH6tDgvQkF7ui+lNuRjJeaJTdYCfxMXI0j8YTbbLVSHz42EI5DTJDtngsCd2dSlUfKAJqaehECKccqcJ3yueHQ==}
+  /@oxlint-tsgolint/darwin-arm64@0.0.4:
+    resolution: {integrity: sha512-qL0zqIYdYrXl6ghTIHnhJkvyYy1eKz0P8YIEp59MjY3/zNiyk/gtyp8LkwZdqb9ezbcX9UDQhSuSO1wURJsq8g==}
     cpu: [arm64]
     os: [darwin]
     dev: true
     optional: true
 
-  /@oxlint-tsgolint/darwin-x64@0.0.2:
-    resolution: {integrity: sha512-VEUXK5h4ZyCM3O++dK7A+IcqwqWv8zfRKyM1vgcIrnQXtwvbs9KFyK6I0BSnMBCV9be67b9Gl7TDeSS8jBchpw==}
+  /@oxlint-tsgolint/darwin-x64@0.0.4:
+    resolution: {integrity: sha512-c3nSjqmDSKzemChAEUv/zy2e9cwgkkO/7rz4Y447+8pSbeZNHi3RrNpVHdrKL/Qep4pt6nFZE+6PoczZxHNQjg==}
     cpu: [x64]
     os: [darwin]
     dev: true
     optional: true
 
-  /@oxlint-tsgolint/linux-arm64@0.0.2:
-    resolution: {integrity: sha512-A/NtWuq+u+Y6oAo7p6D18rmkckHL/nx0GrqlZvfHAWOJYXXLanLX0QozPPDoSH8zRwHc7W7t95JU8awS7Krp4Q==}
+  /@oxlint-tsgolint/linux-arm64@0.0.4:
+    resolution: {integrity: sha512-P2BA54c/Ej5AGkChH1/7zMd6PwZfa+jnw8juB/JWops+BX+lbhbbBHz0cYduDBgWYjRo4e3OVJOTskqcpuMfNw==}
     cpu: [arm64]
     os: [linux]
     dev: true
     optional: true
 
-  /@oxlint-tsgolint/linux-x64@0.0.2:
-    resolution: {integrity: sha512-p42pKfILRhm/cE8Y5BgXlQpM22Q+Olhy9A60VvOW0epu/Vr/FtUa/MbZJ2wGRuAKSm8oW9JhgjIj5laSWAX8vg==}
+  /@oxlint-tsgolint/linux-x64@0.0.4:
+    resolution: {integrity: sha512-hbgLpnDNicPrbHOAQ9nNfLOSrUrdWANP/umR7P/cwCc1sv66eEs7bm4G3mrhRU8aXFBJmbhdNqiDSUkYYvHWJQ==}
     cpu: [x64]
     os: [linux]
     dev: true
     optional: true
 
-  /@oxlint-tsgolint/win32-arm64@0.0.2:
-    resolution: {integrity: sha512-LTKCeeKZRd4vT+C3y7d0KEYqAzIiLvf/189H6ispKtfyKeQKxOGU+XG9xRP4GovPvZOYL6fIsVxe09BUaNuDnA==}
+  /@oxlint-tsgolint/win32-arm64@0.0.4:
+    resolution: {integrity: sha512-ozKEppmwZhC5LMedClBEat6cXgBGUvxGOgsKK2ZZNE6zSScX7QbvJAOt3nWMGs8GQshHy/6ndMB33+uRloglQA==}
     cpu: [arm64]
     os: [win32]
     dev: true
     optional: true
 
-  /@oxlint-tsgolint/win32-x64@0.0.2:
-    resolution: {integrity: sha512-SdrPYSkBHd43WY5h78ICLVS851/379pzIjUVM1LDltZuAgv209H8f1/g5cdX4gY46RDvV86guLh+PbfMHHugog==}
+  /@oxlint-tsgolint/win32-x64@0.0.4:
+    resolution: {integrity: sha512-gLfx+qogW21QcaRKFg6ARgra7tSPqyn+Ems3FgTUyxV4OpJYn7KsQroygxOWElqv6JUobtvHBrxdB6YhlvERbQ==}
     cpu: [x64]
     os: [win32]
     dev: true
@@ -1382,6 +1382,14 @@ packages:
     resolution: {integrity: sha512-Jj5a9RUoe5ra+MEyERkDKLwTXVu6s3aACP51nkfnK9wJTraCC8IMe3snOfALkrjTYd2G1ViE1hICj0fZ7ALBPA==}
     cpu: [x64]
     os: [linux]
+    dev: true
+    optional: true
+
+  /@rollup/rollup-linux-x64-gnu@4.48.0:
+    resolution: {integrity: sha512-GUdZKTeKBq9WmEBzvFYuC88yk26vT66lQV8D5+9TgkfbewhLaTHRNATyzpQwwbHIfJvDJ3N9WJ90wK/uR3cy3Q==}
+    cpu: [x64]
+    os: [linux]
+    dev: false
     optional: true
 
   /@rollup/rollup-linux-x64-musl@4.46.2:
@@ -3208,7 +3216,7 @@ packages:
       jsonc-parser: 3.3.1
       precinct: 12.1.2
     optionalDependencies:
-      '@rollup/rollup-linux-x64-gnu': 4.46.2
+      '@rollup/rollup-linux-x64-gnu': 4.48.0
     transitivePeerDependencies:
       - miniflare
       - supports-color
@@ -4356,16 +4364,16 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /oxlint-tsgolint@0.0.2:
-    resolution: {integrity: sha512-afl7YXlHyiLb7YxL6ixAQ/1JLBy52vzk07+fTT53tPdyUZPpbkJz1CJMGNLteaX1t+vDq6wXdCj4xTO2jcViGQ==}
+  /oxlint-tsgolint@0.0.4:
+    resolution: {integrity: sha512-KFWVP+VU3ymgK/Dtuf6iRkqjo+aN42lS1YThY6JWlNi1GQqm7wtio/kAwssqDhm8kP+CVXbgZAtu1wgsK4XeTg==}
     hasBin: true
     optionalDependencies:
-      '@oxlint-tsgolint/darwin-arm64': 0.0.2
-      '@oxlint-tsgolint/darwin-x64': 0.0.2
-      '@oxlint-tsgolint/linux-arm64': 0.0.2
-      '@oxlint-tsgolint/linux-x64': 0.0.2
-      '@oxlint-tsgolint/win32-arm64': 0.0.2
-      '@oxlint-tsgolint/win32-x64': 0.0.2
+      '@oxlint-tsgolint/darwin-arm64': 0.0.4
+      '@oxlint-tsgolint/darwin-x64': 0.0.4
+      '@oxlint-tsgolint/linux-arm64': 0.0.4
+      '@oxlint-tsgolint/linux-x64': 0.0.4
+      '@oxlint-tsgolint/win32-arm64': 0.0.4
+      '@oxlint-tsgolint/win32-x64': 0.0.4
     dev: true
     optional: true
 
@@ -4382,7 +4390,7 @@ packages:
       '@oxlint/linux-x64-musl': 1.11.2
       '@oxlint/win32-arm64': 1.11.2
       '@oxlint/win32-x64': 1.11.2
-      oxlint-tsgolint: 0.0.2
+      oxlint-tsgolint: 0.0.4
     dev: true
 
   /p-cancelable@3.0.0:
@@ -5778,7 +5786,7 @@ packages:
       '@cloudflare/workerd-linux-arm64': 1.20250813.0
       '@cloudflare/workerd-windows-64': 1.20250813.0
 
-  /wrangler@4.30.0(@cloudflare/workers-types@4.20250816.0):
+  /wrangler@4.30.0(@cloudflare/workers-types@4.20250823.0):
     resolution: {integrity: sha512-NXJUObuXxgG8/ChQ4yXkWLmDQ5ZcO98gyq1yFKYVntJ884C0IpDQrVnAv2RA0ZEz5eB8zal+4OKnr26P3N7ItA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -5790,7 +5798,7 @@ packages:
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.0
       '@cloudflare/unenv-preset': 2.6.1(unenv@2.0.0-rc.19)(workerd@1.20250813.0)
-      '@cloudflare/workers-types': 4.20250816.0
+      '@cloudflare/workers-types': 4.20250823.0
       blake3-wasm: 2.1.5
       esbuild: 0.25.4
       miniflare: 4.20250813.1
