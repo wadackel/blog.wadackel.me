@@ -25,22 +25,20 @@ const CHARACTER_SETS = {
   // Minimal subset for header logo only
   header: {
     name: 'caveat-header',
-    characters: 'wadackel.me',
+    characters: '.acdeklmw',
   },
 
-  // Comprehensive subset for all components
+  // Comprehensive subset for all components (excluding header texts)
   comprehensive: {
     name: 'caveat-comprehensive',
     characters: [
-      // Header
-      'wadackel.me',
-      // Footer
+      // Footer (components/Footer.tsx)
       'tsuyoshi wada',
       '© wadackel.me',
-      // Pager
+      // PagerItem (components/Pager.tsx)
       'Newer Post',
       'Older Post',
-      // Pagination
+      // Pagination (components/Pagination.tsx)
       'Page of',
       // Numbers for years and pagination (0-9)
       '0123456789',
