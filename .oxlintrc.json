@@ -1,6 +1,6 @@
 {
   "ignorePatterns": ["dist/", ".wrangler/"],
-  "plugins": ["typescript"],
+  "plugins": ["typescript", "import", "vitest", "jsx-a11y"],
   "overrides": [
     {
       "files": ["**/*.{ts,tsx}"],
