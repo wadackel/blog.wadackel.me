@@ -1,0 +1,278 @@
+/**
+ * Font Subset Generator Script
+ *
+ * Generates optimized font subsets for the Caveat font family
+ * used throughout the blog application.
+ */
+
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Font configuration
+const FONT_CONFIG = {
+  family: 'Caveat',
+  weight: '400',
+  baseUrl: 'https://fonts.googleapis.com/css2',
+  outputDir: path.join(__dirname, '../public/fonts'),
+} as const;
+
+// Character sets for different font subsets
+const CHARACTER_SETS = {
+  // Minimal subset for header logo only
+  header: {
+    name: 'caveat-header',
+    characters: 'wadackel.me',
+  },
+
+  // Comprehensive subset for all components
+  comprehensive: {
+    name: 'caveat-comprehensive',
+    characters: [
+      // Header
+      'wadackel.me',
+      // Footer
+      'tsuyoshi wada',
+      '© wadackel.me',
+      // Pager
+      'Newer Post',
+      'Older Post',
+      // Pagination
+      'Page of',
+      // Numbers for years and pagination (0-9)
+      '0123456789',
+    ].join(''),
+  },
+} as const;
+
+type SubsetConfig = (typeof CHARACTER_SETS)[keyof typeof CHARACTER_SETS];
+type FontFormat = 'woff2' | 'ttf';
+
+interface DownloadedFile {
+  format: FontFormat;
+  path: string;
+  size: number;
+}
+
+/**
+ * Get unique characters from a string
+ */
+function getUniqueCharacters(str: string): string {
+  return [...new Set(str)].sort().join('');
+}
+
+/**
+ * URL encode special characters for Google Fonts API
+ */
+function encodeCharacters(chars: string): string {
+  return encodeURIComponent(chars).replace(/'/g, '%27').replace(/"/g, '%22');
+}
+
+/**
+ * Download font CSS from Google Fonts API
+ */
+async function downloadFontCSS(characters: string, userAgent: string): Promise<string> {
+  const encodedChars = encodeCharacters(characters);
+  const url = `${FONT_CONFIG.baseUrl}?family=${FONT_CONFIG.family}:wght@${FONT_CONFIG.weight}&text=${encodedChars}`;
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': userAgent,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.text();
+  } catch (error) {
+    console.error(`Failed to download font CSS: ${(error as Error).message}`);
+    throw error;
+  }
+}
+
+/**
+ * Extract font URL from CSS
+ */
+function extractFontUrl(css: string): string | null {
+  const match = css.match(/src: url\(([^)]+)\)/);
+  return match?.[1] ?? null;
+}
+
+/**
+ * Download font file
+ */
+async function downloadFontFile(url: string, outputPath: string): Promise<boolean> {
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const buffer = await response.arrayBuffer();
+    fs.writeFileSync(outputPath, Buffer.from(buffer));
+
+    return true;
+  } catch (error) {
+    console.error(`Failed to download font file: ${(error as Error).message}`);
+    throw error;
+  }
+}
+
+/**
+ * Generate font subset
+ */
+async function generateSubset(subsetConfig: SubsetConfig): Promise<DownloadedFile[]> {
+  const { name, characters } = subsetConfig;
+  const uniqueChars = getUniqueCharacters(characters);
+
+  console.log(`\n🎨 Generating ${name} subset...`);
+  console.log(`🔤 Characters (${uniqueChars.length}): ${uniqueChars}`);
+
+  // User agents for different font formats
+  const userAgents: Record<FontFormat, string> = {
+    woff2: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0',
+    ttf: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  };
+
+  const formats: FontFormat[] = ['woff2', 'ttf'];
+  const downloadedFiles: DownloadedFile[] = [];
+
+  for (const format of formats) {
+    console.log(`  📥 Downloading ${format.toUpperCase()} format...`);
+
+    try {
+      // Get CSS with font URL
+      const css = await downloadFontCSS(uniqueChars, userAgents[format]);
+      const fontUrl = extractFontUrl(css);
+
+      if (!fontUrl) {
+        throw new Error(`No font URL found in CSS for ${format}`);
+      }
+
+      // Download font file
+      const outputPath = path.join(FONT_CONFIG.outputDir, `${name}.${format}`);
+      await downloadFontFile(fontUrl, outputPath);
+
+      // Get file size
+      const stats = fs.statSync(outputPath);
+      const sizeKB = Math.round((stats.size / 1024) * 100) / 100;
+
+      console.log(`  ✅ ${format.toUpperCase()}: ${sizeKB} KB`);
+      downloadedFiles.push({ format, path: outputPath, size: sizeKB });
+    } catch (error) {
+      console.error(`  ❌ Failed to download ${format}: ${(error as Error).message}`);
+    }
+  }
+
+  return downloadedFiles;
+}
+
+/**
+ * Generate font CSS definitions
+ */
+function generateFontCSS(): string {
+  const cssContent = `/* Caveat font subsets - Generated by generate-font-subsets.ts */
+
+/* Comprehensive subset for Footer, Pager, Pagination components */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap; /* Allows fallback font while loading */
+  src: url('/fonts/caveat-comprehensive.woff2') format('woff2'),
+       url('/fonts/caveat-comprehensive.ttf') format('truetype');
+  /* Contains: alphanumeric, punctuation, symbols used throughout the site */
+}
+
+/* Minimal subset for Header (AnimatedLogo) - prevents flickering */
+@font-face {
+  font-family: 'Caveat-Header';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block; /* Prevents FOUT for critical header text */
+  src: url('/fonts/caveat-header.woff2') format('woff2'),
+       url('/fonts/caveat-header.ttf') format('truetype');
+  /* Minimal subset: only characters in "wadackel.me" */
+}
+`;
+
+  const cssPath = path.join(__dirname, '../app/fonts.css');
+  fs.writeFileSync(cssPath, cssContent);
+  console.log(`\n📄 Generated CSS definitions: ${cssPath}`);
+
+  return cssPath;
+}
+
+/**
+ * Main execution function
+ */
+async function main(): Promise<void> {
+  console.log('🚀 Starting font subset generation...');
+
+  // Ensure output directory exists
+  if (!fs.existsSync(FONT_CONFIG.outputDir)) {
+    fs.mkdirSync(FONT_CONFIG.outputDir, { recursive: true });
+    console.log(`📁 Created output directory: ${FONT_CONFIG.outputDir}`);
+  }
+
+  // Generate subsets
+  const results: Record<string, DownloadedFile[]> = {};
+
+  for (const [key, config] of Object.entries(CHARACTER_SETS)) {
+    try {
+      results[key] = await generateSubset(config);
+    } catch (error) {
+      console.error(`❌ Failed to generate ${key} subset: ${(error as Error).message}`);
+      results[key] = [];
+    }
+  }
+
+  // Generate CSS file
+  generateFontCSS();
+
+  // Summary
+  console.log('\n📊 Generation Summary:');
+  console.log('='.repeat(50));
+
+  let totalFiles = 0;
+  let totalSize = 0;
+
+  for (const [subset, files] of Object.entries(results)) {
+    console.log(`\n${subset.toUpperCase()} subset:`);
+    if (files.length === 0) {
+      console.log('  ❌ No files generated');
+    } else {
+      files.forEach(({ format, size }) => {
+        console.log(`  ✅ ${format.toUpperCase()}: ${size} KB`);
+        totalFiles++;
+        totalSize += size;
+      });
+    }
+  }
+
+  console.log('\n' + '='.repeat(50));
+  console.log(`📈 Total: ${totalFiles} files, ${Math.round(totalSize * 100) / 100} KB`);
+  console.log('✨ Font subset generation completed!');
+
+  // Instructions
+  console.log('\n📋 Next Steps:');
+  console.log('1. Restart your development server');
+  console.log('2. Check that fonts are loading correctly');
+  console.log('3. Run tests to verify functionality');
+  console.log('\n💡 To regenerate subsets: pnpm run generate:fonts');
+}
+
+// Run the script
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((error) => {
+    console.error('\n💥 Font generation failed:', (error as Error).message);
+    process.exit(1);
+  });
+}

@@ -13,6 +13,8 @@
     "format": "pnpm format:lint && pnpm format:prettier",
     "format:lint": "pnpm lint --fix",
     "format:prettier": "prettier --write .",
+    "generate": "pnpm generate:fonts",
+    "generate:fonts": "tsx scripts/generate-font-subsets.ts",
     "lint": "oxlint --type-aware",
     "prepare": "lefthook install",
     "preview": "wrangler dev --port 4321",

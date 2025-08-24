@@ -28,7 +28,14 @@ export default function AnimatedLogo({ animatable }: Props) {
       <span className="block w-16 md:w-24" aria-hidden="true">
         <Logo animatable animating={animating} onAnimationEnd={handleAnimatingEnd} />
       </span>
-      <span className="ml-2 font-accent text-2xl md:text-4xl w-[4.5em]">wadackel.me</span>
+      <span
+        className="ml-2 text-2xl md:text-4xl w-[4.5em] font-accent-header"
+        style={{
+          lineHeight: '1.2',
+        }}
+      >
+        wadackel.me
+      </span>
     </a>
   );
 }
