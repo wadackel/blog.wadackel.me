@@ -85,10 +85,14 @@
     "wrangler": "^4.0.0",
     "yaml": "^2.8.1"
   },
-  "packageManager": "pnpm@8.15.2",
+  "packageManager": "pnpm@10.15.0",
   "pnpm": {
     "onlyBuiltDependencies": [
-      "lefthook"
+      "@tailwindcss/oxide",
+      "esbuild",
+      "lefthook",
+      "sharp",
+      "workerd"
     ]
   }
 }
