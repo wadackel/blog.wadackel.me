@@ -13,7 +13,7 @@
     "format": "pnpm format:lint && pnpm format:prettier",
     "format:lint": "pnpm lint --fix",
     "format:prettier": "prettier --write .",
-    "lint": "oxlint --type-aware",
+    "lint": "oxlint --type-aware --tsconfig tsconfig.json",
     "prepare": "lefthook install",
     "preview": "wrangler dev --port 4321",
     "scaffold": "scaffdog generate",
