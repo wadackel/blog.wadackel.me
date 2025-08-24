@@ -7,6 +7,7 @@ import { CodeCopyScript } from '../../../components/CodeCopyScript';
 import { Article } from '../../../components/Article';
 import { TwitterWidgetsScript } from '../../../components/TwitterWidgetsScript';
 import Share from '../../islands/Share';
+import { site } from '../../../lib/config';
 import type { HonoContext } from '../../global';
 
 const handler = async (c: HonoContext) => {
@@ -35,15 +36,15 @@ const handler = async (c: HonoContext) => {
     // Get previous and next posts
     const { previous, next } = await getPreviousAndNextPosts(fullSlug);
 
-    const currentUrl = new URL(`/${fullSlug}`, c.req.url).toString();
+    const currentUrl = new URL(`/${fullSlug}`, site.url).toString();
 
     // OGP settings
     const meta = {
       title: `${post.title} - wadackel.me`,
       url: currentUrl,
       image: post.image
-        ? new URL(post.image, c.req.url).toString()
-        : new URL(`/${fullSlug}/ogp.png`, c.req.url).toString(),
+        ? new URL(post.image, site.url).toString()
+        : new URL(`/${fullSlug}/ogp.png`, site.url).toString(),
       description: post.excerpt || '',
     };
 
