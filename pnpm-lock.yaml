@@ -144,9 +144,6 @@ importers:
       remark-rehype:
         specifier: ^11.1.2
         version: 11.1.2
-      remark-slug:
-        specifier: ^8.0.0
-        version: 8.0.0
       satori:
         specifier: ^0.16.0
         version: 0.16.2
@@ -2768,10 +2765,6 @@ packages:
 
   remark-rehype@11.1.2:
     resolution: {integrity: sha512-Dh7l57ianaEoIpzbp0PC9UKAdCSVklD8E5Rpw7ETfbTl3FqcOOgq5q2LVDhgGCkaBv7p24JXikPdvhhmHvKMsw==}
-
-  remark-slug@8.0.0:
-    resolution: {integrity: sha512-udnGz7dtf6/7h/brjh+wIPLwlVryBJbs2Y7znj5uZaIWT32VyS1myYBp+1iYMO69ujz+ZY6wWkYTNpt8hWPBDQ==}
-    deprecated: 'Deprecated: use `rehype-slug` instead'
 
   remark-stringify@11.0.0:
     resolution: {integrity: sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==}
@@ -5942,8 +5935,6 @@ snapshots:
       mdast-util-to-hast: 13.2.0
       unified: 11.0.5
       vfile: 6.0.3
-
-  remark-slug@8.0.0: {}
 
   remark-stringify@11.0.0:
     dependencies:
