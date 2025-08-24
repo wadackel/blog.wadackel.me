@@ -5,7 +5,7 @@ import { XIcon, GitHubIcon, FeedlyIcon, RssIcon } from './icons';
 export const Footer = () => {
   const year = new Date().getFullYear();
   const feed = '/rss.xml';
-  const feedEncoded = encodeURIComponent(`${site.title}/rss.xml`);
+  const feedEncoded = encodeURIComponent(`${site.url}/rss.xml`);
 
   return (
     <footer class="flex justify-center items-center h-footer text-white bg-[url('/footer-bg.jpg')] bg-[length:95px] antialiased">

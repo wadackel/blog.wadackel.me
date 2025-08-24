@@ -3,7 +3,7 @@ import { getAllPosts } from '../../lib/posts';
 import { site } from '../../lib/config';
 
 export default async function RSS(c: Context) {
-  const baseUrl = 'https://blog.wadackel.me';
+  const baseUrl = site.url;
   const lastBuildDate = new Date().toUTCString();
 
   // All posts

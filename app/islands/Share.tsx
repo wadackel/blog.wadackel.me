@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from 'hono/jsx';
 import { XIcon, HatenaIcon, PocketIcon, FeedlyIcon } from '../../components/icons';
+import { site } from '../../lib/config';
 
 type ShareButtonProps = {
   href: string;
@@ -50,7 +51,7 @@ type Props = {
 };
 
 export default function Share({ title, url: urlProp }: Props) {
-  const url = useMemo(() => new URL(urlProp), [urlProp]);
+  const url = useMemo(() => new URL(urlProp, site.url), [urlProp]);
 
   const encoded = useMemo(
     () => ({

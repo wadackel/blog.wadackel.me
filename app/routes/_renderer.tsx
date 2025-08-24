@@ -58,7 +58,7 @@ export default jsxRenderer(({ children }, c) => {
             <meta property="og:url" content={currentUrl} />
             <meta property="og:title" content={title || site.title} />
             {description && <meta property="og:description" content={description} />}
-            <meta property="og:image" content={new URL('/ogp.png', currentUrl).toString()} />
+            <meta property="og:image" content={new URL('/ogp.png', site.url).toString()} />
             <meta property="og:site_name" content={site.title} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content={`@${site.social.x}`} />
@@ -76,7 +76,7 @@ export default jsxRenderer(({ children }, c) => {
           rel="alternate"
           type="application/rss+xml"
           title={site.title}
-          href={new URL('/rss.xml', currentUrl).toString()}
+          href={new URL('/rss.xml', site.url).toString()}
         />
         <meta name="theme-color" content="#fff" />
 
