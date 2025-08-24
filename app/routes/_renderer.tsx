@@ -105,6 +105,21 @@ export default jsxRenderer(({ children }, c) => {
           <Script src="/app/client.ts" />
         )}
         <Link href="/app/style.css" rel="stylesheet" />
+        <Link href="/app/fonts.css" rel="stylesheet" />
+        <link
+          rel="preload"
+          href="/fonts/caveat-header.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/caveat-comprehensive.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
         <div class="relative z-20 overflow-hidden bg-white mb-footer shadow-lg">

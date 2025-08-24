@@ -1,10 +1,10 @@
-@import '@fontsource/caveat';
 @import 'tailwindcss';
 
 @theme {
   --animate-shake: shake 830ms ease-in-out alternate;
 
   --font-family-accent: 'Caveat', serif;
+  --font-family-accent-header: 'Caveat-Header', serif;
 
   --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
   --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
@@ -78,6 +78,10 @@
 /* Custom utility classes */
 .font-accent {
   font-family: var(--font-family-accent);
+}
+
+.font-accent-header {
+  font-family: var(--font-family-accent-header);
 }
 
 .transform-fill {
