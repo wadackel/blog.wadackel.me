@@ -76,7 +76,7 @@
     "to-vfile": "^8.0.0",
     "tsx": "^4.20.3",
     "typescript": "^5.3.3",
-    "unified": "^10.1.2",
+    "unified": "^11.0.0",
     "unist-util-visit": "^5.0.0",
     "vfile": "^6.0.3",
     "vfile-matter": "^5.0.1",
