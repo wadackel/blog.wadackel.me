@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'hono/jsx';
+import { Child, useCallback, useMemo } from 'hono/jsx';
 import { XIcon, HatenaIcon, PocketIcon, FeedlyIcon } from '../../components/icons';
 import { site } from '../../lib/config';
 
@@ -6,7 +6,7 @@ type ShareButtonProps = {
   href: string;
   'aria-label': string;
   title?: string;
-  children: unknown;
+  children: Child;
   'data-name'?: string;
   'data-width'?: string;
   'data-height'?: string;

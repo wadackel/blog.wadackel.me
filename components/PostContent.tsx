@@ -1,5 +1,7 @@
+import { Child } from 'hono/jsx';
+
 type Props = {
-  children: unknown;
+  children: Child;
 };
 
 export const PostContent = ({ children }: Props) => {
