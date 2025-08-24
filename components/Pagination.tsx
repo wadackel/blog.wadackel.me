@@ -1,10 +1,11 @@
+import { Child } from 'hono/jsx';
 import { ArrowLeftIcon, ArrowRightIcon } from './icons';
 
 type PaginationItemProps = {
   href?: string;
   ariaLabel: string;
   disabled: boolean;
-  children: any;
+  children: Child;
 };
 
 const PaginationItem = ({ href, ariaLabel, disabled, children }: PaginationItemProps) => {
