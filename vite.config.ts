@@ -47,7 +47,7 @@ export default defineConfig(({ mode }) => {
       plugins: [
         ...commonPlugins,
         client({
-          input: ['./app/style.css'],
+          input: ['./app/style.css', './app/fonts.css'],
         }),
       ],
     };
