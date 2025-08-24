@@ -71,7 +71,7 @@
     "remark-rehype": "^10.1.0",
     "remark-slug": "^6.1.0",
     "satori": "^0.16.0",
-    "scaffdog": "3.0.0",
+    "scaffdog": "4.1.0",
     "tailwindcss": "^4.1.12",
     "to-vfile": "^8.0.0",
     "tsx": "^4.20.3",
