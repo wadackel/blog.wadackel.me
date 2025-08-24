@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [tailwindcss()],
   root: process.cwd(),
+  publicDir: 'public',
   optimizeDeps: {
     include: ['hono/jsx/jsx-dev-runtime', 'hono/jsx/dom/server'],
   },

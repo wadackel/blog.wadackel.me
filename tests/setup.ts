@@ -3,6 +3,7 @@ import { beforeEach } from 'vitest';
 
 // Import CSS for all tests
 import '../app/style.css';
+import '../app/fonts.css';
 
 beforeEach(() => {
   // Clear any existing DOM before each test
