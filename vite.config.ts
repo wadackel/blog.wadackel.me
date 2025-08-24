@@ -4,7 +4,7 @@ import ssg from '@hono/vite-ssg';
 import honox from 'honox/vite';
 import client from 'honox/vite/client';
 import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'vite';
+import { defineConfig, type PluginOption } from 'vite';
 import { copyContentImages } from './lib/vite-copy-content-images';
 import { viteOGImagePlugin } from './lib/vite-ogimage-plugin';
 import { contentHMR } from './lib/vite-content-hmr';
@@ -12,7 +12,7 @@ import { contentHMR } from './lib/vite-content-hmr';
 const entry = './app/server.ts';
 
 // Common plugin configuration
-const commonPlugins: any[] = [tailwindcss()];
+const commonPlugins: PluginOption[] = [tailwindcss()];
 
 // SSR external dependencies configuration (same approach as sample project)
 const ssrExternal = [

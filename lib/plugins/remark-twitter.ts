@@ -71,7 +71,7 @@ const fetchData = async (url: string): Promise<TwitterOEmbedResponse> => {
 
   const response = await fetch(target);
 
-  return await response.json();
+  return (await response.json()) as TwitterOEmbedResponse;
 };
 
 export const remarkTwitterPlugin = () => {

@@ -6,6 +6,14 @@ import os from 'os';
 import type { Plugin } from 'vite';
 import fg from 'fast-glob';
 
+interface WorkerResult {
+  success: boolean;
+  results?: unknown;
+  error?: string;
+  file?: string;
+  outputPath?: string;
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -44,12 +52,12 @@ const createWorkerPool = (workerCount: number, workerScript: string) => {
     }
     activeWorkers++;
 
-    worker.once('message', (result) => {
+    worker.once('message', (result: WorkerResult) => {
       activeWorkers--;
       if (result.success) {
         task.resolve(result.results);
       } else {
-        task.reject(new Error(result.error));
+        task.reject(new Error(result.error ?? 'Unknown worker error'));
       }
       processNext();
     });
@@ -159,19 +167,23 @@ export const viteOGImagePlugin = ({
         await pool.terminate();
 
         // Collect and report results
-        const results = allResults.flat();
-        const successful = results.filter((r) => r.success);
-        const failed = results.filter((r) => !r.success);
+        const results = allResults.flat() as WorkerResult[];
+        const successful = results.filter((r: WorkerResult) => r.success);
+        const failed = results.filter((r: WorkerResult) => !r.success);
 
         console.log(`Generated ${successful.length} OG images successfully`);
 
         if (failed.length > 0) {
           console.warn(`Failed to generate ${failed.length} OG images:`);
-          failed.forEach((f) => console.warn(`  - ${f.file}: ${f.error}`));
+          failed.forEach((f) => {
+            console.warn(`  - ${f.file}: ${f.error}`);
+          });
         }
 
         // Log successful generations
-        successful.forEach((r) => console.log(`Generated OG image: ${r.outputPath}`));
+        successful.forEach((r) => {
+          console.log(`Generated OG image: ${r.outputPath}`);
+        });
 
         const duration = (Date.now() - startTime) / 1000;
         console.log(`OG image generation completed in ${duration.toFixed(2)}s`);

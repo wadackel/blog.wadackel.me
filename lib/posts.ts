@@ -22,8 +22,8 @@ const ensureServerModules = async () => {
     const fastGlob = await import('fast-glob');
 
     readFile = fs.readFile;
-    join = path.join;
-    dirname = path.dirname;
+    join = (...paths) => path.join(...paths);
+    dirname = (filepath) => path.dirname(filepath);
     fileURLToPath = url.fileURLToPath;
     MarkdownProcessor = markdownModule.MarkdownProcessor;
     fg = fastGlob.default;

@@ -2,25 +2,25 @@ import { visit } from 'unist-util-visit';
 import { toString } from 'mdast-util-to-string';
 import split from 'graphemesplit';
 import type { PostMeta } from './types';
-
-// Custom plugins - using any type to avoid complex unified type issues
-let remarkCodeBlockPlugin: any;
-let remarkImagePlugin: any;
-let remarkTwitterPlugin: any;
-let remarkTablePlugin: any;
-let remarkUrlEmbedPlugin: any;
+import type { Root as MdastRoot, Paragraph } from 'mdast';
+import type { Root as HastRoot, Element } from 'hast';
+import type { VFile } from 'vfile';
+import type { Processor } from 'unified';
 
 // Frontmatter removal plugin (same approach as sample project)
 const removeFrontmatter = () => {
-  return (tree: any) => {
-    if (tree.children && tree.children[0] && tree.children[0].type === 'yaml') {
-      tree.children.shift();
+  return (tree: MdastRoot) => {
+    if (tree.children.length > 0) {
+      const firstChild = tree.children[0];
+      if (firstChild && 'type' in firstChild && firstChild.type === 'yaml') {
+        tree.children.shift();
+      }
     }
   };
 };
 
 export class MarkdownProcessor {
-  private processor: any = null;
+  private processor: Processor<any, any, any, any, any> | null = null;
 
   async ensureProcessor() {
     if (this.processor) return this.processor;
@@ -33,50 +33,30 @@ export class MarkdownProcessor {
       const { default: remarkGfm } = await import('remark-gfm');
       const { default: remarkRehype } = await import('remark-rehype');
       const { default: rehypeStringify } = await import('rehype-stringify');
-      const { default: remarkSlug } = await import('remark-slug');
-      const { default: remarkAutolinkHeadings } = await import('remark-autolink-headings');
+      const { default: rehypeSlug } = await import('rehype-slug');
+      const { default: rehypeAutolinkHeadings } = await import('rehype-autolink-headings');
       const { default: remarkEmoji } = await import('remark-emoji');
 
       // Dynamic import of @fec/remark-a11y-emoji
       const remarkAnchorPkg = await import('@fec/remark-a11y-emoji');
-      const remarkAnchor = remarkAnchorPkg.default?.remarkAnchor || remarkAnchorPkg.remarkAnchor;
+      const remarkAnchor = remarkAnchorPkg.default.remarkAnchor;
 
       // Dynamic import of custom plugins
-      const remarkCodeBlockModule = await import('./plugins/remark-code-block');
-      remarkCodeBlockPlugin = remarkCodeBlockModule.remarkCodeBlockPlugin;
+      const { remarkCodeBlockPlugin } = await import('./plugins/remark-code-block');
+      const { remarkImagePlugin } = await import('./plugins/remark-image');
+      const { remarkUrlEmbedPlugin } = await import('./plugins/remark-url-embed');
+      const { remarkTwitterPlugin } = await import('./plugins/remark-twitter');
+      const { remarkTablePlugin } = await import('./plugins/remark-table');
 
-      const remarkImageModule = await import('./plugins/remark-image');
-      remarkImagePlugin = remarkImageModule.remarkImagePlugin;
-
-      const remarkUrlEmbedModule = await import('./plugins/remark-url-embed');
-      remarkUrlEmbedPlugin = remarkUrlEmbedModule.remarkUrlEmbed;
-
-      const remarkTwitterModule = await import('./plugins/remark-twitter');
-      remarkTwitterPlugin = remarkTwitterModule.remarkTwitterPlugin;
-
-      const remarkTableModule = await import('./plugins/remark-table');
-      remarkTablePlugin = remarkTableModule.remarkTablePlugin;
-
-      const processor = unified() as any;
-      this.processor = processor
+      // Initialize unified processor with proper type handling
+      // The processor chain involves complex type transformations (mdast -> hast)
+      // that require careful handling to maintain type safety while avoiding overly complex generics
+      this.processor = unified()
         .use(remarkParse)
         .use(remarkFrontmatter) // Recognize frontmatter syntax
         .use(removeFrontmatter) // Remove frontmatter
         .use(remarkGfm)
         .use(remarkUrlEmbedPlugin) // Place right after remarkGfm (same order as Astro)
-        .use(remarkSlug)
-        .use(remarkAutolinkHeadings, {
-          behavior: 'append',
-          content: {
-            type: 'element',
-            tagName: 'span',
-            properties: {
-              className: ['heading-anchor'],
-              ariaLabel: 'Link to heading',
-            },
-            children: [{ type: 'text', value: '#' }],
-          },
-        })
         .use(remarkEmoji)
         .use(remarkAnchor)
         // Custom plugins
@@ -89,6 +69,20 @@ export class MarkdownProcessor {
           allowDangerousHtml: true,
           footnoteLabel: ' ',
           footnoteLabelTagName: 'hr',
+        })
+        // Move slug and rehype-slug to rehype (after remark-to-rehype conversion)
+        .use(rehypeSlug)
+        .use(rehypeAutolinkHeadings, {
+          behavior: 'append',
+          content: {
+            type: 'element',
+            tagName: 'span',
+            properties: {
+              className: ['heading-anchor'],
+              ariaLabel: 'Link to heading',
+            },
+            children: [{ type: 'text', value: '#' }],
+          },
         })
         .use(this.rehypeImageOptimizePlugin)
         .use(rehypeStringify, { allowDangerousHtml: true });
@@ -112,15 +106,15 @@ export class MarkdownProcessor {
     const { matter } = await import('vfile-matter');
     const { VFile } = await import('vfile');
 
-    const file = new (VFile as any)(content);
+    const file = new VFile(content);
     matter(file);
 
-    const frontmatter = (file.data.matter as Record<string, string>) || {};
-    const markdownContent = file.value.toString();
+    const frontmatter = (file.data?.['matter'] as Record<string, string>) || {};
+    const markdownContent = String(file.value);
 
     // Process Markdown with Unified processor
     const processor = await this.ensureProcessor();
-    const vfile = new (VFile as any)({ value: markdownContent, path: filepath });
+    const vfile = new VFile({ value: markdownContent, path: filepath });
     const result = await processor.process(vfile);
 
     return {
@@ -131,20 +125,21 @@ export class MarkdownProcessor {
         slug: frontmatter['slug'] ?? 'untitled',
         ...frontmatter,
       },
-      excerpt: (result.data as { excerpt?: string })?.excerpt ?? '',
+      excerpt:
+        (result.data && 'excerpt' in result.data ? String(result.data['excerpt']) : '') ?? '',
     };
   }
 
   // Excerpt extraction plugin
   private remarkExcerptPlugin = () => {
-    return (tree: any, file: any) => {
+    return (tree: MdastRoot, file: VFile) => {
       if (!file.data) {
         file.data = {};
       }
 
       const paragraph: string[] = [];
 
-      visit(tree, 'paragraph', (node: any, index: any) => {
+      visit(tree, 'paragraph', (node: Paragraph, index?: number) => {
         if (typeof index === 'number' && index < 3) {
           paragraph.push(toString(node));
         }
@@ -154,21 +149,23 @@ export class MarkdownProcessor {
       const chars = split(text);
       const LENGTH = 100;
 
-      file.data.excerpt =
+      file.data['excerpt'] =
         chars.length > LENGTH ? `${chars.slice(0, LENGTH).join('')}…` : chars.join('');
     };
   };
 
   // Image optimization plugin
   private rehypeImageOptimizePlugin = () => {
-    return (tree: any) => {
-      visit(tree, 'element', (node: any) => {
-        if (node.tagName === 'img') {
+    return (tree: HastRoot) => {
+      visit(tree, 'element', (node: Element) => {
+        if ('tagName' in node && node.tagName === 'img') {
           // Add loading="lazy"
-          node.properties.loading = 'lazy';
-
-          // Add decoding="async" (asynchronous image decoding)
-          node.properties.decoding = 'async';
+          if ('properties' in node && node.properties && typeof node.properties === 'object') {
+            const props = node.properties as Record<string, unknown>;
+            props['loading'] = 'lazy';
+            // Add decoding="async" (asynchronous image decoding)
+            props['decoding'] = 'async';
+          }
         }
       });
     };

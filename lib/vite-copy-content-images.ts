@@ -29,7 +29,8 @@ export const copyContentImages = (options: CopyContentImagesOptions = {}): Plugi
       server.middlewares.use((req, res, next) => {
         const url = req.url;
         if (!url || !isImageFile(url)) {
-          return next();
+          next();
+          return;
         }
 
         // Remove leading slash for proper path resolution
@@ -37,7 +38,8 @@ export const copyContentImages = (options: CopyContentImagesOptions = {}): Plugi
 
         // Security: Prevent path traversal attacks
         if (cleanUrl.includes('..') || cleanUrl.includes('//')) {
-          return next();
+          next();
+          return;
         }
 
         const filePath = path.join(process.cwd(), contentDir, cleanUrl);
@@ -46,13 +48,15 @@ export const copyContentImages = (options: CopyContentImagesOptions = {}): Plugi
         const normalizedPath = path.normalize(filePath);
         const contentBasePath = path.join(process.cwd(), contentDir);
         if (!normalizedPath.startsWith(contentBasePath)) {
-          return next();
+          next();
+          return;
         }
 
         fs.stat(normalizedPath)
           .then((stats) => {
             if (!stats.isFile()) {
-              return next();
+              next();
+              return;
             }
 
             // Set Content-Type

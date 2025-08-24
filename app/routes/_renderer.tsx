@@ -4,11 +4,19 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { site } from '../../lib/config';
 
+interface OGPData {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  type?: string;
+}
+
 export default jsxRenderer(({ children }, c) => {
-  const title = c?.get('title');
-  const description = c?.get('description');
-  const ogp = c?.get('ogp');
-  const type = c?.get('type') || 'website';
+  const title = c?.get('title') as string | undefined;
+  const description = c?.get('description') as string | undefined;
+  const ogp = c?.get('ogp') as OGPData | undefined;
+  const type = (c?.get('type') as string) || 'website';
   const currentUrl = c.req.url;
 
   return (

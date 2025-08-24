@@ -1,6 +1,6 @@
 import { renderToString } from 'hono/jsx/dom/server';
+import type { Child } from 'hono/jsx';
 import { page } from '@vitest/browser/context';
-import type { JSXNode } from 'hono/jsx';
 import { MarkdownProcessor } from '../../lib/markdown';
 
 // CSS is imported in tests/setup.ts - Tailwind CSS v4 handles everything automatically
@@ -34,7 +34,7 @@ export const createTestContainer = (id = 'test-container') => {
 /**
  * Render a Hono JSX component to the DOM using server-side rendering
  */
-export const renderComponent = (component: JSXNode | any): HTMLElement => {
+export const renderComponent = (component: Child): HTMLElement => {
   const container = createTestContainer();
 
   try {
@@ -63,7 +63,7 @@ export const processMarkdown = async (markdown: string): Promise<string> => {
  * Render a component with markdown content processed through the full pipeline
  */
 export const renderComponentWithMarkdown = async (
-  component: (content: string) => JSXNode | any,
+  component: (content: string) => Child,
   markdown: string,
 ): Promise<HTMLElement> => {
   const html = await processMarkdown(markdown);
