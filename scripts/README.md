@@ -31,22 +31,40 @@ tsx scripts/generate-font-subsets.ts
    - Size: ~13KB (woff2) - significantly reduced from original
    - Uses `font-display: swap` for better loading performance
 
-#### Configuration
+#### Automated Character Set Management
 
-Character sets can be modified in the `CHARACTER_SETS` object:
+The `CHARACTER_SETS` object is now automatically maintained using the `update-font-character-sets.ts` script:
 
-```typescript
-const CHARACTER_SETS = {
-  header: {
-    name: 'caveat-header',
-    characters: 'wadackel.me',
-  },
-  comprehensive: {
-    name: 'caveat-comprehensive',
-    characters: 'wadackel.me tsuyoshi wada © Newer Post Older Post Page of 0123456789',
-  },
-} as const;
+```bash
+# Update CHARACTER_SETS automatically and regenerate fonts
+pnpm generate:fonts:update
+
+# Or run steps separately
+tsx scripts/update-font-character-sets.ts  # Updates CHARACTER_SETS
+pnpm generate:fonts                        # Generates font files
 ```
+
+##### How it works
+
+1. **Code Scanning**: Uses ts-morph to scan all TSX/JSX files for elements with `font-accent` or `font-accent-header` classes
+2. **Text Extraction**: Extracts static text content from these elements and their props
+   - **Direct text**: Text directly written in JSX elements (e.g., `<span>Hello</span>`)
+   - **Props text**: String literal props passed to components (e.g., `<Component label="Hello" />`)
+3. **Smart Filtering**: Filters out non-display text like alignment values, CSS classes, and short utility strings
+4. **Space Preservation**: Properly handles JSX expressions to maintain correct word spacing (e.g., `Page {page} of {total}` → `"Page of"`)
+5. **Automatic Update**: Updates the `CHARACTER_SETS` object in `generate-font-subsets.ts`
+6. **Font Generation**: Runs the existing font subset generation process
+
+##### Detected Usage
+
+Current font usage automatically detected from the codebase:
+
+- **Header** (`font-accent-header`): AnimatedLogo.tsx → `wadackel.me` 📝 (direct-text)
+- **Footer** (`font-accent`): Footer.tsx → `tsuyoshi wada`, `© wadackel.me` 📝 (direct-text)
+- **Pager** (`font-accent`): Pager.tsx → `Newer Post`, `Older Post` 🔗 (prop-value)
+- **Pagination** (`font-accent`): Pagination.tsx → `Page of` 📝 (direct-text) + numbers 0-9
+
+**Legend**: 📝 = Direct JSX text content, 🔗 = String props passed to components
 
 #### Output
 
@@ -55,9 +73,12 @@ const CHARACTER_SETS = {
 
 #### When to regenerate
 
-- When adding new text that uses Caveat font
-- When changing the header logo text
-- When adding new components that use accent fonts
-- To update to newer font versions
+- **Automatically**: Run `pnpm generate:fonts:update` when adding new text that uses Caveat font
+- **Manual font updates**: Run `pnpm generate:fonts` to update to newer font versions from Google Fonts
+- **After code changes**: The automated system will detect most changes, but manual verification is recommended for complex updates
 
-The TypeScript script automatically downloads the latest font versions from Google Fonts API with proper type safety.
+The TypeScript scripts automatically download the latest font versions from Google Fonts API with proper type safety.
+
+#### Dependencies
+
+- `ts-morph`: TypeScript AST manipulation for automated code scanning and CHARACTER_SETS updates

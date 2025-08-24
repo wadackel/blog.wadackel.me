@@ -62,7 +62,7 @@ The project adopts a dual-build approach:
   - `server.ts` - Main Hono application entry point
   - `style.css` - Global styles
 - `content/` - Blog posts organized by year (Markdown files)
-- `components/` - Reusable React components
+- `components/` - Reusable HonoX components
 - `lib/` - Utility functions and shared logic
 - `plugins/` - Custom plugins for Markdown processing
 - `public/` - Static assets
@@ -105,6 +105,17 @@ Blog posts are stored as Markdown files with frontmatter metadata in `content/[y
 Deployed to Cloudflare Workers serving static assets from the `dist/` directory. Uses Wrangler for local preview and deployment.
 
 ## Coding Guidelines
+
+### TypeScript Style
+
+- **Prefer type aliases over interfaces**: Use `type` instead of `interface` for better composability and functional programming alignment
+  - ✅ `type User = { name: string; email: string };`
+  - ❌ `interface User { name: string; email: string; }`
+- **Use arrow functions**: Prefer arrow function syntax over function declarations for consistency
+  - ✅ `const handleClick = () => { ... };`
+  - ❌ `function handleClick() { ... }`
+- **Union types**: Extract reusable union types as separate type aliases
+  - ✅ `type Status = 'pending' | 'success' | 'error';`
 
 ### Comments
 
