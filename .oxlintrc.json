@@ -1,3 +1,26 @@
 {
-  "ignorePatterns": ["dist/", ".wrangler/"]
+  "ignorePatterns": ["dist/", ".wrangler/"],
+  "plugins": ["typescript"],
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx}"],
+      "rules": {
+        "typescript/no-floating-promises": "error",
+        "typescript/no-unsafe-argument": "error",
+        "typescript/no-misused-promises": "error",
+        "typescript/switch-exhaustiveness-check": "error",
+        "typescript/no-unnecessary-type-assertion": "error",
+        "typescript/no-unsafe-assignment": "error",
+        "typescript/no-unsafe-member-access": "error",
+        "typescript/no-unsafe-return": "error",
+        "typescript/no-unsafe-call": "error",
+        "typescript/await-thenable": "error",
+        "typescript/no-implied-eval": "error",
+        "typescript/require-await": "error",
+        "typescript/unbound-method": "error",
+        "typescript/no-confusing-void-expression": "error",
+        "typescript/no-redundant-type-constituents": "error"
+      }
+    }
+  ]
 }

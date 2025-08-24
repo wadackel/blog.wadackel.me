@@ -1,5 +1,5 @@
 import { visit } from 'unist-util-visit';
-import type { Node } from 'unist';
+import type { Node, Parent } from 'unist';
 
 interface TextNode extends Node {
   type: 'text';
@@ -99,12 +99,12 @@ const createIframeHtml = (url: string): string => {
 </div>`;
 };
 
-export const remarkUrlEmbed = () => {
+export const remarkUrlEmbedPlugin = () => {
   return (tree: Node): void => {
     const nodes: ParagraphNode[] = [];
-    visit(tree, 'paragraph', (node: ParagraphNode, _index, parent) => {
+    visit(tree, 'paragraph', (node: ParagraphNode, _index, parent: Parent | undefined) => {
       // Skip URLs that are inside blockquotes
-      if (parent && (parent as any).type === 'blockquote') {
+      if (parent && parent.type === 'blockquote') {
         return;
       }
 

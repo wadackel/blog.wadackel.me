@@ -11,7 +11,7 @@ interface ImageNode extends Node {
 
 interface FileData {
   path?: string;
-  basename?: string;
+  basename?: string | undefined;
 }
 
 export const remarkImagePlugin = () => {
