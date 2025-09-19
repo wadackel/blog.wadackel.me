@@ -37,7 +37,7 @@
     "@fec/remark-a11y-emoji": "^4.0.2",
     "@fontsource/caveat": "^5.0.16",
     "@hono/vite-build": "^1.7.0",
-    "@hono/vite-dev-server": "^0.20.1",
+    "@hono/vite-dev-server": "^0.21.0",
     "@hono/vite-ssg": "^0.2.0",
     "@resvg/resvg-js": "^2.6.0",
     "@tailwindcss/postcss": "^4.1.12",
