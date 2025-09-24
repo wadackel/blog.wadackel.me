@@ -448,6 +448,16 @@
   border-color: #cbd5e1;
 }
 
+.post-content sup > a::before {
+  content: '[';
+  margin-left: 0.1em;
+}
+
+.post-content sup > a::after {
+  content: ']';
+  margin-right: 0.1em;
+}
+
 .post-content kbd {
   display: inline-block;
   min-width: 3em;
