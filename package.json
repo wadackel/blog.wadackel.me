@@ -80,7 +80,7 @@
     "scaffdog": "4.1.0",
     "tailwindcss": "^4.1.12",
     "to-vfile": "^8.0.0",
-    "ts-morph": "^26.0.0",
+    "ts-morph": "^27.0.0",
     "tsx": "^4.20.5",
     "typescript": "^5.3.3",
     "unified": "^11.0.5",
