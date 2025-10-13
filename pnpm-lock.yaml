@@ -79,8 +79,8 @@ importers:
         specifier: ^2.4.4
         version: 2.6.0
       happy-dom:
-        specifier: ^18.0.1
-        version: 18.0.1
+        specifier: ^19.0.0
+        version: 19.0.2
       hast-util-to-html:
         specifier: ^9.0.0
         version: 9.0.5
@@ -182,7 +182,7 @@ importers:
         version: 7.1.9(@types/node@22.18.8)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.8.1)
       vitest:
         specifier: ^3.2.4
-        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@18.0.1)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.8.1)
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@19.0.2)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.8.1)
       wrangler:
         specifier: ^4.0.0
         version: 4.42.0(@cloudflare/workers-types@4.20251004.0)
@@ -1092,12 +1092,6 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rollup/rollup-linux-x64-gnu@4.52.2':
-    resolution: {integrity: sha512-opH8GSUuVcCSSyHHcl5hELrmnk4waZoVpgn/4FDao9iyE4WpQhyWJ5ryl5M3ocp4qkRuHfyXnGqg8M9oKCEKRA==}
-    cpu: [x64]
-    os: [linux]
-    libc: [glibc]
-
   '@rollup/rollup-linux-x64-gnu@4.52.4':
     resolution: {integrity: sha512-Wi6AXf0k0L7E2gteNsNHUs7UMwCIhsCTs6+tqQ5GPwVRWMaflqGec4Sd8n6+FNFDw9vGcReqk2KzBDhCa1DLYg==}
     cpu: [x64]
@@ -2004,8 +1998,8 @@ packages:
   graphemesplit@2.6.0:
     resolution: {integrity: sha512-rG9w2wAfkpg0DILa1pjnjNfucng3usON360shisqIMUBw/87pojcBSrHmeE4UwryAuBih7g8m1oilf5/u8EWdQ==}
 
-  happy-dom@18.0.1:
-    resolution: {integrity: sha512-qn+rKOW7KWpVTtgIUi6RVmTBZJSe2k0Db0vh1f7CWrWclkkc7/Q+FrOfkZIb2eiErLyqu5AXEzE7XthO9JVxRA==}
+  happy-dom@19.0.2:
+    resolution: {integrity: sha512-831CLbgDyjRbd2lApHZFsBDe56onuFcjsCBPodzWpzedTpeDr8CGZjs7iEIdNW1DVwSFRecfwzLpVyGBPamwGA==}
     engines: {node: '>=20.0.0'}
 
   has-flag@4.0.0:
@@ -3962,9 +3956,6 @@ snapshots:
   '@rollup/rollup-linux-s390x-gnu@4.52.4':
     optional: true
 
-  '@rollup/rollup-linux-x64-gnu@4.52.2':
-    optional: true
-
   '@rollup/rollup-linux-x64-gnu@4.52.4':
     optional: true
 
@@ -4232,7 +4223,7 @@ snapshots:
       magic-string: 0.30.18
       sirv: 3.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@18.0.1)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.8.1)
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@19.0.2)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.8.1)
       ws: 8.18.3
     optionalDependencies:
       playwright: 1.55.1
@@ -4287,7 +4278,7 @@ snapshots:
       sirv: 3.0.1
       tinyglobby: 0.2.14
       tinyrainbow: 2.0.0
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@18.0.1)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.8.1)
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@19.0.2)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.8.1)
 
   '@vitest/utils@3.2.4':
     dependencies:
@@ -4866,7 +4857,7 @@ snapshots:
       js-base64: 3.7.8
       unicode-trie: 2.0.0
 
-  happy-dom@18.0.1:
+  happy-dom@19.0.2:
     dependencies:
       '@types/node': 20.19.19
       '@types/whatwg-mimetype': 3.0.2
@@ -6480,7 +6471,7 @@ snapshots:
       tsx: 4.20.6
       yaml: 2.8.1
 
-  vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@18.0.1)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.8.1):
+  vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.18.8)(@vitest/browser@3.2.4)(@vitest/ui@3.2.4)(happy-dom@19.0.2)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.8.1):
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4
@@ -6510,7 +6501,7 @@ snapshots:
       '@types/node': 22.18.8
       '@vitest/browser': 3.2.4(playwright@1.55.1)(vite@7.1.9(@types/node@22.18.8)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.6)(yaml@2.8.1))(vitest@3.2.4)
       '@vitest/ui': 3.2.4(vitest@3.2.4)
-      happy-dom: 18.0.1
+      happy-dom: 19.0.2
     transitivePeerDependencies:
       - jiti
       - less
