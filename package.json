@@ -54,7 +54,7 @@
     "fast-glob": "^3.3.3",
     "front-matter": "^4.0.2",
     "graphemesplit": "^2.4.4",
-    "happy-dom": "^19.0.0",
+    "happy-dom": "^20.0.0",
     "hast-util-to-html": "^9.0.0",
     "lefthook": "^1.12.3",
     "mdast-util-to-string": "^4.0.0",
