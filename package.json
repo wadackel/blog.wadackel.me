@@ -92,7 +92,7 @@
     "wrangler": "^4.0.0",
     "yaml": "^2.8.1"
   },
-  "packageManager": "pnpm@10.18.2",
+  "packageManager": "pnpm@10.18.3",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@tailwindcss/oxide",
