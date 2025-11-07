@@ -56,7 +56,7 @@
     "graphemesplit": "^2.4.4",
     "happy-dom": "^20.0.0",
     "hast-util-to-html": "^9.0.0",
-    "lefthook": "^1.12.3",
+    "lefthook": "^2.0.0",
     "mdast-util-to-string": "^4.0.0",
     "oxlint": "^1.12.0",
     "oxlint-tsgolint": "^0.3.0",
