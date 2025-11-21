@@ -44,7 +44,7 @@ importers:
         version: 4.1.16(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1))
       '@tsconfig/strictest':
         specifier: ^2.0.5
-        version: 2.0.7
+        version: 2.0.8
       '@types/hast':
         specifier: ^3.0.4
         version: 3.0.4
@@ -59,7 +59,7 @@ importers:
         version: 1.26.5
       '@types/react':
         specifier: ^19.1.10
-        version: 19.2.2
+        version: 19.2.5
       '@types/unist':
         specifier: ^3.0.3
         version: 3.0.3
@@ -86,7 +86,7 @@ importers:
         version: 9.0.5
       lefthook:
         specifier: ^2.0.0
-        version: 2.0.2
+        version: 2.0.4
       mdast-util-to-string:
         specifier: ^4.0.0
         version: 4.0.0
@@ -1407,8 +1407,8 @@ packages:
   '@ts-morph/common@0.28.1':
     resolution: {integrity: sha512-W74iWf7ILp1ZKNYXY5qbddNaml7e9Sedv5lvU1V8lftlitkc9Pq1A+jlH23ltDgWYeZFFEqGCD1Ies9hqu3O+g==}
 
-  '@tsconfig/strictest@2.0.7':
-    resolution: {integrity: sha512-lG1bXQloBVvQXasPBZSBaWbs7GNW4txZMYs7XMUVzM0s4seCbJACYBPFIRpGNVD3gC8gndK00AZON1uBrJt4Fw==}
+  '@tsconfig/strictest@2.0.8':
+    resolution: {integrity: sha512-XnQ7vNz5HRN0r88GYf1J9JJjqtZPiHt2woGJOo2dYqyHGGcd6OLGqSlBB6p1j9mpzja6Oe5BoPqWmeDx6X9rLw==}
 
   '@types/aria-query@5.0.4':
     resolution: {integrity: sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==}
@@ -1446,8 +1446,8 @@ packages:
   '@types/prismjs@1.26.5':
     resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
 
-  '@types/react@19.2.2':
-    resolution: {integrity: sha512-6mDvHUFSjyT2B2yeNx2nUgMxh9LtOWvkhIU3uePn2I2oyNymUAX1NIsdgviM4CH+JSrp2D2hsMvJOkxY+0wNRA==}
+  '@types/react@19.2.5':
+    resolution: {integrity: sha512-keKxkZMqnDicuvFoJbzrhbtdLSPhj/rZThDlKWCDbgXmUg0rEUFtRssDXKYmtXluZlIqiC5VqkCgRwzuyLHKHw==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -1778,8 +1778,8 @@ packages:
   css-to-react-native@3.2.0:
     resolution: {integrity: sha512-e8RKaLXMOFii+02mOlqwjbD00KSEKqblnpO9e++1aXS1fPQOpS1YoqdVHBqPjHNoxeF2mimzVqawm2KCbEdtHQ==}
 
-  csstype@3.1.3:
-    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+  csstype@3.2.0:
+    resolution: {integrity: sha512-si++xzRAY9iPp60roQiFta7OFbhrgvcthrhlNAGeQptSY25uJjkfUV8OArC3KLocB8JT8ohz+qgxWCmz8RhjIg==}
 
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
@@ -2323,58 +2323,58 @@ packages:
     resolution: {integrity: sha512-7W0vV3rqv5tokqkBAFV1LbR7HPOWzXQDpDgEuib/aJ1jsZZx6x3c2mBI+TJhJzOhkGeaLbCKEHXEXLfirtG2JA==}
     engines: {node: '>=18'}
 
-  lefthook-darwin-arm64@2.0.2:
-    resolution: {integrity: sha512-x/4AOinpMS2abZyA/krDd50cRPZit/6P670Z1mJjfS0+fPZkFw7AXpjxroiN0rgglg78vD7BwcA5331z4YZa5g==}
+  lefthook-darwin-arm64@2.0.4:
+    resolution: {integrity: sha512-AR63/O5UkM7Sc6x5PhP4vTuztTYRBeBroXApeWGM/8e5uZyoQug/7KTh7xhbCMDf8WJv6vdFeXAQCPSmDyPU3Q==}
     cpu: [arm64]
     os: [darwin]
 
-  lefthook-darwin-x64@2.0.2:
-    resolution: {integrity: sha512-MSb8XZBfmlNvCpuLiQqrJS+sPiSEAyuoHOMZOHjlceYqO0leVVw9YfePVcb4Vi/PqOYngTdJk83MmYvqhsSNTQ==}
+  lefthook-darwin-x64@2.0.4:
+    resolution: {integrity: sha512-618DVUttSzV9egQiqTQoxGfnR240JoPWYmqRVHhiegnQKZ2lp5XJ+7NMxeRk/ih93VVOLzFO5ky3PbpxTmJgjQ==}
     cpu: [x64]
     os: [darwin]
 
-  lefthook-freebsd-arm64@2.0.2:
-    resolution: {integrity: sha512-gewPsUPc3J/n2/RrhHLS9jtL3qK4HcTED25vfExhvFRW3eT1SDYaBbXnUUmB8SE0zE8Bl6AfEdT2zzZcPbOFuA==}
+  lefthook-freebsd-arm64@2.0.4:
+    resolution: {integrity: sha512-mTAQym1BK38fKglHBQ/0GXPznVC4LoStHO5lAI3ZxaEC0FQetqGHYFzhWbIH5sde9JhztE2rL/aBzMHDoAtzSw==}
     cpu: [arm64]
     os: [freebsd]
 
-  lefthook-freebsd-x64@2.0.2:
-    resolution: {integrity: sha512-fsLlaChiKAWiSavQO2LXPR8Z9OcBnyMDvmkIlXC0lG3SjBb9xbVdBdDVlcrsUyDCs5YstmGYHuzw6DfJYpAE1g==}
+  lefthook-freebsd-x64@2.0.4:
+    resolution: {integrity: sha512-sy02aSxd8UMd6XmiPFVl/Em0b78jdZcDSsLwg+bweJQQk0l+vJhOfqFiG11mbnpo+EBIZmRe6OH5LkxeSU36+w==}
     cpu: [x64]
     os: [freebsd]
 
-  lefthook-linux-arm64@2.0.2:
-    resolution: {integrity: sha512-vNl3HiZud9T2nGHMngvLw3hSJgutjlN/Lzf5/5jKt/2IIuyd9L3UYktWC9HLUb03Zukr7jeaxG3+VxdAohQwAw==}
+  lefthook-linux-arm64@2.0.4:
+    resolution: {integrity: sha512-W0Nlr/Cz2QTH9n4k5zNrk3LSsg1C4wHiJi8hrAiQVTaAV/N1XrKqd0DevqQuouuapG6pw/6B1xCgiNPebv9oyw==}
     cpu: [arm64]
     os: [linux]
 
-  lefthook-linux-x64@2.0.2:
-    resolution: {integrity: sha512-0ghHMPu4fixIieS8V2k2yZHvcFd9pP0q+sIAIaWo8x7ce/AOQIXFCPHGPAOc8/wi5uVtfyEvCnhxIDKf+lHA2A==}
+  lefthook-linux-x64@2.0.4:
+    resolution: {integrity: sha512-N6ySVCtB/DrOZ1ZgPL8WBZTgtoVHvcPKI+LV5wbcGrvA/dzDZFvniadrbDWZg7Tm705efiQzyENjwhhqNkwiww==}
     cpu: [x64]
     os: [linux]
 
-  lefthook-openbsd-arm64@2.0.2:
-    resolution: {integrity: sha512-qfXnDM8jffut9rylvi3T+HOqlNRkFYqIDUXeVXlY7dmwCW4u2K46p0W4M3BmAVUeL/MRxBRnjze//Yy6aCbGQw==}
+  lefthook-openbsd-arm64@2.0.4:
+    resolution: {integrity: sha512-VmOhJO3pYzZ/1C2WFXtL/n5pq4/eYOroqJJpwTJfmCHyw4ceLACu8MDyU5AMJhGMkbL8mPxGInJKxg5xhYgGRw==}
     cpu: [arm64]
     os: [openbsd]
 
-  lefthook-openbsd-x64@2.0.2:
-    resolution: {integrity: sha512-RXqR0FiDTwsQv1X3QVsuBFneWeNXS+tmPFIX8F6Wz9yDPHF8+vBnkWCju6HdkTVTY71Ba5HbYGKEVDvscJkU7Q==}
+  lefthook-openbsd-x64@2.0.4:
+    resolution: {integrity: sha512-U8MZz1xlHUdflkQQ2hkMQsei6fSZbs8tuE4EjCIHWnNdnAF4V8sZ6n1KbxsJcoZXPyBZqxZSMu1o/Ye8IAMVKg==}
     cpu: [x64]
     os: [openbsd]
 
-  lefthook-windows-arm64@2.0.2:
-    resolution: {integrity: sha512-KfLKhiUPHP9Aea+9D7or2hgL9wtKEV+GHpx7LBg82ZhCXkAml6rop7mWsBgL80xPYLqMahKolZGO+8z5H6W4HQ==}
+  lefthook-windows-arm64@2.0.4:
+    resolution: {integrity: sha512-543H3y2JAwNdvwUQ6nlNBG7rdKgoOUgzAa6pYcl6EoqicCRrjRmGhkJu7vUudkkrD2Wjm7tr9hU9poP2g5fRFQ==}
     cpu: [arm64]
     os: [win32]
 
-  lefthook-windows-x64@2.0.2:
-    resolution: {integrity: sha512-TdysWxGRNtuRg5bN6Uj00tZJIsHTrF/7FavoR5rp1sq21QJhJi36M4I3UVlmOKAUCKhibAIAauZWmX7yaW3eHA==}
+  lefthook-windows-x64@2.0.4:
+    resolution: {integrity: sha512-UDEPK9RWKm60xsNOdS/DQOdFba0SFa4w3tpFMXK1AJzmRHhosoKrorXGhtTr6kcM0MGKOtYi8GHsm++ArZ9wvQ==}
     cpu: [x64]
     os: [win32]
 
-  lefthook@2.0.2:
-    resolution: {integrity: sha512-2lrSva53G604ZWjK5kHYvDdwb5GzbhciIPWhebv0A8ceveqSsnG2JgVEt+DnhOPZ4VfNcXvt3/ohFBPNpuAlVw==}
+  lefthook@2.0.4:
+    resolution: {integrity: sha512-GNCU2vQWM/UWjiEF23601aILi1aMbPke6viortH7wIO/oVGOCW0H6FdLez4XZDyqnHL9XkTnd0BBVrBbYVMLpA==}
     hasBin: true
 
   lightningcss-android-arm64@1.30.2:
@@ -4316,7 +4316,7 @@ snapshots:
       path-browserify: 1.0.1
       tinyglobby: 0.2.15
 
-  '@tsconfig/strictest@2.0.7': {}
+  '@tsconfig/strictest@2.0.8': {}
 
   '@types/aria-query@5.0.4': {}
 
@@ -4356,9 +4356,9 @@ snapshots:
 
   '@types/prismjs@1.26.5': {}
 
-  '@types/react@19.2.2':
+  '@types/react@19.2.5':
     dependencies:
-      csstype: 3.1.3
+      csstype: 3.2.0
 
   '@types/unist@2.0.11': {}
 
@@ -4707,7 +4707,7 @@ snapshots:
       css-color-keywords: 1.0.0
       postcss-value-parser: 4.2.0
 
-  csstype@3.1.3: {}
+  csstype@3.2.0: {}
 
   dayjs@1.11.13: {}
 
@@ -5245,48 +5245,48 @@ snapshots:
     dependencies:
       package-json: 10.0.1
 
-  lefthook-darwin-arm64@2.0.2:
+  lefthook-darwin-arm64@2.0.4:
     optional: true
 
-  lefthook-darwin-x64@2.0.2:
+  lefthook-darwin-x64@2.0.4:
     optional: true
 
-  lefthook-freebsd-arm64@2.0.2:
+  lefthook-freebsd-arm64@2.0.4:
     optional: true
 
-  lefthook-freebsd-x64@2.0.2:
+  lefthook-freebsd-x64@2.0.4:
     optional: true
 
-  lefthook-linux-arm64@2.0.2:
+  lefthook-linux-arm64@2.0.4:
     optional: true
 
-  lefthook-linux-x64@2.0.2:
+  lefthook-linux-x64@2.0.4:
     optional: true
 
-  lefthook-openbsd-arm64@2.0.2:
+  lefthook-openbsd-arm64@2.0.4:
     optional: true
 
-  lefthook-openbsd-x64@2.0.2:
+  lefthook-openbsd-x64@2.0.4:
     optional: true
 
-  lefthook-windows-arm64@2.0.2:
+  lefthook-windows-arm64@2.0.4:
     optional: true
 
-  lefthook-windows-x64@2.0.2:
+  lefthook-windows-x64@2.0.4:
     optional: true
 
-  lefthook@2.0.2:
+  lefthook@2.0.4:
     optionalDependencies:
-      lefthook-darwin-arm64: 2.0.2
-      lefthook-darwin-x64: 2.0.2
-      lefthook-freebsd-arm64: 2.0.2
-      lefthook-freebsd-x64: 2.0.2
-      lefthook-linux-arm64: 2.0.2
-      lefthook-linux-x64: 2.0.2
-      lefthook-openbsd-arm64: 2.0.2
-      lefthook-openbsd-x64: 2.0.2
-      lefthook-windows-arm64: 2.0.2
-      lefthook-windows-x64: 2.0.2
+      lefthook-darwin-arm64: 2.0.4
+      lefthook-darwin-x64: 2.0.4
+      lefthook-freebsd-arm64: 2.0.4
+      lefthook-freebsd-x64: 2.0.4
+      lefthook-linux-arm64: 2.0.4
+      lefthook-linux-x64: 2.0.4
+      lefthook-openbsd-arm64: 2.0.4
+      lefthook-openbsd-x64: 2.0.4
+      lefthook-windows-arm64: 2.0.4
+      lefthook-windows-x64: 2.0.4
 
   lightningcss-android-arm64@1.30.2:
     optional: true
