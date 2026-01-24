@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "ignorePatterns": [
+    "dist/**",
+    "screenshots/**",
+    "playwright-report/**",
+    ".wrangler/**",
+    ".claude/**",
+    ".pnpm-store/**",
+    "pnpm-lock.yaml"
+  ],
+  "experimentalSortPackageJson": true
+}
