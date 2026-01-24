@@ -3,6 +3,7 @@ pre-commit:
   commands:
     oxfmt:
       run: |
+        set -euo pipefail
         git diff --name-only -z --cached --diff-filter=ACMR | \
         xargs -0 -r pnpm exec oxfmt --no-error-on-unmatched-pattern --write
         git diff --name-only -z --cached --diff-filter=ACMR | \

@@ -4,6 +4,7 @@
 /.serena
 /.playwright-mcp
 /.claude/commands
+/.pnpm-store
 WRITING.md
 
 # Test artifacts

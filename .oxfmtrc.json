@@ -10,6 +10,7 @@
     "playwright-report/**",
     ".wrangler/**",
     ".claude/**",
+    ".pnpm-store/**",
     "pnpm-lock.yaml"
   ],
   "experimentalSortPackageJson": true
