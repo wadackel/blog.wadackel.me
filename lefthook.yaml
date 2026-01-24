@@ -2,10 +2,5 @@ pre-commit:
   parallel: true
   commands:
     oxfmt:
-      shell: bash
-      run: |
-        set -euo pipefail
-        git diff --name-only -z --cached --diff-filter=ACMR | \
-        xargs -0 -r pnpm exec oxfmt --no-error-on-unmatched-pattern --write
-        git diff --name-only -z --cached --diff-filter=ACMR | \
-        xargs -0 -r git add
+      run: pnpm exec oxfmt --no-error-on-unmatched-pattern --write {staged_files}
+      stage_fixed: true

@@ -17,12 +17,13 @@ A personal blog site built with HonoX (Hono + React-like framework) and deployed
 
 ### Code Quality
 
-- `pnpm lint` - Run Oxlint
+- `pnpm lint` - Run Oxlint and check formatting (for CI)
+- `pnpm lint:oxlint` - Run Oxlint only
+- `pnpm lint:oxfmt` - Check formatting with oxfmt only
 - `pnpm typecheck` - Run TypeScript type checking
 - `pnpm format` - Format all files with oxfmt + fix lint issues
-- `pnpm format:lint` - Fix lint issues only
+- `pnpm format:oxlint` - Fix lint issues only
 - `pnpm format:oxfmt` - Format with oxfmt only
-- `pnpm format:check` - Check formatting without changes (for CI)
 
 ### Testing
 
