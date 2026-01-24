@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitest/config';
+import { playwright } from '@vitest/browser-playwright';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
@@ -11,8 +12,7 @@ export default defineConfig({
   test: {
     browser: {
       enabled: true,
-      name: 'chromium',
-      provider: 'playwright',
+      provider: playwright(),
       headless: true,
       screenshotFailures: false,
       screenshotDirectory: './screenshots',
