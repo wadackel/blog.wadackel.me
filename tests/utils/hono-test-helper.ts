@@ -1,6 +1,6 @@
 import { renderToString } from 'hono/jsx/dom/server';
 import type { Child } from 'hono/jsx';
-import { page } from '@vitest/browser/context';
+import { page } from 'vitest/browser';
 import { MarkdownProcessor } from '../../lib/markdown';
 
 // CSS is imported in tests/setup.ts - Tailwind CSS v4 handles everything automatically
