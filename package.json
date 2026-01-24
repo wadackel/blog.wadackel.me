@@ -10,9 +10,10 @@
     "clean:screenshots": "rm -rf screenshots",
     "deploy": "wrangler deploy",
     "dev": "vite",
-    "format": "pnpm format:lint && pnpm format:prettier",
+    "format": "pnpm format:lint && pnpm format:oxfmt",
+    "format:check": "oxfmt --check .",
     "format:lint": "pnpm lint --fix",
-    "format:prettier": "prettier --write .",
+    "format:oxfmt": "oxfmt --write .",
     "generate": "pnpm generate:font:update && pnpm generate:font",
     "generate:font": "tsx scripts/generate-font-subsets.ts",
     "generate:font:update": "tsx scripts/update-font-character-sets.ts",
@@ -25,9 +26,6 @@
     "test:watch": "pnpm clean:screenshots && vitest",
     "typecheck": "tsc"
   },
-  "browserslist": [
-    "last 2 versions"
-  ],
   "dependencies": {
     "hono": "^4.9.0",
     "honox": "^0.1.44"
@@ -58,13 +56,11 @@
     "hast-util-to-html": "^9.0.0",
     "lefthook": "^2.0.0",
     "mdast-util-to-string": "^4.0.0",
+    "oxfmt": "^0.24.0",
     "oxlint": "^1.12.0",
     "oxlint-tsgolint": "^0.11.0",
     "parse-numeric-range": "^1.3.0",
     "playwright": "^1.54.2",
-    "prettier": "^3.2.2",
-    "prettier-plugin-packagejson": "^2.4.9",
-    "prettier-plugin-scaffdog": "4.1.0",
     "prismjs": "^1.29.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
@@ -92,6 +88,9 @@
     "wrangler": "^4.0.0",
     "yaml": "^2.8.1"
   },
+  "browserslist": [
+    "last 2 versions"
+  ],
   "packageManager": "pnpm@10.28.0",
   "pnpm": {
     "onlyBuiltDependencies": [

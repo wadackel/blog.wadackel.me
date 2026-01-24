@@ -1,6 +1,9 @@
 pre-commit:
   parallel: true
   commands:
-    prettier:
-      glob: '*.{js,jsx,cjs,ts,tsx,css,md,yml,json,json5}'
-      run: pnpm prettier --write {staged_files}
+    oxfmt:
+      run: |
+        git diff --name-only -z --cached --diff-filter=ACMR | \
+        xargs -0 -r pnpm exec oxfmt --no-error-on-unmatched-pattern --write
+        git diff --name-only -z --cached --diff-filter=ACMR | \
+        xargs -0 -r git add

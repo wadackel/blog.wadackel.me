@@ -19,9 +19,10 @@ A personal blog site built with HonoX (Hono + React-like framework) and deployed
 
 - `pnpm lint` - Run Oxlint
 - `pnpm typecheck` - Run TypeScript type checking
-- `pnpm format` - Format with Prettier + fix lint issues
+- `pnpm format` - Format all files with oxfmt + fix lint issues
 - `pnpm format:lint` - Fix lint issues only
-- `pnpm format:prettier` - Format with Prettier only
+- `pnpm format:oxfmt` - Format with oxfmt only
+- `pnpm format:check` - Check formatting without changes (for CI)
 
 ### Testing
 
@@ -90,8 +91,8 @@ Blog posts are stored as Markdown files with frontmatter metadata in `content/[y
 - Hot reload for all code and content changes
 - Strict mode TypeScript
 - Fast linting with Oxlint
-- Custom Prettier configuration
-- Pre-commit hooks with Lefthook (Prettier formatting)
+- oxfmt configuration (~30x faster than Prettier)
+- Pre-commit hooks with Lefthook (oxfmt formatting)
 
 ### Testing Environment
 

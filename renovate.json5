@@ -36,10 +36,6 @@
       matchPackageNames: ['vitest', '/^@vitest//'],
     },
     {
-      groupName: 'Prettier',
-      matchPackageNames: ['prettier', '/^prettier-plugin-/'],
-    },
-    {
       groupName: 'Unified ecosystem',
       matchPackageNames: [
         'unified',
