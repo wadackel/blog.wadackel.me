@@ -2,6 +2,7 @@ pre-commit:
   parallel: true
   commands:
     oxfmt:
+      shell: bash
       run: |
         set -euo pipefail
         git diff --name-only -z --cached --diff-filter=ACMR | \
