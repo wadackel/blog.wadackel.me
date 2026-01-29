@@ -8,7 +8,7 @@
     "clean:dist": "rm -rf dist",
     "clean:module": "rm -rf node_modules",
     "clean:screenshots": "rm -rf screenshots",
-    "deploy": "wrangler deploy",
+    "deploy": "pnpm clean && pnpm build && wrangler deploy",
     "dev": "vite",
     "format": "pnpm format:oxlint && pnpm format:oxfmt",
     "format:oxlint": "oxlint --type-aware --fix",

@@ -1,5 +1,5 @@
+import type { Context } from 'hono';
 import { getAllPosts } from '../../lib/posts';
-import type { HonoContext } from '../global';
 
 type SitemapPage = {
   url: string;
@@ -8,7 +8,7 @@ type SitemapPage = {
   lastmod?: string;
 };
 
-export default async function Sitemap(c: HonoContext) {
+export default async function Sitemap(c: Context) {
   const baseUrl = 'https://wadackel.me';
   const lastmod = new Date().toISOString().split('T')[0];
 
@@ -57,6 +57,7 @@ export default async function Sitemap(c: HonoContext) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${sitemapEntries}
 </urlset>`;
 
-  c.header('Content-Type', 'application/xml; charset=UTF-8');
-  return c.text(sitemap);
+  return c.body(sitemap, 200, {
+    'Content-Type': 'application/xml; charset=UTF-8',
+  });
 }

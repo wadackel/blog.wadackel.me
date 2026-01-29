@@ -3,6 +3,12 @@
   "name": "blog-wadackel-me",
   "compatibility_date": "2025-01-26",
 
+  // Worker entry point (required for hybrid Worker + Assets deployment)
+  "main": "./dist/index.js",
+
+  // Node.js compatibility for built-in modules
+  "compatibility_flags": ["nodejs_compat"],
+
   // Static assets configuration
   "assets": {
     "directory": "./dist",
