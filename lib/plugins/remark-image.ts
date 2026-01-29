@@ -1,5 +1,4 @@
 import { visit } from 'unist-util-visit';
-import path from 'path';
 import type { Node } from 'unist';
 
 interface ImageNode extends Node {
@@ -13,6 +12,32 @@ interface FileData {
   path?: string;
   basename?: string | undefined;
 }
+
+/**
+ * Resolves a relative path to an absolute path using POSIX path rules.
+ * Mimics path.posix.resolve() behavior for web paths.
+ */
+const resolvePosixPath = (base: string, ...paths: string[]): string => {
+  let resolved = base;
+  for (const p of paths) {
+    if (p.startsWith('/')) {
+      resolved = p;
+    } else {
+      resolved = `${resolved}/${p}`;
+    }
+  }
+  // Normalize path: remove . and ..
+  const parts = resolved.split('/').filter(Boolean);
+  const normalized: string[] = [];
+  for (const part of parts) {
+    if (part === '..') {
+      normalized.pop();
+    } else if (part !== '.') {
+      normalized.push(part);
+    }
+  }
+  return `/${normalized.join('/')}`;
+};
 
 export const remarkImagePlugin = () => {
   return (tree: Node, file: FileData): void => {
@@ -30,7 +55,7 @@ export const remarkImagePlugin = () => {
         if (contentDirMatch != null && contentDirMatch[1]) {
           const articleDir = contentDirMatch[1]; // "2025/original-keyboard"
           // Resolve relative path to absolute path
-          const resolvedPath = path.posix.resolve('/', articleDir, imageUrl);
+          const resolvedPath = resolvePosixPath('/', articleDir, imageUrl);
           imageUrl = resolvedPath;
         }
       }
