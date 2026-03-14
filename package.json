@@ -92,7 +92,6 @@
   "browserslist": [
     "last 2 versions"
   ],
-  "packageManager": "pnpm@10.30.3",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@tailwindcss/oxide",
