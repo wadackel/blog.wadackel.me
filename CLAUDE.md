@@ -30,10 +30,15 @@ A personal blog site built with HonoX (Hono + React-like framework) and deployed
 - `pnpm test` - Run tests with Vitest (clean screenshots → run tests)
 - `pnpm test:watch` - Run tests in watch mode
 - `pnpm test:ui` - Run tests with Vitest UI
+- Run a single test: `pnpm test -- tests/specific.test.ts`
 
 ### Scaffolding
 
 - `pnpm scaffold` - Generate components/pages using scaffdog
+
+### Other
+
+- `pnpm generate` - Generate font subsets for OG image rendering
 
 ### Cleanup
 
@@ -79,9 +84,24 @@ The project adopts a dual-build approach:
 
 ### Content Management
 
-Blog posts are stored as Markdown files with frontmatter metadata in `content/[year]/`. The build process includes:
+Blog posts are stored as Markdown files at `content/[year]/[slug]/index.md`. Images are co-located in the same directory.
 
-- Markdown processing with Remark/Rehype plugins
+#### Frontmatter Fields
+
+- Required: `title`, `date` (ISO format)
+- Optional: `description`, `tags` (string[]), `update` (update date), `image` (custom OG image path)
+
+#### Code Block Extended Syntax
+
+Custom remark plugin supports enhanced code blocks:
+
+- Language + title: ` ```typescript:filename.ts `
+- Line highlighting: ` ```typescript{1,4-6} `
+- Combined: ` ```typescript{1,4-6}:"Title" `
+
+#### Processing Pipeline
+
+- Remark/Rehype pipeline with custom plugins (code blocks, images, Twitter embeds, tables, URL embeds)
 - Syntax highlighting with Prism.js
 - Emoji support and accessibility
 - Automatic slug generation and heading anchors
