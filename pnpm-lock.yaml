@@ -10,10 +10,10 @@ importers:
     dependencies:
       hono:
         specifier: ^4.9.0
-        version: 4.12.8
+        version: 4.12.21
       honox:
         specifier: ^0.1.44
-        version: 0.1.55(hono@4.12.8)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260519.1))
+        version: 0.1.55(hono@4.12.21)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260519.1))
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20231218.0
@@ -26,13 +26,13 @@ importers:
         version: 5.2.8
       '@hono/vite-build':
         specifier: ^1.7.0
-        version: 1.10.0(hono@4.12.8)
+        version: 1.11.1(hono@4.12.21)
       '@hono/vite-dev-server':
         specifier: ^0.25.0
-        version: 0.25.1(hono@4.12.8)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260519.1))
+        version: 0.25.3(hono@4.12.21)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260519.1))
       '@hono/vite-ssg':
         specifier: ^0.3.0
-        version: 0.3.3(hono@4.12.8)
+        version: 0.3.3(hono@4.12.21)
       '@resvg/resvg-js':
         specifier: ^2.6.0
         version: 2.6.2
@@ -767,20 +767,20 @@ packages:
   '@fontsource/caveat@5.2.8':
     resolution: {integrity: sha512-9fUUfFE2IQFKbx+xOcaeQxxmh8iJguEb8z+j1PeueO4UUx+XfT4pRm/B04ZDvFA794/iRxY/IibmP8ZKtIf4rw==}
 
-  '@hono/node-server@1.19.11':
-    resolution: {integrity: sha512-dr8/3zEaB+p0D2n/IUrlPF1HZm586qgJNXK1a9fhg/PzdtkK7Ksd5l312tJX2yBuALqDYBlG20QEbayqPyxn+g==}
+  '@hono/node-server@1.19.14':
+    resolution: {integrity: sha512-GwtvgtXxnWsucXvbQXkRgqksiH2Qed37H9xHZocE5sA3N8O8O8/8FA3uclQXxXVzc9XBZuEOMK7+r02FmSpHtw==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
 
-  '@hono/vite-build@1.10.0':
-    resolution: {integrity: sha512-pA6QgWAdFR2D+8ql1c7VB/ZKP++u3Al9SCdvhEB1gnTtKs7vY1poirVR3i/do/a6tWl9mfmRR5TK32oXMLHkZg==}
+  '@hono/vite-build@1.11.1':
+    resolution: {integrity: sha512-EQJmFL7G+71MXZQ/mmywNl4qW6DSyjTdC30cq7mlDS451a1/jE86old0M2DCWzNGCO50sv7CzQDYkz4L5dq5VQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: '*'
 
-  '@hono/vite-dev-server@0.25.1':
-    resolution: {integrity: sha512-H6EqoPtCV+uH1fu8nKyRy5Wh3LU012QxloEYMlUcyMjjEfVFiRXPjHx/0TQiiRi140Vu8San5A4XQWyElKFKaw==}
+  '@hono/vite-dev-server@0.25.3':
+    resolution: {integrity: sha512-w3uQ0KQF0i/SDcJ6+d5njEFTr6pbolajrt/GxV0pliYL+4ywiBqiOFRWSpwW3mTuZ80boww7+ZxJTGTBIzyBQg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: '*'
@@ -1856,11 +1856,11 @@ packages:
     resolution: {integrity: sha512-F3PH5k5juxom4xktynS7MoFY+NUWH5LC4CnH11YB8NPew+HLpmBLCybSAEyb2F+4pRXhuhWqFesoQd6DAyc2hw==}
     engines: {node: '>=18'}
 
-  brace-expansion@2.0.2:
-    resolution: {integrity: sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ==}
+  brace-expansion@2.1.0:
+    resolution: {integrity: sha512-TN1kCZAgdgweJhWWpgKYrQaMNHcDULHkWwQIspdtjV4Y5aurRdZpjAqn6yX3FPqTA9ngHCc4hJxMAMgGfve85w==}
 
-  brace-expansion@5.0.4:
-    resolution: {integrity: sha512-h+DEnpVvxmfVefa4jFbCf5HdH5YMDXRsmKflpf1pILZWRFlTbJpxeU55nJl4Smt5HQaGzg1o6RHFPJaOqnmBDg==}
+  brace-expansion@5.0.6:
+    resolution: {integrity: sha512-kLpxurY4Z4r9sgMsyG0Z9uzsBlgiU/EFKhj/h91/8yHu0edo7XuixOIH3VcJ8kkxs6/jPzoI6U9Vj3WqbMQ94g==}
     engines: {node: 18 || 20 || >=22}
 
   braces@3.0.3:
@@ -2329,8 +2329,8 @@ packages:
     resolution: {integrity: sha512-Ox1pJVrDCyGHMG9CFg1tmrRUMRPRsAWYc/PinY0XzJU4K7y7vjNoLKIQ7BR5UJMCxNN8EM1MNDmHWA/B3aZUuw==}
     engines: {node: '>=6'}
 
-  hono@4.12.8:
-    resolution: {integrity: sha512-VJCEvtrezO1IAR+kqEYnxUOoStaQPGrCmX3j4wDTNOcD1uRPFpGlwQUIW8niPuvHXaTUxeOUl5MMDGrl+tmO9A==}
+  hono@4.12.21:
+    resolution: {integrity: sha512-uV63apnb0kyPtAUwoWgaGh9HyIFcv8lgmzPZSiTBQAFOFGIzka5EZ1dZocmGnn0XdX0+XTqJ6Tqv7selMuGLRQ==}
     engines: {node: '>=16.9.0'}
 
   honox@0.1.55:
@@ -2850,8 +2850,8 @@ packages:
     engines: {node: '>=22.0.0'}
     hasBin: true
 
-  minimatch@10.2.4:
-    resolution: {integrity: sha512-oRjTw/97aTBN0RHbYCdtF1MQfvusSIBQM0IZEgzl6426+8jSC0nF1a/GmnVLpfB9yyr6g6FTqWqiZVbxrtaCIg==}
+  minimatch@10.2.5:
+    resolution: {integrity: sha512-MULkVLfKGYDFYejP07QOurDLLQpcjk7Fw+7jXS2R2czRQzR56yHRveU5NDJEOviH+hETZKSkIk5c+T23GjFUMg==}
     engines: {node: 18 || 20 || >=22}
 
   minimatch@9.0.9:
@@ -3952,26 +3952,26 @@ snapshots:
 
   '@fontsource/caveat@5.2.8': {}
 
-  '@hono/node-server@1.19.11(hono@4.12.8)':
+  '@hono/node-server@1.19.14(hono@4.12.21)':
     dependencies:
-      hono: 4.12.8
+      hono: 4.12.21
 
-  '@hono/vite-build@1.10.0(hono@4.12.8)':
+  '@hono/vite-build@1.11.1(hono@4.12.21)':
     dependencies:
-      hono: 4.12.8
+      hono: 4.12.21
 
-  '@hono/vite-dev-server@0.25.1(hono@4.12.8)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260519.1))':
+  '@hono/vite-dev-server@0.25.3(hono@4.12.21)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260519.1))':
     dependencies:
-      '@hono/node-server': 1.19.11(hono@4.12.8)
-      hono: 4.12.8
+      '@hono/node-server': 1.19.14(hono@4.12.21)
+      hono: 4.12.21
       minimatch: 9.0.9
     optionalDependencies:
       miniflare: 4.20260518.0
       wrangler: 4.93.0(@cloudflare/workers-types@4.20260519.1)
 
-  '@hono/vite-ssg@0.3.3(hono@4.12.8)':
+  '@hono/vite-ssg@0.3.3(hono@4.12.21)':
     dependencies:
-      hono: 4.12.8
+      hono: 4.12.21
 
   '@img/colour@1.1.0': {}
 
@@ -4523,7 +4523,7 @@ snapshots:
 
   '@ts-morph/common@0.28.1':
     dependencies:
-      minimatch: 10.2.4
+      minimatch: 10.2.5
       path-browserify: 1.0.1
       tinyglobby: 0.2.15
 
@@ -4598,7 +4598,7 @@ snapshots:
       '@typescript-eslint/types': 8.57.0
       '@typescript-eslint/visitor-keys': 8.57.0
       debug: 4.4.3
-      minimatch: 10.2.4
+      minimatch: 10.2.5
       semver: 7.8.0
       tinyglobby: 0.2.15
       ts-api-utils: 2.4.0(typescript@5.9.3)
@@ -4793,11 +4793,11 @@ snapshots:
       widest-line: 5.0.0
       wrap-ansi: 9.0.0
 
-  brace-expansion@2.0.2:
+  brace-expansion@2.1.0:
     dependencies:
       balanced-match: 1.0.2
 
-  brace-expansion@5.0.4:
+  brace-expansion@5.0.6:
     dependencies:
       balanced-match: 4.0.4
 
@@ -5292,16 +5292,16 @@ snapshots:
 
   hex-rgb@4.3.0: {}
 
-  hono@4.12.8: {}
+  hono@4.12.21: {}
 
-  honox@0.1.55(hono@4.12.8)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260519.1)):
+  honox@0.1.55(hono@4.12.21)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260519.1)):
     dependencies:
       '@babel/generator': 7.25.6
       '@babel/parser': 7.25.6
       '@babel/traverse': 7.25.6
       '@babel/types': 7.25.6
-      '@hono/vite-dev-server': 0.25.1(hono@4.12.8)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260519.1))
-      hono: 4.12.8
+      '@hono/vite-dev-server': 0.25.3(hono@4.12.21)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260519.1))
+      hono: 4.12.21
       jsonc-parser: 3.3.1
       precinct: 12.2.0
     optionalDependencies:
@@ -6038,13 +6038,13 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  minimatch@10.2.4:
+  minimatch@10.2.5:
     dependencies:
-      brace-expansion: 5.0.4
+      brace-expansion: 5.0.6
 
   minimatch@9.0.9:
     dependencies:
-      brace-expansion: 2.0.2
+      brace-expansion: 2.1.0
 
   minimist@1.2.8: {}
 
