@@ -84,7 +84,7 @@
     "unist-util-visit": "^5.0.0",
     "vfile": "^6.0.3",
     "vfile-matter": "^5.0.1",
-    "vite": "^7.1.1",
+    "vite": "^8.0.0",
     "vitest": "^4.0.17",
     "wrangler": "^4.0.0",
     "yaml": "^2.8.1"
