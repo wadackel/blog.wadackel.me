@@ -3,3 +3,5 @@ declare module '@fec/remark-a11y-emoji' {
   const _default: { remarkAnchor: Plugin };
   export default _default;
 }
+
+declare module '*.css';

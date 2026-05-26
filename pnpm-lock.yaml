@@ -157,8 +157,8 @@ importers:
         specifier: ^4.20.5
         version: 4.22.3
       typescript:
-        specifier: ^5.3.3
-        version: 5.9.3
+        specifier: ^6.0.0
+        version: 6.0.3
       unified:
         specifier: ^11.0.5
         version: 11.0.5
@@ -3134,6 +3134,11 @@ packages:
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -6338,6 +6343,8 @@ snapshots:
   type-fest@4.41.0: {}
 
   typescript@5.9.3: {}
+
+  typescript@6.0.3: {}
 
   undici-types@7.16.0: {}
 
