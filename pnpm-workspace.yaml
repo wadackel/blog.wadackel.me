@@ -1,1 +1,8 @@
+allowBuilds:
+  '@tailwindcss/oxide': true
+  esbuild: true
+  lefthook: true
+  sharp: true
+  workerd: true
+
 minimumReleaseAge: 10080

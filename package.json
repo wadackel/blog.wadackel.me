@@ -91,14 +91,5 @@
   },
   "browserslist": [
     "last 2 versions"
-  ],
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@tailwindcss/oxide",
-      "esbuild",
-      "lefthook",
-      "sharp",
-      "workerd"
-    ]
-  }
+  ]
 }
