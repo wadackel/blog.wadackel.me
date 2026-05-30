@@ -10,10 +10,10 @@ importers:
     dependencies:
       hono:
         specifier: ^4.9.0
-        version: 4.12.21
+        version: 4.12.22
       honox:
         specifier: ^0.1.44
-        version: 0.1.55(hono@4.12.21)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1))
+        version: 0.1.55(hono@4.12.22)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1))
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20231218.0
@@ -26,13 +26,13 @@ importers:
         version: 5.2.8
       '@hono/vite-build':
         specifier: ^1.7.0
-        version: 1.11.1(hono@4.12.21)
+        version: 1.11.1(hono@4.12.22)
       '@hono/vite-dev-server':
-        specifier: ^0.25.0
-        version: 0.25.3(hono@4.12.21)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1))
+        specifier: ^0.26.0
+        version: 0.26.0(hono@4.12.22)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1))
       '@hono/vite-ssg':
         specifier: ^0.3.0
-        version: 0.3.3(hono@4.12.21)
+        version: 0.3.3(hono@4.12.22)
       '@resvg/resvg-js':
         specifier: ^2.6.0
         version: 2.6.2
@@ -631,6 +631,19 @@ packages:
 
   '@hono/vite-dev-server@0.25.3':
     resolution: {integrity: sha512-w3uQ0KQF0i/SDcJ6+d5njEFTr6pbolajrt/GxV0pliYL+4ywiBqiOFRWSpwW3mTuZ80boww7+ZxJTGTBIzyBQg==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: '*'
+      miniflare: '*'
+      wrangler: '*'
+    peerDependenciesMeta:
+      miniflare:
+        optional: true
+      wrangler:
+        optional: true
+
+  '@hono/vite-dev-server@0.26.0':
+    resolution: {integrity: sha512-DYHht1lge/SRGd1dpOgwhS6DpamSaDtxAOlwl2RkcYyLFy769DZPEX6CeRaUzeDNgClO9JAuT83VptxB5mH5jA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: '*'
@@ -2146,8 +2159,8 @@ packages:
     resolution: {integrity: sha512-Ox1pJVrDCyGHMG9CFg1tmrRUMRPRsAWYc/PinY0XzJU4K7y7vjNoLKIQ7BR5UJMCxNN8EM1MNDmHWA/B3aZUuw==}
     engines: {node: '>=6'}
 
-  hono@4.12.21:
-    resolution: {integrity: sha512-uV63apnb0kyPtAUwoWgaGh9HyIFcv8lgmzPZSiTBQAFOFGIzka5EZ1dZocmGnn0XdX0+XTqJ6Tqv7selMuGLRQ==}
+  hono@4.12.22:
+    resolution: {integrity: sha512-7fvVPbB92zNRsQke+uiRGwtTuef0tB2Dg4hWxYfFNvkQhIltWoyi0ONReM5LWA+jJWS3nfT5lTq+qbsIpX0IQw==}
     engines: {node: '>=16.9.0'}
 
   honox@0.1.55:
@@ -3700,26 +3713,35 @@ snapshots:
 
   '@fontsource/caveat@5.2.8': {}
 
-  '@hono/node-server@1.19.14(hono@4.12.21)':
+  '@hono/node-server@1.19.14(hono@4.12.22)':
     dependencies:
-      hono: 4.12.21
+      hono: 4.12.22
 
-  '@hono/vite-build@1.11.1(hono@4.12.21)':
+  '@hono/vite-build@1.11.1(hono@4.12.22)':
     dependencies:
-      hono: 4.12.21
+      hono: 4.12.22
 
-  '@hono/vite-dev-server@0.25.3(hono@4.12.21)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1))':
+  '@hono/vite-dev-server@0.25.3(hono@4.12.22)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1))':
     dependencies:
-      '@hono/node-server': 1.19.14(hono@4.12.21)
-      hono: 4.12.21
+      '@hono/node-server': 1.19.14(hono@4.12.22)
+      hono: 4.12.22
       minimatch: 9.0.9
     optionalDependencies:
       miniflare: 4.20260518.0
       wrangler: 4.93.0(@cloudflare/workers-types@4.20260520.1)
 
-  '@hono/vite-ssg@0.3.3(hono@4.12.21)':
+  '@hono/vite-dev-server@0.26.0(hono@4.12.22)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1))':
     dependencies:
-      hono: 4.12.21
+      '@hono/node-server': 1.19.14(hono@4.12.22)
+      hono: 4.12.22
+      minimatch: 9.0.9
+    optionalDependencies:
+      miniflare: 4.20260518.0
+      wrangler: 4.93.0(@cloudflare/workers-types@4.20260520.1)
+
+  '@hono/vite-ssg@0.3.3(hono@4.12.22)':
+    dependencies:
+      hono: 4.12.22
 
   '@img/colour@1.1.0': {}
 
@@ -5001,16 +5023,16 @@ snapshots:
 
   hex-rgb@4.3.0: {}
 
-  hono@4.12.21: {}
+  hono@4.12.22: {}
 
-  honox@0.1.55(hono@4.12.21)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1)):
+  honox@0.1.55(hono@4.12.22)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1)):
     dependencies:
       '@babel/generator': 7.25.6
       '@babel/parser': 7.25.6
       '@babel/traverse': 7.25.6
       '@babel/types': 7.25.6
-      '@hono/vite-dev-server': 0.25.3(hono@4.12.21)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1))
-      hono: 4.12.21
+      '@hono/vite-dev-server': 0.25.3(hono@4.12.22)(miniflare@4.20260518.0)(wrangler@4.93.0(@cloudflare/workers-types@4.20260520.1))
+      hono: 4.12.22
       jsonc-parser: 3.3.1
       precinct: 12.2.0
     optionalDependencies:
