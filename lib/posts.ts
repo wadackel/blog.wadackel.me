@@ -95,7 +95,7 @@ async function processMarkdownFile(
     image: processed.frontmatter['image'] as string | undefined,
   } as PostMeta;
 
-  return includeHtml ? ({ ...basePost, html: processed.html } as Post) : basePost;
+  return includeHtml ? { ...basePost, html: processed.html } : basePost;
 }
 
 export const getAllPosts = async (): Promise<PostMeta[]> => {

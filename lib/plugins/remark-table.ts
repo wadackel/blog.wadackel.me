@@ -18,7 +18,7 @@ export const remarkTablePlugin = () => {
     // First, collect all tables to wrap
     visit(tree, 'table', (node: TableNode, index, parent) => {
       if (parent && typeof index === 'number') {
-        tablesToWrap.push({ node, index, parent: parent as Parent });
+        tablesToWrap.push({ node, index, parent });
       }
     });
 
