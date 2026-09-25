@@ -57,7 +57,11 @@ const isTwitterLink = (node: ParagraphNode): boolean => {
   );
 };
 
-const fetchData = async (url: string): Promise<TwitterOEmbedResponse> => {
+const MAX_ATTEMPTS = 3;
+
+const oEmbedCache = new Map<string, Promise<TwitterOEmbedResponse>>();
+
+const requestOEmbed = async (url: string): Promise<TwitterOEmbedResponse> => {
   const target = [
     `https://publish.twitter.com/oembed?url=${url}`,
     `hide_thread=1`,
@@ -69,9 +73,37 @@ const fetchData = async (url: string): Promise<TwitterOEmbedResponse> => {
     `chrome=nofooter`,
   ].join('&');
 
-  const response = await fetch(target);
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      const response = await fetch(target, { signal: AbortSignal.timeout(10_000) });
+      // Other 4xx responses are permanent (e.g. protected tweets) and carry a JSON error body.
+      if (response.status !== 429 && response.status < 500) {
+        return (await response.json()) as TwitterOEmbedResponse;
+      }
+      await response.body?.cancel();
+    } catch {
+      // Retry below: rate limiting can return an HTML page that fails JSON parsing.
+    }
+    if (attempt < MAX_ATTEMPTS) {
+      await new Promise((resolve) => setTimeout(resolve, attempt * 1000));
+    }
+  }
 
-  return (await response.json()) as TwitterOEmbedResponse;
+  // Throwing would make the post route render the 404 page, which SSG writes
+  // out as the post itself; a plain link is the lesser failure.
+  console.warn(`Failed to fetch tweet embed, keeping a plain link: ${url}`);
+  oEmbedCache.delete(url);
+  return {};
+};
+
+// Every post is processed more than once per build, so share one request per tweet.
+const fetchData = (url: string): Promise<TwitterOEmbedResponse> => {
+  let data = oEmbedCache.get(url);
+  if (data == null) {
+    data = requestOEmbed(url);
+    oEmbedCache.set(url, data);
+  }
+  return data;
 };
 
 export const remarkTwitterPlugin = () => {
