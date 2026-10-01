@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build --mode client && vite build",
+    "build": "vite build --mode client && vite build && tsx scripts/verify-client-build.ts",
     "clean": "pnpm clean:dist && pnpm clean:screenshots",
     "clean:all": "pnpm clean:dist && pnpm clean:screenshots && pnpm clean:module",
     "clean:dist": "rm -rf dist",
