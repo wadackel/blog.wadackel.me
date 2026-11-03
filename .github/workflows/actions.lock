@@ -11,9 +11,6 @@ workflows:
         - 'cloudflare/wrangler-action@v4.1.2'
         - 'jdx/mise-action@v4.3.0'
         - 'reg-viz/reg-actions@v2'
-    '.github/workflows/pinact.yaml':
-        - 'actions/checkout@v7.0.1'
-        - 'suzuki-shunsuke/pinact-action@v3.1.0'
     '.github/workflows/verify-lockfile.yaml':
         - 'actions/checkout@v7.0.1'
 dependencies:
@@ -52,8 +49,3 @@ dependencies:
         commit: 'sha1-480d59a2a63da144e914883346f5120f27701310'
         owner_id: 30194316
         repo_id: 237916287
-    'suzuki-shunsuke/pinact-action@v3.1.0':
-        ref: 'v3.1.0'
-        commit: 'sha1-b1a1f46bb10f2908950d95f626ca8cc109e2cf7d'
-        owner_id: 13323303
-        repo_id: 663789591
