@@ -9,7 +9,7 @@ workflows:
         - 'actions/github-script@v9.0.0'
         - 'actions/upload-artifact@v7.0.1'
         - 'cloudflare/wrangler-action@v4.1.2'
-        - 'jdx/mise-action@v4.3.0'
+        - 'jdx/mise-action@v5.2.5'
         - 'reg-viz/reg-actions@v2'
     '.github/workflows/verify-lockfile.yaml':
         - 'actions/checkout@v7.0.1'
@@ -39,9 +39,9 @@ dependencies:
         commit: 'sha1-25853364521e0d392ece9b0c1e97a4b37b638087'
         owner_id: 314135
         repo_id: 213471363
-    'jdx/mise-action@v4.3.0':
-        ref: 'v4.3.0'
-        commit: 'sha1-c2a87611a18de5b3828c5652fe268e992400cb5c'
+    'jdx/mise-action@v5.2.5':
+        ref: 'v5.2.5'
+        commit: 'sha1-6612f0ef07ed2a736cd1e00a94a065522dd41195'
         owner_id: 216188
         repo_id: 738284564
     'reg-viz/reg-actions@v2':
